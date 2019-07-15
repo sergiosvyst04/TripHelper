@@ -47,12 +47,12 @@ Page {
             font: Fonts.openSans(16, Font.AllUppercase)
             fontColor:  nextButton.enabled ? Colors.white : Colors.primaryColor
             text: nextButtonText
-            corners {
-                topLeftRadius: 28
-                topRightRadius: 28
-                bottomLeftRadius: 28
-                bottomRightRadius: 28
-            }
+//            corners {
+//                topLeftRadius: 28
+//                topRightRadius: 28
+//                bottomLeftRadius: 28
+//                bottomRightRadius: 28
+//            }
 
             onClicked: {
                 nextButtonClicked();

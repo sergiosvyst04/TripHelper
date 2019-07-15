@@ -1,13 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Components/Component.qml</file>
-        <file>Pages/Page.qml</file>
         <file>Pages/BasePage.qml</file>
         <file>Singletons/Colors.qml</file>
         <file>Components/ColoredButton.qml</file>
         <file>Components/RoundedRect.qml</file>
         <file>Components/Corners.qml</file>
         <file>Singletons/Fonts.qml</file>
+        <file>Components/PrimaryLabel.qml</file>
+        <file>Components/DescriptionText.qml</file>
+        <file>Singletons/Utils.qml</file>
+        <file>Pages/StartedPage.qml</file>
+        <file>Singletons/qmldir</file>
     </qresource>
 </RCC>

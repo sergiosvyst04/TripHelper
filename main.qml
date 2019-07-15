@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material 2.12
+import QtGraphicalEffects 1.10
 import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
 
@@ -13,7 +14,7 @@ ApplicationWindow {
     StackView {
         id: rootStackView
         anchors.fill: parent
-        //        initialItem:
+        initialItem: Qt.resolvedUrl("qrc:/Pages/StartedPage.qml")
         Keys.onBackPressed: {
 
         }
