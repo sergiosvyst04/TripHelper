@@ -22,4 +22,11 @@ QtObject {
             return true
         }
     }
+
+    function validateConfirmPassword(firstAttempt, secondAttempt){
+        if(firstAttempt === secondAttempt)
+            return true
+        else
+            return false
+    }
 }

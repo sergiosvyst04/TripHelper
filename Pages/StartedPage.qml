@@ -53,10 +53,7 @@ BasePage {
             color: Colors.primaryColor
             text: qsTr("Log in")
             fontColor: Colors.white
-
         }
-
-
 
     }
 

@@ -41,18 +41,15 @@ Page {
         height: 100
         ColoredButton {
             id: nextButton
+            width: 240
+            height: 46
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             visible: nextButtonVisible
             color: enabled ? Colors.primaryColor : Colors.secondaryColor
             font: Fonts.openSans(16, Font.AllUppercase)
             fontColor:  nextButton.enabled ? Colors.white : Colors.primaryColor
             text: nextButtonText
-//            corners {
-//                topLeftRadius: 28
-//                topRightRadius: 28
-//                bottomLeftRadius: 28
-//                bottomRightRadius: 28
-//            }
 
             onClicked: {
                 nextButtonClicked();

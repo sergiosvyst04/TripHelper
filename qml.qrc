@@ -12,5 +12,8 @@
         <file>Singletons/Utils.qml</file>
         <file>Pages/StartedPage.qml</file>
         <file>Singletons/qmldir</file>
+        <file>Pages/CreateAccountPage.qml</file>
+        <file>Components/LabeledTextEdit.qml</file>
+        <file>Components/StyledTextEdit.qml</file>
     </qresource>
 </RCC>

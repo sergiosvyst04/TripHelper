@@ -8,6 +8,7 @@ QtObject {
 
     function openSans(size, capitalization){
         var font = Qt.font( {family: __openSans, pixelSize: size} )
+        font.weight = Font.Normal
         if(capitalization !== undefined) {
             font.capitalization = capitalization;
         }
