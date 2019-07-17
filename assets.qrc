@@ -3,5 +3,6 @@
         <file>assets/scratch.png</file>
         <file>assets/emblem.png</file>
         <file>assets/icons/519791-101_Warning-512.png</file>
+        <file>assets/icons/checkmark-blue.svg</file>
     </qresource>
 </RCC>

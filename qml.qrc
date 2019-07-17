@@ -15,5 +15,8 @@
         <file>Pages/CreateAccountPage.qml</file>
         <file>Components/LabeledTextEdit.qml</file>
         <file>Components/StyledTextEdit.qml</file>
+        <file>Components/PopupActivationButton.qml</file>
+        <file>Pages/CreateAccountNextPage.qml</file>
+        <file>Components/LocationComboBox.qml</file>
     </qresource>
 </RCC>

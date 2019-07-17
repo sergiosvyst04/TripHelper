@@ -44,6 +44,7 @@ BasePage {
             fontColor: Colors.primaryColor
             back.border.width: 2
             back.border.color: Colors.primaryColor
+            onClicked: navigateToItem("qrc:/Pages/CreateAccountPage.qml")
         }
 
         ColoredButton {

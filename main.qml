@@ -7,8 +7,8 @@ import QtQuick.Window 2.12
 
 ApplicationWindow {
     visible: true
-    width: 375
-    height: 812
+    width: 360
+    height: 640
     title: qsTr("Trip Helper")
 
     StackView {
@@ -30,7 +30,7 @@ ApplicationWindow {
     }
 
     function replaceItem(itemURL, properties) {
-        rootStackView.replace(__maybeResolveUrl(itemURL), properties)
+        rootStackView.replace(___maybeResolveUrl(itemURL), properties)
     }
 
     function replaceView(itemURL) {
@@ -39,7 +39,7 @@ ApplicationWindow {
     }
 
     function navigateToItem(itemURL, properties) {
-        rootStackView.push(__maybeResolveUrl(itemURL), properties);
+        rootStackView.push(___maybeResolveUrl(itemURL), properties);
     }
 
     function __isString(arg) {

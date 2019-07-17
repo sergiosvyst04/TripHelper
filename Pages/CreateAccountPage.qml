@@ -7,6 +7,7 @@ import "../Components"
 BasePage {
     nextButtonVisible: true
     nextButtonEnabled: email.validated && password.validated && confirmPassword.validated && fullName.text.length > 3
+    onNextButtonClicked: navigateToItem("qrc:/Pages/CreateAccountNextPage.qml")
 
     ColumnLayout {
         spacing: 61
