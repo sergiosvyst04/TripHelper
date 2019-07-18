@@ -20,5 +20,8 @@
         <file>Components/LocationComboBox.qml</file>
         <file>Pages/LogInPage.qml</file>
         <file>Pages/ResetPasswordPage.qml</file>
+        <file>Pages/ProfilePage.qml</file>
+        <file>Components/ProfileAvatarAndDataItem.qml</file>
+        <file>Components/ProfileButton.qml</file>
     </qresource>
 </RCC>

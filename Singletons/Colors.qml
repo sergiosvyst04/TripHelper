@@ -11,6 +11,10 @@ QtObject {
     readonly property color shadowColor: "grey"
     readonly property color approveTextColor: "#31D977"
     readonly property color warningTextColor: "#F92323"
+    readonly property color greenButtonColor:  "#00E25F"
+    readonly property color redButtonColor: "#FC0101"
+    readonly property color yellowButtonColor: "#F5BA07"
+
 
 
 }

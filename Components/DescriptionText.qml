@@ -5,4 +5,5 @@ Text {
     horizontalAlignment: Text.AlignHCenter
     color: Colors.descriptionTextColor
     font: Fonts.openSans(13, Font.MixedCase)
+    textFormat: Text.StyledText
 }

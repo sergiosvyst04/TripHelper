@@ -4,5 +4,10 @@
         <file>assets/emblem.png</file>
         <file>assets/icons/519791-101_Warning-512.png</file>
         <file>assets/icons/checkmark-blue.svg</file>
+        <file>assets/icons/location.png</file>
+        <file>assets/icons/avatar-372-456324.png</file>
+        <file>assets/white icons/completed.png</file>
+        <file>assets/white icons/active.png</file>
+        <file>assets/white icons/goal.png</file>
     </qresource>
 </RCC>
