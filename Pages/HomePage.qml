@@ -52,6 +52,7 @@ import "../Components"
                     Layout.minimumHeight: 105
                     image: "qrc:/images/assets/white icons/goals.png"
                     actionText: qsTr("Add goal")
+                    onClicked: navigateToItem("qrc:/Pages/AddGoalPage.qml")
                 }
 
                 HomeActionButton {

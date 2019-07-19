@@ -23,11 +23,11 @@ ColumnLayout {
         id: btn
         Layout.fillWidth: true
         Layout.preferredHeight: 26
-        font: Fonts.openSans(4)
+        font: Fonts.openSans(14)
         background:  Rectangle {
             opacity: .7
             anchors.bottom: parent.bottom
-            color: Colors.descriptionTextColor
+            color: Colors.primaryColor
             height: 1
             width: parent.width
         }
@@ -42,13 +42,11 @@ ColumnLayout {
         Popup {
             id: popup
             background: Item {}
-            y: parent.height + 10
+            y: parent.height - 250
             width: parent.width
-            height: 200
+            height: 300
         }
 
     }
-
-
 
 }

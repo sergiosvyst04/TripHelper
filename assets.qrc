@@ -16,5 +16,8 @@
         <file>assets/icons/globe.png</file>
         <file>assets/icons/HOme.png</file>
         <file>assets/icons/profile.png</file>
+        <file>assets/icons/goals.png</file>
+        <file>assets/icons/Humans-11-11-512.png</file>
+        <file>assets/icons/rightArrow.png</file>
     </qresource>
 </RCC>

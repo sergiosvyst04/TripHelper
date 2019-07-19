@@ -27,5 +27,7 @@
         <file>Components/HomeActionButton.qml</file>
         <file>Pages/ScratchMapPage.qml</file>
         <file>Pages/MainPage.qml</file>
+        <file>Pages/AddGoalPage.qml</file>
+        <file>Components/TripCalendar.qml</file>
     </qresource>
 </RCC>
