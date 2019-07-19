@@ -44,6 +44,7 @@ import "../Components"
                     Layout.minimumHeight: 105
                     image: "qrc:/images/assets/white icons/startbtn.png"
                     actionText: qsTr("Start trip")
+                    onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
                 }
 
                 HomeActionButton {

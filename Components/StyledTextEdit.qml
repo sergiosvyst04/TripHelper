@@ -21,8 +21,9 @@ TextField {
 
     Material.accent: "red"
 
-    rightPadding: 40
+    leftPadding: 20
     font: Fonts.openSans(14)
+    color: Colors.descriptionTextColor
     width: parent.width
     height: 30
     echoMode: isPassword ? TextInput.Password : TextInput.Normal
@@ -32,7 +33,7 @@ TextField {
     background:  Rectangle {
         opacity: .7
         anchors.bottom: parent.bottom
-        color: __firstFocused ? Colors.primaryColor : Colors.descriptionTextColor
+        color: Colors.primaryColor
         height: 1
         width: parent.width
 

@@ -29,5 +29,6 @@
         <file>Pages/MainPage.qml</file>
         <file>Pages/AddGoalPage.qml</file>
         <file>Components/TripCalendar.qml</file>
+        <file>Pages/StartTripPage.qml</file>
     </qresource>
 </RCC>

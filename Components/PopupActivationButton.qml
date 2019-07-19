@@ -24,6 +24,8 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.preferredHeight: 26
         font: Fonts.openSans(14)
+        fontColor: Colors.descriptionTextColor
+
         background:  Rectangle {
             opacity: .7
             anchors.bottom: parent.bottom

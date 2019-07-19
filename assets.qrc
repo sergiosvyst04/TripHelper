@@ -19,5 +19,6 @@
         <file>assets/icons/goals.png</file>
         <file>assets/icons/Humans-11-11-512.png</file>
         <file>assets/icons/rightArrow.png</file>
+        <file>assets/icons/start.png</file>
     </qresource>
 </RCC>
