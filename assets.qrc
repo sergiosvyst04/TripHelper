@@ -9,5 +9,12 @@
         <file>assets/white icons/completed.png</file>
         <file>assets/white icons/active.png</file>
         <file>assets/white icons/goal.png</file>
+        <file>assets/white icons/goals.png</file>
+        <file>assets/white icons/organizat help.png</file>
+        <file>assets/white icons/settings.png</file>
+        <file>assets/white icons/startbtn.png</file>
+        <file>assets/icons/globe.png</file>
+        <file>assets/icons/HOme.png</file>
+        <file>assets/icons/profile.png</file>
     </qresource>
 </RCC>

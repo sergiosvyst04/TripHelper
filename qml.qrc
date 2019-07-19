@@ -23,5 +23,9 @@
         <file>Pages/ProfilePage.qml</file>
         <file>Components/ProfileAvatarAndDataItem.qml</file>
         <file>Components/ProfileButton.qml</file>
+        <file>Pages/HomePage.qml</file>
+        <file>Components/HomeActionButton.qml</file>
+        <file>Pages/ScratchMapPage.qml</file>
+        <file>Pages/MainPage.qml</file>
     </qresource>
 </RCC>

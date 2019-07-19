@@ -4,9 +4,9 @@ import QtQuick.Layouts 1.12
 import "../Singletons"
 import "../Components"
 
-BasePage {
-    footer: Item{}
-    header: Item {}
+//BasePage {
+//    footer: Item{}
+//    header: Item {}
 
     ColumnLayout {
         spacing: 34
@@ -66,4 +66,4 @@ BasePage {
             Layout.fillHeight: true
         }
     }
-}
+//}
