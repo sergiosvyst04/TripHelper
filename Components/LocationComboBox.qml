@@ -11,6 +11,7 @@ ComboBox {
 
     model: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 
+
     delegate: ColoredButton {
         width: parent.width
         layer.enabled: false

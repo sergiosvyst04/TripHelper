@@ -12,9 +12,6 @@ Button {
     property alias textAlignment: textItem.horizontalAlignment
     property alias back: back
 
-
-
-
     font: Fonts.openSansBold(16, Font.Mixed)
     background: Rectangle {
         id: back

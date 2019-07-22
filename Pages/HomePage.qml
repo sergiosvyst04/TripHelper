@@ -63,6 +63,7 @@ import "../Components"
                     Layout.minimumHeight: 105
                     image: "qrc:/images/assets/white icons/organizat help.png"
                     actionText: qsTr("Organization<br>help")
+                    onClicked: navigateToItem("qrc:/Pages/OrganizationHelpPage.qml")
                 }
 
                 HomeActionButton {

@@ -30,5 +30,9 @@
         <file>Pages/AddGoalPage.qml</file>
         <file>Components/TripCalendar.qml</file>
         <file>Pages/StartTripPage.qml</file>
+        <file>Pages/OrganizationHelpPage.qml</file>
+        <file>Components/CheckButton.qml</file>
+        <file>Pages/NeedHelpPage.qml</file>
+        <file>Pages/SelfOrganizePage.qml</file>
     </qresource>
 </RCC>

@@ -14,6 +14,7 @@ QtObject {
     readonly property color greenButtonColor:  "#00E25F"
     readonly property color redButtonColor: "#FC0101"
     readonly property color yellowButtonColor: "#F5BA07"
+    readonly property color checkboxColor: "#CEEDFF"
 
 
 
