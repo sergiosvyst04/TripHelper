@@ -23,5 +23,7 @@
         <file>assets/icons/fly.png</file>
         <file>assets/icons/check_mark.svg</file>
         <file>assets/icons/reserve.png</file>
+        <file>assets/icons/call.png</file>
+        <file>assets/icons/travelagent.png</file>
     </qresource>
 </RCC>

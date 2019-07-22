@@ -12,6 +12,8 @@ BasePage {
     onNextButtonClicked: {
         if(buttonsGroup.buttons[0].checked)
             navigateToItem("qrc:/Pages/SelfOrganizePage.qml")
+        else
+            navigateToItem("qrc:/Pages/TravelAgentHelpPage.qml")
     }
 
     ColumnLayout {
@@ -57,7 +59,7 @@ BasePage {
             CheckButton {
                 Layout.fillWidth: true
                 checkable: true
-                buttonText: "Tour agent help"
+                buttonText: "Travel agent help"
             }
 
         }

@@ -34,5 +34,7 @@
         <file>Components/CheckButton.qml</file>
         <file>Pages/NeedHelpPage.qml</file>
         <file>Pages/SelfOrganizePage.qml</file>
+        <file>Pages/TravelAgentHelpPage.qml</file>
+        <file>Components/TravelAgentItem.qml</file>
     </qresource>
 </RCC>
