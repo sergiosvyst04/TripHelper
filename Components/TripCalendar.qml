@@ -52,7 +52,7 @@ Calendar {
             width: parent.width
             corners.topLeftRadius: 28
             corners.topRightRadius: 28
-            color: "#F2F2F2"
+            color: Colors.lightgrey
 
             RowLayout {
                 anchors {

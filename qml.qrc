@@ -37,5 +37,8 @@
         <file>Pages/TravelAgentHelpPage.qml</file>
         <file>Components/TravelAgentItem.qml</file>
         <file>Pages/AddNotePage.qml</file>
+        <file>Pages/TakePhotoPage.qml</file>
+        <file>Components/ChoosePhotoButton.qml</file>
+        <file>Components/CameraButtonsBar.qml</file>
     </qresource>
 </RCC>

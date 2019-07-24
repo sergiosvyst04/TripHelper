@@ -25,5 +25,9 @@
         <file>assets/icons/reserve.png</file>
         <file>assets/icons/call.png</file>
         <file>assets/icons/travelagent.png</file>
+        <file>assets/white icons/cameraarrows.png</file>
+        <file>assets/white icons/flash.png</file>
+        <file>assets/icons/apply.png</file>
+        <file>assets/icons/redcross.png</file>
     </qresource>
 </RCC>
