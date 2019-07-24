@@ -40,5 +40,7 @@
         <file>Pages/TakePhotoPage.qml</file>
         <file>Components/ChoosePhotoButton.qml</file>
         <file>Components/CameraButtonsBar.qml</file>
+        <file>Pages/MakeListPage.qml</file>
+        <file>Components/BackPackItem.qml</file>
     </qresource>
 </RCC>

@@ -29,5 +29,8 @@
         <file>assets/white icons/flash.png</file>
         <file>assets/icons/apply.png</file>
         <file>assets/icons/redcross.png</file>
+        <file>assets/icons/backpack.png</file>
+        <file>assets/icons/list.png</file>
+        <file>assets/icons/minus.png</file>
     </qresource>
 </RCC>
