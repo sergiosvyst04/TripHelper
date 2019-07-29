@@ -45,5 +45,8 @@
         <file>Pages/EndTripPage.qml</file>
         <file>Pages/GalleryPage.qml</file>
         <file>Components/GalleryDelegate.qml</file>
+        <file>Pages/CountryInformationPage.qml</file>
+        <file>Components/CountryTabButton.qml</file>
+        <file>CountriesModel/CountryDataBase.js</file>
     </qresource>
 </RCC>

@@ -38,4 +38,5 @@
         <file>assets/icons/backButton.png</file>
         <file>assets/white icons/increaseArrows.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>
