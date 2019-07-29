@@ -32,5 +32,10 @@
         <file>assets/icons/backpack.png</file>
         <file>assets/icons/list.png</file>
         <file>assets/icons/minus.png</file>
+        <file>assets/icons/pyro.png</file>
+        <file>assets/icons/Flags/Chile.png</file>
+        <file>assets/icons/threepoints.jpg</file>
+        <file>assets/icons/backButton.png</file>
+        <file>assets/white icons/increaseArrows.png</file>
     </qresource>
 </RCC>

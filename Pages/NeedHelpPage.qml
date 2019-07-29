@@ -97,11 +97,11 @@ BasePage {
                 bottomPadding: 150
                 parent: Overlay.overlay
                 anchors.centerIn: parent
+
                 background: Rectangle {
+
                     anchors.fill: parent
                     color: Colors.white
-//                    corners.topLeftRadius: 28
-//                    corners.topRightRadius: 28
                     radius: 28
                     RoundedRect {
                         anchors.top: parent.top

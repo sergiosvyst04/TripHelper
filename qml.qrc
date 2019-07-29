@@ -42,5 +42,8 @@
         <file>Components/CameraButtonsBar.qml</file>
         <file>Pages/MakeListPage.qml</file>
         <file>Components/BackPackItem.qml</file>
+        <file>Pages/EndTripPage.qml</file>
+        <file>Pages/GalleryPage.qml</file>
+        <file>Components/GalleryDelegate.qml</file>
     </qresource>
 </RCC>

@@ -24,7 +24,15 @@ Page {
     header: Rectangle {
         height: 52
         color: "transparent"
-        Button {
+        ColoredButton {
+            color: "transparent"
+            layer.enabled: false
+            Image {
+                anchors.centerIn: parent
+                source: "qrc:/images/assets/icons/backButton.png"
+                sourceSize: Qt.size(40, 30)
+            }
+
             visible: backButtonVisible
             anchors {
                 verticalCenter: parent.verticalCenter
