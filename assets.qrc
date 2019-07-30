@@ -37,5 +37,10 @@
         <file>assets/icons/threepoints.jpg</file>
         <file>assets/icons/backButton.png</file>
         <file>assets/white icons/increaseArrows.png</file>
+        <file>assets/white icons/idea.png</file>
+        <file>assets/white icons/note.png</file>
+        <file>assets/white icons/place.png</file>
+        <file>assets/icons/photo.png</file>
+        <file>assets/icons/front.png</file>
     </qresource>
 </RCC>

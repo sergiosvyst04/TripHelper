@@ -20,6 +20,7 @@ QtObject {
     readonly property color textAreaColor: "#56CCF2"
     readonly property color recColor: "#F83F17"
     readonly property color choiceButtonColor: "#E0E0E0"
+    readonly property color checkInColor: "#FFC30B"
 
 
 

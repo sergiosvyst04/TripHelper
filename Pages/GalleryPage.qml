@@ -68,6 +68,7 @@ BasePage {
                         Layout.preferredHeight: 30
                         Layout.preferredWidth: 40
                         layer.enabled: false
+                        onClicked: navigateBack()
 
                         Image {
                             anchors.centerIn: parent

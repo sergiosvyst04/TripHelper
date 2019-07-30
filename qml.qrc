@@ -45,5 +45,9 @@
         <file>Pages/EndTripPage.qml</file>
         <file>Pages/GalleryPage.qml</file>
         <file>Components/GalleryDelegate.qml</file>
+        <file>Pages/ActiveTripPage.qml</file>
+        <file>Components/ActiveTripActionItem.qml</file>
+        <file>Components/DayDelegate.qml</file>
+        <file>Pages/ActiveTrip.qml</file>
     </qresource>
 </RCC>
