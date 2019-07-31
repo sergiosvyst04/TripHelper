@@ -7,6 +7,7 @@ import "../Singletons"
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Get started")
+    onNextButtonClicked: navigateToItem("qrc:/Pages/MainPage.qml")
 
     ColumnLayout {
         spacing: 35
@@ -80,6 +81,7 @@ BasePage {
         DescriptionText {
             Layout.alignment: Qt.AlignHCenter
             font: Fonts.openSansBold(13, Font.MixedCase)
+            textFormat: Text.PlainText
             text: qsTr("Some text with agreemt with\n Privacy Policy and\n others")
         }
     }

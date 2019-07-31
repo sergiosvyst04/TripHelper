@@ -6,7 +6,7 @@ import "../Singletons"
 import "../Components"
 
 BasePage {
-
+    header: Item{}
     footer: Item {}
 
     ColumnLayout {

@@ -41,6 +41,7 @@ import "../Components"
                 color: Colors.greenButtonColor
                 image: "qrc:/images/assets/white icons/active.png"
                 buttonText: qsTr("Active trip")
+                onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")
             }
 
             ProfileButton {

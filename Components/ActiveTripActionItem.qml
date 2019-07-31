@@ -16,6 +16,7 @@ ColoredButton {
             leftMargin: 25
             topMargin: 10
             bottomMargin: 10
+            rightMargin: 15
         }
 
         Image {
@@ -23,10 +24,18 @@ ColoredButton {
             sourceSize: Qt.size(33, 33)
         }
 
+        Item {
+            Layout.fillWidth: true
+        }
+
         DescriptionText {
             id: action
             font: Fonts.openSansBold(13, Font.MixedCase)
             color: Colors.white
+        }
+
+        Item {
+          Layout.fillWidth: true
         }
     }
 }

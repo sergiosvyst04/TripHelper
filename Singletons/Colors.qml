@@ -21,6 +21,7 @@ QtObject {
     readonly property color recColor: "#F83F17"
     readonly property color choiceButtonColor: "#E0E0E0"
     readonly property color checkInColor: "#FFC30B"
+    readonly property color checkInPopupColor: "#F9E9B8"
 
 
 
