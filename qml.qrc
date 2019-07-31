@@ -49,5 +49,7 @@
         <file>Components/ActiveTripActionItem.qml</file>
         <file>Components/DayDelegate.qml</file>
         <file>Pages/ActiveTrip.qml</file>
+        <file>Pages/CompletedTripsPage.qml</file>
+        <file>Components/TripItem.qml</file>
     </qresource>
 </RCC>

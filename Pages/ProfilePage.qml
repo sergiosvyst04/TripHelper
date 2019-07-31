@@ -50,6 +50,7 @@ import "../Components"
                 background.opacity: 0.75
                 image: "qrc:/images/assets/white icons/completed.png"
                 buttonText: qsTr("Completed trips")
+                onClicked: navigateToItem("qrc:/Pages/CompletedTripsPage.qml")
             }
 
             ProfileButton {
