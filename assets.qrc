@@ -42,5 +42,6 @@
         <file>assets/white icons/place.png</file>
         <file>assets/icons/photo.png</file>
         <file>assets/icons/front.png</file>
+        <file>assets/icons/visitedCities.png</file>
     </qresource>
 </RCC>

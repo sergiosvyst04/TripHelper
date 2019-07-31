@@ -11,10 +11,12 @@ ApplicationWindow {
     height: 640
     title: qsTr("Trip Helper")
 
+
+
     StackView {
         id: rootStackView
         anchors.fill: parent
-        initialItem: Qt.resolvedUrl("qrc:/Pages/MainPage.qml")
+        initialItem: Qt.resolvedUrl("qrc:/Pages/CompletedTripsPage.qml")
         Keys.onBackPressed: {
 
         }

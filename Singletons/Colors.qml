@@ -22,7 +22,6 @@ QtObject {
     readonly property color choiceButtonColor: "#E0E0E0"
     readonly property color checkInColor: "#FFC30B"
     readonly property color checkInPopupColor: "#F9E9B8"
-
-
+    readonly property color tripItemLineColor: "#BDBDBD"
 
 }
