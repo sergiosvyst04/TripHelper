@@ -323,6 +323,7 @@ BasePage {
                                 deleteSelectedPhotos()
                                 loader.active = false
                                 editState = false
+                                amountOfSelectedImages = 0
                             }
                             else{
                                 modelWithPhotos.remove(swipeView.currentIndex)
