@@ -61,6 +61,7 @@ import "../Components"
                 background.opacity: 0.8
                 image: "qrc:/images/assets/white icons/goal.png"
                 buttonText: qsTr("My goals")
+                onClicked: navigateToItem("qrc:/Pages/PlansPage.qml")
             }
         }
 

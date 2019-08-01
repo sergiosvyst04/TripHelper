@@ -51,5 +51,7 @@
         <file>Pages/ActiveTrip.qml</file>
         <file>Pages/CompletedTripsPage.qml</file>
         <file>Components/TripItem.qml</file>
+        <file>Pages/PlansPage.qml</file>
+        <file>Components/PlanItem.qml</file>
     </qresource>
 </RCC>

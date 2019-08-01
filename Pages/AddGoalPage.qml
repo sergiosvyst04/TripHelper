@@ -2,12 +2,19 @@ import QtQuick 2.10
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
+import QtQml 2.13
 import "../Singletons"
 import "../Components"
 
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Add goal")
+    onNextButtonClicked:  {
+        console.log("ADD")
+        plansModel.append({country : countryComboBox.model[countryComboBox.currentIndex], city: cityComboBox.model[cityComboBox.currentIndex]
+            , date: Date.fromLocaleString(Qt.locale(), dateField.text, "d MMMM yyyy") })
+    }
+
     backButtonVisible: true
 
 
@@ -70,7 +77,7 @@ BasePage {
             }
 
             LocationComboBox {
-                id: cityComboBox
+                id: cityComboBox            
                 Layout.fillWidth: true
                 Layout.preferredHeight: 30
                 currentIndex: -1
