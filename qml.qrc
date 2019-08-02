@@ -51,5 +51,9 @@
         <file>Pages/ActiveTrip.qml</file>
         <file>Pages/CompletedTripsPage.qml</file>
         <file>Components/TripItem.qml</file>
+        <file>Pages/CountryInformationPage.qml</file>
+        <file>Components/CountryTabButton.qml</file>
+        <file>Pages/VisitedCountriesPage.qml</file>
+        <file>Components/VisitedCountryItem.qml</file>
     </qresource>
 </RCC>

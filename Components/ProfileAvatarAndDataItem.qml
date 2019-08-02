@@ -27,33 +27,48 @@ ColumnLayout {
 
     RowLayout {
         Layout.leftMargin: 10
-        spacing: 28
-        ColumnLayout {
-            DescriptionText {
-                id: numberOfVisitedCountries
-                Layout.alignment: Qt.AlignHCenter
-                font: Fonts.openSansBold(18)
-                text: "16"
-            }
+        spacing: 44
 
-            DescriptionText {
-                text: qsTr("Visited countries")
-                opacity: 0.8
+        ColoredButton {
+            Layout.preferredWidth: 75
+            Layout.preferredHeight: 47
+            layer.enabled: false
+            ColumnLayout {
+                DescriptionText {
+                    id: numberOfVisitedCountries
+                    Layout.alignment: Qt.AlignHCenter
+                    font: Fonts.openSansBold(18)
+                    text: "16"
+                }
+
+                DescriptionText {
+                    text: qsTr("Visited countries")
+                    opacity: 0.8
+                }
             }
+            onClicked: navigateToItem("qrc:/Pages/VisitedCountriesPage.qml", {tabCurrentIndex : 0})
+
         }
 
-        ColumnLayout {
-            DescriptionText {
-                id: numberOFVisitedCities
-                Layout.alignment: Qt.AlignHCenter
-                font: Fonts.openSansBold(18)
-                text: "55"
-            }
+        ColoredButton {
+            Layout.preferredWidth: desctTxt.width
+            Layout.preferredHeight: 47
+            layer.enabled: false
+            ColumnLayout {
+                DescriptionText {
+                    id: numberOFVisitedCities
+                    Layout.alignment: Qt.AlignHCenter
+                    font: Fonts.openSansBold(18)
+                    text: "55"
+                }
 
-            DescriptionText {
-                text: qsTr("Visited cities")
-                opacity: 0.8
+                DescriptionText {
+                    id: desctTxt
+                    text: qsTr("Visited cities")
+                    opacity: 0.8
+                }
             }
+            onClicked: navigateToItem("qrc:/Pages/VisitedCountriesPage.qml", {tabCurrentIndex : 1})
         }
     }
 

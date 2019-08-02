@@ -45,4 +45,5 @@
         <file>assets/icons/visitedCities.png</file>
         <file>assets/icons/idea5.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>
