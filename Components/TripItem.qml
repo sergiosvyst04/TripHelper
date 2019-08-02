@@ -111,7 +111,8 @@ ColoredButton {
             RowLayout {
                 spacing: 4
                 Image {
-                    source: "qrc:/images/assets/icons/photo.png"
+                    Layout.bottomMargin: 9
+                    source: "qrc:/images/assets/icons/idea5.png"
                     sourceSize: Qt.size(25, 25)
                 }
 
