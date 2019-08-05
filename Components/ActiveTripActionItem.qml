@@ -8,7 +8,14 @@ ColoredButton {
     property alias image: image.source
     property alias text1: action
     property alias actionText: action.text
-    color: Colors.primaryColor
+    layer.enabled: false
+    background: Rectangle {
+        radius: 28
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Colors.primaryColor }
+            GradientStop { position: 1.0; color: Colors.lightBlue }
+        }
+    }
 
     RowLayout {
         anchors {
@@ -35,7 +42,7 @@ ColoredButton {
         }
 
         Item {
-          Layout.fillWidth: true
+            Layout.fillWidth: true
         }
     }
 }

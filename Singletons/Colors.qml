@@ -23,5 +23,8 @@ QtObject {
     readonly property color checkInColor: "#FFC30B"
     readonly property color checkInPopupColor: "#F9E9B8"
     readonly property color tripItemLineColor: "#BDBDBD"
+    readonly property color lightBlue: "#00F0FF"
+    readonly property color orange: "#FF4040"
+    readonly property color darkRed: "#A90000"
 
 }

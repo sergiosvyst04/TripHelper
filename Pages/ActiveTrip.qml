@@ -97,20 +97,21 @@ BasePage {
             ColoredButton {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 50
-                color: Colors.checkInColor
                 text: qsTr("Check-In")
                 font: Fonts.openSansBold(13, Font.MixedCase)
-                fontColor: Colors.shadowColor
-                layer.effect: DropShadow {
-                    color: Colors.checkInColor
-                    horizontalOffset: 0
-                    verticalOffset: 5
-                    radius: 7
-                    samples: 10
-                }
+                fontColor: Colors.grey
                 onClicked: {
                     loader.sourceComponent = checkInPopup
                     loader.active = true
+                }
+                layer.enabled: false
+
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient{
+                        GradientStop {position: 0.0; color: Colors.checkInColor}
+                        GradientStop {position: 1.0; color: Colors.orange}
+                    }
                 }
             }
 
@@ -118,19 +119,18 @@ BasePage {
                 Layout.fillWidth: true
                 Layout.topMargin: 20
                 Layout.preferredHeight: 50
-                color: Colors.redButtonColor
                 text: qsTr("End of trip")
                 fontColor: Colors.white
                 font: Fonts.openSansBold(13, Font.MixedCase)
+                layer.enabled: false
 
                 onClicked: navigateToItem("qrc:/Pages/EndTripPage.qml")
-
-                layer.effect: DropShadow {
-                    color: Colors.redButtonColor
-                    horizontalOffset: 0
-                    verticalOffset: 5
-                    radius: 7
-                    samples: 10
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient{
+                        GradientStop {position: 0.0; color: Colors.redButtonColor}
+                        GradientStop {position: 1.0; color: Colors.darkRed}
+                    }
                 }
             }
         }
