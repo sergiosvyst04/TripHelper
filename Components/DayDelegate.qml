@@ -10,6 +10,14 @@ ColoredButton {
 
     layer.enabled: false
 
+    background: Rectangle {
+        radius: 28
+        gradient: Gradient {
+          GradientStop {position: 0.0; color: Colors.primaryColor }
+          GradientStop {position: 1.0; color: Colors.white }
+        }
+    }
+
     color: Colors.lightgrey
 
     ColumnLayout {

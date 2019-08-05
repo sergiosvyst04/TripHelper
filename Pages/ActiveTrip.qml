@@ -156,9 +156,10 @@ BasePage {
 
                 background: Rectangle {
                     radius: 28
-                    color: Colors.checkInPopupColor
-                    border.width: 2
-                    border.color: Colors.descriptionTextColor
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.checkInColor }
+                        GradientStop {position: 1.0; color: Colors.white}
+                    }
                 }
 
                 onAboutToHide: loader.active = false
@@ -198,6 +199,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Touristic Attrations")
+                            layer.enabled: false
                         }
 
                         ColoredButton {
@@ -208,6 +210,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Favourite places")
+                            layer.enabled: false
                         }
 
                         ColoredButton {
@@ -218,6 +221,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Thanks")
+                             layer.enabled: false
                         }
 
                     }
@@ -242,6 +246,10 @@ BasePage {
 
                     background: Rectangle {
                         radius: 28
+                        gradient: Gradient {
+                            GradientStop {position: 0.0; color: Colors.primaryColor }
+                            GradientStop {position: 0.45; color: Colors.white }
+                        }
                     }
 
                     onAboutToHide: loader.active = false
@@ -259,12 +267,14 @@ BasePage {
                         DescriptionText {
                             Layout.alignment: Qt.AlignHCenter
                             text: qsTr("Add new idea")
+                            color: Colors.grey
                             font: Fonts.openSansBold(16, Font.MixedCase)
                         }
 
                         DescriptionText {
                             Layout.alignment: Qt.AlignHCenter
                             textFormat: Text.PlainText
+                            color: Colors.grey
                             text: qsTr("Don't let your inspiration \n to die on the rest")
                             font: Fonts.openSans(13, Font.MixedCase)
                         }
