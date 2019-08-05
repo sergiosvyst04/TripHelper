@@ -99,26 +99,25 @@ BasePage {
                 anchors.centerIn: parent
 
                 background: Rectangle {
-
                     anchors.fill: parent
-                    color: Colors.white
                     radius: 28
-                    RoundedRect {
-                        anchors.top: parent.top
-                        corners.topLeftRadius: 28
-                        corners.topRightRadius: 28
-                        width: parent.width
-                        height: 70
-                        color: Colors.primaryColor
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.3; color: Colors.white  }
+                    }
+
 
                         DescriptionText {
-                            anchors.centerIn: parent
-                            font: Fonts.openSansBold(13, Font.MixedCase)
+                            anchors {
+                                top: parent.top
+                                topMargin: 20
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            font: Fonts.openSansBold(14, Font.MixedCase)
                             textFormat: Text.PlainText
-                            color: Colors.white
                             text: qsTr("We found several options\n for you")
                         }
-                    }
+
                 }
 
                 contentItem: Item {
