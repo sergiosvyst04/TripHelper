@@ -92,8 +92,8 @@ BasePage {
             sourceComponent:  Popup {
                 visible: true
                 modal: true
-                implicitWidth: 300
-                implicitHeight: 300
+                implicitWidth: 250
+                implicitHeight: 270
                 bottomPadding: 150
                 parent: Overlay.overlay
                 anchors.centerIn: parent
@@ -113,9 +113,10 @@ BasePage {
 
                         DescriptionText {
                             anchors.centerIn: parent
-                            font: Fonts.openSansBold(14, Font.MixedCase)
+                            font: Fonts.openSansBold(13, Font.MixedCase)
+                            textFormat: Text.PlainText
                             color: Colors.white
-                            text: qsTr("We found several options for you")
+                            text: qsTr("We found several options\n for you")
                         }
                     }
                 }
@@ -123,7 +124,7 @@ BasePage {
                 contentItem: Item {
                     anchors.topMargin: 90
                     anchors.top: parent.top
-                    width: 200
+                    width: 180
                     height: 80
 
                     ListView {
@@ -133,7 +134,6 @@ BasePage {
                         spacing: 10
 
                         delegate: ColoredButton {
-
                             id: btn
                             width: parent.width
                             checkable: true
@@ -149,18 +149,29 @@ BasePage {
                                 radius: 4
                                 color: btn.checked ? Colors.checkedDelegateColor : Colors.white
                                 opacity: btn.checked ? 0.3 : 1
+                                Rectangle {
+                                    anchors {
+                                        topMargin: 5
+                                        top:  parent.bottom
+                                    }
+                                    width: parent.width
+                                    height: 1
+                                    color: Colors.lightgrey
+                                    visible: index === listView.count - 1 ? false : true
+                                }
                             }
 
                             RowLayout {
                                 anchors {
                                     fill: parent
-                                    leftMargin: 32
+                                    leftMargin: 10
+                                    rightMargin: 10
                                     topMargin: 10
                                     bottomMargin: 10
                                 }
 
                                 DescriptionText {
-                                    font: Fonts.openSansBold(18)
+                                    font: Fonts.openSans(14)
                                     text: model.text
                                 }
 

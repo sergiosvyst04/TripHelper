@@ -11,6 +11,9 @@ BasePage {
         navigateToItem("qrc:/Pages/NeedHelpPage.qml")
     }
 
+    nextButtonEnabled: countryComboBox.currentIndex > -1 && cityComboBox.currentIndex > -1
+                       && dateField.fieldText != "" && amountOfPersonsField.validated
+
     ColumnLayout {
         spacing: 70
         anchors {
@@ -85,6 +88,8 @@ BasePage {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 35
                 label: qsTr("Amount of persons")
+                validator: Utils.validateIntegersOnly
+                warningText: qsTr("Input integers only")
             }
         }
     }

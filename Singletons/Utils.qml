@@ -23,10 +23,15 @@ QtObject {
         }
     }
 
-    function validateConfirmPassword(firstAttempt, secondAttempt){
-        if(firstAttempt === secondAttempt)
-            return true
-        else
-            return false
-    }
+   function validateIntegersOnly(amountOfPersons) {
+       var amount = parseInt(amountOfPersons)
+       if(Number.isInteger(amount))
+       {
+           return true;
+       }
+       else
+       {
+           return false;
+       }
+   }
 }
