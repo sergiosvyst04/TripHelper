@@ -32,7 +32,13 @@ import "../Components"
                 Layout.minimumWidth: 138
                 Layout.minimumHeight: 168
                 color: Colors.primaryColor
-                background.opacity: 0.8
+                background : Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: "#53A7D7" }
+                        GradientStop {position: 1.0; color: "#51F5FF" }
+                    }
+                }
             }
 
             ProfileButton {
@@ -42,25 +48,44 @@ import "../Components"
                 image: "qrc:/images/assets/white icons/active.png"
                 buttonText: qsTr("Active trip")
                 onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")
+                background : Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: "#60FFE2" }
+                        GradientStop {position: 1.0; color: "#7EFF1A" }
+                    }
+                }
             }
 
             ProfileButton {
                 Layout.minimumWidth: 138
                 Layout.minimumHeight: 168
                 color: Colors.redButtonColor
-                background.opacity: 0.75
                 image: "qrc:/images/assets/white icons/completed.png"
                 buttonText: qsTr("Completed trips")
                 onClicked: navigateToItem("qrc:/Pages/CompletedTripsPage.qml")
+                background : Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.redButtonColor }
+                        GradientStop {position: 1.0; color: "#752424" }
+                    }
+                }
             }
 
             ProfileButton {
                 Layout.minimumWidth: 138
                 Layout.minimumHeight: 168
                 color: Colors.yellowButtonColor
-                background.opacity: 0.8
                 image: "qrc:/images/assets/white icons/goal.png"
                 buttonText: qsTr("My goals")
+                background : Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: "#EA6317"}
+                        GradientStop {position: 1.0; color: "#FFC000" }
+                    }
+                }
             }
         }
 
