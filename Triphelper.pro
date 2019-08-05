@@ -1,4 +1,5 @@
 QT += quick
+QT += positioning
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -30,3 +31,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES +=
+
+HEADERS += \
+    core/Storage/Goal.hpp \
+    core/Storage/Photo.hpp \
+    core/Storage/TripDay.hpp
