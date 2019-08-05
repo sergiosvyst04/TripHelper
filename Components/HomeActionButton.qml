@@ -7,25 +7,33 @@ import "../Components"
 ColoredButton {
     property alias image: image.source
     property alias actionText: action.text
-   color: Colors.primaryColor
+    layer.enabled: false
 
-   RowLayout {
-       anchors {
-           fill: parent
-           leftMargin: 23
-           topMargin: 27
-           bottomMargin: 27
-       }
+    background:  Rectangle {
+        radius: 28
+        gradient: Gradient {
+            GradientStop {position: 0.0; color: Colors.primaryColor }
+            GradientStop { position: 1.0; color: Colors.lightBlue }
+        }
+    }
 
-       Image {
-           id: image
-           sourceSize: Qt.size(53, 53)
-       }
+    RowLayout {
+        anchors {
+            fill: parent
+            leftMargin: 23
+            topMargin: 27
+            bottomMargin: 27
+        }
 
-       DescriptionText {
-           id: action
-           font: Fonts.openSansBold(22, Font.MixedCase)
-           color: Colors.white
-       }
-   }
+        Image {
+            id: image
+            sourceSize: Qt.size(53, 53)
+        }
+
+        DescriptionText {
+            id: action
+            font: Fonts.openSansBold(22, Font.MixedCase)
+            color: Colors.white
+        }
+    }
 }
