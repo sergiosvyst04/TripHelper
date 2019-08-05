@@ -90,8 +90,8 @@ ColoredButton {
                 }
 
                 DescriptionText {
-                   id: citiesCount
-                   color: Colors.grey
+                    id: citiesCount
+                    color: Colors.grey
                 }
             }
 
@@ -103,8 +103,8 @@ ColoredButton {
                 }
 
                 DescriptionText {
-                   id: photosCount
-                   color: Colors.grey
+                    id: photosCount
+                    color: Colors.grey
                 }
             }
 
@@ -117,8 +117,8 @@ ColoredButton {
                 }
 
                 DescriptionText {
-                   id: ideasCount
-                   color: Colors.grey
+                    id: ideasCount
+                    color: Colors.grey
                 }
             }
 

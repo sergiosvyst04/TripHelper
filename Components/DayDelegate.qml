@@ -10,6 +10,14 @@ ColoredButton {
 
     layer.enabled: false
 
+    background: Rectangle {
+        radius: 28
+        gradient: Gradient {
+          GradientStop {position: 0.0; color: Qt.rgba(0, 240, 255, 0.65) }
+          GradientStop {position: 0.86; color: "#DEFF5C" }
+        }
+    }
+
     color: Colors.lightgrey
 
     ColumnLayout {

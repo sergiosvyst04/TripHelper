@@ -97,20 +97,21 @@ BasePage {
             ColoredButton {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 50
-                color: Colors.checkInColor
                 text: qsTr("Check-In")
                 font: Fonts.openSansBold(13, Font.MixedCase)
-                fontColor: Colors.shadowColor
-                layer.effect: DropShadow {
-                    color: Colors.checkInColor
-                    horizontalOffset: 0
-                    verticalOffset: 5
-                    radius: 7
-                    samples: 10
-                }
+                fontColor: Colors.grey
                 onClicked: {
                     loader.sourceComponent = checkInPopup
                     loader.active = true
+                }
+                layer.enabled: false
+
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient{
+                        GradientStop {position: 0.0; color: Colors.checkInColor}
+                        GradientStop {position: 1.0; color: Colors.orange}
+                    }
                 }
             }
 
@@ -118,19 +119,18 @@ BasePage {
                 Layout.fillWidth: true
                 Layout.topMargin: 20
                 Layout.preferredHeight: 50
-                color: Colors.redButtonColor
                 text: qsTr("End of trip")
                 fontColor: Colors.white
                 font: Fonts.openSansBold(13, Font.MixedCase)
+                layer.enabled: false
 
                 onClicked: navigateToItem("qrc:/Pages/EndTripPage.qml")
-
-                layer.effect: DropShadow {
-                    color: Colors.redButtonColor
-                    horizontalOffset: 0
-                    verticalOffset: 5
-                    radius: 7
-                    samples: 10
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient{
+                        GradientStop {position: 0.0; color: Colors.redButtonColor}
+                        GradientStop {position: 1.0; color: Colors.darkRed}
+                    }
                 }
             }
         }
@@ -156,9 +156,10 @@ BasePage {
 
                 background: Rectangle {
                     radius: 28
-                    color: Colors.checkInPopupColor
-                    border.width: 2
-                    border.color: Colors.descriptionTextColor
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.checkInColor }
+                        GradientStop {position: 1.0; color: Colors.white}
+                    }
                 }
 
                 onAboutToHide: loader.active = false
@@ -198,6 +199,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Touristic Attrations")
+                            layer.enabled: false
                         }
 
                         ColoredButton {
@@ -208,6 +210,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Favourite places")
+                            layer.enabled: false
                         }
 
                         ColoredButton {
@@ -218,6 +221,7 @@ BasePage {
                             font: Fonts.openSansBold(13, Font.MixedCase)
                             fontColor: Colors.white
                             text: qsTr("Thanks")
+                             layer.enabled: false
                         }
 
                     }
@@ -242,6 +246,10 @@ BasePage {
 
                     background: Rectangle {
                         radius: 28
+                        gradient: Gradient {
+                            GradientStop {position: 0.0; color: Colors.primaryColor }
+                            GradientStop {position: 0.45; color: Colors.white }
+                        }
                     }
 
                     onAboutToHide: loader.active = false
@@ -259,12 +267,14 @@ BasePage {
                         DescriptionText {
                             Layout.alignment: Qt.AlignHCenter
                             text: qsTr("Add new idea")
+                            color: Colors.grey
                             font: Fonts.openSansBold(16, Font.MixedCase)
                         }
 
                         DescriptionText {
                             Layout.alignment: Qt.AlignHCenter
                             textFormat: Text.PlainText
+                            color: Colors.grey
                             text: qsTr("Don't let your inspiration \n to die on the rest")
                             font: Fonts.openSans(13, Font.MixedCase)
                         }
