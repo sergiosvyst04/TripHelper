@@ -4,11 +4,21 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
 import "../Singletons"
 import "../Components"
+//import GoalsModel 1.0
 
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Add goal")
     backButtonVisible: true
+    onNextButtonClicked: {
+        goalsModel.addGoal(countryComboBox.model[countryComboBox.currentIndex], cityComboBox.model[cityComboBox.currentIndex],
+                           Date.fromLocaleString(Qt.locale(), dateField.text, "d MMMM yyyy"))
+    }
+
+
+//    GoalsModel {
+//        id: goalsModel
+//    }
 
 
     ColumnLayout {

@@ -14,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        GoalsModel.cpp \
         main.cpp
 
 RESOURCES += qml.qrc \
@@ -33,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 HEADERS += \
+    GoalsModel.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
     core/Storage/TripDay.hpp

@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include "GoalsModel.hpp"
+
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +12,11 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+//    qmlRegisterType<GoalsModel>("GoalsModel", 1, 0, "goalsModel");
+    GoalsModel goalsModel;
+
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
+    engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -21,7 +27,6 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
 //    engine.load(url);
 
-    QLocale l;
 
     return app.exec();
 }
