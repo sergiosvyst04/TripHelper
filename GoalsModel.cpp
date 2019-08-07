@@ -1,16 +1,20 @@
 #include "GoalsModel.hpp"
 #include <QDebug>
+#include <QDateTime>
 
 GoalsModel::GoalsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
 }
 
+//==============================================================================
 
 int GoalsModel::rowCount(const QModelIndex &) const
 {
     return _goals.size();
 }
+
+//==============================================================================
 
 QVariant GoalsModel::data(const QModelIndex &index, int role) const
 {
@@ -26,10 +30,13 @@ QVariant GoalsModel::data(const QModelIndex &index, int role) const
         return QString::fromStdString(goal.city);
     case DepatureDate:
         return goal.depatureDate;
+
     }
 
     return QVariant();
 }
+
+//==============================================================================
 
 QHash<int, QByteArray> GoalsModel::roleNames() const
 {
@@ -41,17 +48,23 @@ QHash<int, QByteArray> GoalsModel::roleNames() const
     return roleNames;
 }
 
-void GoalsModel::addGoal(const QString &country, const QString &city, const QDateTime &depatureDate)
+//==============================================================================
+
+void GoalsModel::addGoal(const QString &country, const QString &city, QDateTime depatureDate)
 {
+    depatureDate.setTime(QTime(0,0));
     Goal newGoal {
         country.toStdString(),
-        city.toStdString(),
-        depatureDate
+                city.toStdString(),
+                depatureDate
     };
+
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     _goals.push_back(newGoal);
     endInsertRows();
-    qDebug() << "added, " << _goals.size();
 }
+
+//==============================================================================
+
 
 

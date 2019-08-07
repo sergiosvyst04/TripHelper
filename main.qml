@@ -4,14 +4,13 @@ import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.10
 import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
+//import GoalsModel 1.0
 
 ApplicationWindow {
     visible: true
     width: 360
     height: 640
     title: qsTr("Trip Helper")
-
-
 
     StackView {
         id: rootStackView

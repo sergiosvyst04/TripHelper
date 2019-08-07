@@ -2,6 +2,8 @@
 #define GOAL_HPP
 #include <QString>
 #include <QDateTime>
+#include <QTimer>
+#include <QDebug>
 
 struct Goal{
     std::string city;

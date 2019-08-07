@@ -2,6 +2,7 @@ import QtQuick 2.10
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
+import QtQml 2.13
 import "../Singletons"
 import "../Components"
 //import GoalsModel 1.0
@@ -10,16 +11,12 @@ BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Add goal")
     backButtonVisible: true
+    nextButtonEnabled: cityComboBox.currentIndex > -1 && countryComboBox.currentIndex > -1 && dateField.fieldText != ""
+
     onNextButtonClicked: {
         goalsModel.addGoal(countryComboBox.model[countryComboBox.currentIndex], cityComboBox.model[cityComboBox.currentIndex],
-                           Date.fromLocaleString(Qt.locale(), dateField.text, "d MMMM yyyy"))
+                           dateField.depatureDate)
     }
-
-
-//    GoalsModel {
-//        id: goalsModel
-//    }
-
 
     ColumnLayout {
         anchors {
@@ -93,14 +90,15 @@ BasePage {
 
         PopupActivationButton {
             id: dateField
+            property date depatureDate
+            fieldText: Qt.formatDate(depatureDate, "d MMMM yyyy")
             labelText: qsTr("Depature date")
             popupContentItem: TripCalendar {
                 minimumDate: new Date()
                 onPressAndHold: {
                     dateField.popupItem.close()
-                    dateField.fieldText = Qt.formatDate(date, "d MMMM yyyy")
+                    dateField.depatureDate = date
                 }
-
             }
         }
     }

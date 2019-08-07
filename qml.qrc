@@ -55,5 +55,7 @@
         <file>Components/CountryTabButton.qml</file>
         <file>Pages/VisitedCountriesPage.qml</file>
         <file>Components/VisitedCountryItem.qml</file>
+        <file>Pages/PlansPage.qml</file>
+        <file>Components/PlanItem.qml</file>
     </qresource>
 </RCC>

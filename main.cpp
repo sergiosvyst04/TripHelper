@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "GoalsModel.hpp"
+#include "QMLUtils.hpp"
 
 
 int main(int argc, char *argv[])
@@ -14,6 +15,14 @@ int main(int argc, char *argv[])
 
 //    qmlRegisterType<GoalsModel>("GoalsModel", 1, 0, "goalsModel");
     GoalsModel goalsModel;
+
+    static auto *utils = new QMLUtils;
+
+    qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
+                                              [](QQmlEngine *engine, QJSEngine *) -> QObject* {
+            engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
+            return utils;
+        });
 
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);

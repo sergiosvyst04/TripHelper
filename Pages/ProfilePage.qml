@@ -86,6 +86,7 @@ import "../Components"
                         GradientStop {position: 1.0; color: "#FFC000" }
                     }
                 }
+                onClicked: navigateToItem("qrc:/Pages/PlansPage.qml")
             }
         }
 

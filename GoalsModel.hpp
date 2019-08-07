@@ -1,4 +1,4 @@
-#ifndef GOALSMODEL_HPP
+﻿#ifndef GOALSMODEL_HPP
 #define GOALSMODEL_HPP
 
 #include <QAbstractListModel>
@@ -12,7 +12,7 @@ class GoalsModel : public QAbstractListModel
     enum GoalRoles {
         CountryRole = Qt::UserRole + 1,
         CityRole,
-        DepatureDate
+        DepatureDate,
     };
 
 public:
@@ -25,8 +25,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 public slots:
-    void addGoal(const QString &country, const QString &city, const QDateTime &depatureDate);
-
+    void addGoal(const QString &country, const QString &city, QDateTime depatureDate);
 private:
     QVector<Goal> _goals;
 };

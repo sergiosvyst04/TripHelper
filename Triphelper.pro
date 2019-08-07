@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         GoalsModel.cpp \
+        QMLUtils.cpp \
         main.cpp
 
 RESOURCES += qml.qrc \
@@ -35,6 +36,7 @@ DISTFILES +=
 
 HEADERS += \
     GoalsModel.hpp \
+    QMLUtils.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
     core/Storage/TripDay.hpp
