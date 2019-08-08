@@ -26,6 +26,9 @@ public:
 
 public slots:
     void addGoal(const QString &country, const QString &city, QDateTime depatureDate);
+
+signals:
+    void goalAdded();
 private:
     QVector<Goal> _goals;
 };

@@ -62,6 +62,8 @@ void GoalsModel::addGoal(const QString &country, const QString &city, QDateTime 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     _goals.push_back(newGoal);
     endInsertRows();
+
+    emit goalAdded();
 }
 
 //==============================================================================
