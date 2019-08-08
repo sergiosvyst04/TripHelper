@@ -13,8 +13,6 @@ Rectangle {
     color: Colors.primaryColor
     radius: 28
 
-//    onDepatureDateChanged: console.log(Qt.formatDateTime(depatureDate, "d M yy !!! hh mm "))
-
     Item {
         Timer {
             interval: 500; running: true; repeat: true
@@ -44,6 +42,7 @@ Rectangle {
         }
 
         RowLayout {
+            spacing: 20
             Repeater {
                 id: repeater
                 model: ["Days", "Hours", "Minutes", "Seconds"]
@@ -58,77 +57,13 @@ Rectangle {
                     }
 
                     DescriptionText {
-                        font: Fonts.openSans(11, Font.MixedCase)
+                        font: Fonts.openSansBold(11, Font.MixedCase)
                         color: Colors.white
                         text: modelData
                     }
                 }
             }
         }
-
-        //        RowLayout {
-        //            spacing: 12
-        //            Layout.fillWidth: true
-        //            ColumnLayout {
-        //                DescriptionText {
-        //                    id: daysLeft
-        //                    Layout.alignment: Qt.AlignHCenter
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                }
-
-        //                DescriptionText {
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                    text: qsTr("Days")
-        //                }
-        //            }
-
-        //            ColumnLayout {
-        //                DescriptionText {
-        //                    id: hoursLeft
-        //                    Layout.alignment: Qt.AlignHCenter
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                }
-
-        //                DescriptionText {
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                    text: qsTr("Hours")
-        //                }
-        //            }
-
-        //            ColumnLayout {
-        //                DescriptionText {
-        //                    id: minutesLeft
-        //                    Layout.alignment: Qt.AlignHCenter
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                }
-
-        //                DescriptionText {
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                    text: qsTr("Minutes")
-        //                }
-        //            }
-
-        //            ColumnLayout {
-        //                DescriptionText {
-        //                    id: secondsLeft
-        //                    Layout.alignment: Qt.AlignHCenter
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                }
-
-        //                DescriptionText {
-        //                    font: Fonts.openSans(11, Font.MixedCase)
-        //                    color: Colors.white
-        //                    text: qsTr("Seconds")
-        //                }
-        //            }
-        //        }
     }
 
 }

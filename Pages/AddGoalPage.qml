@@ -1,11 +1,10 @@
 import QtQuick 2.10
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.5
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
 import QtQml 2.13
 import "../Singletons"
 import "../Components"
-//import GoalsModel 1.0
 
 BasePage {
     nextButtonVisible: true
@@ -16,6 +15,13 @@ BasePage {
     onNextButtonClicked: {
         goalsModel.addGoal(countryComboBox.model[countryComboBox.currentIndex], cityComboBox.model[cityComboBox.currentIndex],
                            dateField.depatureDate)
+    }
+
+    Connections {
+        target: goalsModel
+        onGoalAdded : {
+            loader.active = true
+        }
     }
 
     ColumnLayout {
@@ -101,5 +107,73 @@ BasePage {
                 }
             }
         }
+    }
+
+    Loader {
+        id: loader
+        active: false
+
+        sourceComponent: popup
+
+        Component {
+            id: popup
+
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 150
+                implicitWidth: 232
+
+                padding: 0
+
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+                onAboutToHide: loader.active = false
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.4; color: Colors.white }
+                    }
+                }
+
+                ColumnLayout {
+                    spacing: 20
+                    anchors {
+                        fill: parent
+                        topMargin: 15
+                        leftMargin: 24
+                        rightMargin: 24
+                        bottomMargin: 14
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        textFormat: Text.PlainText
+                        text: qsTr("Goal was succesfully added\n to your goals")
+                    }
+
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 36
+                        Layout.preferredWidth: 86
+                        color: Colors.primaryColor
+                        layer.enabled: false
+                        text: qsTr("Add")
+                        fontColor: Colors.white
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                        onClicked: {
+                            loader.active = false
+                            navigateToItem("qrc:/Pages/MainPage.qml")
+                        }
+                    }
+
+                }
+
+            }
+        }
+
     }
 }
