@@ -1,7 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "GoalsModel.hpp"
+#include "core/Models/TripsModel.hpp"
+#include "core/Models/GoalsModel.hpp"
 #include "QMLUtils.hpp"
 
 
@@ -13,8 +14,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-//    qmlRegisterType<GoalsModel>("GoalsModel", 1, 0, "goalsModel");
     GoalsModel goalsModel;
+    TripsModel tripsModel;
+
 
     static auto *utils = new QMLUtils;
 
@@ -26,6 +28,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
+    engine.rootContext()->setContextProperty("tripsModel", &tripsModel);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -11,4 +11,6 @@ struct TripDay {
     std::vector <std::string> cities;
 };
 
+Q_DECLARE_METATYPE(TripDay);
+
 #endif // TRIPDAY_HPP

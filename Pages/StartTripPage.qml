@@ -5,48 +5,52 @@ import "../Singletons"
 import "../Components"
 
 BasePage {
-     nextButtonVisible: true
-     nextButtonText: qsTr("Start")
-     backButtonVisible: true
+    nextButtonVisible: true
+    nextButtonText: qsTr("Start")
+    backButtonVisible: true
+    onNextButtonClicked: {
+        tripsModel.addTrip(tripName.text, dateField.depatureDate)
+    }
 
-     ColumnLayout {
-         anchors {
-             fill: parent
-             leftMargin: 32
-             rightMargin: 32
-             bottomMargin: 165
-         }
+    nextButtonEnabled: tripName.text != "" && dateField.fieldText != ""
 
-
-         Image {
-             Layout.alignment: Qt.AlignHCenter
-             source: "qrc:/images/assets/icons/start.png"
-             sourceSize: Qt.size(175, 165)
-             opacity: 0.4
-         }
-
-         LabeledTextEdit {
-             id: tripName
-             Layout.fillWidth: true
-             label: qsTr("Trip Name")
-         }
+    ColumnLayout {
+        anchors {
+            fill: parent
+            leftMargin: 32
+            rightMargin: 32
+            bottomMargin: 165
+        }
 
 
-         PopupActivationButton {
-             id: dateField
-             labelText: qsTr("Depature date")
-             popupContentItem: TripCalendar {
-                 minimumDate: new Date()
-                 onPressAndHold: {
-                     dateField.popupItem.close()
-                     dateField.fieldText = Qt.formatDate(date, "d MMMM yyyy")
-                 }
+        Image {
+            Layout.alignment: Qt.AlignHCenter
+            source: "qrc:/images/assets/icons/start.png"
+            sourceSize: Qt.size(175, 165)
+            opacity: 0.4
+        }
 
-             }
-         }
-     }
-
+        LabeledTextEdit {
+            id: tripName
+            Layout.fillWidth: true
+            label: qsTr("Trip Name")
+        }
 
 
+        PopupActivationButton {
+            id: dateField
+            property date depatureDate
+            fieldText: Qt.formatDate(depatureDate, "d MMMM yyyy")
+            labelText: qsTr("Depature date")
+            popupContentItem: TripCalendar {
+                minimumDate: new Date()
+                onPressAndHold: {
+                    dateField.popupItem.close()
+                    dateField.depatureDate = date
+                }
+
+            }
+        }
+    }
 
 }
