@@ -5,6 +5,7 @@ import "../Singletons"
 import "../Components"
 
 ColoredButton {
+    id: btn
     property alias image: image.source
     property alias actionText: action.text
     layer.enabled: false
@@ -13,7 +14,7 @@ ColoredButton {
         radius: 28
         gradient: Gradient {
             GradientStop {position: 0.0; color: Colors.blue }
-            GradientStop { position: 1.0; color: Colors.lightBlue }
+            GradientStop { position: 1.0; color: btn.enabled ? Colors.lightBlue : Colors.blue}
         }
     }
 

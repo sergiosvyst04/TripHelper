@@ -39,6 +39,7 @@ import "../Components"
                         GradientStop {position: 1.0; color: "#51F5FF" }
                     }
                 }
+                onClicked: navigateToItem("qrc:/Pages/InWaitingTripPage.qml")
             }
 
             ProfileButton {

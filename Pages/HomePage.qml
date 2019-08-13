@@ -9,6 +9,7 @@ import "../Components"
 //    header: Item{}
 
     ColumnLayout {
+        property alias startTripBtnEnabled: startTripBtn.enabled
         spacing: 15
         anchors {
             fill: parent
@@ -39,11 +40,14 @@ import "../Components"
                 width: flickable.width
 
                 HomeActionButton {
+                    id: startTripBtn
                     Layout.alignment: Qt.AlignHCenter
                     Layout.minimumWidth: column.width - 10
                     Layout.minimumHeight: 105
                     image: "qrc:/images/assets/white icons/startbtn.png"
                     actionText: qsTr("Start trip")
+//                    enabled: tripsModel.checkIfExistWaitingOrActiveTrips()
+                    onEnabledChanged: console.log("start enabled changed to :", enabled)
                     onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
                 }
 

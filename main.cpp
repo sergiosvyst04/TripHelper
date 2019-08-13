@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "core/Models/TripsModel.hpp"
 #include "core/Models/GoalsModel.hpp"
+#include "core/Storage/Trip.hpp"
 #include "QMLUtils.hpp"
 
 
@@ -18,8 +19,9 @@ int main(int argc, char *argv[])
     TripsModel tripsModel;
 
 
-    static auto *utils = new QMLUtils;
 
+    static auto *utils = new QMLUtils;
+    qmlRegisterType<Trip>("Trip1", 1, 0, "Trip");
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                               [](QQmlEngine *engine, QJSEngine *) -> QObject* {
             engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);

@@ -3,6 +3,7 @@
 #include "QDateTime"
 #include <QGeoLocation>
 #include "TripDay.hpp"
+#include <QDebug>
 
 
 Trip::Trip(const QString &name, QDateTime depatureDate, QObject *parent)
@@ -16,6 +17,13 @@ Trip::Trip(const QString &name, QDateTime depatureDate, QObject *parent)
         checkTime();
         checkLocation();
     });
+
+}
+
+//==============================================================================
+
+Trip::Trip()
+{
 
 }
 
@@ -123,8 +131,8 @@ void Trip::addPhoto(const QString &path)
 
     Photo newPhoto {
         path.toStdString(),
-        timestamp,
-        location
+                timestamp,
+                location
     };
 
     currentTripDay.photos.push_back(newPhoto);

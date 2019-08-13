@@ -12,7 +12,10 @@ BasePage {
         id: swipeView
         anchors.fill: parent
         currentIndex: 2
-
+        onCurrentIndexChanged: {
+            if(currentIndex == 1)
+              home.startTripBtnEnabled =  !tripsModel.checkIfActiveTripExists() && !tripsModel.checkIfWaitingTripexists()
+        }
 
         Item {
             id: scratchMap
@@ -26,7 +29,7 @@ BasePage {
             visible: SwipeView.isCurrentItem
             Layout.fillWidth: true
             HomePage {
-
+                id: home
             }
         }
 
@@ -59,36 +62,34 @@ BasePage {
             }
             sourceSize: Qt.size(36, 36)
 
-//            Rectangle {
-//                id: rect
+            //            Rectangle {
+            //                id: rect
 
-//                anchors {
-////                    horizontalCenter: parent.right
-//                    horizontalCenter: parent.horizontalCenter
-//                    verticalCenter: parent.verticalCenter
-//                }
-//                height: 45
-//                width: 85
-//                radius: 28
-//                color: index === pageIndicator.currentIndex ? Colors.primaryColor : "transparent"
-//                opacity: 0.4
-//                onColorChanged: {
-//                    if(index === pageIndicator.currentIndex)
-//                        anim.running = true
-//                }
+            //                anchors {
+            ////                    horizontalCenter: parent.right
+            //                    horizontalCenter: parent.horizontalCenter
+            //                    verticalCenter: parent.verticalCenter
+            //                }
+            //                height: 45
+            //                width: 85
+            //                radius: 28
+            //                color: index === pageIndicator.currentIndex ? Colors.primaryColor : "transparent"
+            //                opacity: 0.4
+            //                onColorChanged: {
+            //                    if(index === pageIndicator.currentIndex)
+            //                        anim.running = true
+            //                }
 
-//                NumberAnimation {
-//                    id: anim
-//                    target: rect
-//                    property: "width"
-//                    from: 50
-//                    to : 85
-//                    duration: 250
-//                    running: false
-//                }
-//            }
-
-
+            //                NumberAnimation {
+            //                    id: anim
+            //                    target: rect
+            //                    property: "width"
+            //                    from: 50
+            //                    to : 85
+            //                    duration: 250
+            //                    running: false
+            //                }
+            //            }
         }
 
         anchors.bottom: parent.bottom

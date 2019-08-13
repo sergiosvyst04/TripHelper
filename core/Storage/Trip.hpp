@@ -11,19 +11,27 @@
 class Trip : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString name READ getName)
+    Q_PROPERTY(QDateTime depatureDate READ getDepatureDate)
+    Q_PROPERTY(int state READ getState)
+    Q_PROPERTY(QList<TripDay> days READ getDays)
+    Q_PROPERTY(QList<QString> list READ getList)
+    Q_PROPERTY(QList<QString> backPack READ getBackPack)
+
     enum State {
-        InWaiting = Qt::UserRole + 1,
+        InWaiting = 0,
         Active,
         Completed
     };
 
 public:
     explicit Trip(const QString &name, QDateTime depatureDate,QObject *parent = nullptr);
+    Trip();
     Trip (const Trip &trip);
     Trip& operator=(const Trip &trip);
 
-    QString getName() const;
-    QDateTime getDepatureDate() const;
+    Q_INVOKABLE QString getName() const;
+    Q_INVOKABLE QDateTime getDepatureDate() const;
     int getState() const;
     QList<TripDay> getDays() const;
     QList <QString> getList() const;
@@ -48,6 +56,7 @@ public slots:
 private:
     QString _name;
     QDateTime _depatureDate;
+    //    QDateTime _arrivalDate;
     int _state = State::InWaiting;
     QList<TripDay> _days;
     QList <QString> _list;
@@ -55,5 +64,7 @@ private:
     QGeoLocation _locationController;
     QGeoAddress _currentLocation;
 };
+
+Q_DECLARE_METATYPE(Trip);
 
 #endif // TRIP_HPP

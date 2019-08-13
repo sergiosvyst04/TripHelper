@@ -20,7 +20,6 @@ QVector<QString> QMLUtils::calculateRemainigTime(QVariant departureTime)
 {
     QVector<QString> timeVector;
     QDateTime departure = departureTime.toDateTime();
-//    departure.setTime(QTime(0,0));
     int secsPerDay = 86400;
     int secsPerHour = 3600;
     int secsPerMinute = 60;
