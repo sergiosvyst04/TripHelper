@@ -14,7 +14,7 @@ BasePage {
         currentIndex: 2
         onCurrentIndexChanged: {
             if(currentIndex == 1)
-              home.startTripBtnEnabled =  !tripsModel.checkIfActiveTripExists() && !tripsModel.checkIfWaitingTripexists()
+                home.startTripBtnEnabled = tripController.hasUnCompletedTrip()
         }
 
         Item {

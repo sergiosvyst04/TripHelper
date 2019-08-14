@@ -7,17 +7,19 @@
 
 
 Trip::Trip(const QString &name, QDateTime depatureDate, QObject *parent)
-    : _name(name),
-      _depatureDate(depatureDate),
-      QObject(parent)
+    : QObject(parent)
 {
-    QTimer timer;
-    timer.start(1000);
-    connect(&timer, &QTimer::timeout, [this](){
+    _name = name;
+    depatureDate.setTime(QTime(0,0));
+    _depatureDate = depatureDate;
+
+    QTimer *timer = new QTimer(this);
+    timer->start(1000);
+
+    connect(timer, &QTimer::timeout, [this](){
         checkTime();
         checkLocation();
     });
-
 }
 
 //==============================================================================
@@ -57,9 +59,10 @@ Trip& Trip::operator=(const Trip &trip)
 
 void Trip::checkTime()
 {
-    if(QDateTime::currentDateTime() == _depatureDate)
+    if(QDateTime::currentDateTime().secsTo(_depatureDate) == 0)
     {
         _state = State::Active;
+        emit stateChanged();
     }
 
     if(QDateTime::currentDateTime().time() == QTime(0,0))

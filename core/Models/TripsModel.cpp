@@ -10,7 +10,7 @@ TripsModel::TripsModel(QObject *parent)
 
 int TripsModel::rowCount(const QModelIndex &parent) const
 {
-       return _trips.size();
+    return _trips.size();
 }
 
 //==============================================================================
@@ -68,8 +68,37 @@ void TripsModel::addTrip(const QString &name, QDateTime depatureDate)
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     _trips.push_back(newTrip);
     endInsertRows();
-    qDebug() << _trips.size();
 }
 
 //==============================================================================
+
+bool TripsModel::checkIfActiveTripExists()
+{
+    for(int i =0; i < _trips.size(); i++)
+        if(_trips.at(i).getState() == 1)
+            return true;
+    return false;
+}
+
+//==============================================================================
+
+bool TripsModel::checkIfWaitingTripexists()
+{
+    qDebug() << "checking";
+    for(int i =0; i < _trips.size(); i++)
+        if(_trips.at(i).getState() == 0)
+            return true;
+    return false;
+}
+
+//==============================================================================
+
+Trip *TripsModel::getWaitingTrip()
+{
+    qDebug() << "get waiting trip";
+    for(int i = 0; i < _trips.size(); i++)
+        if(_trips.at(i).getState() == 0)
+            return &_trips[i];
+    return _trips.empty() ? nullptr : &_trips.last();
+}
 

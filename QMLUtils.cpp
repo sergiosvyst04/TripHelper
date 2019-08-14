@@ -33,7 +33,6 @@ QVector<QString> QMLUtils::calculateRemainigTime(QVariant departureTime)
 
     hoursLeft = secondsLeft / secsPerHour;
     secondsLeft -= hoursLeft * secsPerHour;
-
     minutesLeft = secondsLeft / secsPerMinute;
     secondsLeft -= minutesLeft * secsPerMinute;
 

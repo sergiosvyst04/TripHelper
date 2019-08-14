@@ -11,7 +11,7 @@
 class Trip : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString name READ getName)
+    Q_PROPERTY(QString name READ getName CONSTANT)
     Q_PROPERTY(QDateTime depatureDate READ getDepatureDate)
     Q_PROPERTY(int state READ getState)
     Q_PROPERTY(QList<TripDay> days READ getDays)
@@ -30,8 +30,8 @@ public:
     Trip (const Trip &trip);
     Trip& operator=(const Trip &trip);
 
-    Q_INVOKABLE QString getName() const;
-    Q_INVOKABLE QDateTime getDepatureDate() const;
+    QString getName() const;
+    QDateTime getDepatureDate() const;
     int getState() const;
     QList<TripDay> getDays() const;
     QList <QString> getList() const;
@@ -40,6 +40,7 @@ public:
 
 signals:
     void currentCountryChanged();
+    void stateChanged();
 
 
 public slots:

@@ -5,6 +5,7 @@
 #include "core/Models/GoalsModel.hpp"
 #include "core/Storage/Trip.hpp"
 #include "QMLUtils.hpp"
+#include "core/Controllers/TripController.hpp"
 
 
 int main(int argc, char *argv[])
@@ -17,11 +18,13 @@ int main(int argc, char *argv[])
 
     GoalsModel goalsModel;
     TripsModel tripsModel;
+    TripController tripController;
+
 
 
 
     static auto *utils = new QMLUtils;
-    qmlRegisterType<Trip>("Trip1", 1, 0, "Trip");
+    qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                               [](QQmlEngine *engine, QJSEngine *) -> QObject* {
             engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
@@ -31,6 +34,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.rootContext()->setContextProperty("tripsModel", &tripsModel);
+    engine.rootContext()->setContextProperty("tripController", &tripController);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

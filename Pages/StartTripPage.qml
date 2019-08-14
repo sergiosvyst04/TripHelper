@@ -9,7 +9,8 @@ BasePage {
     nextButtonText: qsTr("Start")
     backButtonVisible: true
     onNextButtonClicked: {
-        tripsModel.addTrip(tripName.text, dateField.depatureDate)
+//        tripsModel.addTrip(tripName.text, dateField.depatureDate)
+        tripController.createTrip(tripName.text, dateField.depatureDate)
     }
 
     nextButtonEnabled: tripName.text != "" && dateField.fieldText != ""

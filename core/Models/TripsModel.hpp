@@ -28,6 +28,9 @@ public:
 
 public slots:
     void addTrip(const QString &name, QDateTime depatureDate);
+    bool checkIfWaitingTripexists();
+    bool checkIfActiveTripExists();
+    Trip *getWaitingTrip();
 
 private:
     QVector <Trip> _trips;

@@ -46,7 +46,7 @@ import "../Components"
                     Layout.minimumHeight: 105
                     image: "qrc:/images/assets/white icons/startbtn.png"
                     actionText: qsTr("Start trip")
-//                    enabled: tripsModel.checkIfExistWaitingOrActiveTrips()
+                    enabled: tripController.hasUnCompletedTrip()
                     onEnabledChanged: console.log("start enabled changed to :", enabled)
                     onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
                 }

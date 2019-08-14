@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         QMLUtils.cpp \
+        core/Controllers/TripController.cpp \
         core/Models/GoalsModel.cpp \
         core/Models/TripsModel.cpp \
         core/Storage/Trip.cpp \
@@ -38,6 +39,7 @@ DISTFILES +=
 
 HEADERS += \
     QMLUtils.hpp \
+    core/Controllers/TripController.hpp \
     core/Models/GoalsModel.hpp \
     core/Models/TripsModel.hpp \
     core/Storage/Goal.hpp \

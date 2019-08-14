@@ -1,12 +1,14 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
+import Trip 1.0
 import "../Singletons"
 import "../Components"
 
 BasePage {
     footer: Item{}
 
+    property Trip trip
     property bool warning: false
 
 
@@ -59,7 +61,8 @@ BasePage {
                             addItemField.text = ""
                         }
                         else {
-                            listItemsModel.append({"name" : addItemField.text})
+                            //                            listItemsModel.append({"name" : addItemField.text})
+                            trip.addItemToList(addItemField.text)
                             addItemField.text = ""
                         }
                     }
@@ -75,9 +78,11 @@ BasePage {
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
-            model: ListModel {
-                id: listItemsModel
-            }
+            //            model: ListModel {
+            //                id: listItemsModel
+            //            }
+
+            model: trip.list
 
             spacing: 15
 
@@ -85,7 +90,7 @@ BasePage {
                 width: parent.width
                 height: 40
                 color: Colors.secondaryColor
-                name: model.name
+                name: model
                 rejectButton.onClicked: {
                     if(typeof deleteItem === "function")
                         deleteItem(index)
@@ -127,7 +132,7 @@ BasePage {
         Component {
             id: warningPopup
             Popup {
-               id: pop
+                id: pop
 
                 visible: true
                 anchors.centerIn: parent
