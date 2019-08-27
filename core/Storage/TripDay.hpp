@@ -9,6 +9,7 @@ struct TripDay {
     std::vector <std::string> notes;
     std::vector <std::string> ideas;
     std::vector <std::string> cities;
+    std::vector <std::string> countries;
 };
 
 Q_DECLARE_METATYPE(TripDay);
