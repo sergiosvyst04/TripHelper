@@ -44,6 +44,7 @@
         <file>assets/icons/front.png</file>
         <file>assets/icons/visitedCities.png</file>
         <file>assets/icons/idea5.png</file>
+        <file>assets/sounds/danger-alarm-23793.mp3</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

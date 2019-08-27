@@ -6,6 +6,7 @@
 #include "core/Storage/Trip.hpp"
 #include "QMLUtils.hpp"
 #include "core/Controllers/TripController.hpp"
+#include "core/Models/BackpackFilterModel.hpp"
 
 
 int main(int argc, char *argv[])
@@ -25,6 +26,9 @@ int main(int argc, char *argv[])
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
+    qmlRegisterType<BackPackModel>("BackPackModel", 1, 0, "BackPackModel");
+    qmlRegisterType<BackpackFilterModel>("BackpackFilterModel", 1, 0, "BackpackFilterModel");
+
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                               [](QQmlEngine *engine, QJSEngine *) -> QObject* {
             engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);

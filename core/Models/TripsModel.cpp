@@ -32,10 +32,6 @@ QVariant TripsModel::data(const QModelIndex &index, int role) const
         return trip.getState();
     case TripDays:
         return QVariant::fromValue<QList<TripDay>>(trip.getDays());
-    case TripList:
-        return QVariant::fromValue(trip.getList());
-    case TripBackPack:
-        return QVariant::fromValue(trip.getBackPack());
     case TripCurrentLocation:
         return QVariant::fromValue<QGeoAddress>(trip.getCurrentLocation());
     }
@@ -52,8 +48,6 @@ QHash <int, QByteArray> TripsModel::roleNames() const
         { TripDepatureDate, "depatureDate"},
         { TripState, "state"},
         { TripDays, "days"},
-        { TripList, "list"},
-        { TripBackPack, "backpack"},
         { TripCurrentLocation, "currentLocation"}
     };
     return roleNames;

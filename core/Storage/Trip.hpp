@@ -7,6 +7,7 @@
 #include <QDateTime>
 #include "TripDay.hpp"
 #include <QGeoLocation>
+#include "core/Models/BackPackModel.hpp"
 
 class Trip : public QObject
 {
@@ -15,9 +16,7 @@ class Trip : public QObject
     Q_PROPERTY(QDateTime depatureDate READ getDepatureDate)
     Q_PROPERTY(int state READ getState)
     Q_PROPERTY(QList<TripDay> days READ getDays)
-    Q_PROPERTY(QList<QString> list READ getList)
-    Q_PROPERTY(QList<QString> backPack READ getBackPack)
-
+    Q_PROPERTY(BackPackModel* backPack READ getBackPack CONSTANT)         //memory leak??
     enum State {
         InWaiting = 0,
         Active,
@@ -34,18 +33,17 @@ public:
     QDateTime getDepatureDate() const;
     int getState() const;
     QList<TripDay> getDays() const;
-    QList <QString> getList() const;
-    QList <QString> getBackPack() const;
     QGeoAddress getCurrentLocation() const;
+    BackPackModel *getBackPack();
+
 
 signals:
     void currentCountryChanged();
     void stateChanged();
+    void forgotToPackItems();
 
 
 public slots:
-    void addItemToList(const QString &item);
-    void packItem(const QString &item);
     void addNewDay();
     void addNote(const QString &note);
     void makeCheckIn();
@@ -59,9 +57,8 @@ private:
     QDateTime _depatureDate;
     //    QDateTime _arrivalDate;
     int _state = State::InWaiting;
-    QList<TripDay> _days;
-    QList <QString> _list;
-    QList<QString> _backPack;
+    QList <TripDay> _days;
+    BackPackModel *_backPack;
     QGeoLocation _locationController;
     QGeoAddress _currentLocation;
 };

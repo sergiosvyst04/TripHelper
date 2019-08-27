@@ -4,6 +4,7 @@ import QtQuick.Controls 2.5
 import "../Singletons"
 import "../Components"
 import Trip 1.0
+import BackPackModel 1.0
 import com.plm.utils 1.0
 
 BasePage {
@@ -81,7 +82,7 @@ BasePage {
                 color: Colors.primaryColor
                 font: Fonts.openSansBold(18)
                 fontColor: Colors.white
-                onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml", {trip : trip})
+                onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml", {backPack : trip.backPack})
             }
 
             Item {

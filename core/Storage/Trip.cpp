@@ -10,8 +10,9 @@ Trip::Trip(const QString &name, QDateTime depatureDate, QObject *parent)
     : QObject(parent)
 {
     _name = name;
-    depatureDate.setTime(QTime(0,0));
+    depatureDate.setTime(QTime(18,16));
     _depatureDate = depatureDate;
+    _backPack = new BackPackModel();
 
     QTimer *timer = new QTimer(this);
     timer->start(1000);
@@ -37,7 +38,6 @@ Trip::Trip(const Trip &trip)
     this->_depatureDate = trip._depatureDate;
     this->_days = trip._days;
     this->_state = trip._state;
-    this->_list = trip._list;
     this->_backPack = trip._backPack;
 }
 
@@ -49,7 +49,6 @@ Trip& Trip::operator=(const Trip &trip)
     _depatureDate = trip._depatureDate;
     _days = trip._days;
     _state = trip._state;
-    _list = trip._list;
     _backPack = trip._backPack;
 
     return *this;
@@ -62,6 +61,8 @@ void Trip::checkTime()
     if(QDateTime::currentDateTime().secsTo(_depatureDate) == 0)
     {
         _state = State::Active;
+        if(!_backPack->checkIfBackPackIsFullyPacked())
+            emit forgotToPackItems();
         emit stateChanged();
     }
 
@@ -90,20 +91,6 @@ void Trip::addNewDay()
 {
     TripDay newTripDay;
     _days.push_back(newTripDay);
-}
-
-//==============================================================================
-
-void Trip::addItemToList(const QString &item)
-{
-    _list.push_back(item);
-}
-
-//==============================================================================
-
-void Trip::packItem(const QString &item)
-{
-    _backPack.push_back(item);
 }
 
 //==============================================================================
@@ -171,21 +158,15 @@ QList<TripDay> Trip::getDays() const
 
 //==============================================================================
 
-QList<QString> Trip::getList() const
-{
-    return _list;
-}
-
-//==============================================================================
-
-QList<QString> Trip::getBackPack() const
-{
-    return _backPack;
-}
-
-//==============================================================================
-
 QGeoAddress Trip::getCurrentLocation() const
 {
     return _currentLocation;
+}
+
+//==============================================================================
+
+BackPackModel *Trip::getBackPack()
+{
+    qDebug() << "backpack return";
+    return _backPack;
 }

@@ -12,11 +12,11 @@ Rectangle {
     property alias rejectButton: reject
 
 
-    function deleteItem(ind) {
+    function deleteItem() {
         deleteAnim.running = true
     }
 
-    function packItem(ind) {
+    function packItem() {
         packAnim.running = true
     }
 
@@ -33,8 +33,7 @@ Rectangle {
         running: false
 
         onStopped: {
-            backPackItemsModel.append(listItemsModel.get(index))
-            listItemsModel.remove(index)
+            model.isPacked = true
         }
     }
 
@@ -48,7 +47,7 @@ Rectangle {
         running: false
 
         onStopped:{
-            listItemsModel.remove(index)
+            backPack.removeItem(name)
         }
     }
 

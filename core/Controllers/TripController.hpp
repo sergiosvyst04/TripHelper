@@ -9,12 +9,12 @@
 class TripController : public QObject
 {
     Q_OBJECT
-    //    Q_PROPERTY(
 public:
     explicit TripController(QObject *parent = nullptr);
 
 signals:
     void currentTripStateChanged();
+    void forgotToPack();
 
 public slots:
     Trip *getCurrentTrip();

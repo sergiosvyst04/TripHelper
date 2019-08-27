@@ -16,10 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         QMLUtils.cpp \
         core/Controllers/TripController.cpp \
+        core/Models/BackPackModel.cpp \
+    core/Models/BackpackFilterModel.cpp \
         core/Models/GoalsModel.cpp \
         core/Models/TripsModel.cpp \
         core/Storage/Trip.cpp \
-        main.cpp
+        main.cpp \
+
 
 RESOURCES += qml.qrc \
     assets.qrc
@@ -35,14 +38,44 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    modules/SortFilterProxyModel/SortFilterProxyModel.pri
 
 HEADERS += \
     QMLUtils.hpp \
     core/Controllers/TripController.hpp \
+    core/Models/BackPackModel.hpp \
+    core/Models/BackpackFilterModel.hpp \
     core/Models/GoalsModel.hpp \
     core/Models/TripsModel.hpp \
+    core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
     core/Storage/Trip.hpp \
-    core/Storage/TripDay.hpp
+    core/Storage/TripDay.hpp \
+    modules/SortFilterProxyModel/filters/alloffilter.h \
+    modules/SortFilterProxyModel/filters/anyoffilter.h \
+    modules/SortFilterProxyModel/filters/expressionfilter.h \
+    modules/SortFilterProxyModel/filters/filter.h \
+    modules/SortFilterProxyModel/filters/filtercontainer.h \
+    modules/SortFilterProxyModel/filters/filtercontainerfilter.h \
+    modules/SortFilterProxyModel/filters/indexfilter.h \
+    modules/SortFilterProxyModel/filters/rangefilter.h \
+    modules/SortFilterProxyModel/filters/regexpfilter.h \
+    modules/SortFilterProxyModel/filters/rolefilter.h \
+    modules/SortFilterProxyModel/filters/valuefilter.h \
+    modules/SortFilterProxyModel/proxyroles/expressionrole.h \
+    modules/SortFilterProxyModel/proxyroles/filterrole.h \
+    modules/SortFilterProxyModel/proxyroles/joinrole.h \
+    modules/SortFilterProxyModel/proxyroles/proxyrole.h \
+    modules/SortFilterProxyModel/proxyroles/proxyrolecontainer.h \
+    modules/SortFilterProxyModel/proxyroles/regexprole.h \
+    modules/SortFilterProxyModel/proxyroles/singlerole.h \
+    modules/SortFilterProxyModel/proxyroles/switchrole.h \
+    modules/SortFilterProxyModel/qqmlsortfilterproxymodel.h \
+    modules/SortFilterProxyModel/sorters/expressionsorter.h \
+    modules/SortFilterProxyModel/sorters/filtersorter.h \
+    modules/SortFilterProxyModel/sorters/rolesorter.h \
+    modules/SortFilterProxyModel/sorters/sorter.h \
+    modules/SortFilterProxyModel/sorters/sortercontainer.h \
+    modules/SortFilterProxyModel/sorters/stringsorter.h
