@@ -21,6 +21,10 @@ public:
     QJsonDocument readJsonData(const QString &path);
     QList<TripDay> parseTripDays(QJsonArray &tripDaysJsonArray);
 
+    Trip& getActiveTrip();
+    Trip& getWaitingTrip();
+    CompletedTripsModel* getCompletedTripsModel();
+    
 signals:
 
 public slots:

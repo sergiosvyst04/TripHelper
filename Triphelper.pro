@@ -14,7 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Managers/TripsManager.cpp \
         QMLUtils.cpp \
+    core/Controllers/ActiveTripController.cpp \
+    core/Controllers/ApplicationController.cpp \
         core/Controllers/TripController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
@@ -45,7 +48,10 @@ DISTFILES += \
     modules/SortFilterProxyModel/SortFilterProxyModel.pri
 
 HEADERS += \
+    Managers/TripsManager.hpp \
     QMLUtils.hpp \
+    core/Controllers/ActiveTripController.hpp \
+    core/Controllers/ApplicationController.hpp \
     core/Controllers/TripController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \

@@ -188,3 +188,21 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
 
 //==============================================================================
 
+Trip& TripsStorage::getActiveTrip()
+{
+    return _activeTrip;
+}
+
+//==============================================================================
+
+Trip& TripsStorage::getWaitingTrip()
+{
+    return _waitingTrip;
+}
+
+//==============================================================================
+
+CompletedTripsModel* TripsStorage::getCompletedTripsModel()
+{
+    return _completedTripsModel;
+}

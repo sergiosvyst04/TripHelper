@@ -8,6 +8,8 @@
 #include "core/Controllers/TripController.hpp"
 #include "core/Models/BackpackFilterModel.hpp"
 #include "core/Storage/TripsStorage.hpp"
+#include "core/Controllers/ApplicationController.hpp"
+#include "Managers/TripsManager.hpp"
 
 
 int main(int argc, char *argv[])
@@ -22,9 +24,8 @@ int main(int argc, char *argv[])
     TripsModel tripsModel;
     TripController tripController;
     TripsStorage tripsStorage;
-
-
-
+    ApplicationController appController;
+    TripsManager tripsManager;
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
@@ -42,6 +43,12 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.rootContext()->setContextProperty("tripsModel", &tripsModel);
     engine.rootContext()->setContextProperty("tripController", &tripController);
+    engine.rootContext()->setContextProperty("appController", &appController);
+    engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
+    engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
+    
+    
+    
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
