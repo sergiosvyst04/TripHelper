@@ -5,11 +5,11 @@
 #include "Photo.hpp"
 
 struct TripDay {
-    std::vector <Photo> photos;
-    std::vector <std::string> notes;
-    std::vector <std::string> ideas;
-    std::vector <std::string> cities;
-    std::vector <std::string> countries;
+    QVector <Photo> photos;
+    QVector <QString> notes;
+    QVector <QString> ideas;
+    QVector <QString> cities;
+    QVector <QString> countries;
 };
 
 Q_DECLARE_METATYPE(TripDay);

@@ -5,7 +5,7 @@
 #include <QGeoAddress>
 
 struct Photo {
-    std::string source;
+    QString source;
     QDateTime timestamp;
     QGeoAddress location;
 };

@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.10
 import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
+import QtMultimedia 5.13
 import "Components"
 import "Singletons"
 
@@ -25,9 +26,16 @@ ApplicationWindow {
 
     Connections {
         target: tripController
-        onCurrentTripStateChanged: {
-            console.log("trip controller state changed")
+//        onCurrentTripStateChanged: {
+//            loader.sourceComponent = addIdeaPopup
+//            loader.active = true
+//        }
+
+        onForgotToPack: {
+            console.log("forgot to pack items")
+            loader.sourceComponent = warningPopup
             loader.active = true
+            player.play()
         }
     }
 
@@ -66,11 +74,77 @@ ApplicationWindow {
         }
     }
 
+
+    Audio {
+        id: player
+        source: "qrc:/images/assets/sounds/danger-alarm-23793.mp3"
+    }
+
     Loader {
         id: loader
         active: false
 
-        sourceComponent: addIdeaPopup
+        Component {
+            id: warningPopup
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 230
+                implicitWidth: 230
+
+                padding: 0
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+                background:  Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: "#BA0202"}
+                        GradientStop { position: 1.0; color: Colors.white}
+                    }
+                }
+                onAboutToHide: loader.active = false
+
+                ColumnLayout {
+                    anchors {
+                        fill: parent
+                        topMargin: 20
+                        bottomMargin: 35
+                        leftMargin: 35
+                        rightMargin: 35
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        textFormat: Text.PlainText
+                        text: qsTr("We notice that you\n forgot to pack some\n items")
+                        font: Fonts.openSansBold(16, Font.MixedCase)
+                        color: Colors.white
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 36
+                        Layout.preferredWidth: 100
+                        color: Colors.redButtonColor
+                        layer.enabled: false
+                        text: qsTr("Pack")
+                        fontColor: Colors.white
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                        onClicked: {
+                            loader.active = false
+                            navigateToItem("qrc:/Pages/MakeListPage.qml")
+                            player.stop()
+                        }
+                    }
+
+                }
+            }
+        }
 
         Component {
             id: addIdeaPopup

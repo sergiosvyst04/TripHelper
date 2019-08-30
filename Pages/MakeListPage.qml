@@ -1,26 +1,21 @@
-import QtQuick 2.10
+import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
 import Trip 1.0
+import BackpackFilterModel 1.0
+import BackPackModel 1.0
 import "../Singletons"
 import "../Components"
 
 BasePage {
     footer: Item{}
 
-    property Trip trip
+    property BackPackModel backPack
     property bool warning: false
 
-
-    function checkIfItemExist(item){
-        for(var i = 0; i < listItemsModel.count; i++)
-        {
-            if(item === listItemsModel.get(i).name)
-            {
-                return true;
-            }
-        }
-        return false;
+    BackpackFilterModel {
+        id: backpackFilterModel
+        sourceModel: backPack
     }
 
     ColumnLayout {
@@ -54,15 +49,14 @@ BasePage {
                 text: qsTr("Add")
                 onClicked:{
                     if(addItemField.text !== "") {
-                        if(checkIfItemExist(addItemField.text))
+                        if(backPack.checkIfItemExists(addItemField.text))
                         {
                             warning = true
                             loader.active = true
                             addItemField.text = ""
                         }
                         else {
-                            //                            listItemsModel.append({"name" : addItemField.text})
-                            trip.addItemToList(addItemField.text)
+                            backPack.addItemToBackPack(addItemField.text)
                             addItemField.text = ""
                         }
                     }
@@ -78,28 +72,22 @@ BasePage {
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
-            //            model: ListModel {
-            //                id: listItemsModel
-            //            }
 
-            model: trip.list
-
+            model: backpackFilterModel
             spacing: 15
 
             delegate: BackPackItem {
                 width: parent.width
                 height: 40
                 color: Colors.secondaryColor
-                name: model
+                name: model.name
+
                 rejectButton.onClicked: {
-                    if(typeof deleteItem === "function")
-                        deleteItem(index)
+                    deleteItem()
                 }
                 applyButton.onClicked: {
-                    if(typeof packItem === "function")
-                        packItem(index)
+                    packItem()
                 }
-
             }
         }
 
@@ -216,11 +204,13 @@ BasePage {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
                         Layout.rightMargin: 25
-                        model: backPackItemsModel
+
+                        model: backPack
 
                         clip: true
                         spacing: 8
                         delegate: BackPackItem {
+                            visible: model.isPacked
                             color: Colors.secondaryColor
                             height: 33
                             width: parent.width
