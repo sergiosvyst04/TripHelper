@@ -56,6 +56,7 @@ signals:
 public slots:
     void addNewDay();
     void addNote(const QString &note);
+    void addNewIdea(const QString &idea);
     void makeCheckIn();
     void addPhoto(const QString &path);
     void checkTime();

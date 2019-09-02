@@ -23,6 +23,7 @@ SOURCES += \
     core/Models/BackpackFilterModel.cpp \
     core/Models/CompletedTripsModel.cpp \
         core/Models/GoalsModel.cpp \
+    core/Models/TripDaysModel.cpp \
         core/Models/TripsModel.cpp \
         core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
@@ -57,6 +58,7 @@ HEADERS += \
     core/Models/BackpackFilterModel.hpp \
     core/Models/CompletedTripsModel.hpp \
     core/Models/GoalsModel.hpp \
+    core/Models/TripDaysModel.hpp \
     core/Models/TripsModel.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \

@@ -103,6 +103,14 @@ void Trip::addNote(const QString &note)
 
 //==============================================================================
 
+void Trip::addNewIdea(const QString &idea)
+{
+    TripDay currentTripDay = _days.last();
+    currentTripDay.ideas.push_back(idea);
+}
+
+//==============================================================================
+
 void Trip::makeCheckIn()
 {
     TripDay currentTripDay = _days.last();

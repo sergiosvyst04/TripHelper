@@ -10,6 +10,7 @@
 #include "core/Storage/TripsStorage.hpp"
 #include "core/Controllers/ApplicationController.hpp"
 #include "Managers/TripsManager.hpp"
+#include "core/Controllers/ActiveTripController.hpp"
 
 
 int main(int argc, char *argv[])
@@ -24,19 +25,23 @@ int main(int argc, char *argv[])
     TripsModel tripsModel;
     TripController tripController;
     TripsStorage tripsStorage;
-    ApplicationController appController;
     TripsManager tripsManager;
+    ApplicationController appController(tripsManager);
+
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
     qmlRegisterType<BackPackModel>("BackPackModel", 1, 0, "BackPackModel");
     qmlRegisterType<BackpackFilterModel>("BackpackFilterModel", 1, 0, "BackpackFilterModel");
+    qmlRegisterType<ActiveTripController>("ActiveTripController", 1, 0, "ActiveTripController");
+//    qmlRegisterType<ApplicationController>("ApplicationController", 1, 0, "ApplicationController");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
-                                              [](QQmlEngine *engine, QJSEngine *) -> QObject* {
-            engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
-            return utils;
-        });
+                                       [](QQmlEngine *engine, QJSEngine *) -> QObject* {
+        engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
+        return utils;
+    });
+
 
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
@@ -57,7 +62,7 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-//    engine.load(url);
+    //    engine.load(url);
 
 
     return app.exec();

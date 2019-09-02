@@ -4,6 +4,7 @@
 CompletedTripsModel::CompletedTripsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    qDebug() << "CREATED";
 }
 
 //==============================================================================

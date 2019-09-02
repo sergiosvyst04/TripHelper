@@ -5,12 +5,16 @@
 #include "QJsonObject"
 #include "QJsonArray"
 #include "QDebug"
+#include "memory"
+
 
 TripsStorage::TripsStorage(QObject *parent) : QObject(parent)
 {  
+    _completedTripsModel = new CompletedTripsModel();
+
     retrieveCompletedTrips();
-    _activeTrip = retrieveActivetrip();
-    _waitingTrip = retrieveWaitingTrip();
+    _waitingTrip = std::unique_ptr<Trip>(retrieveWaitingTrip().get());
+    _activeTrip = std::unique_ptr<Trip>(retrieveActivetrip().get());
 }
 
 //==============================================================================
@@ -27,8 +31,8 @@ void TripsStorage::retrieveCompletedTrips()
     for(int i = 0; i < jsonTripsVector.size(); i++)
     {
         QJsonValue compTrip = jsonTripsVector.at(i);
-        Trip completedTrip = parseTrip(compTrip);
-        tripsList.push_back(completedTrip);
+        std::unique_ptr<Trip> completedTrip = parseTrip(compTrip);
+        tripsList.push_back(*completedTrip);
     }
 
     _completedTripsModel->getCompletedTrips(tripsList);
@@ -36,27 +40,27 @@ void TripsStorage::retrieveCompletedTrips()
 
 //==============================================================================
 
-Trip TripsStorage::retrieveActivetrip()
+std::unique_ptr<Trip> TripsStorage::retrieveActivetrip()
 {
     QJsonDocument jsDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
     QJsonObject jsObject = jsDoc.object();
 
     QJsonValue active = jsObject.value(QString("active"));
-    Trip activeTrip = parseTrip(active);
+    std::unique_ptr<Trip> activeTrip = parseTrip(active);
 
     return activeTrip;
 }
 
 //==============================================================================
 
-Trip TripsStorage::retrieveWaitingTrip()
+std::unique_ptr<Trip> TripsStorage::retrieveWaitingTrip()
 {
     QJsonDocument jsonDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
 
     QJsonObject jsObject = jsonDoc.object();
     QJsonValue waiting = jsObject.value(QString("waiting"));
 
-    Trip waitingTrip = parseTrip(waiting);
+    std::unique_ptr<Trip> waitingTrip = parseTrip(waiting);
 
     return waitingTrip;
 }
@@ -75,9 +79,9 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
 
 //==============================================================================
 
-Trip TripsStorage::parseTrip(QJsonValue &activeTrip)
+std::unique_ptr<Trip> TripsStorage::parseTrip(QJsonValue &activeTrip)
 {
-    Trip parsedActiveTrip;
+    std::unique_ptr<Trip> parsedActiveTrip;
 
     QString tripName = activeTrip["name"].toString();
     QDateTime depatureDate = QDateTime::fromString(activeTrip["depatureDate"].toString(), "d/M/yyyy");
@@ -88,10 +92,10 @@ Trip TripsStorage::parseTrip(QJsonValue &activeTrip)
 
     QList<TripDay> tripDays = parseTripDays(daysArray);
 
-    parsedActiveTrip.setBackPackList(backpack);
-    parsedActiveTrip.setDays(tripDays);
-    parsedActiveTrip.setName(tripName);
-    parsedActiveTrip.setDepatureDate(depatureDate);
+    parsedActiveTrip.get()->setBackPackList(backpack);
+    parsedActiveTrip.get()->setDays(tripDays);
+    parsedActiveTrip.get()->setName(tripName);
+    parsedActiveTrip.get()->setDepatureDate(depatureDate);
 
     return parsedActiveTrip;
 }
@@ -188,16 +192,16 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
 
 //==============================================================================
 
-Trip& TripsStorage::getActiveTrip()
+std::unique_ptr<Trip> TripsStorage::getActiveTrip()
 {
-    return _activeTrip;
+    return std::unique_ptr<Trip>(_activeTrip.get());
 }
 
 //==============================================================================
 
-Trip& TripsStorage::getWaitingTrip()
+std::unique_ptr<Trip> TripsStorage::getWaitingTrip()
 {
-    return _waitingTrip;
+    return std::unique_ptr<Trip>(_waitingTrip.get());
 }
 
 //==============================================================================

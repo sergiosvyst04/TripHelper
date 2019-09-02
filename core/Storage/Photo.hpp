@@ -10,4 +10,5 @@ struct Photo {
     QGeoAddress location;
 };
 
+Q_DECLARE_METATYPE(Photo)
 #endif // PHOTO_HPP

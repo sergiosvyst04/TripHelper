@@ -7,14 +7,14 @@ TripsManager::TripsManager(QObject *parent) : QObject(parent)
 
 //==============================================================================
 
-Trip& TripsManager::activeTrip()
+std::unique_ptr<Trip> TripsManager::activeTrip()
 {
     return _tripsStorage.getActiveTrip();
 }
 
 //==============================================================================
 
-Trip& TripsManager::waitingTrip()
+std::unique_ptr<Trip> TripsManager::waitingTrip()
 {
     return _tripsStorage.getWaitingTrip();
 }
@@ -25,3 +25,6 @@ CompletedTripsModel* TripsManager::completedTrips()
 {
     return _tripsStorage.getCompletedTripsModel();
 }
+
+//==============================================================================
+
