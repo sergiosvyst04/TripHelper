@@ -263,7 +263,9 @@ BasePage {
                         image: "qrc:/images/assets/icons/apply.png"
                         onClicked:  {
                             animOnDestructionAplly.running = true
+                            activeTripController.addNewPhoto(photoPath)
                         }
+
                     }
 
                     ChoosePhotoButton {

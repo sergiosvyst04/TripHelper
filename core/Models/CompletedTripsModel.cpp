@@ -4,7 +4,7 @@
 CompletedTripsModel::CompletedTripsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    qDebug() << "CREATED";
+
 }
 
 //==============================================================================
@@ -28,14 +28,14 @@ QVariant CompletedTripsModel::data(const QModelIndex &index, int role) const
         return completedTrip.getName();
     case DepatureDateRole:
         return completedTrip.getDepatureDate();
-    case VisitedCitiesRole:
-        return completedTrip.getAllCities().size();
-    case VisitedCountriesRole:
-        return  QVariant::fromValue(completedTrip.getAllCountries());
-    case TakenPhotosRole:
-        return completedTrip.getAllPhotos().size();
-    case IdeasRole:
-        return completedTrip.getAllIdeas().size();
+//    case VisitedCitiesRole:
+//        return completedTrip.getAllCities().size();
+//    case VisitedCountriesRole:
+//        return  QVariant::fromValue(completedTrip.getAllCountries());
+//    case TakenPhotosRole:
+//        return completedTrip.getAllPhotos().size();
+//    case IdeasRole:
+//        return completedTrip.getAllIdeas().size();
     }
 
     return QVariant();

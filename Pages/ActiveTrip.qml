@@ -2,26 +2,33 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.10
-import Trip 1.0
 import "../Singletons"
 import "../Components"
 import ActiveTripController 1.0
-//import ApplicationController 1.0
+import TripDaysModel 1.0
 
 
 BasePage {
     backButtonVisible: true
     footer: Item{}
 
-    ActiveTripController {
-        id: activeTripController
+    TripDaysModel {
+        id: tripDaysModel
 
-
-        Component.onCompleted:{
-            console.log("onCOmpleted")
-            activeTripController.intialize(appController)
+        Component.onCompleted: {
+            getDays(activeTripController.trip.days)
         }
     }
+
+//    ActiveTripController {
+//        id: activeTripController
+
+
+//        Component.onCompleted:{
+//            console.log("onCOmpleted")
+//            activeTripController.intialize(appController)
+//        }
+//    }
 
     //    StackLayout {
     //        anchors.fill: parent
@@ -64,12 +71,6 @@ BasePage {
             fill: parent
         }
 
-        //            Rectangle {
-        //                anchors.fill: parent
-        //                color: "red"
-        //                opacity: 0.3
-        //            }
-
         PrimaryLabel {
             Layout.alignment: Qt.AlignHCenter
             //            text: trip.name
@@ -80,7 +81,9 @@ BasePage {
             Layout.leftMargin: 13
             Layout.preferredHeight: 130
 
-            model: 5
+            Component.onCompleted: console.log("count : ", count)
+
+            model: tripDaysModel
             spacing: 12
             orientation: ListView.Horizontal
             delegate: DayDelegate {
@@ -88,6 +91,8 @@ BasePage {
                 height: parent.height
                 dayNumber: qsTr("Day %1").arg(index + 1)
                 date: Qt.formatDate(new Date(), "d MMM \n yyyy")
+                countOfPhotos: model.photos
+                countOfCities: model.cities
             }
         }
 
@@ -104,7 +109,7 @@ BasePage {
                 Layout.preferredHeight: 50
                 image: "qrc:/images/assets/white icons/note.png"
                 actionText: qsTr("Add note")
-                onClicked: navigateToItem("qrc:/Pages/AddNotePage.qml")
+                onClicked: navigateToItem("qrc:/Pages/AddNotePage.qml", {activeTrip: activeTripController})
             }
 
             ActiveTripActionItem {
@@ -349,7 +354,10 @@ BasePage {
                         text: qsTr("Add")
                         fontColor: Colors.white
                         font: Fonts.openSansBold(13, Font.MixedCase)
-                        onClicked: loader.active = false
+                        onClicked:{
+                            activeTripController.addNewIdea(textArea.text)
+                            loader.active = false
+                        }
                     }
                 }
             }

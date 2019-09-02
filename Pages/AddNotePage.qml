@@ -2,12 +2,17 @@ import QtQuick 2.10
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 import QtGraphicalEffects 1.10
+import ActiveTripController 1.0
 import "../Components"
 import "../Singletons"
 
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Add note")
+    property var activeTrip
+    onNextButtonClicked:{
+        activeTrip.addNote(textArea.text)
+    }
 
     ColumnLayout {
         spacing: 34
@@ -43,6 +48,7 @@ BasePage {
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
             TextArea {
+                id: textArea
                 width: 280
                 height: 195
                 clip: true

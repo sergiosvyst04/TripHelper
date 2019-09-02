@@ -32,8 +32,8 @@ QVariant TripsModel::data(const QModelIndex &index, int role) const
         return trip.getState();
     case TripDays:
         return QVariant::fromValue<QList<TripDay>>(trip.getDays());
-    case TripCurrentLocation:
-        return QVariant::fromValue<QGeoAddress>(trip.getCurrentLocation());
+        //            case TripCurrentLocation:
+        //                return QVariant::fromValue<QGeoAddress>(trip.getCurrentLocation());
     }
     
     return QVariant();

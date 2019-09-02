@@ -25,7 +25,7 @@ SOURCES += \
         core/Models/GoalsModel.cpp \
     core/Models/TripDaysModel.cpp \
         core/Models/TripsModel.cpp \
-        core/Storage/Trip.cpp \
+    core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
         main.cpp \
 

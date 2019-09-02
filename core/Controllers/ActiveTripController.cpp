@@ -3,7 +3,7 @@
 
 ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 {
-
+    _activeTrip = new Trip();
 }
 
 //==============================================================================
@@ -13,28 +13,49 @@ void ActiveTripController::intialize(ApplicationController *applicationControlle
 {
     qDebug() << "intialize";
     _activeTrip = applicationController->getTripsManager().activeTrip();
-    qDebug() << _activeTrip->getName();
 }
 
 //==============================================================================
 
 void ActiveTripController::addNote(const QString &newNote)
 {
-    _activeTrip->addNote(newNote);
+    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+    currentTripDay.notes.push_back(newNote);
 }
 
 //==============================================================================
 
 void ActiveTripController::addNewIdea(const QString &newIdea)
 {
-    _activeTrip->addNewIdea(newIdea);
+    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+    currentTripDay.ideas.push_back(newIdea);
 }
 
 //==============================================================================
 
 void ActiveTripController::makeCheckIn()
 {
-    _activeTrip->makeCheckIn();
+    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+//    QString city = _activeTrip->getCurrentLocation().city();
+//    currentTripDay.cities.push_back(city);
+    // checkIfSuchCityISVisited
+}
+
+//==============================================================================
+
+void ActiveTripController::addNewPhoto(const QString &path)
+{
+    TripDay& currentTripDay = _activeTrip->getCurrentTripDay();
+    QGeoAddress location;
+    QDateTime timestamp = QDateTime::currentDateTime();
+
+    Photo newPhoto {
+        path,
+                timestamp,
+                location
+    };
+
+    currentTripDay.photos.push_back(newPhoto);
 }
 
 //==============================================================================
@@ -46,4 +67,7 @@ void ActiveTripController::endTrip()
 
 //==============================================================================
 
-
+Trip* ActiveTripController::getTrip()
+{
+    return _activeTrip;
+}

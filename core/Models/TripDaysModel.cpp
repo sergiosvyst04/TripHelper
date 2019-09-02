@@ -1,4 +1,5 @@
 #include "TripDaysModel.hpp"
+#include "QDebug"
 
 TripDaysModel::TripDaysModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -36,13 +37,13 @@ QVariant TripDaysModel::data(const QModelIndex &index, int role) const
 
     switch(role){
     case PhotosOfDayRole:
-        return QVariant::fromValue(day.photos);
+        return QVariant::fromValue(day.photos.size());
     case NotesOfDayRole:
         return QVariant::fromValue(day.notes);
     case IdeasOfDayRole:
         return QVariant::fromValue(day.ideas);
     case CitiesOfDayRole:
-        return QVariant::fromValue(day.cities);
+        return QVariant::fromValue(day.cities.size());
     case CountriesOfDayRole:
         return QVariant::fromValue(day.countries);
     }
@@ -54,5 +55,7 @@ QVariant TripDaysModel::data(const QModelIndex &index, int role) const
 
 void TripDaysModel::getDays(QList<TripDay> tripDays)
 {
+    beginResetModel();
     _days = tripDays;
+    endResetModel();
 }

@@ -8,26 +8,27 @@
 class ActiveTripController : public QObject
 {
     Q_OBJECT
-//    Q_PROPERTY(QString name READ getName CONSTANT)
-
+    Q_PROPERTY(Trip* trip READ getTrip)
 
 public:
     explicit ActiveTripController(QObject *parent = nullptr);
-    void addNote(const QString &newNote);
-    void addNewIdea(const QString &newIdea);
-    void makeCheckIn();
-    void endTrip();
-
-
 
 
 signals:
 
 public slots:
+    void addNote(const QString &newNote);
+    void addNewIdea(const QString &newIdea);
+    void makeCheckIn();
+    void endTrip();
+    void addNewPhoto(const QString &path);
+
+    Trip* getTrip();
+
     void intialize(ApplicationController* applicationController);
 
 private:
-    std::unique_ptr<Trip> _activeTrip;
+    Trip *_activeTrip;
 };
 
 #endif // ACTIVETRIPCONTROLLER_HPP

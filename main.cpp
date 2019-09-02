@@ -11,6 +11,7 @@
 #include "core/Controllers/ApplicationController.hpp"
 #include "Managers/TripsManager.hpp"
 #include "core/Controllers/ActiveTripController.hpp"
+#include "core/Models/TripDaysModel.hpp"
 
 
 int main(int argc, char *argv[])
@@ -31,10 +32,10 @@ int main(int argc, char *argv[])
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
+    qmlRegisterType<TripDaysModel>("TripDaysModel", 1, 0, "TripDaysModel");
     qmlRegisterType<BackPackModel>("BackPackModel", 1, 0, "BackPackModel");
     qmlRegisterType<BackpackFilterModel>("BackpackFilterModel", 1, 0, "BackpackFilterModel");
     qmlRegisterType<ActiveTripController>("ActiveTripController", 1, 0, "ActiveTripController");
-//    qmlRegisterType<ApplicationController>("ApplicationController", 1, 0, "ApplicationController");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {

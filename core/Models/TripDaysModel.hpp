@@ -24,7 +24,7 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash <int, QByteArray> roleNames() const override;
-    void getDays(QList <TripDay> tripDays);
+    Q_INVOKABLE void getDays(QList <TripDay> tripDays);
 
 private:
     QList<TripDay> _days;

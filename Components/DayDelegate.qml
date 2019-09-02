@@ -5,6 +5,8 @@ import "../Singletons"
 import "../Components"
 
 ColoredButton {
+    property alias countOfCities: countOfCities.text
+    property alias countOfPhotos: countOfPhotos.text
     property alias dayNumber: dayText.text
     property alias date: dateText.text
 
@@ -61,8 +63,22 @@ ColoredButton {
                 }
 
                 DescriptionText {
+                    id: countOfPhotos
                     font: Fonts.openSans(11, Font.MixedCase)
-                    text: "0"
+                }
+            }
+
+            RowLayout {
+                spacing: 4
+
+                Image {
+                    source: "qrc:/images/assets/white icons/place.png"
+                    sourceSize: Qt.size(15, 15)
+                }
+
+                DescriptionText {
+                    id: countOfCities
+                    font: Fonts.openSans(11, Font.MixedCase)
                 }
             }
         }

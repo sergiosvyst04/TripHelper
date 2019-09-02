@@ -5,16 +5,13 @@
 #include "QJsonObject"
 #include "QJsonArray"
 #include "QDebug"
-#include "memory"
-
 
 TripsStorage::TripsStorage(QObject *parent) : QObject(parent)
 {  
     _completedTripsModel = new CompletedTripsModel();
-
     retrieveCompletedTrips();
-    _waitingTrip = std::unique_ptr<Trip>(retrieveWaitingTrip().get());
-    _activeTrip = std::unique_ptr<Trip>(retrieveActivetrip().get());
+    _activeTrip = retrieveActivetrip();
+//    _waitingTrip = retrieveWaitingTrip();
 }
 
 //==============================================================================
@@ -31,8 +28,8 @@ void TripsStorage::retrieveCompletedTrips()
     for(int i = 0; i < jsonTripsVector.size(); i++)
     {
         QJsonValue compTrip = jsonTripsVector.at(i);
-        std::unique_ptr<Trip> completedTrip = parseTrip(compTrip);
-        tripsList.push_back(*completedTrip);
+//        Trip completedTrip = parseTrip(compTrip);
+//        tripsList.push_back(completedTrip);
     }
 
     _completedTripsModel->getCompletedTrips(tripsList);
@@ -40,29 +37,29 @@ void TripsStorage::retrieveCompletedTrips()
 
 //==============================================================================
 
-std::unique_ptr<Trip> TripsStorage::retrieveActivetrip()
+Trip* TripsStorage::retrieveActivetrip()
 {
     QJsonDocument jsDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
     QJsonObject jsObject = jsDoc.object();
 
     QJsonValue active = jsObject.value(QString("active"));
-    std::unique_ptr<Trip> activeTrip = parseTrip(active);
+    Trip *activeTrip = parseTrip(active);
 
     return activeTrip;
 }
 
 //==============================================================================
 
-std::unique_ptr<Trip> TripsStorage::retrieveWaitingTrip()
+Trip TripsStorage::retrieveWaitingTrip()
 {
     QJsonDocument jsonDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
 
     QJsonObject jsObject = jsonDoc.object();
     QJsonValue waiting = jsObject.value(QString("waiting"));
 
-    std::unique_ptr<Trip> waitingTrip = parseTrip(waiting);
+//    Trip waitingTrip = parseTrip(waiting);
 
-    return waitingTrip;
+//    return waitingTrip;
 }
 
 //==============================================================================
@@ -79,9 +76,9 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
 
 //==============================================================================
 
-std::unique_ptr<Trip> TripsStorage::parseTrip(QJsonValue &activeTrip)
+Trip* TripsStorage::parseTrip(QJsonValue &activeTrip)
 {
-    std::unique_ptr<Trip> parsedActiveTrip;
+    Trip *parsedActiveTrip = new Trip();
 
     QString tripName = activeTrip["name"].toString();
     QDateTime depatureDate = QDateTime::fromString(activeTrip["depatureDate"].toString(), "d/M/yyyy");
@@ -92,10 +89,10 @@ std::unique_ptr<Trip> TripsStorage::parseTrip(QJsonValue &activeTrip)
 
     QList<TripDay> tripDays = parseTripDays(daysArray);
 
-    parsedActiveTrip.get()->setBackPackList(backpack);
-    parsedActiveTrip.get()->setDays(tripDays);
-    parsedActiveTrip.get()->setName(tripName);
-    parsedActiveTrip.get()->setDepatureDate(depatureDate);
+    parsedActiveTrip->setBackPackList(backpack);
+    parsedActiveTrip->setDays(tripDays);
+    parsedActiveTrip->setName(tripName);
+    parsedActiveTrip->setDepatureDate(depatureDate);
 
     return parsedActiveTrip;
 }
@@ -186,22 +183,23 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
         };
 
         parsedPhotos.push_back(parsedPhoto);
-    }
+     }
+
     return parsedPhotos;
 }
 
 //==============================================================================
 
-std::unique_ptr<Trip> TripsStorage::getActiveTrip()
+Trip* TripsStorage::getActiveTrip()
 {
-    return std::unique_ptr<Trip>(_activeTrip.get());
+    return _activeTrip;
 }
 
 //==============================================================================
 
-std::unique_ptr<Trip> TripsStorage::getWaitingTrip()
+Trip& TripsStorage::getWaitingTrip()
 {
-    return std::unique_ptr<Trip>(_waitingTrip.get());
+    return _waitingTrip;
 }
 
 //==============================================================================
