@@ -125,6 +125,7 @@ BasePage {
                 font: Fonts.openSansBold(13, Font.MixedCase)
                 fontColor: Colors.grey
                 onClicked: {
+                    activeTripController.makeCheckIn()
                     loader.sourceComponent = checkInPopup
                     loader.active = true
                 }
@@ -201,7 +202,7 @@ BasePage {
                         Layout.alignment: Qt.AlignHCenter
                         textFormat: Text.PlainText
                         font: Fonts.openSansBold(16, Font.MixedCase)
-                        text: qsTr("Welcome to %1\n %2").arg("Allesund").arg("UserName")
+                        text: qsTr("Welcome to %1\n %2").arg(activeTripController.currentCity).arg("UserName")
                     }
 
                     Rectangle {

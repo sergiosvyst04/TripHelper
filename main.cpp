@@ -11,6 +11,7 @@
 #include "Managers/TripsManager.hpp"
 #include "core/Controllers/ActiveTripController.hpp"
 #include "core/Models/TripDaysModel.hpp"
+#include "core/Controllers/LocationController.hpp"
 
 
 int main(int argc, char *argv[])
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    LocationController locationController;
     GoalsModel goalsModel;
     TripsStorage tripsStorage;
     TripsManager tripsManager;
@@ -40,13 +42,13 @@ int main(int argc, char *argv[])
         return utils;
     });
 
-
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.rootContext()->setContextProperty("appController", &appController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
+    engine.rootContext()->setContextProperty("locationController", &locationController);
     
     
     

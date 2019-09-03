@@ -23,6 +23,13 @@ ApplicationWindow {
         }
     }
 
+    Connections {
+        target: locationController
+        onCountryChanged : {
+            navigateToItem("qrc:/Pages/CountryInformationPage.qml")
+        }
+    }
+
 
 //    Connections {
 //        target: tripController

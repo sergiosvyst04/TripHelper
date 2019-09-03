@@ -4,11 +4,13 @@
 #include <QObject>
 #include <core/Storage/Trip.hpp>
 #include "core/Controllers/ApplicationController.hpp"
+#include "core/Controllers/LocationController.hpp"
 
 class ActiveTripController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Trip* trip READ getTrip NOTIFY tripChanged)
+    Q_PROPERTY(QString currentCity READ getCurrentCity NOTIFY currentCityChanged)
 
 public:
     explicit ActiveTripController(QObject *parent = nullptr);
@@ -16,6 +18,7 @@ public:
 
 signals:
     void tripChanged();
+    void currentCityChanged();
 
 public slots:
     void addNote(const QString &newNote);
@@ -24,12 +27,15 @@ public slots:
     void endTrip();
     void addNewPhoto(const QString &path);
 
+    QString getCurrentCity();
     Trip* getTrip();
 
-    void intialize(ApplicationController* applicationController);
+    void intialize(ApplicationController* applicationController, LocationController *locationController);
 
 private:
     TripData *_activeTrip;
+    LocationController *_locationController;
+
 };
 
 #endif // ACTIVETRIPCONTROLLER_HPP

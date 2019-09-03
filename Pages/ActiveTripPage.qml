@@ -32,6 +32,6 @@ BasePage {
 
 
     Component.onCompleted:{
-        activeTripController.intialize(appController)
+        activeTripController.intialize(appController, locationController)
     }
 }
