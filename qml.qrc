@@ -58,5 +58,6 @@
         <file>Pages/PlansPage.qml</file>
         <file>Components/PlanItem.qml</file>
         <file>Pages/InWaitingTripPage.qml</file>
+        <file>Pages/TripDayPage.qml</file>
     </qresource>
 </RCC>

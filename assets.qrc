@@ -4,7 +4,6 @@
         <file>assets/emblem.png</file>
         <file>assets/icons/519791-101_Warning-512.png</file>
         <file>assets/icons/checkmark-blue.svg</file>
-        <file>assets/icons/location.png</file>
         <file>assets/icons/avatar-372-456324.png</file>
         <file>assets/white icons/completed.png</file>
         <file>assets/white icons/active.png</file>
@@ -45,6 +44,8 @@
         <file>assets/icons/visitedCities.png</file>
         <file>assets/icons/idea5.png</file>
         <file>assets/sounds/danger-alarm-23793.mp3</file>
+        <file>assets/icons/place.png</file>
+        <file>assets/icons/location3.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
