@@ -10,8 +10,8 @@ class TripsManager : public QObject
 public:
     explicit TripsManager(QObject *parent = nullptr);
     
-    Trip* activeTrip();
-    Trip& waitingTrip();
+    TripData* activeTrip();
+    TripData& waitingTrip();
     CompletedTripsModel* completedTrips();
 
 signals:

@@ -20,16 +20,6 @@ BasePage {
         }
     }
 
-//    ActiveTripController {
-//        id: activeTripController
-
-
-//        Component.onCompleted:{
-//            console.log("onCOmpleted")
-//            activeTripController.intialize(appController)
-//        }
-//    }
-
     //    StackLayout {
     //        anchors.fill: parent
     //        currentIndex: tripController.hasActiveTrip() ? 1 : 0
@@ -73,15 +63,13 @@ BasePage {
 
         PrimaryLabel {
             Layout.alignment: Qt.AlignHCenter
-            //            text: trip.name
+            Component.onCompleted: text = activeTripController.trip.name
         }
 
         ListView {
             Layout.fillWidth: true
             Layout.leftMargin: 13
             Layout.preferredHeight: 130
-
-            Component.onCompleted: console.log("count : ", count)
 
             model: tripDaysModel
             spacing: 12
@@ -144,7 +132,7 @@ BasePage {
 
                 background: Rectangle {
                     radius: 28
-                    gradient: Gradient{
+                    gradient: Gradient {
                         GradientStop {position: 0.0; color: Colors.checkInColor}
                         GradientStop {position: 1.0; color: Colors.orange}
                     }

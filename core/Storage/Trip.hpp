@@ -8,11 +8,13 @@
 #include "TripDay.hpp"
 #include <QGeoLocation>
 #include "core/Models/BackPackModel.hpp"
+#include "core/Storage/TripData.hpp"
 
 class Trip : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QList<TripDay> days READ getDays)
+    Q_PROPERTY(QString name READ getName CONSTANT)
     enum State {
         InWaiting = 0,
         Active,
@@ -20,7 +22,7 @@ class Trip : public QObject
     };
 
 public:
-    explicit Trip(const QString &name, QDateTime depatureDate, QObject *parent = nullptr);
+    explicit Trip(TripData *tripData, QObject *parent = nullptr);
     Trip();
 
     QString getName() const;
@@ -64,8 +66,6 @@ private:
     int _state = State::InWaiting;
     QList <TripDay> _days;
     BackPackModel *_backPack;
-//    QGeoLocation _locationController;
-//    QGeoAddress _currentLocation;
 };
 
 //Q_DECLARE_METATYPE(Trip);

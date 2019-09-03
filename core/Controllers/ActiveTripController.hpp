@@ -8,13 +8,14 @@
 class ActiveTripController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(Trip* trip READ getTrip)
+    Q_PROPERTY(Trip* trip READ getTrip NOTIFY tripChanged)
 
 public:
     explicit ActiveTripController(QObject *parent = nullptr);
 
 
 signals:
+    void tripChanged();
 
 public slots:
     void addNote(const QString &newNote);
@@ -28,7 +29,7 @@ public slots:
     void intialize(ApplicationController* applicationController);
 
 private:
-    Trip *_activeTrip;
+    TripData *_activeTrip;
 };
 
 #endif // ACTIVETRIPCONTROLLER_HPP

@@ -18,13 +18,11 @@ SOURCES += \
         QMLUtils.cpp \
     core/Controllers/ActiveTripController.cpp \
     core/Controllers/ApplicationController.cpp \
-        core/Controllers/TripController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
     core/Models/CompletedTripsModel.cpp \
         core/Models/GoalsModel.cpp \
     core/Models/TripDaysModel.cpp \
-        core/Models/TripsModel.cpp \
     core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
         main.cpp \
@@ -53,17 +51,16 @@ HEADERS += \
     QMLUtils.hpp \
     core/Controllers/ActiveTripController.hpp \
     core/Controllers/ApplicationController.hpp \
-    core/Controllers/TripController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \
     core/Models/CompletedTripsModel.hpp \
     core/Models/GoalsModel.hpp \
     core/Models/TripDaysModel.hpp \
-    core/Models/TripsModel.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
     core/Storage/Trip.hpp \
+    core/Storage/TripData.hpp \
     core/Storage/TripDay.hpp \
     core/Storage/TripsStorage.hpp \
     modules/SortFilterProxyModel/filters/alloffilter.h \

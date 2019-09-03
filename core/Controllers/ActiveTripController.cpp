@@ -3,7 +3,7 @@
 
 ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 {
-    _activeTrip = new Trip();
+    _activeTrip = new TripData();
 }
 
 //==============================================================================
@@ -19,7 +19,7 @@ void ActiveTripController::intialize(ApplicationController *applicationControlle
 
 void ActiveTripController::addNote(const QString &newNote)
 {
-    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+    TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.notes.push_back(newNote);
 }
 
@@ -27,7 +27,7 @@ void ActiveTripController::addNote(const QString &newNote)
 
 void ActiveTripController::addNewIdea(const QString &newIdea)
 {
-    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+    TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.ideas.push_back(newIdea);
 }
 
@@ -35,7 +35,7 @@ void ActiveTripController::addNewIdea(const QString &newIdea)
 
 void ActiveTripController::makeCheckIn()
 {
-    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
+//    TripDay &currentTripDay = _activeTrip->getCurrentTripDay();
 //    QString city = _activeTrip->getCurrentLocation().city();
 //    currentTripDay.cities.push_back(city);
     // checkIfSuchCityISVisited
@@ -45,7 +45,8 @@ void ActiveTripController::makeCheckIn()
 
 void ActiveTripController::addNewPhoto(const QString &path)
 {
-    TripDay& currentTripDay = _activeTrip->getCurrentTripDay();
+    TripDay& currentTripDay = _activeTrip->days.last();
+    qDebug() << "count of photos before : " <<  currentTripDay.photos.size();
     QGeoAddress location;
     QDateTime timestamp = QDateTime::currentDateTime();
 
@@ -56,6 +57,7 @@ void ActiveTripController::addNewPhoto(const QString &path)
     };
 
     currentTripDay.photos.push_back(newPhoto);
+    qDebug() << "count of photos after : " <<  currentTripDay.photos.size();
 }
 
 //==============================================================================
@@ -69,5 +71,7 @@ void ActiveTripController::endTrip()
 
 Trip* ActiveTripController::getTrip()
 {
-    return _activeTrip;
+    Trip *trip = new Trip(_activeTrip);
+    emit tripChanged();
+    return  trip;
 }

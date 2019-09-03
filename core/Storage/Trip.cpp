@@ -6,21 +6,14 @@
 #include <QDebug>
 
 
-Trip::Trip(const QString &name, QDateTime depatureDate,QObject *parent)
+Trip::Trip(TripData *tripData, QObject *parent)
     : QObject(parent)
 {
-    _name = name;
-    depatureDate.setTime(QTime(18,16));
-    _depatureDate = depatureDate;
-    _backPack = new BackPackModel();
-
-    QTimer *timer = new QTimer();
-    timer->start(1000);
-
-    //    connect(timer, &QTimer::timeout, [this](){
-    //        checkTime();
-    //        checkLocation();
-    //    });
+    _name = tripData->name;
+    tripData->depatureDate.setTime(QTime(0,0));
+    _depatureDate = tripData->depatureDate;
+    _backPack = tripData->backpack;
+    _days = tripData->days;
 }
 
 //==============================================================================
@@ -139,18 +132,6 @@ QList<TripDay> Trip::getDays() const
 {
     return _days;
 }
-
-//==============================================================================
-
-//QGeoAddress Trip::getCurrentLocation() const
-//{
-//    return _currentLocation;
-//}
-
-//QGeoLocation Trip::getLocationController() const
-//{
-//    return _locationController;
-//}
 
 //==============================================================================
 

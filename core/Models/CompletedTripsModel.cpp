@@ -25,9 +25,9 @@ QVariant CompletedTripsModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case NameRole:
-        return completedTrip.getName();
+        return completedTrip.name;
     case DepatureDateRole:
-        return completedTrip.getDepatureDate();
+        return completedTrip.depatureDate;
 //    case VisitedCitiesRole:
 //        return completedTrip.getAllCities().size();
 //    case VisitedCountriesRole:
@@ -58,7 +58,7 @@ QHash<int, QByteArray> CompletedTripsModel::roleNames() const
 
 //==============================================================================
 
-void CompletedTripsModel::getCompletedTrips(QList<Trip> completedTrips)
+void CompletedTripsModel::getCompletedTrips(QList<TripData> completedTrips)
 {
     _completedTrips = completedTrips;
 }

@@ -24,20 +24,20 @@ ApplicationWindow {
     }
 
 
-    Connections {
-        target: tripController
-//        onCurrentTripStateChanged: {
-//            loader.sourceComponent = addIdeaPopup
-//            loader.active = true
-//        }
+//    Connections {
+//        target: tripController
+////        onCurrentTripStateChanged: {
+////            loader.sourceComponent = addIdeaPopup
+////            loader.active = true
+////        }
 
-        onForgotToPack: {
-            console.log("forgot to pack items")
-            loader.sourceComponent = warningPopup
-            loader.active = true
-            player.play()
-        }
-    }
+//        onForgotToPack: {
+//            console.log("forgot to pack items")
+//            loader.sourceComponent = warningPopup
+//            loader.active = true
+//            player.play()
+//        }
+//    }
 
 
     function navigateBack() {

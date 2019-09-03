@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "core/Models/TripsModel.hpp"
 #include "core/Models/GoalsModel.hpp"
 #include "core/Storage/Trip.hpp"
 #include "QMLUtils.hpp"
@@ -23,8 +22,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     GoalsModel goalsModel;
-    TripsModel tripsModel;
-    TripController tripController;
     TripsStorage tripsStorage;
     TripsManager tripsManager;
     ApplicationController appController(tripsManager);
@@ -47,8 +44,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
     engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
-    engine.rootContext()->setContextProperty("tripsModel", &tripsModel);
-    engine.rootContext()->setContextProperty("tripController", &tripController);
     engine.rootContext()->setContextProperty("appController", &appController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);

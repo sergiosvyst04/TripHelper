@@ -24,7 +24,7 @@ void TripsStorage::retrieveCompletedTrips()
     QJsonValue completed = jsonObject.value(QString("completed"));
     QJsonArray jsonTripsVector = completed.toArray();
 
-    QList<Trip> tripsList;
+    QList<TripData> tripsList;
     for(int i = 0; i < jsonTripsVector.size(); i++)
     {
         QJsonValue compTrip = jsonTripsVector.at(i);
@@ -37,20 +37,20 @@ void TripsStorage::retrieveCompletedTrips()
 
 //==============================================================================
 
-Trip* TripsStorage::retrieveActivetrip()
+TripData* TripsStorage::retrieveActivetrip()
 {
     QJsonDocument jsDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
     QJsonObject jsObject = jsDoc.object();
 
     QJsonValue active = jsObject.value(QString("active"));
-    Trip *activeTrip = parseTrip(active);
+    TripData *activeTrip = parseTrip(active);
 
     return activeTrip;
 }
 
 //==============================================================================
 
-Trip TripsStorage::retrieveWaitingTrip()
+TripData TripsStorage::retrieveWaitingTrip()
 {
     QJsonDocument jsonDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
 
@@ -76,9 +76,9 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
 
 //==============================================================================
 
-Trip* TripsStorage::parseTrip(QJsonValue &activeTrip)
+TripData* TripsStorage::parseTrip(QJsonValue &activeTrip)
 {
-    Trip *parsedActiveTrip = new Trip();
+    TripData *parsedActiveTrip = new TripData();
 
     QString tripName = activeTrip["name"].toString();
     QDateTime depatureDate = QDateTime::fromString(activeTrip["depatureDate"].toString(), "d/M/yyyy");
@@ -89,10 +89,10 @@ Trip* TripsStorage::parseTrip(QJsonValue &activeTrip)
 
     QList<TripDay> tripDays = parseTripDays(daysArray);
 
-    parsedActiveTrip->setBackPackList(backpack);
-    parsedActiveTrip->setDays(tripDays);
-    parsedActiveTrip->setName(tripName);
-    parsedActiveTrip->setDepatureDate(depatureDate);
+    parsedActiveTrip->name = tripName;
+    parsedActiveTrip->backpack->setItemsList(backpack);
+    parsedActiveTrip->days = tripDays;
+    parsedActiveTrip->depatureDate = depatureDate;
 
     return parsedActiveTrip;
 }
@@ -190,14 +190,14 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
 
 //==============================================================================
 
-Trip* TripsStorage::getActiveTrip()
+TripData* TripsStorage::getActiveTrip()
 {
     return _activeTrip;
 }
 
 //==============================================================================
 
-Trip& TripsStorage::getWaitingTrip()
+TripData& TripsStorage::getWaitingTrip()
 {
     return _waitingTrip;
 }

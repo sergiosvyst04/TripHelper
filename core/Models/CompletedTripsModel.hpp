@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include "core/Storage/Trip.hpp"
+#include "core/Storage/TripData.hpp"
 
 class CompletedTripsModel : public QAbstractListModel
 {
@@ -24,10 +25,10 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash <int, QByteArray> roleNames() const override;
 
-    void getCompletedTrips(QList<Trip> completedTrips);
+    void getCompletedTrips(QList<TripData> completedTrips);
 
 private:
-    QList<Trip> _completedTrips;
+    QList<TripData> _completedTrips;
 };
 
 #endif // COMPLETEDTRIPSMODEL_HPP

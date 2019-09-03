@@ -7,14 +7,14 @@ TripsManager::TripsManager(QObject *parent) : QObject(parent)
 
 //==============================================================================
 
-Trip* TripsManager::activeTrip()
+TripData* TripsManager::activeTrip()
 {
     return _tripsStorage.getActiveTrip();
 }
 
 //==============================================================================
 
-Trip& TripsManager::waitingTrip()
+TripData& TripsManager::waitingTrip()
 {
     return _tripsStorage.getWaitingTrip();
 }
