@@ -46,6 +46,7 @@
         <file>assets/sounds/danger-alarm-23793.mp3</file>
         <file>assets/icons/place.png</file>
         <file>assets/icons/location3.png</file>
+        <file>assets/icons/location.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

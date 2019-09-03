@@ -12,7 +12,6 @@ ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 
 void ActiveTripController::intialize(ApplicationController *applicationController, LocationController *locationController)
 {
-    qDebug() << "intialize";
     _activeTrip = applicationController->getTripsManager().activeTrip();
     _locationController = locationController;
 }

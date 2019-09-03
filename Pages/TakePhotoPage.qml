@@ -12,7 +12,6 @@ BasePage {
     header: Item {}
     property string photoPath
 
-
     VideoOutput {
         anchors.fill: parent
         source: camera
@@ -263,7 +262,7 @@ BasePage {
                         image: "qrc:/images/assets/icons/apply.png"
                         onClicked:  {
                             animOnDestructionAplly.running = true
-                            activeTripController.addNewPhoto(photoPath)
+                            activeTripController.addNewPhoto("file://" + photoPath)
                         }
 
                     }

@@ -1,19 +1,66 @@
-import QtQuick 2.0
+import QtQuick 2.13
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.5
+import QtGraphicalEffects 1.10
+import QtMultimedia 5.13
+import PhotosModel 1.0
+import TripDayController 1.0
+
 import "../Components"
 import "../Singletons"
 
 BasePage {
 
     footer: Item {}
-    header: Item {}
+
+    property var activeController
+    property int dayIndex
+
+    ListModel {
+        id: citiesListModel
+    }
+
+    ListModel {
+        id: notesListModel
+    }
+
+    function setCities(cities){
+        for(var i = 0; i < cities.length; i++)
+        {
+            citiesListModel.append({name : cities[i]})
+        }
+    }
+
+    function setNotes(notes){
+        for(var i = 0; i < notes.length; i++)
+        {
+            notesListModel.append({note : notes[i]})
+        }
+    }
+
+    PhotosModel {
+        id: photosModel
+
+        Component.onCompleted:{
+            getPhotos(tripDayController.photos)
+        }
+    }
+
+    TripDayController {
+        id: tripDayController
+
+        Component.onCompleted:{
+            intialize(dayIndex, activeController)
+            setCities(tripDayController.cities)
+            setNotes(tripDayController.notes)
+        }
+    }
 
     ColumnLayout {
         spacing: 30
         anchors {
             fill: parent
-            topMargin: 75
+            topMargin: 25
             leftMargin: 17
             rightMargin: 17
         }
@@ -23,8 +70,7 @@ BasePage {
             Layout.topMargin: 20
             Layout.fillWidth: true
             Layout.preferredHeight: 110
-            model: ["qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png",
-                "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png", "qrc:/images/assets/emblem.png"]
+            model: photosModel
             pathItemCount: 9
 
 
@@ -36,7 +82,7 @@ BasePage {
                 //                scale: PathView.iconScale
                 Image {
                     anchors.fill: parent
-                    source: modelData
+                    source:  model.source
                     fillMode: Image.PreserveAspectCrop
                 }
             }
@@ -71,13 +117,13 @@ BasePage {
 
 
         RowLayout {
-
             Image {
                 sourceSize: Qt.size(27, 27)
                 source: "qrc:/images/assets/icons/location3.png"
             }
 
             ListView {
+                id: citiesList
                 spacing: 7
                 Layout.fillWidth: true
                 Layout.preferredHeight: 20
@@ -85,11 +131,11 @@ BasePage {
 
                 clip: true
                 orientation: ListView.Horizontal
-                model: ["Prague", "Wien", "Budapest"]
+                model: citiesListModel
 
                 delegate: DescriptionText {
                     Layout.alignment: Qt.AlignVCenter
-                    text: modelData
+                    text: model.name
                     font: Fonts.openSansBold(15, Font.MixedCase)
                     color: Colors.descriptionTextColor
                 }
@@ -111,15 +157,9 @@ BasePage {
             Layout.fillHeight: true
             Layout.fillWidth: true
             spacing: 15
-
-            model: ["cjnaslnclksanclkanslkcnaslkcnlkasnclkasnclksanclkasnclkanslckanslkcnasnclsanclaksnclknsaclkansclknaslkcnalskcnlkasnclaknsclknasclnasknclasnclnkaclnalsncalnclksnlcnakslcnalknscklnsaclansclknslaknsclknaslkcnalksnclkasnclnaca;lscm;lsamc;lasmc;lamsc;lmas;lcmsa;lmcveroiuvhwdpoijvcoihwovihjwpjvdpsjdvlkndslkvnx.knv,xcnbvjodwhdpoivwhpejf[owjfiewfiyreoiwfu
-                csalkncals
-                cslkansclk
-                ascknaslcknascckjbaslkncnsac;s", "cjqcpowqjpcoqjcpqowjcpoqjwpcoqmwpocmqwpocmqwpocmq
-                qcwpnjwqcpioqnwpcoinqw
-                cqoicwqponpcn
-                cqoiwhcoqijwpojdwpoqjdqdokjqpowjdpoqwjd"]
             clip: true
+
+            model: notesListModel
 
             delegate: DescriptionText {
                 width: notesList.width

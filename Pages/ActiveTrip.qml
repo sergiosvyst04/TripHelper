@@ -67,6 +67,7 @@ BasePage {
         }
 
         ListView {
+            id: daysListView
             Layout.fillWidth: true
             Layout.leftMargin: 13
             Layout.preferredHeight: 130
@@ -81,6 +82,7 @@ BasePage {
                 date: Qt.formatDate(new Date(), "d MMM \n yyyy")
                 countOfPhotos: model.photos
                 countOfCities: model.cities
+                onClicked: navigateToItem("qrc:/Pages/TripDayPage.qml", {activeController: activeTripController, dayIndex: index})
             }
         }
 

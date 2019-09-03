@@ -12,6 +12,8 @@
 #include "core/Controllers/ActiveTripController.hpp"
 #include "core/Models/TripDaysModel.hpp"
 #include "core/Controllers/LocationController.hpp"
+#include "core/Models/PhotosModel.hpp"
+#include "core/Controllers/TripDayController.hpp"
 
 
 int main(int argc, char *argv[])
@@ -35,6 +37,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<BackPackModel>("BackPackModel", 1, 0, "BackPackModel");
     qmlRegisterType<BackpackFilterModel>("BackpackFilterModel", 1, 0, "BackpackFilterModel");
     qmlRegisterType<ActiveTripController>("ActiveTripController", 1, 0, "ActiveTripController");
+    qmlRegisterType<PhotosModel>("PhotosModel", 1, 0, "PhotosModel");
+    qmlRegisterType<TripDayController>("TripDayController", 1, 0, "TripDayController");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {

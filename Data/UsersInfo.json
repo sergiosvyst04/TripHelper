@@ -123,34 +123,35 @@
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/fly.png"
                     }
                 ],
+                "notes" : ["today i have traveled around the Spain", "i looked at corida", "i visited el classico"],
                 "ideas" : ["tra lalalalala 33", "tra lalalalala 44", "tra lalalalala 55"],
                 "cities" : ["Sevilla", "Valencia", "Madrid"],
                 "countries" : ["Spain"]
@@ -161,27 +162,27 @@
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
                     },
                     {
                         "date" : "23/6/2106",
                         "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
+                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
                     }
                 ],
                 "notes" : ["Livepool win today", "it is very good"],

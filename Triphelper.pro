@@ -19,10 +19,12 @@ SOURCES += \
     core/Controllers/ActiveTripController.cpp \
     core/Controllers/ApplicationController.cpp \
     core/Controllers/LocationController.cpp \
+    core/Controllers/TripDayController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
     core/Models/CompletedTripsModel.cpp \
         core/Models/GoalsModel.cpp \
+    core/Models/PhotosModel.cpp \
     core/Models/TripDaysModel.cpp \
     core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
@@ -53,10 +55,12 @@ HEADERS += \
     core/Controllers/ActiveTripController.hpp \
     core/Controllers/ApplicationController.hpp \
     core/Controllers/LocationController.hpp \
+    core/Controllers/TripDayController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \
     core/Models/CompletedTripsModel.hpp \
     core/Models/GoalsModel.hpp \
+    core/Models/PhotosModel.hpp \
     core/Models/TripDaysModel.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \
