@@ -1,8 +1,8 @@
 #include "TripsManager.hpp"
+#include "QDebug"
 
 TripsManager::TripsManager(QObject *parent) : QObject(parent)
 {
-
 }
 
 //==============================================================================

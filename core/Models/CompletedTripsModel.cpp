@@ -4,7 +4,7 @@
 CompletedTripsModel::CompletedTripsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-
+    qDebug() << "COMPLETED TRIPS MODEL WAS CREATED!!!";
 }
 
 //==============================================================================
@@ -60,5 +60,7 @@ QHash<int, QByteArray> CompletedTripsModel::roleNames() const
 
 void CompletedTripsModel::getCompletedTrips(QList<TripData> completedTrips)
 {
+    beginResetModel();
     _completedTrips = completedTrips;
+    endResetModel();
 }

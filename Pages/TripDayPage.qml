@@ -24,17 +24,10 @@ BasePage {
         id: notesListModel
     }
 
-    function setCities(cities){
-        for(var i = 0; i < cities.length; i++)
+    function setModel(list, model){
+        for(var i = 0; i < list.length; i++)
         {
-            citiesListModel.append({name : cities[i]})
-        }
-    }
-
-    function setNotes(notes){
-        for(var i = 0; i < notes.length; i++)
-        {
-            notesListModel.append({note : notes[i]})
+            model.append({name : list[i]})
         }
     }
 
@@ -51,8 +44,8 @@ BasePage {
 
         Component.onCompleted:{
             intialize(dayIndex, activeController)
-            setCities(tripDayController.cities)
-            setNotes(tripDayController.notes)
+            setModel(tripDayController.cities, citiesListModel)
+            setModel(tripDayController.notes, notesListModel)
         }
     }
 

@@ -14,7 +14,7 @@
 #include "core/Controllers/LocationController.hpp"
 #include "core/Models/PhotosModel.hpp"
 #include "core/Controllers/TripDayController.hpp"
-
+#include "core/Services/EndTripService.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
 
     LocationController locationController;
     GoalsModel goalsModel;
-    TripsStorage tripsStorage;
     TripsManager tripsManager;
     ApplicationController appController(tripsManager);
 
@@ -39,6 +38,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<ActiveTripController>("ActiveTripController", 1, 0, "ActiveTripController");
     qmlRegisterType<PhotosModel>("PhotosModel", 1, 0, "PhotosModel");
     qmlRegisterType<TripDayController>("TripDayController", 1, 0, "TripDayController");
+    qmlRegisterType<EndTripService>("EndTripService", 1, 0, "EndTripService");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {
@@ -47,11 +47,9 @@ int main(int argc, char *argv[])
     });
 
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
-    engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
     engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.rootContext()->setContextProperty("appController", &appController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
-    engine.rootContext()->setContextProperty("tripsStorage", &tripsStorage);
     engine.rootContext()->setContextProperty("locationController", &locationController);
     
     

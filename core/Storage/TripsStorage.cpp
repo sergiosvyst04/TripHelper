@@ -11,7 +11,6 @@ TripsStorage::TripsStorage(QObject *parent) : QObject(parent)
     _completedTripsModel = new CompletedTripsModel();
     retrieveCompletedTrips();
     _activeTrip = retrieveActivetrip();
-//    _waitingTrip = retrieveWaitingTrip();
 }
 
 //==============================================================================
@@ -28,8 +27,8 @@ void TripsStorage::retrieveCompletedTrips()
     for(int i = 0; i < jsonTripsVector.size(); i++)
     {
         QJsonValue compTrip = jsonTripsVector.at(i);
-//        Trip completedTrip = parseTrip(compTrip);
-//        tripsList.push_back(completedTrip);
+        TripData completedTrip = *parseTrip(compTrip);
+        tripsList.push_back(completedTrip);
     }
 
     _completedTripsModel->getCompletedTrips(tripsList);

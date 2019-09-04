@@ -30,14 +30,14 @@ public:
     int getState() const;
     QList<TripDay> getDays() const;
     TripDay& getCurrentTripDay();
-//    QGeoAddress getCurrentLocation() const;
+    //    QGeoAddress getCurrentLocation() const;
     BackPackModel *getBackPack();
-//    QGeoLocation getLocationController() const;
+    //    QGeoLocation getLocationController() const;
 
-//    QList<QString> getAllCountries() const;
-//    QList<QString> getAllCities() const;
+    //    QList<QString> getAllCountries() const;
+    //    QList<QString> getAllCities() const;
 //    QList<Photo> getAllPhotos() const;
-//    QList<QString> getAllIdeas() const;
+    //    QList<QString> getAllIdeas() const;
 
     void setDepatureDate(QDateTime depatureDate);
     void setName(const QString &name);
@@ -52,13 +52,13 @@ signals:
 
 
 public slots:
-//    void addNewDay();
-//    void addNote(const QString &note);
-//    void addNewIdea(const QString &idea);
-//    void makeCheckIn();
-//    void addPhoto(const QString &path);
-//    void checkTime();
-//    void checkLocation();
+    //    void addNewDay();
+    //    void addNote(const QString &note);
+    //    void addNewIdea(const QString &idea);
+    //    void makeCheckIn();
+    //    void addPhoto(const QString &path);
+    //    void checkTime();
+    //    void checkLocation();
 private:
     QString _name;
     QDateTime _depatureDate;

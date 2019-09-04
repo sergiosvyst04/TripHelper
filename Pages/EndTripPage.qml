@@ -1,14 +1,50 @@
 import QtQuick 2.13
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import EndTripService 1.0
+import PhotosModel 1.0
+import Trip 1.0
 import "../Singletons"
 import "../Components"
 
 BasePage {
     id: basePage
-    header: Item{}
+
     nextButtonVisible: true
     nextButtonText: qsTr("Thanks")
+
+    function setModel(list, model){
+        for(var i = 0; i < list.length; i++)
+        {
+            model.append({name : list[i]})
+        }
+    }
+
+    function setCountriesModel(list, model)
+    {
+        for(var i = 0; i < list.length; i++)
+        {
+//            model.append({country : list[i], flag: })
+        }
+    }
+
+    PhotosModel {
+        id: photosModel
+
+        Component.onCompleted: {
+            getPhotos(endTripService.allPhotos)
+        }
+    }
+
+
+    EndTripService {
+        id: endTripService
+
+        Component.onCompleted: {
+            intialize(appController)
+            setModel(endTripService.allCities, citiesModel)
+        }
+    }
 
     ListModel {
         id: countriesModel
@@ -20,43 +56,23 @@ BasePage {
         ListElement { country : "Chile"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
     }
 
-    ListModel {
-        id: photosModel
-
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/anfield.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road1.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road2.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road3.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road4.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road5.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road6.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/road7.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set2.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set3.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set4.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set5.jpg"}
-        ListElement { source: "file:///home/sergio/Desktop/Images/photos/set6.jpg"}
-
-    }
-
     ListModel{
         id: citiesModel
 
-        ListElement {city : "Madrid" }
-        ListElement {city : "Barcelona" }
-        ListElement {city : "Mayorca" }
-        ListElement {city : "Paris" }
-        ListElement {city : "Canne" }
-        ListElement {city : "Nica" }
-        ListElement {city : "Sent Trope" }
-        ListElement {city : "Madrid" }
-        ListElement {city : "Barcelona" }
-        ListElement {city : "Mayorca" }
-        ListElement {city : "Paris" }
-        ListElement {city : "Canne" }
-        ListElement {city : "Nica" }
-        ListElement {city : "Sent Trope" }
+//        ListElement {city : "Madrid" }
+//        ListElement {city : "Barcelona" }
+//        ListElement {city : "Mayorca" }
+//        ListElement {city : "Paris" }
+//        ListElement {city : "Canne" }
+//        ListElement {city : "Nica" }
+//        ListElement {city : "Sent Trope" }
+//        ListElement {city : "Madrid" }
+//        ListElement {city : "Barcelona" }
+//        ListElement {city : "Mayorca" }
+//        ListElement {city : "Paris" }
+//        ListElement {city : "Canne" }
+//        ListElement {city : "Nica" }
+//        ListElement {city : "Sent Trope" }
     }
 
     ColumnLayout {
@@ -64,6 +80,7 @@ BasePage {
         spacing: 10
         anchors {
             fill: parent
+            topMargin: -35
             rightMargin: 17
             leftMargin: 17
             bottomMargin: 35
@@ -160,7 +177,7 @@ BasePage {
                     DescriptionText {
                         id: city
                         font: Fonts.openSans(14, Font.MixedCase)
-                        text: model.city
+                        text: model.name
                     }
 
                     DescriptionText {
