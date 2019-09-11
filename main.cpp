@@ -16,6 +16,7 @@
 #include "core/Controllers/TripDayController.hpp"
 #include "core/Services/EndTripService.hpp"
 #include "core/Services/GalleryService.hpp"
+#include "core/Models/CompletedTripsModel.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
 
 
     static auto *utils = new QMLUtils;
+    qmlRegisterType<CompletedTripsModel>("CompletedTripsModel", 1, 0, "CompletedTripsModel");
     qmlRegisterType<GalleryService>("GalleryService", 1, 0, "GalleryService");
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
     qmlRegisterType<TripDaysModel>("TripDaysModel", 1, 0, "TripDaysModel");
@@ -53,6 +55,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("appController", &appController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("locationController", &locationController);
+    engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     
     
     

@@ -10,7 +10,6 @@ class ApplicationController : public QObject
 public:
     explicit ApplicationController(TripsManager &tripsManager ,QObject *parent = nullptr);
     TripsManager& getTripsManager();
-//    Q_INVOKABLE void init(TripsManager &tripsManager);
 
 signals:
 

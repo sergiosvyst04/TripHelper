@@ -2,11 +2,14 @@ import QtQuick 2.13
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
+import CompletedTripsModel 1.0
 import "../Singletons"
 import "../Components"
 
 BasePage {
     backButtonVisible: true
+//    property CompletedTripsModel completedTrips: appController.completedTrips
+
 
     footer: Item{}
 
@@ -30,20 +33,19 @@ BasePage {
             Layout.fillWidth: true
 
             clip: true
-            model: 5
+            model: tripsManager.completedTrips
             spacing: 15
 
             delegate:  TripItem {
                 width: parent.width
                 height: 165
 
-                tripName: qsTr("Weekend in Paris")
-                dates: qsTr("%1 - %2").arg(Qt.formatDate(new Date() ,"d/M/yyyy")).arg(Qt.formatDate(new Date() ,"d/M/yyyy"))
-                citiesCount: "11"
-                photoCount: "209"
-                ideasCount: "5"
-                flags: ["qrc:/images/assets/icons/Flags/Chile.png", "qrc:/images/assets/icons/Flags/Chile.png", "qrc:/images/assets/icons/Flags/Chile.png",
-                    "qrc:/images/assets/icons/Flags/Chile.png", "qrc:/images/assets/icons/Flags/Chile.png", "qrc:/images/assets/icons/Flags/Chile.png"]
+                tripName: model.name
+                dates: qsTr("%1 - %2").arg(Qt.formatDate(model.depatureDate ,"d/M/yyyy")).arg(Qt.formatDate(new Date() ,"d/M/yyyy"))
+                citiesCount: model.visitedCities
+                photoCount: model.takenPhotos
+                ideasCount: model.ideas
+                Component.onCompleted: setFlags(model.visitedCountries)
             }
         }
     }

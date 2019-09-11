@@ -1,10 +1,11 @@
 #include "CompletedTripsModel.hpp"
 #include "QDebug"
+#include "core/Controllers/ApplicationController.hpp"
 
 CompletedTripsModel::CompletedTripsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    qDebug() << "COMPLETED TRIPS MODEL WAS CREATED!!!";
+
 }
 
 //==============================================================================
@@ -21,21 +22,22 @@ QVariant CompletedTripsModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    const auto &completedTrip = _completedTrips.at(index.row());
+    const auto &completedTrip = new Trip( new TripData (_completedTrips.at(index.row())));
+
 
     switch (role) {
     case NameRole:
-        return completedTrip.name;
+        return completedTrip->getName();
     case DepatureDateRole:
-        return completedTrip.depatureDate;
-//    case VisitedCitiesRole:
-//        return completedTrip.getAllCities().size();
-//    case VisitedCountriesRole:
-//        return  QVariant::fromValue(completedTrip.getAllCountries());
-//    case TakenPhotosRole:
-//        return completedTrip.getAllPhotos().size();
-//    case IdeasRole:
-//        return completedTrip.getAllIdeas().size();
+        return completedTrip->getDepatureDate();
+    case VisitedCitiesRole:
+        return completedTrip->getAllCities().size();
+    case VisitedCountriesRole:
+        return  QVariant::fromValue(completedTrip->getAllCountries());
+    case TakenPhotosRole:
+        return completedTrip->getAllPhotos().size();
+    case IdeasRole:
+        return completedTrip->getAllIdeas().size();
     }
 
     return QVariant();
@@ -49,7 +51,7 @@ QHash<int, QByteArray> CompletedTripsModel::roleNames() const
         { NameRole, "name"},
         { DepatureDateRole, "depatureDate" },
         { VisitedCountriesRole, "visitedCountries" },
-        { VisitedCitiesRole, "visitedCitiesRole" },
+        { VisitedCitiesRole, "visitedCities" },
         { TakenPhotosRole, "takenPhotos" },
         { IdeasRole, "ideas" }
     };
@@ -73,3 +75,5 @@ void CompletedTripsModel::addTrip(const TripData &completedTrip)
     _completedTrips.push_back(completedTrip);
     endInsertRows();
 }
+
+//==============================================================================

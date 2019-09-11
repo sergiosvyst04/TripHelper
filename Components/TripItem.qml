@@ -14,6 +14,18 @@ ColoredButton {
     property alias photoCount: photosCount.text
     property alias ideasCount: ideasCount.text
 
+    function setFlags(flags)
+    {
+        for(var i = 0; i < flags.length; i++)
+        {
+            flagsModel.append({flag : "qrc:/images/assets/icons/Flags/" + flags[i] + ".png"})
+        }
+    }
+
+    ListModel {
+        id: flagsModel
+    }
+
     layer.enabled: false
     background: Rectangle {
         id: back
@@ -67,6 +79,7 @@ ColoredButton {
             preferredHighlightEnd: width / 2 + 10
 
             currentIndex: count / 2
+            model: flagsModel
 
             spacing: 20
             orientation: ListView.Horizontal

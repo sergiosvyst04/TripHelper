@@ -16,7 +16,3 @@ TripsManager& ApplicationController::getTripsManager()
 
 //==============================================================================
 
-//void ApplicationController::init(TripsManager &tripsManager)
-//{
-//   _tripsManager = tripsManager;
-//}

@@ -7,6 +7,7 @@
 class TripsManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(CompletedTripsModel* completedTrips READ completedTrips CONSTANT)
 public:
     explicit TripsManager(QObject *parent = nullptr);
     

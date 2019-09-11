@@ -57,6 +57,13 @@
         <file>assets/icons/Flags/Switzerland.png</file>
         <file>assets/icons/Flags/Uruguay.png</file>
         <file>assets/icons/Flags/Great Britain.png</file>
+        <file>assets/icons/Flags/Germany.png</file>
+        <file>assets/icons/Flags/Hungary.png</file>
+        <file>assets/icons/Flags/Madagascar.png</file>
+        <file>assets/icons/Flags/Poland.png</file>
+        <file>assets/icons/Flags/Sri Lanka.png</file>
+        <file>assets/icons/Flags/Ukraine.png</file>
+        <file>assets/icons/Flags/Czech.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

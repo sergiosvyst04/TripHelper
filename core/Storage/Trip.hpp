@@ -32,10 +32,10 @@ public:
     TripDay& getCurrentTripDay();
     BackPackModel *getBackPack();
 
-    //    QList<QString> getAllCountries() const;
-    //    QList<QString> getAllCities() const;
-//    QList<Photo> getAllPhotos() const;
-    //    QList<QString> getAllIdeas() const;
+    QList<QString> getAllCountries() const;
+    QList<QString> getAllCities() const;
+    QList<Photo> getAllPhotos() const;
+    QList<QString> getAllIdeas() const;
 
     void setDepatureDate(QDateTime depatureDate);
     void setName(const QString &name);
@@ -50,13 +50,6 @@ signals:
 
 
 public slots:
-    //    void addNewDay();
-    //    void addNote(const QString &note);
-    //    void addNewIdea(const QString &idea);
-    //    void makeCheckIn();
-    //    void addPhoto(const QString &path);
-    //    void checkTime();
-    //    void checkLocation();
 private:
     QString _name;
     QDateTime _depatureDate;
