@@ -7,6 +7,7 @@ import "../Singletons"
 
 ColoredButton {
     id: btn
+    property alias source1: img.source
     checkable: editState
 
     color: "transparent"

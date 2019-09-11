@@ -18,17 +18,17 @@ void EndTripService::intialize(ApplicationController *applicationController)
 
 QVector<Photo> EndTripService::getAllPhotos()
 {
-   QVector<Photo> allPhotosList;
-   for(int i = 0; i < _activeTrip->days.size(); i++)
-   {
-       for(int j = 0; j < _activeTrip->days.at(i).photos.size(); j++)
-       {
-           Photo photo = _activeTrip->days.at(i).photos.at(j);
-           allPhotosList.push_back(photo);
-       }
-   }
+    QVector<Photo> allPhotosList;
+    for(int i = 0; i < _activeTrip->days.size(); i++)
+    {
+        for(int j = 0; j < _activeTrip->days.at(i).photos.size(); j++)
+        {
+            Photo photo = _activeTrip->days.at(i).photos.at(j);
+            allPhotosList.push_back(photo);
+        }
+    }
 
-   return allPhotosList;
+    return allPhotosList;
 }
 
 //==============================================================================
@@ -48,19 +48,32 @@ QVector<QString> EndTripService::getAllCities()
     return allCitiesList;
 }
 
+//==============================================================================
+
 QVector<QString> EndTripService::getAllCountries()
 {
     QVector<QString> allCountriesList;
     for(int i = 0; i < _activeTrip->days.size(); i++)
     {
-        for(int j = 0; j < _activeTrip->days.at(i).cities.size(); j++)
+        for(int j = 0; j < _activeTrip->days.at(i).countries.size(); j++)
         {
-            QString city = _activeTrip->days.at(i).cities.at(j);
+            QString city = _activeTrip->days.at(i).countries.at(j);
             allCountriesList.push_back(city);
         }
     }
 
     return allCountriesList;
+}
+
+//==============================================================================
+
+void EndTripService::endTrip()
+{
+    TripData* _completedTrip = _activeTrip;
+    _activeTrip->days = {};
+    _activeTrip->name = "";
+    _activeTrip->backpack->destroyed();
+    _completedTripsModel->addTrip(*_completedTrip);
 }
 
 

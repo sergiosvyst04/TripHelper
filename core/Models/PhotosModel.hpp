@@ -17,13 +17,12 @@ class PhotosModel : public QAbstractListModel
 public:
     explicit PhotosModel(QObject *parent = nullptr);
     Q_INVOKABLE void getPhotos(QVector<Photo> photos);
+    Q_INVOKABLE  void removePhoto(int index);
 
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
-
 private:
     QVector<Photo> _photos;
 };

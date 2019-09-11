@@ -3,28 +3,35 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 import QtQml 2.12
 import QtGraphicalEffects 1.10
+import GalleryService 1.0
+import PhotosModel 1.0
 import "../Components"
 import "../Singletons"
 
 BasePage {
     header : Item{}
     footer: Item{}
-    property ListModel modelWithPhotos
     property bool editState: false
     property bool deleteMultiplePhotos: false
     property int amountOfSelectedImages: 0
 
     function deleteSelectedPhotos() {
-        var count = modelWithPhotos.count;
+        var count = galleryService.photosModel.rowCount();
         var j = 0;
-        for(var i = 0; i < count; i++)
+        for(var i = 0; i < count - 1; i++)
         {
             if(gridView.itemAtIndex(i).checked)
             {
-                modelWithPhotos.remove(i - j)
+                galleryService.removePhoto(i - j, gridView.itemAtIndex(i).photoSource)
                 j++;
             }
         }
+    }
+
+    GalleryService {
+        id: galleryService
+
+        Component.onCompleted: intialize(appController)
     }
 
     ListModel {
@@ -169,10 +176,12 @@ BasePage {
                 cellWidth: width / 4
                 cellHeight: cellWidth
 
-                model: modelWithPhotos
+                model: galleryService.photosModel
+
+                onCountChanged: console.log(count)
 
                 delegate: Item {
-
+                    property string photoSource: gridDelegate.source1
                     property bool checked: gridDelegate.checked
                     width: gridView.cellWidth
                     height: gridView.cellHeight
@@ -184,7 +193,6 @@ BasePage {
                     }
 
                 }
-
             }
         }
 
@@ -208,12 +216,14 @@ BasePage {
 
                 Repeater {
                     id: swipeViewRepeater
-                    model: modelWithPhotos
+                    model: galleryService.photosModel
 
                     delegate: Item {
+                        property string source1: img.source
                         width: swipeView.width
                         height: swipeView.height
                         Image {
+                            id: img
                             anchors.fill: parent
                             source: model.source
                         }
@@ -325,8 +335,8 @@ BasePage {
                                 editState = false
                                 amountOfSelectedImages = 0
                             }
-                            else{
-                                modelWithPhotos.remove(swipeView.currentIndex)
+                            else {
+                                galleryService.removePhoto(swipeView.currentIndex, swipeView.currentItem.source1)
                                 loader.active = false
                             }
                         }

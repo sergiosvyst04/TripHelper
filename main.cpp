@@ -15,6 +15,7 @@
 #include "core/Models/PhotosModel.hpp"
 #include "core/Controllers/TripDayController.hpp"
 #include "core/Services/EndTripService.hpp"
+#include "core/Services/GalleryService.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 
 
     static auto *utils = new QMLUtils;
+    qmlRegisterType<GalleryService>("GalleryService", 1, 0, "GalleryService");
     qmlRegisterType<Trip>("Trip", 1, 0, "Trip");
     qmlRegisterType<TripDaysModel>("TripDaysModel", 1, 0, "TripDaysModel");
     qmlRegisterType<BackPackModel>("BackPackModel", 1, 0, "BackPackModel");

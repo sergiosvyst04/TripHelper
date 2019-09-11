@@ -47,6 +47,16 @@
         <file>assets/icons/place.png</file>
         <file>assets/icons/location3.png</file>
         <file>assets/icons/location.png</file>
+        <file>assets/icons/Flags/Argentina.png</file>
+        <file>assets/icons/Flags/Brazil.png</file>
+        <file>assets/icons/Flags/England.jpg</file>
+        <file>assets/icons/Flags/Nepal.png</file>
+        <file>assets/icons/Flags/Norway.png</file>
+        <file>assets/icons/Flags/Spain.png</file>
+        <file>assets/icons/Flags/Sweden.png</file>
+        <file>assets/icons/Flags/Switzerland.png</file>
+        <file>assets/icons/Flags/Uruguay.png</file>
+        <file>assets/icons/Flags/Great Britain.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

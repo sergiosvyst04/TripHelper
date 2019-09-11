@@ -12,6 +12,10 @@ BasePage {
 
     nextButtonVisible: true
     nextButtonText: qsTr("Thanks")
+    onNextButtonClicked: {
+        endTripService.endTrip()
+        navigateToItem("qrc:/Pages/MainPage.qml")
+    }
 
     function setModel(list, model){
         for(var i = 0; i < list.length; i++)
@@ -24,7 +28,7 @@ BasePage {
     {
         for(var i = 0; i < list.length; i++)
         {
-//            model.append({country : list[i], flag: })
+            model.append({country : list[i], flag: "qrc:/images/assets/icons/Flags/" + list[i] + ".png"})
         }
     }
 
@@ -43,36 +47,16 @@ BasePage {
         Component.onCompleted: {
             intialize(appController)
             setModel(endTripService.allCities, citiesModel)
+            setCountriesModel(endTripService.allCountries, countriesModel)
         }
     }
 
     ListModel {
         id: countriesModel
-
-        ListElement { country : "Chile"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
-        ListElement { country : "Argentina"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
-        ListElement { country : "Brazil"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
-        ListElement { country : "Switzerland"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
-        ListElement { country : "Chile"; flag : "qrc:/images/assets/icons/Flags/Chile.png"}
     }
 
     ListModel{
         id: citiesModel
-
-//        ListElement {city : "Madrid" }
-//        ListElement {city : "Barcelona" }
-//        ListElement {city : "Mayorca" }
-//        ListElement {city : "Paris" }
-//        ListElement {city : "Canne" }
-//        ListElement {city : "Nica" }
-//        ListElement {city : "Sent Trope" }
-//        ListElement {city : "Madrid" }
-//        ListElement {city : "Barcelona" }
-//        ListElement {city : "Mayorca" }
-//        ListElement {city : "Paris" }
-//        ListElement {city : "Canne" }
-//        ListElement {city : "Nica" }
-//        ListElement {city : "Sent Trope" }
     }
 
     ColumnLayout {
@@ -265,7 +249,7 @@ BasePage {
             fontColor: Colors.primaryColor
             font: Fonts.openSansBold(15, Font.MixedCase)
             text: qsTr("Go to gallery")
-            onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml", {modelWithPhotos : photosModel})
+            onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml")
         }
 
     }

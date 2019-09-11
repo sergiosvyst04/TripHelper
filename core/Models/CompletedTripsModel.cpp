@@ -64,3 +64,12 @@ void CompletedTripsModel::getCompletedTrips(QList<TripData> completedTrips)
     _completedTrips = completedTrips;
     endResetModel();
 }
+
+//==============================================================================
+
+void CompletedTripsModel::addTrip(const TripData &completedTrip)
+{
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    _completedTrips.push_back(completedTrip);
+    endInsertRows();
+}

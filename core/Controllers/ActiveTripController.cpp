@@ -3,7 +3,7 @@
 
 ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 {
-    _activeTrip = new TripData();
+//    _activeTrip = new TripData();
     _locationController = new LocationController();
 }
 

@@ -49,3 +49,12 @@ void PhotosModel::getPhotos(QVector<Photo> photos)
     _photos = photos;
     endResetModel();
 }
+
+//==============================================================================
+
+void PhotosModel::removePhoto(int index)
+{
+    beginRemoveRows(QModelIndex(), index, index);
+    _photos.removeAt(index);
+    endRemoveRows();
+}

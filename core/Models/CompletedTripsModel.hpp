@@ -26,6 +26,7 @@ public:
     QHash <int, QByteArray> roleNames() const override;
 
     void getCompletedTrips(QList<TripData> completedTrips);
+    void addTrip(const TripData &completedTrip);
 
 private:
     QList<TripData> _completedTrips;

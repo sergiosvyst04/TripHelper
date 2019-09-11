@@ -30,9 +30,7 @@ public:
     int getState() const;
     QList<TripDay> getDays() const;
     TripDay& getCurrentTripDay();
-    //    QGeoAddress getCurrentLocation() const;
     BackPackModel *getBackPack();
-    //    QGeoLocation getLocationController() const;
 
     //    QList<QString> getAllCountries() const;
     //    QList<QString> getAllCities() const;

@@ -16,6 +16,7 @@ class EndTripService : public QObject
 public:
     explicit EndTripService(QObject *parent = nullptr);
     Q_INVOKABLE void intialize(ApplicationController *applicationController);
+    Q_INVOKABLE void endTrip();
 
     QVector<Photo> getAllPhotos();
     QVector<QString> getAllCities();

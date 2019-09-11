@@ -27,6 +27,7 @@ SOURCES += \
     core/Models/PhotosModel.cpp \
     core/Models/TripDaysModel.cpp \
     core/Services/EndTripService.cpp \
+    core/Services/GalleryService.cpp \
     core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
         main.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     core/Models/PhotosModel.hpp \
     core/Models/TripDaysModel.hpp \
     core/Services/EndTripService.hpp \
+    core/Services/GalleryService.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \

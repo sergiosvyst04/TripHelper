@@ -11,6 +11,21 @@ struct TripData {
     QDateTime depatureDate;
     QList<TripDay> days;
     BackPackModel *backpack = new BackPackModel();
+
+    void removePhotoByPath(QString path) {
+        for(int i = 0; i < days.size(); i++)
+        {
+            for(int j = 0; j < days.at(i).photos.size(); j++)
+            {
+                Photo currentPhoto = days.at(i).photos.at(j);
+                if(currentPhoto.source == path)
+                {
+                    days[i].photos.removeAt(j);
+                    return;
+                }
+            }
+        }
+    }
 };
 
 #endif // TRIPDATA_HPP
