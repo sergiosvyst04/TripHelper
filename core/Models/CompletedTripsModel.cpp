@@ -77,3 +77,9 @@ void CompletedTripsModel::addTrip(const TripData &completedTrip)
 }
 
 //==============================================================================
+
+TripData CompletedTripsModel::fetchCompletedTrip(int index)
+{
+    return _completedTrips.at(index);
+}
+

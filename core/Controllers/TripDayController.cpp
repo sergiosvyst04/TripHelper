@@ -10,10 +10,9 @@ TripDayController::TripDayController(QObject *parent) : QObject(parent)
 
 //==============================================================================
 
-void TripDayController::intialize(int index, ActiveTripController *atc)
+void TripDayController::intialize(int index, Trip *trip)
 {
-    std::unique_ptr<Trip> trip(atc->getTrip());
-    _tripDay = new TripDay(trip.get()->getDays().at(index));
+    _tripDay = new TripDay(trip->getDays().at(index));
 }
 
 //==============================================================================

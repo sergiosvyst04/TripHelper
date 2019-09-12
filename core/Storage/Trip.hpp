@@ -15,6 +15,7 @@ class Trip : public QObject
     Q_OBJECT
     Q_PROPERTY(QList<TripDay> days READ getDays)
     Q_PROPERTY(QString name READ getName CONSTANT)
+    Q_PROPERTY(QList<QString> allCountries READ getAllCountries CONSTANT)
     enum State {
         InWaiting = 0,
         Active,

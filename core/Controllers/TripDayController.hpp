@@ -15,7 +15,7 @@ class TripDayController : public QObject
 
 public:
     explicit TripDayController(QObject *parent = nullptr);
-    Q_INVOKABLE void intialize(int index, ActiveTripController *trip);
+    Q_INVOKABLE void intialize(int index, Trip *trip);
 
     QVector<Photo> getPhotosOfDay();
     QVector<QString> getCitiesOfDay();

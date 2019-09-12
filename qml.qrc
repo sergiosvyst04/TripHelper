@@ -59,5 +59,8 @@
         <file>Components/PlanItem.qml</file>
         <file>Pages/InWaitingTripPage.qml</file>
         <file>Pages/TripDayPage.qml</file>
+        <file>Pages/TripPage.qml</file>
+        <file>Components/FlagsList.qml</file>
+        <file>Components/TripDayViewer.qml</file>
     </qresource>
 </RCC>

@@ -18,6 +18,7 @@ SOURCES += \
         QMLUtils.cpp \
     core/Controllers/ActiveTripController.cpp \
     core/Controllers/ApplicationController.cpp \
+    core/Controllers/CompletedTripController.cpp \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
         core/Models/BackPackModel.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     QMLUtils.hpp \
     core/Controllers/ActiveTripController.hpp \
     core/Controllers/ApplicationController.hpp \
+    core/Controllers/CompletedTripController.hpp \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Models/BackPackModel.hpp \

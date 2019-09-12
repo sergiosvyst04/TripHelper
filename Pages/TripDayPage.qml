@@ -10,7 +10,6 @@ import "../Components"
 import "../Singletons"
 
 BasePage {
-
     footer: Item {}
 
     property var activeController
@@ -43,7 +42,7 @@ BasePage {
         id: tripDayController
 
         Component.onCompleted:{
-            intialize(dayIndex, activeController)
+            intialize(dayIndex, activeController.trip)
             setModel(tripDayController.cities, citiesListModel)
             setModel(tripDayController.notes, notesListModel)
         }

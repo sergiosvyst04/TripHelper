@@ -27,6 +27,7 @@ public:
 
     void getCompletedTrips(QList<TripData> completedTrips);
     void addTrip(const TripData &completedTrip);
+    TripData fetchCompletedTrip(int index);
 
 private:
     QList<TripData> _completedTrips;

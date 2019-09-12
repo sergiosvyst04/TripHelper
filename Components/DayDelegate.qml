@@ -5,22 +5,23 @@ import "../Singletons"
 import "../Components"
 
 ColoredButton {
+    id: root
     property alias countOfCities: countOfCities.text
     property alias countOfPhotos: countOfPhotos.text
     property alias dayNumber: dayText.text
     property alias date: dateText.text
+    property color gradColor: "#DEFF5C"
 
     layer.enabled: false
 
     background: Rectangle {
         radius: 28
         gradient: Gradient {
-          GradientStop {position: 0.0; color: Qt.rgba(0, 240, 255, 0.65) }
-          GradientStop {position: 0.86; color: "#DEFF5C" }
+            id: gradientt
+            GradientStop {position: 0.0; color: Qt.rgba(0, 240, 255, 0.65) }
+            GradientStop {position: 0.86; color: root.gradColor }
         }
     }
-
-    color: Colors.lightgrey
 
     ColumnLayout {
         spacing: 10

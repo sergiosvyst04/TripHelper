@@ -13,7 +13,9 @@ BasePage {
 
 
     Timer {
-        interval: 500; running: stackView.currentIndex == 1; repeat: true
+        interval: 500;
+        running: true
+        repeat: true
         onTriggered: {
             repeater.itemAt(0).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[0];
             repeater.itemAt(1).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[1];
@@ -22,18 +24,17 @@ BasePage {
         }
     }
 
-    property Trip trip: tripController.getCurrentTrip()
 
-    StackLayout {
-        id: stackView
-        anchors.fill: parent
-        currentIndex: currentIndex = tripController.hasWaitingTrip() ? 1 : 0
+//    StackLayout {
+//        id: stackView
+//        anchors.fill: parent
+//        currentIndex: currentIndex = tripController.hasWaitingTrip() ? 1 : 0
 
-        DescriptionText {
-            id: noWaitingTrips
-            Layout.alignment: Qt.AlignCenter
-            text: qsTr("There are no waiting trips...")
-        }
+//        DescriptionText {
+//            id: noWaitingTrips
+//            Layout.alignment: Qt.AlignCenter
+//            text: qsTr("There are no waiting trips...")
+//        }
 
         ColumnLayout {
             id: waiting
@@ -91,6 +92,6 @@ BasePage {
 
         }
 
-    }
+//    }
 
 }

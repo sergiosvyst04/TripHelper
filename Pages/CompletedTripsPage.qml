@@ -8,8 +8,6 @@ import "../Components"
 
 BasePage {
     backButtonVisible: true
-//    property CompletedTripsModel completedTrips: appController.completedTrips
-
 
     footer: Item{}
 
@@ -46,6 +44,9 @@ BasePage {
                 photoCount: model.takenPhotos
                 ideasCount: model.ideas
                 Component.onCompleted: setFlags(model.visitedCountries)
+                onClicked:{
+                    navigateToItem("qrc:/Pages/TripPage.qml", {tripIndex: index})
+                }
             }
         }
     }
