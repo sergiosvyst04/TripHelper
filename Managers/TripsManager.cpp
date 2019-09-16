@@ -14,7 +14,7 @@ TripData* TripsManager::activeTrip()
 
 //==============================================================================
 
-TripData& TripsManager::waitingTrip()
+TripData* TripsManager::waitingTrip()
 {
     return _tripsStorage.getWaitingTrip();
 }

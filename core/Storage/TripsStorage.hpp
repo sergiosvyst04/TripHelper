@@ -10,7 +10,7 @@ class TripsStorage : public QObject
     Q_OBJECT
 public:
     explicit TripsStorage(QObject *parent = nullptr);
-    TripData retrieveWaitingTrip();
+    TripData* retrieveWaitingTrip();
     TripData* retrieveActivetrip();
     void retrieveCompletedTrips();
 
@@ -22,7 +22,7 @@ public:
     QList<TripDay> parseTripDays(QJsonArray &tripDaysJsonArray);
 
     TripData* getActiveTrip();
-    TripData& getWaitingTrip();
+    TripData* getWaitingTrip();
     CompletedTripsModel* getCompletedTripsModel();
     
 signals:
@@ -32,7 +32,7 @@ public slots:
 private:
     CompletedTripsModel *_completedTripsModel;
     TripData *_activeTrip;
-    TripData _waitingTrip;
+    TripData *_waitingTrip;
 };
 
 #endif // TRIPSSTORAGE_HPP

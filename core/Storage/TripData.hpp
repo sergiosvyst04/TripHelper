@@ -10,7 +10,7 @@ struct TripData {
     QString name;
     QDateTime depatureDate;
     QList<TripDay> days;
-    BackPackModel *backpack = new BackPackModel();
+    QList<BackPackItem> backPackList;
 
     void removePhotoByPath(QString path) {
         for(int i = 0; i < days.size(); i++)

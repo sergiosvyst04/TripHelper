@@ -25,11 +25,7 @@ public:
     void setItemsList(const QList<BackPackItem>& itemsList);
 
 public slots:
-    void addItemToBackPack(const QString &item);
     bool checkIfBackPackIsFullyPacked();
-    bool checkIfItemExists(const QString &item);
-    bool removeItem(const QString &name);
-    int findDeletedItemIndex(const QString & name);
 
 private:
     QList<BackPackItem> _itemsList;

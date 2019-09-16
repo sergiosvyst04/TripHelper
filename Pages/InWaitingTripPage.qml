@@ -5,6 +5,7 @@ import "../Singletons"
 import "../Components"
 import Trip 1.0
 import BackPackModel 1.0
+import WaitingTripController 1.0
 import com.plm.utils 1.0
 
 BasePage {
@@ -17,10 +18,19 @@ BasePage {
         running: true
         repeat: true
         onTriggered: {
-            repeater.itemAt(0).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[0];
-            repeater.itemAt(1).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[1];
-            repeater.itemAt(2).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[2];
-            repeater.itemAt(3).timeLeft = Utils.calculateRemainigTime(trip.depatureDate)[3];
+            repeater.itemAt(0).timeLeft = Utils.calculateRemainigTime(waitingController.trip.depatureDate)[0];
+            repeater.itemAt(1).timeLeft = Utils.calculateRemainigTime(waitingController.trip.depatureDate)[1];
+            repeater.itemAt(2).timeLeft = Utils.calculateRemainigTime(waitingController.trip.depatureDate)[2];
+            repeater.itemAt(3).timeLeft = Utils.calculateRemainigTime(waitingController.trip.depatureDate )[3];
+        }
+    }
+
+    WaitingTripController {
+        id: waitingController
+
+        Component.onCompleted: {
+            intialize(appController)
+            tripName.text = waitingController.trip.name
         }
     }
 
@@ -45,7 +55,6 @@ BasePage {
             PrimaryLabel {
                 id: tripName
                 Layout.alignment: Qt.AlignHCenter
-                text: trip.name
             }
 
             RowLayout {
@@ -83,7 +92,7 @@ BasePage {
                 color: Colors.primaryColor
                 font: Fonts.openSansBold(18)
                 fontColor: Colors.white
-                onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml", {backPack : trip.backPack})
+                onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml")
             }
 
             Item {

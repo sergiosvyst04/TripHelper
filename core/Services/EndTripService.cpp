@@ -72,7 +72,6 @@ void EndTripService::endTrip()
     TripData* _completedTrip = _activeTrip;
     _activeTrip->days = {};
     _activeTrip->name = "";
-    _activeTrip->backpack->destroyed();
     _completedTripsModel->addTrip(*_completedTrip);
 }
 

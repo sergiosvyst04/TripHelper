@@ -18,6 +18,8 @@
 #include "core/Services/GalleryService.hpp"
 #include "core/Models/CompletedTripsModel.hpp"
 #include "core/Controllers/CompletedTripController.hpp"
+#include "core/Controllers/WaitingTripController.hpp"
+#include "core/Services/PackService.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +36,8 @@ int main(int argc, char *argv[])
 
 
     static auto *utils = new QMLUtils;
+    qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
+    qmlRegisterType<WaitingTripController>("WaitingTripController", 1, 0, "WaitingTripController");
     qmlRegisterType<CompletedTripController>("CompletedTripController", 1, 0, "CompletedTripController");
     qmlRegisterType<CompletedTripsModel>("CompletedTripsModel", 1, 0, "CompletedTripsModel");
     qmlRegisterType<GalleryService>("GalleryService", 1, 0, "GalleryService");

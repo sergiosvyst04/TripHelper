@@ -11,6 +11,7 @@ TripsStorage::TripsStorage(QObject *parent) : QObject(parent)
     _completedTripsModel = new CompletedTripsModel();
     retrieveCompletedTrips();
     _activeTrip = retrieveActivetrip();
+    _waitingTrip = retrieveWaitingTrip();
 }
 
 //==============================================================================
@@ -49,16 +50,16 @@ TripData* TripsStorage::retrieveActivetrip()
 
 //==============================================================================
 
-TripData TripsStorage::retrieveWaitingTrip()
+TripData* TripsStorage::retrieveWaitingTrip()
 {
     QJsonDocument jsonDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
 
     QJsonObject jsObject = jsonDoc.object();
     QJsonValue waiting = jsObject.value(QString("waiting"));
 
-//    Trip waitingTrip = parseTrip(waiting);
+    TripData *waitingTrip = parseTrip(waiting);
 
-//    return waitingTrip;
+    return waitingTrip;
 }
 
 //==============================================================================
@@ -89,7 +90,7 @@ TripData* TripsStorage::parseTrip(QJsonValue &activeTrip)
     QList<TripDay> tripDays = parseTripDays(daysArray);
 
     parsedActiveTrip->name = tripName;
-    parsedActiveTrip->backpack->setItemsList(backpack);
+    parsedActiveTrip->backPackList = backpack;
     parsedActiveTrip->days = tripDays;
     parsedActiveTrip->depatureDate = depatureDate;
 
@@ -196,7 +197,7 @@ TripData* TripsStorage::getActiveTrip()
 
 //==============================================================================
 
-TripData& TripsStorage::getWaitingTrip()
+TripData* TripsStorage::getWaitingTrip()
 {
     return _waitingTrip;
 }

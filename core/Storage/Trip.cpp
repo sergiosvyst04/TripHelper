@@ -12,7 +12,7 @@ Trip::Trip(TripData *tripData, QObject *parent)
     _name = tripData->name;
     tripData->depatureDate.setTime(QTime(0,0));
     _depatureDate = tripData->depatureDate;
-    _backPack = tripData->backpack;
+    _backPack = tripData->backPackList;
     _days = tripData->days;
 }
 
@@ -20,7 +20,7 @@ Trip::Trip(TripData *tripData, QObject *parent)
 
 Trip::Trip()
 {
-    _backPack = new BackPackModel();
+
 }
 
 //==============================================================================
@@ -135,9 +135,9 @@ QList<TripDay> Trip::getDays() const
 
 //==============================================================================
 
-BackPackModel *Trip::getBackPack()
+QList<BackPackItem>& Trip::getBackPack()
 {
-    qDebug() << "backpack return";
+
     return _backPack;
 }
 
@@ -234,7 +234,7 @@ void Trip::setDays(QList<TripDay> days)
 
 void Trip::setBackPackList(QList<BackPackItem> &itemslist)
 {
-    _backPack->setItemsList(itemslist);
+    _backPack = itemslist;
 }
 
 //==============================================================================

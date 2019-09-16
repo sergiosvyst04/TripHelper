@@ -21,6 +21,7 @@ SOURCES += \
     core/Controllers/CompletedTripController.cpp \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
+    core/Controllers/WaitingTripController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
     core/Models/CompletedTripsModel.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
     core/Models/TripDaysModel.cpp \
     core/Services/EndTripService.cpp \
     core/Services/GalleryService.cpp \
+    core/Services/PackService.cpp \
     core/Storage/Trip.cpp \
     core/Storage/TripsStorage.cpp \
         main.cpp \
@@ -60,6 +62,7 @@ HEADERS += \
     core/Controllers/CompletedTripController.hpp \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
+    core/Controllers/WaitingTripController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \
     core/Models/CompletedTripsModel.hpp \
@@ -68,6 +71,7 @@ HEADERS += \
     core/Models/TripDaysModel.hpp \
     core/Services/EndTripService.hpp \
     core/Services/GalleryService.hpp \
+    core/Services/PackService.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \

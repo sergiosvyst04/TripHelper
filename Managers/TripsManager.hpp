@@ -12,7 +12,7 @@ public:
     explicit TripsManager(QObject *parent = nullptr);
     
     TripData* activeTrip();
-    TripData& waitingTrip();
+    TripData* waitingTrip();
     CompletedTripsModel* completedTrips();
 
 signals:

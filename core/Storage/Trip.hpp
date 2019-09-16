@@ -15,6 +15,7 @@ class Trip : public QObject
     Q_OBJECT
     Q_PROPERTY(QList<TripDay> days READ getDays)
     Q_PROPERTY(QString name READ getName CONSTANT)
+    Q_PROPERTY(QDateTime depatureDate READ getDepatureDate CONSTANT)
     Q_PROPERTY(QList<QString> allCountries READ getAllCountries CONSTANT)
     enum State {
         InWaiting = 0,
@@ -31,7 +32,7 @@ public:
     int getState() const;
     QList<TripDay> getDays() const;
     TripDay& getCurrentTripDay();
-    BackPackModel *getBackPack();
+    QList<BackPackItem>& getBackPack();
 
     QList<QString> getAllCountries() const;
     QList<QString> getAllCities() const;
@@ -57,7 +58,7 @@ private:
     //    QDateTime _arrivalDate;
     int _state = State::InWaiting;
     QList <TripDay> _days;
-    BackPackModel *_backPack;
+    QList<BackPackItem> _backPack;
 };
 
 //Q_DECLARE_METATYPE(Trip);

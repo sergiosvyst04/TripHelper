@@ -4,18 +4,25 @@ import QtQuick.Layouts 1.12
 import Trip 1.0
 import BackpackFilterModel 1.0
 import BackPackModel 1.0
+import PackService 1.0
 import "../Singletons"
 import "../Components"
 
 BasePage {
     footer: Item{}
-
-    property BackPackModel backPack
     property bool warning: false
+
+    PackService {
+        id: packer
+
+        Component.onCompleted:{
+            intialize(appController)
+            backpackFilterModel.sourceModel = packer.backpack
+        }
+    }
 
     BackpackFilterModel {
         id: backpackFilterModel
-        sourceModel: backPack
     }
 
     ColumnLayout {
@@ -49,14 +56,14 @@ BasePage {
                 text: qsTr("Add")
                 onClicked:{
                     if(addItemField.text !== "") {
-                        if(backPack.checkIfItemExists(addItemField.text))
+                        if(packer.checkIfItemExists(addItemField.text))
                         {
                             warning = true
                             loader.active = true
                             addItemField.text = ""
                         }
                         else {
-                            backPack.addItemToBackPack(addItemField.text)
+                            packer.addItemToList(addItemField.text)
                             addItemField.text = ""
                         }
                     }
@@ -104,10 +111,6 @@ BasePage {
                 }
             }
         }
-    }
-
-    ListModel {
-        id: backPackItemsModel
     }
 
 
@@ -205,14 +208,14 @@ BasePage {
                         Layout.fillHeight: true
                         Layout.rightMargin: 25
 
-                        model: backPack
+                        model: packer.backpack
 
                         clip: true
                         spacing: 8
                         delegate: BackPackItem {
                             visible: model.isPacked
                             color: Colors.secondaryColor
-                            height: 33
+                            height: model.isPacked ? 33 : -8
                             width: parent.width
                             name: model.name
                             applyButton.visible: false

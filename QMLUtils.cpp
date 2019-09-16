@@ -25,7 +25,7 @@ QVector<QString> QMLUtils::calculateRemainigTime(QVariant departureTime)
     int secsPerMinute = 60;
 
 
-    int fullDaysLeft = QDateTime::currentDateTime().daysTo(departure) /*- 1*/;
+    int fullDaysLeft = QDateTime::currentDateTime().daysTo(departure) - 1;
     int hoursLeft = 0;
     int minutesLeft = 0;
     qint64 secondsLeft = QDateTime::currentDateTime().msecsTo(departure) / 1000;;

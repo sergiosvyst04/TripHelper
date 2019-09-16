@@ -66,20 +66,6 @@ QHash<int, QByteArray> BackPackModel::roleNames() const
     return roleNames;
 }
 
-//==============================================================================
-
-void BackPackModel::addItemToBackPack(const QString & item)
-{
-    BackPackItem newItem {
-        false,
-        item
-    };
-
-    beginInsertRows(QModelIndex(), rowCount(), rowCount());
-    _itemsList.push_back(newItem);
-    endInsertRows();
-    qDebug() << _itemsList.count();
-}
 
 //==============================================================================
 
@@ -95,46 +81,11 @@ bool BackPackModel::checkIfBackPackIsFullyPacked()
 
 //==============================================================================
 
-bool BackPackModel::checkIfItemExists(const QString &item)
-{
-    for(int i = 0; i < _itemsList.count(); i++)
-        if(_itemsList.at(i).name == item)
-            return true;
-    return false;
-}
-
-//==============================================================================
-
-bool BackPackModel::removeItem(const QString &name)
-{    
-    int indexOfDeletedItem = findDeletedItemIndex(name);
-
-    beginRemoveRows(QModelIndex(), indexOfDeletedItem, indexOfDeletedItem);
-    _itemsList.removeAt(indexOfDeletedItem);
-    endRemoveRows();
-
-    return true;
-}
-
-//==============================================================================
-
-int BackPackModel::findDeletedItemIndex(const QString &name)
-{
-    for( int i = 0; i < _itemsList.size(); i++)
-    {
-        if(_itemsList.at(i).name == name)
-            return i;
-    }
-    return 0;
-}
-
-//==============================================================================
-
 void BackPackModel::setItemsList(const QList<BackPackItem> &itemsList)
 {
-//    beginResetModel();
+    beginResetModel();
     _itemsList = itemsList;
 //    for(int i = 0; itemsList.size(); i++)
 //        _itemsList.push_back(itemsList.at(i));
-//    endResetModel();
+    endResetModel();
 }

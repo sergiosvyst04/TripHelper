@@ -33,7 +33,7 @@ Rectangle {
         running: false
 
         onStopped: {
-            model.isPacked = true
+            packer.packItem(name)
         }
     }
 
@@ -47,7 +47,7 @@ Rectangle {
         running: false
 
         onStopped:{
-            backPack.removeItem(name)
+            packer.removeItem(name)
         }
     }
 
