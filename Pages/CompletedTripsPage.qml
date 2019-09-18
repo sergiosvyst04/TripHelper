@@ -11,6 +11,11 @@ BasePage {
 
     footer: Item{}
 
+    CompletedTripsModel {
+        id: completedTripsModel
+        Component.onCompleted: getCompletedTrips(appController)
+    }
+
     ColumnLayout {
         spacing: 32
         anchors {
@@ -31,7 +36,7 @@ BasePage {
             Layout.fillWidth: true
 
             clip: true
-            model: tripsManager.completedTrips
+            model: completedTripsModel
             spacing: 15
 
             delegate:  TripItem {

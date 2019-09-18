@@ -13,5 +13,7 @@ struct BackPackItem {
     }
 };
 
+Q_DECLARE_METATYPE(BackPackItem);
+
 
 #endif // BACKPACKITEM_HPP

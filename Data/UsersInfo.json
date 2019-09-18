@@ -1,809 +1,1020 @@
 {
-
-    "waiting" : {
-        "exists" : false,
-        "name" : "Prague de javu",
-        "depatureDate" : "16/7/2020",
-        "backpack" : [
-            {
-                "name" : "socks",
-                "isPacked" : true
-            },
-            {
-                "name" : "trousers",
-                "isPacked" : false
-            },
-            {
-                "name" : "t-shirts",
-                "isPakced" : false
-            },
-            {
-                "name" : "documents",
-                "isPacked" : false
-            },
-            {
-               "name" : "medication",
-                "isPacked" : true
-            },
-            {
-                "name" : "money",
-                "isPacked" : false
-            }
+    "active": {
+        "backpack": [
         ],
-        "tripDays" : []
-
-    },
-
-    "active" : {
-        "exists" : true,
-        "name" : "Weekend in Paris",
-        "depatureDate" : "15/5/1997",
-        "backpack" : [],
-        "tripDays" : [
-            {
-                "photos" : [
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/emblem.png"
-                    }
-                ],
-                "notes" : ["today is very good day", "i swam in the ocean"],
-                "ideas" : ["tra lalalalala"],
-                "cities" : ["Stockholm", "Oslo"],
-                "countries" : ["Sweden", "Norway"]
-            },
-
-            {
-                "photos" : [
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/pyro.png"
-                    }
-                ],
-                "notes" : ["today is the best day in my life", "i went on the Everest"],
-                "ideas" : ["tra lalalalala 22222"],
-                "cities" : ["Katmandu"],
-                "countries" : ["Nepal"]
-            },
-
-            {
-                "photos" : [
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/fly.png"
-                    }
-                ],
-                "notes" : ["today i have traveled around the Spain", "i looked at corida", "i visited el classico"],
-                "ideas" : ["tra lalalalala 33", "tra lalalalala 44", "tra lalalalala 55"],
-                "cities" : ["Sevilla", "Valencia", "Madrid"],
-                "countries" : ["Spain"]
-            },
-
-            {
-                "photos" : [
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
-                    },
-                    {
-                        "date" : "23/6/2106",
-                        "location" : "England/Liverpool",
-                        "source": "qrc:/images/assets/icons/Flags/Chile.png"
-                    }
-                ],
-                "notes" : ["Livepool win today", "it is very good"],
-                "ideas" : ["i want...1", "i want...2", "i want...3"],
-                "cities" : ["London", "MAnchester", "Liverpool"],
-                "countries" : ["Great Britain"]
-            }
+        "depatureDate": "15/5/1997",
+        "name": "",
+        "tripDays": [
         ]
     },
-
-    "completed" : [
+    "completed": [
         {
-            "name" : "Best trip",
-            "depatureDate" : "5/2/1999",
-            "backpack" : [],
-            "tripDays" : [
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
-                        }
-                    ],
-                    "notes" : ["бу бу бу бу бу", "бла бла бла бла"],
-                    "ideas" : ["tra lalalalala"],
-                    "cities" : ["SriDjavenepuracotte", "Kolombo"],
-                    "countries" : ["Sri Lanka"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/travelagent.png"
-                        }
-                    ],
-                    "notes" : ["тра та та", "ту ту ту"],
-                    "ideas" : ["tra lalalalala 22222"],
-                    "cities" : ["Katmandu"],
-                    "countries" : ["Nepal"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/globe.png"
-                        }
-                    ],
-                    "notes" : ["today is very emotional day", "i rode at boat on Dunai"],
-                    "ideas" : ["tra lalalalala 33", "tra lalalalala 44", "tra lalalalala 55"],
-                    "cities" : ["Prague", "Budapest"],
-                    "countries" : ["Czech", "Hungary"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/front.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/front.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/front.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/front.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/front.png"
-                        }
-                    ],
-                    "notes" : ["ask dlksam dlkamdl kamd", "i was at Osvencim"],
-                    "ideas" : ["i want...4", "i want...5", "i want...6"],
-                    "cities" : ["Krakow", "Osvencim", "Prague"],
-                    "countries" : ["Poland", "Czech"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        }
-                    ],
-                    "ideas" : ["i want...asdasd", "i want...qweqwe", "i want...tyutyu"],
-                    "cities" : ["Berlin", "Frankfurth"],
-                    "countries" : ["Germany"]
-                }
+            "backpack": [
             ],
-            "arrivalDate" : "10/2/1999"
+            "depatureDate": "5/2/1999",
+            "name": "Best trip",
+            "tripDays": [
+                {
+                    "cities": [
+                        "SriDjavenepuracotte",
+                        "Kolombo"
+                    ],
+                    "countries": [
+                        "Sri Lanka"
+                    ],
+                    "ideas": [
+                        "tra lalalalala"
+                    ],
+                    "notes": [
+                        "бу бу бу бу бу",
+                        "бла бла бла бла"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Great Britain.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Katmandu"
+                    ],
+                    "countries": [
+                        "Nepal"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 22222"
+                    ],
+                    "notes": [
+                        "тра та та",
+                        "ту ту ту"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/travelagent.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Prague",
+                        "Budapest"
+                    ],
+                    "countries": [
+                        "Czech",
+                        "Hungary"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 33",
+                        "tra lalalalala 44",
+                        "tra lalalalala 55"
+                    ],
+                    "notes": [
+                        "today is very emotional day",
+                        "i rode at boat on Dunai"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/globe.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Krakow",
+                        "Osvencim",
+                        "Prague"
+                    ],
+                    "countries": [
+                        "Poland",
+                        "Czech"
+                    ],
+                    "ideas": [
+                        "i want...4",
+                        "i want...5",
+                        "i want...6"
+                    ],
+                    "notes": [
+                        "ask dlksam dlkamdl kamd",
+                        "i was at Osvencim"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/front.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/front.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/front.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/front.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/front.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Berlin",
+                        "Frankfurth"
+                    ],
+                    "countries": [
+                        "Germany"
+                    ],
+                    "ideas": [
+                        "i want...asdasd",
+                        "i want...qweqwe",
+                        "i want...tyutyu"
+                    ],
+                    "notes": [
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        }
+                    ]
+                }
+            ]
         },
-
         {
-            "name" : "Very very good trip",
-            "depatureDate" : "15/5/2007",
-            "backpack" : [],
-            "tripDays" : [
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/idea5.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/idea5.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/idea5.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/idea5.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/idea5.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        }
-                    ],
-                    "notes" : ["today is fircnaslknclkansc lkcnmalkscn", "i swam in the sea ocean sdkaslkdjaslkjdlksajdlksajd"],
-                    "ideas" : ["tra lalalalala"],
-                    "cities" : ["Antananarivo", "Kolombo"],
-                    "countries" : ["Madagascar", "Sri Lanka"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/call.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/call.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/call.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/call.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/call.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        }
-                    ],
-                    "notes" : ["pamparam pam pam pam pum", "i went on the Edsdansdlknaldska"],
-                    "ideas" : ["tra lalalalala 22222"],
-                    "cities" : ["lc;lamsc;", "kcja;lsjc;lacs"],
-                    "countries" : ["Germany"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
-                        }
-                    ],
-                    "notes" : ["today is very emotional day", "i rode at boat on Dunai"],
-                    "ideas" : ["tra lalalalala 33", "tra lalalalala 44", "tra lalalalala 55"],
-                    "cities" : ["Prague", "Budapest"],
-                    "countries" : ["Czech", "Hungary"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/start.png"
-                        }
-                    ],
-                    "notes" : ["ask dlksam dlkamdl kamd", "i was at Osvencim"],
-                    "ideas" : ["i want...4", "i want...5", "i want...6"],
-                    "cities" : ["Lviv", "Ternopil", "Rivane"],
-                    "countries" : ["Ukraine"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
-                        }
-                    ],
-                    "notes" : ["ask dlksam dlkamdl kamd", "i was at Osvencim"],
-                    "ideas" : ["i want...asdasd", "i want...qweqwe", "i want...tyutyu"],
-                    "cities" : ["Berlin", "Frankfurth"],
-                    "countries" : ["Germany"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/pyro.png"
-                        }
-                    ],
-                    "notes" : ["ask dlksam dlkamdl kamd", "i was at Osvencim"],
-                    "ideas" : ["i wasd;lk;lk", "i waslkdalksd", "i wa askdnla kalsdlka"],
-                    "cities" : ["Munich", "Dortmund"],
-                    "countries" : ["Germany"]
-                }
+            "backpack": [
             ],
-
-            "arrivalDate" : "21/5/2007"
+            "depatureDate": "15/5/2007",
+            "name": "Very very good trip",
+            "tripDays": [
+                {
+                    "cities": [
+                        "Antananarivo",
+                        "Kolombo"
+                    ],
+                    "countries": [
+                        "Madagascar",
+                        "Sri Lanka"
+                    ],
+                    "ideas": [
+                        "tra lalalalala"
+                    ],
+                    "notes": [
+                        "today is fircnaslknclkansc lkcnmalkscn",
+                        "i swam in the sea ocean sdkaslkdjaslkjdlksajdlksajd"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/idea5.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/idea5.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/idea5.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/idea5.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/idea5.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "lc;lamsc;",
+                        "kcja;lsjc;lacs"
+                    ],
+                    "countries": [
+                        "Germany"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 22222"
+                    ],
+                    "notes": [
+                        "pamparam pam pam pam pum",
+                        "i went on the Edsdansdlknaldska"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/call.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/call.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/call.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/call.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/call.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Prague",
+                        "Budapest"
+                    ],
+                    "countries": [
+                        "Czech",
+                        "Hungary"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 33",
+                        "tra lalalalala 44",
+                        "tra lalalalala 55"
+                    ],
+                    "notes": [
+                        "today is very emotional day",
+                        "i rode at boat on Dunai"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Humans-11-11-512.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Lviv",
+                        "Ternopil",
+                        "Rivane"
+                    ],
+                    "countries": [
+                        "Ukraine"
+                    ],
+                    "ideas": [
+                        "i want...4",
+                        "i want...5",
+                        "i want...6"
+                    ],
+                    "notes": [
+                        "ask dlksam dlkamdl kamd",
+                        "i was at Osvencim"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/start.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Berlin",
+                        "Frankfurth"
+                    ],
+                    "countries": [
+                        "Germany"
+                    ],
+                    "ideas": [
+                        "i want...asdasd",
+                        "i want...qweqwe",
+                        "i want...tyutyu"
+                    ],
+                    "notes": [
+                        "ask dlksam dlkamdl kamd",
+                        "i was at Osvencim"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Brazil.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Munich",
+                        "Dortmund"
+                    ],
+                    "countries": [
+                        "Germany"
+                    ],
+                    "ideas": [
+                        "i wasd;lk;lk",
+                        "i waslkdalksd",
+                        "i wa askdnla kalsdlka"
+                    ],
+                    "notes": [
+                        "ask dlksam dlkamdl kamd",
+                        "i was at Osvencim"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        }
+                    ]
+                }
+            ]
         },
-
-
         {
-            "name" : "Hungariant Chardash",
-            "depatureDate" : "28/8/2019",
-            "backpack" : [],
-            "tripDays" : [
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/emblem.png"
-                        }
-                    ],
-                    "notes" : ["today is fircnaslknclkansc lkcnmalkscn", "i swam in the sea ocean"],
-                    "ideas" : ["tra lalalalala"],
-                    "cities" : ["Lviv", "Budapest"],
-                    "countries" : ["Ukraine", "Hungary"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/visitedCities.png"
-                        }
-                    ],
-                    "notes" : ["pamparam pam pam pam pum", "i went on the Edsdansdlknaldska"],
-                    "ideas" : ["tra lalalalala 22222"],
-                    "cities" : ["Budapest", "Prague"],
-                    "countries" : ["Hungary", "Czech"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/redcross.png"
-                        }
-                    ],
-                    "notes" : ["today is very daskjdkjasd", "i rode at boat on Dunai"],
-                    "ideas" : ["tra lalalalala 33", "tra lalalalala 44", "tra lalalalala 55"],
-                    "cities" : ["Prague", "Budapest"],
-                    "countries" : ["Czech", "Hungary"]
-                },
-
-                {
-                    "photos" : [
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        },
-                        {
-                            "date" : "23/6/2106",
-                            "location" : "England/Liverpool",
-                            "source": "qrc:/images/assets/icons/apply.png"
-                        }
-                    ],
-                    "notes" : [" i have been in Hungary today", "i was at Osvencim"],
-                    "ideas" : ["i want...4", "i want...5", "i want...6"],
-                    "cities" : ["Budapest", "Lviv"],
-                    "countries" : ["Hungary", "Ukraine"]
-                }
+            "backpack": [
             ],
-
-            "arrivalDate" : "1/9/2019"
+            "depatureDate": "28/8/2019",
+            "name": "Hungariant Chardash",
+            "tripDays": [
+                {
+                    "cities": [
+                        "Lviv",
+                        "Budapest"
+                    ],
+                    "countries": [
+                        "Ukraine",
+                        "Hungary"
+                    ],
+                    "ideas": [
+                        "tra lalalalala"
+                    ],
+                    "notes": [
+                        "today is fircnaslknclkansc lkcnmalkscn",
+                        "i swam in the sea ocean"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Budapest",
+                        "Prague"
+                    ],
+                    "countries": [
+                        "Hungary",
+                        "Czech"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 22222"
+                    ],
+                    "notes": [
+                        "pamparam pam pam pam pum",
+                        "i went on the Edsdansdlknaldska"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/visitedCities.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Prague",
+                        "Budapest"
+                    ],
+                    "countries": [
+                        "Czech",
+                        "Hungary"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 33",
+                        "tra lalalalala 44",
+                        "tra lalalalala 55"
+                    ],
+                    "notes": [
+                        "today is very daskjdkjasd",
+                        "i rode at boat on Dunai"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/redcross.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Budapest",
+                        "Lviv"
+                    ],
+                    "countries": [
+                        "Hungary",
+                        "Ukraine"
+                    ],
+                    "ideas": [
+                        "i want...4",
+                        "i want...5",
+                        "i want...6"
+                    ],
+                    "notes": [
+                        " i have been in Hungary today",
+                        "i was at Osvencim"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/apply.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "backpack": [
+            ],
+            "depatureDate": "15/5/1997",
+            "name": "Tripyk",
+            "tripDays": [
+                {
+                    "cities": [
+                        "Stockholm",
+                        "Oslo"
+                    ],
+                    "countries": [
+                        "Sweden",
+                        "Norway"
+                    ],
+                    "ideas": [
+                        "tra lalalalala"
+                    ],
+                    "notes": [
+                        "today is very good day",
+                        "i swam in the ocean"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/emblem.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Katmandu"
+                    ],
+                    "countries": [
+                        "Nepal"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 22222"
+                    ],
+                    "notes": [
+                        "today is the best day in my life",
+                        "i went on the Everest"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/pyro.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "Sevilla",
+                        "Valencia",
+                        "Madrid"
+                    ],
+                    "countries": [
+                        "Spain"
+                    ],
+                    "ideas": [
+                        "tra lalalalala 33",
+                        "tra lalalalala 44",
+                        "tra lalalalala 55"
+                    ],
+                    "notes": [
+                        "today i have traveled around the Spain",
+                        "i looked at corida",
+                        "i visited el classico"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/fly.png"
+                        }
+                    ]
+                },
+                {
+                    "cities": [
+                        "London",
+                        "Manchester",
+                        "Liverpool"
+                    ],
+                    "countries": [
+                        "Great Britain"
+                    ],
+                    "ideas": [
+                        "i want...1",
+                        "i want...2",
+                        "i want...3"
+                    ],
+                    "notes": [
+                        "Livepool win today",
+                        "it is very good"
+                    ],
+                    "photos": [
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Chile.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Chile.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Chile.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Chile.png"
+                        },
+                        {
+                            "date": "23/6/2106",
+                            "location": "England/Liverpool",
+                            "source": "qrc:/images/assets/icons/Flags/Chile.png"
+                        },
+                        {
+                            "date": "18/9/2019",
+                            "location": "/",
+                            "source": "file:///home/sergio/Pictures/IMG_00000437.jpg"
+                        }
+                    ]
+                }
+            ]
         }
-    ]
-
+    ],
+    "waiting": {
+        "backpack": [
+            {
+                "isPacked": true,
+                "name": "socks"
+            },
+            {
+                "isPacked": false,
+                "name": "trousers"
+            },
+            {
+                "isPacked": false,
+                "name": "t-shirts"
+            },
+            {
+                "isPacked": false,
+                "name": "documents"
+            },
+            {
+                "isPacked": true,
+                "name": "medication"
+            },
+            {
+                "isPacked": false,
+                "name": "money"
+            }
+        ],
+        "depatureDate": "16/7/2020",
+        "name": "Prague de javu",
+        "tripDays": [
+        ]
+    }
 }

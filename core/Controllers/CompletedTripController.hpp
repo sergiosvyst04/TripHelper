@@ -4,6 +4,8 @@
 #include <QObject>
 #include "core/Controllers/ApplicationController.hpp"
 
+class Trip;
+
 class CompletedTripController : public QObject
 {
     Q_OBJECT

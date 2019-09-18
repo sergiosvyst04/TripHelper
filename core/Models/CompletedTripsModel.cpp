@@ -1,6 +1,5 @@
 #include "CompletedTripsModel.hpp"
 #include "QDebug"
-#include "core/Controllers/ApplicationController.hpp"
 
 CompletedTripsModel::CompletedTripsModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -60,10 +59,10 @@ QHash<int, QByteArray> CompletedTripsModel::roleNames() const
 
 //==============================================================================
 
-void CompletedTripsModel::getCompletedTrips(QList<TripData> completedTrips)
+void CompletedTripsModel::getCompletedTrips(ApplicationController *applicationController)
 {
     beginResetModel();
-    _completedTrips = completedTrips;
+    _completedTrips = *applicationController->getTripsManager().completedTrips();
     endResetModel();
 }
 
@@ -77,9 +76,3 @@ void CompletedTripsModel::addTrip(const TripData &completedTrip)
 }
 
 //==============================================================================
-
-TripData CompletedTripsModel::fetchCompletedTrip(int index)
-{
-    return _completedTrips.at(index);
-}
-

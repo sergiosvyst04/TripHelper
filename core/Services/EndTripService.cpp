@@ -10,8 +10,11 @@ EndTripService::EndTripService(QObject *parent) : QObject(parent)
 
 void EndTripService::intialize(ApplicationController *applicationController)
 {
-    _completedTripsModel = applicationController->getTripsManager().completedTrips();
+    _completedTrips = applicationController->getTripsManager().completedTrips();
     _activeTrip = applicationController->getTripsManager().activeTrip();
+    _tripsStorage = applicationController->getTripsManager().getStorage();
+
+    connect(this, &EndTripService::tripEnded, _tripsStorage, &TripsStorage::updateTrips);
 }
 
 //==============================================================================
@@ -69,10 +72,11 @@ QVector<QString> EndTripService::getAllCountries()
 
 void EndTripService::endTrip()
 {
-    TripData* _completedTrip = _activeTrip;
+    TripData completedTrip = *_activeTrip;
     _activeTrip->days = {};
     _activeTrip->name = "";
-    _completedTripsModel->addTrip(*_completedTrip);
+    _completedTrips->push_back(completedTrip);
+    tripEnded();
 }
 
 

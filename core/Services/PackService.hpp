@@ -18,6 +18,7 @@ signals:
      void backpackChanged();
 public slots:
     BackPackModel* getBackpackModel();
+
     void addItemToList(QString item);
     void removeItem(QString item);
     void packItem(QString item);
@@ -33,6 +34,7 @@ public slots:
 private:
     BackPackModel *_backpackModel;
     TripData *_waitingTrip;
+    TripsStorage *_tripsStorage;
 };
 
 #endif // PACKSERVICE_HPP

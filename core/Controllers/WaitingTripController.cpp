@@ -1,6 +1,8 @@
 #include "WaitingTripController.hpp"
 #include "QDebug"
 
+#include "core/Storage/Trip.hpp"
+
 WaitingTripController::WaitingTripController(QObject *parent) : QObject(parent)
 {
 
@@ -10,9 +12,8 @@ WaitingTripController::WaitingTripController(QObject *parent) : QObject(parent)
 
 void WaitingTripController::intialize(ApplicationController *applicationController)
 {
-//    _backPackModel = new BackPackModel();
     _waitingTrip = applicationController->getTripsManager().waitingTrip();
-//    _backPackModel->setItemsList(_waitingTrip->backPackList);
+
 }
 
 //==============================================================================
@@ -25,7 +26,3 @@ Trip* WaitingTripController::getTrip()
 
 //==============================================================================
 
-//BackPackModel* WaitingTripController::getBackpack()
-//{
-//    return _backPackModel;
-//}

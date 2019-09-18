@@ -28,4 +28,6 @@ struct TripData {
     }
 };
 
+Q_DECLARE_METATYPE(TripData);
+
 #endif // TRIPDATA_HPP

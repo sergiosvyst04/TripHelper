@@ -8,7 +8,7 @@ class ApplicationController : public QObject
 {
     Q_OBJECT
 public:
-    explicit ApplicationController(TripsManager &tripsManager ,QObject *parent = nullptr);
+    explicit ApplicationController(TripsManager &tripsManager, QObject *parent = nullptr);
     TripsManager& getTripsManager();
 
 signals:

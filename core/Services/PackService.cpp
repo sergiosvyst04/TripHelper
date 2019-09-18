@@ -2,7 +2,7 @@
 
 PackService::PackService(QObject *parent) : QObject(parent)
 {
-   connect(this, &PackService::backpackChanged, this, &PackService::updateModel);
+    connect(this, &PackService::backpackChanged, this, &PackService::updateModel);
 }
 
 //==============================================================================
@@ -11,8 +11,11 @@ void PackService::intialize(ApplicationController *applicationController)
 {
     _backpackModel = new BackPackModel();
     _waitingTrip = applicationController->getTripsManager().waitingTrip();
+    _tripsStorage = applicationController->getTripsManager().getStorage();
     QList<BackPackItem> itemsList = applicationController->getTripsManager().waitingTrip()->backPackList;
     _backpackModel->setItemsList(itemsList);
+
+    connect(this, &PackService::backpackChanged, _tripsStorage, &TripsStorage::updateTrips);
 }
 
 //==============================================================================

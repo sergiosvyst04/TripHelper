@@ -24,12 +24,14 @@ public:
 
 
 signals:
+    void tripEnded();
 
 public slots:
 
 private:
-    CompletedTripsModel *_completedTripsModel;
+    QList<TripData> *_completedTrips;
     TripData *_activeTrip;
+    TripsStorage *_tripsStorage;
 };
 
 #endif // ENDTRIPSERVICE_HPP

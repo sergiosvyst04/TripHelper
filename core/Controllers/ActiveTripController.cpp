@@ -14,6 +14,7 @@ void ActiveTripController::intialize(ApplicationController *applicationControlle
 {
     _activeTrip = applicationController->getTripsManager().activeTrip();
     _locationController = locationController;
+    _tripsStorage = applicationController->getTripsManager().getStorage();
 }
 
 //==============================================================================
@@ -22,6 +23,7 @@ void ActiveTripController::addNote(const QString &newNote)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.notes.push_back(newNote);
+    _tripsStorage->updateTrips();
 }
 
 //==============================================================================
@@ -30,6 +32,7 @@ void ActiveTripController::addNewIdea(const QString &newIdea)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.ideas.push_back(newIdea);
+    _tripsStorage->updateTrips();
 }
 
 //==============================================================================
@@ -60,6 +63,7 @@ void ActiveTripController::addNewPhoto(const QString &path)
     };
 
     currentTripDay.photos.push_back(newPhoto);
+    _tripsStorage->updateTrips();
 }
 
 //==============================================================================

@@ -1,8 +1,9 @@
 #include "ApplicationController.hpp"
 
+
 ApplicationController::ApplicationController(TripsManager &tripsManager ,QObject *parent)
-    : _tripsManager(tripsManager),
-      QObject(parent)
+    : QObject(parent),
+      _tripsManager(tripsManager)
 {
 
 }

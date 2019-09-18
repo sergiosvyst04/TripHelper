@@ -6,11 +6,12 @@
 #include "core/Models/BackPackModel.hpp"
 #include "core/Controllers/ApplicationController.hpp"
 
+class Trip;
+
 class WaitingTripController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Trip* trip READ getTrip)
-//    Q_PROPERTY(BackPackModel* backPack READ getBackpack)
 
 public:
     explicit WaitingTripController(QObject *parent = nullptr);
@@ -20,11 +21,8 @@ signals:
 
 public slots:
     Trip* getTrip();
-//    BackPackModel* getBackpack();
-
 private:
     TripData *_waitingTrip;
-//    BackPackModel *_backPackModel;
 };
 
 #endif // WAITINGTRIPCONTROLLER_HPP

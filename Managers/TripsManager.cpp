@@ -21,7 +21,14 @@ TripData* TripsManager::waitingTrip()
 
 //==============================================================================
 
-CompletedTripsModel* TripsManager::completedTrips()
+QList<TripData>* TripsManager::completedTrips()
 {
-    return _tripsStorage.getCompletedTripsModel();
+    return _tripsStorage.getCompletedTrips();
+}
+
+//==============================================================================
+
+TripsStorage* TripsManager::getStorage()
+{
+    return &_tripsStorage;
 }

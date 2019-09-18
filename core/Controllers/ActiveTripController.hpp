@@ -35,6 +35,7 @@ public slots:
 private:
     TripData *_activeTrip;
     LocationController *_locationController;
+    TripsStorage *_tripsStorage;
 
 };
 

@@ -21,6 +21,7 @@
 #include "core/Controllers/WaitingTripController.hpp"
 #include "core/Services/PackService.hpp"
 
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
