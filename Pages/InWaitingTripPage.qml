@@ -62,7 +62,7 @@ BasePage {
                 spacing: 15
                 Repeater {
                     id: repeater
-                    model: ["Days", "Hours", "Minutes", "Seconds"]
+                    model: ["Dayss", "Hours", "Minutes", "Seconds"]
 
                     delegate: ColumnLayout {
                         property alias timeLeft: left.text
