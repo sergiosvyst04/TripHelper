@@ -34,8 +34,6 @@ BasePage {
             spacing: 20
             model: goalsModel
 
-            onCountChanged: console.log("listView count changed to : ", count )
-
             delegate:  PlanItem {
                 width: parent.width
                 height: 100

@@ -66,4 +66,7 @@
         <file>assets/icons/Flags/Czech.png</file>
     </qresource>
     <qresource prefix="/"/>
+    <qresource prefix="/db">
+        <file>assets/UsersData.json</file>
+    </qresource>
 </RCC>

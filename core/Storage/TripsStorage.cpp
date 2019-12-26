@@ -5,11 +5,11 @@
 #include "QJsonObject"
 #include "QJsonArray"
 #include "QDebug"
+#include "QStandardPaths"
 
 
 TripsStorage::TripsStorage(QObject *parent) : QObject(parent)
 {  
-    qDebug() << "TripsStorage was CREATED";
     _completedTrips = new QList<TripData>();
     loadTrips();
 }
@@ -28,7 +28,7 @@ void TripsStorage::loadTrips()
 
 void TripsStorage::retrieveCompletedTrips()
 {
-    QJsonDocument jsonDocument = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
+    QJsonDocument jsonDocument = readJsonData(":/db/assets/UsersData.json");
     QJsonObject jsonObject = jsonDocument.object();
 
     QJsonValue completed = jsonObject.value(QString("completed"));
@@ -46,12 +46,13 @@ void TripsStorage::retrieveCompletedTrips()
 
 TripData* TripsStorage::retrieveActivetrip()
 {
-    QJsonDocument jsDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
+    QJsonDocument jsDoc = readJsonData(":/db/assets/UsersData.json");
     QJsonObject jsObject = jsDoc.object();
 
     QJsonValue active = jsObject.value(QString("active"));
-    TripData *activeTrip = parseTrip(active);
 
+    TripData *activeTrip = parseTrip(active);
+    qDebug() << activeTrip->name;
     return activeTrip;
 }
 
@@ -59,7 +60,7 @@ TripData* TripsStorage::retrieveActivetrip()
 
 TripData* TripsStorage::retrieveWaitingTrip()
 {
-    QJsonDocument jsonDoc = readJsonData("/home/sergio/projects/Triphelper/Data/UsersInfo.json");
+    QJsonDocument jsonDoc = readJsonData(":/db/assets/UsersData.json");
 
     QJsonObject jsObject = jsonDoc.object();
     QJsonValue waiting = jsObject.value(QString("waiting"));
@@ -76,8 +77,8 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
     QFile file(path);
     file.open(QFile::ReadOnly | QIODevice::Text);
     QString jsonData = file.readAll();
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData.toUtf8());
 
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData.toUtf8());
     return jsonDoc;
 }
 
@@ -85,12 +86,20 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
 
 void TripsStorage::writeJsonFile(const QString &path, QJsonDocument &jsonDoc)
 {
-    QFile file(path);
-    file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate);
+
+    QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+    if(!file.open(QFile::WriteOnly | QFile::Text))
+    {
+        qDebug() << "not opened";
+        return;
+    }
+    qDebug() << "witing enabled";
     file.write(jsonDoc.toJson());
     file.close();
     loadTrips();
+
 }
+
 
 //==============================================================================
 
@@ -231,7 +240,6 @@ QList<TripData>* TripsStorage::getCompletedTrips()
 
 void TripsStorage::updateTrips()
 {
-    qDebug() << "completed trips size = " << _completedTrips->size();
     QJsonDocument jsonDocument;
     QJsonObject rootObject;
     QJsonObject activeTrip = parseTripToJson(_activeTrip);
@@ -243,7 +251,7 @@ void TripsStorage::updateTrips()
     rootObject.insert("waiting", waitingTrip);
     jsonDocument.setObject(rootObject);
 
-    writeJsonFile("/home/sergio/projects/Triphelper/Data/UsersInfo.json", jsonDocument);
+    writeJsonFile(":/db/assets/UsersData.json", jsonDocument);
 }
 
 //==============================================================================

@@ -15,6 +15,7 @@ void ActiveTripController::intialize(ApplicationController *applicationControlle
     _activeTrip = applicationController->getTripsManager().activeTrip();
     _locationController = locationController;
     _tripsStorage = applicationController->getTripsManager().getStorage();
+//    qDebug() << "ActiveTripController was intialized with trip : " << _activeTrip->name;
 }
 
 //==============================================================================
