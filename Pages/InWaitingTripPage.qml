@@ -34,73 +34,59 @@ BasePage {
         }
     }
 
+    ColumnLayout {
+        id: waiting
+        Layout.fillHeight: true
+        Layout.rightMargin: 45
+        Layout.leftMargin: 45
 
-//    StackLayout {
-//        id: stackView
-//        anchors.fill: parent
-//        currentIndex: currentIndex = tripController.hasWaitingTrip() ? 1 : 0
+        PrimaryLabel {
+            id: tripName
+            Layout.alignment: Qt.AlignHCenter
+        }
 
-//        DescriptionText {
-//            id: noWaitingTrips
-//            Layout.alignment: Qt.AlignCenter
-//            text: qsTr("There are no waiting trips...")
-//        }
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            spacing: 15
+            Repeater {
+                id: repeater
+                model: ["Dayss", "Hours", "Minutes", "Seconds"]
 
-        ColumnLayout {
-            id: waiting
-            Layout.fillHeight: true
-            Layout.rightMargin: 45
-            Layout.leftMargin: 45
+                delegate: ColumnLayout {
+                    property alias timeLeft: left.text
+                    DescriptionText {
+                        id: left
+                        Layout.alignment: Qt.AlignHCenter
+                        font: Fonts.openSans(18, Font.MixedCase)
+                    }
 
-            PrimaryLabel {
-                id: tripName
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-                spacing: 15
-                Repeater {
-                    id: repeater
-                    model: ["Dayss", "Hours", "Minutes", "Seconds"]
-
-                    delegate: ColumnLayout {
-                        property alias timeLeft: left.text
-                        DescriptionText {
-                            id: left
-                            Layout.alignment: Qt.AlignHCenter
-                            font: Fonts.openSans(18, Font.MixedCase)
-                        }
-
-                        DescriptionText {
-                            font: Fonts.openSans(18, Font.MixedCase)
-                            text: modelData
-                        }
+                    DescriptionText {
+                        font: Fonts.openSans(18, Font.MixedCase)
+                        text: modelData
                     }
                 }
             }
-
-            Item {
-                Layout.fillHeight: true
-            }
-
-            ColoredButton {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.preferredWidth: 250
-                Layout.preferredHeight: 90
-                text: qsTr("Pack Bag")
-                color: Colors.primaryColor
-                font: Fonts.openSansBold(18)
-                fontColor: Colors.white
-                onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml")
-            }
-
-            Item {
-                Layout.fillHeight: true
-            }
-
         }
 
-//    }
+        Item {
+            Layout.fillHeight: true
+        }
+
+        ColoredButton {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: 250
+            Layout.preferredHeight: 90
+            text: qsTr("Pack Bag")
+            color: Colors.primaryColor
+            font: Fonts.openSansBold(18)
+            fontColor: Colors.white
+            onClicked: navigateToItem("qrc:/Pages/MakeListPage.qml")
+        }
+
+        Item {
+            Layout.fillHeight: true
+        }
+
+    }
 
 }

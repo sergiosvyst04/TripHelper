@@ -27,5 +27,6 @@ QtObject {
     readonly property color lightBlue: "#00F0FF"
     readonly property color orange: "#FF4040"
     readonly property color darkRed: "#A90000"
+    readonly property color addToListButtonColor: "#7EFF1A"
 
 }

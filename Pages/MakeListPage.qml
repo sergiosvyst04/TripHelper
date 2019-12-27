@@ -34,11 +34,38 @@ BasePage {
             bottomMargin: 20
         }
 
-        Image {
-            Layout.alignment: Qt.AlignHCenter
-            opacity: 0.5
-            source: "qrc:/images/assets/icons/list.png"
-            sourceSize: Qt.size(140, 140)
+        RowLayout {
+
+            Image {
+                id: image
+                Layout.alignment: Qt.AlignHCenter
+                opacity: 0.5
+                source: "qrc:/images/assets/icons/list.png"
+                sourceSize: Qt.size(140, 140)
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            ColoredButton {
+                Layout.preferredHeight: image.height / 2
+                Layout.preferredWidth: image.width
+                color: Colors.primaryColor
+                text: qsTr("Go to checklist")
+                layer.enabled: false
+                fontColor: Colors.white
+                font.pixelSize: 12
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop { position: 1.0; color: Colors.checkboxColor}
+                    }
+                }
+                onClicked: navigateToItem("qrc:/Pages/CheckListPage.qml", {packer : packer})
+            }
+
         }
 
         RowLayout {

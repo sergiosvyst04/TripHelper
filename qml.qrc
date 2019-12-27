@@ -62,5 +62,7 @@
         <file>Pages/TripPage.qml</file>
         <file>Components/FlagsList.qml</file>
         <file>Components/TripDayViewer.qml</file>
+        <file>Pages/CheckListPage.qml</file>
+        <file>Components/CheckListItem.qml</file>
     </qresource>
 </RCC>
