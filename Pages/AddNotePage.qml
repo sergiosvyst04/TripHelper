@@ -12,7 +12,9 @@ BasePage {
     property var activeTrip
     onNextButtonClicked:{
         activeTrip.addNote(textArea.text)
+        loader.active = true
     }
+    nextButtonEnabled: textArea.length > 0
 
     ColumnLayout {
         spacing: 34
@@ -86,4 +88,72 @@ BasePage {
         }
     }
 
+    Loader {
+        id: loader
+
+        active: false
+
+
+        sourceComponent:  Component {
+
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 150
+                implicitWidth: 232
+
+                padding: 0
+
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.45; color: Colors.white }
+                    }
+                }
+
+                onAboutToHide: loader.active = false
+
+                ColumnLayout {
+                    anchors{
+                        fill: parent
+                        topMargin: 30
+                        bottomMargin: 20
+                        leftMargin: 10
+                        rightMargin: 10
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: parent.width
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        text: qsTr("Note was saved for current day")
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: 80
+                        Layout.preferredHeight: 40
+                        fontColor: Colors.white
+                        text: qsTr("Ok")
+                        layer.enabled: false
+                        color: Colors.primaryColor
+                        onClicked:{
+                            loader.active = false
+                            navigateBack()
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

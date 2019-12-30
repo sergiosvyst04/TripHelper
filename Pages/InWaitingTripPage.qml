@@ -36,9 +36,11 @@ BasePage {
 
     ColumnLayout {
         id: waiting
-        Layout.fillHeight: true
-        Layout.rightMargin: 45
-        Layout.leftMargin: 45
+        anchors {
+            fill: parent
+        }
+
+        spacing: 50
 
         PrimaryLabel {
             id: tripName
@@ -46,6 +48,7 @@ BasePage {
         }
 
         RowLayout {
+            Layout.fillWidth: true
             Layout.alignment: Qt.AlignHCenter
             spacing: 15
             Repeater {
@@ -68,9 +71,7 @@ BasePage {
             }
         }
 
-        Item {
-            Layout.fillHeight: true
-        }
+
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter
@@ -86,6 +87,7 @@ BasePage {
         Item {
             Layout.fillHeight: true
         }
+
 
     }
 

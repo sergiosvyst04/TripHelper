@@ -9,8 +9,7 @@ BasePage {
     nextButtonText: qsTr("Start")
     backButtonVisible: true
     onNextButtonClicked: {
-//        tripsModel.addTrip(tripName.text, dateField.depatureDate)
-        tripController.createTrip(tripName.text, dateField.depatureDate)
+        loader.active = true
     }
 
     nextButtonEnabled: tripName.text != "" && dateField.fieldText != ""
@@ -54,4 +53,74 @@ BasePage {
         }
     }
 
+    Loader {
+        id: loader
+        active:  false
+
+        sourceComponent:  Component {
+            id: addIdeaPopup
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 150
+                implicitWidth: 232
+
+                padding: 0
+
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.45; color: Colors.white }
+                    }
+                }
+
+                onAboutToHide: loader.active = false
+
+                ColumnLayout {
+                    anchors{
+                        fill: parent
+                        topMargin: 20
+                        bottomMargin: 20
+                        leftMargin: 10
+                        rightMargin: 10
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: parent.width
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        textFormat: Text.StyledText
+                        font: Fonts.openSans(13, Font.MixedCase)
+                        text: qsTr("<b>%1</b> was succesfully added to your trips").arg(tripName.text)
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
+                    ColoredButton {
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 100
+                        Layout.alignment: Qt.AlignHCenter
+                        fontColor: Colors.white
+                        color: Colors.primaryColor
+                        text: qsTr("Ok")
+                        layer.enabled: false
+                        onClicked: {
+                            loader.active = false
+                            navigateBack()
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+    }
 }
