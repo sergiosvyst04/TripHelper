@@ -9,7 +9,6 @@ ComboBox {
     id: root
     width: parent.width
 
-    model: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 
 
     delegate: ColoredButton {
@@ -39,7 +38,7 @@ ComboBox {
 
             DescriptionText {
                 font: Fonts.openSans(16)
-                text: modelData
+                text: model.location
             }
 
             Item {
@@ -106,14 +105,14 @@ ComboBox {
         }
 
         background: Rectangle {
-           layer.enabled: true
-           layer.effect: DropShadow {
-               color: "lightgrey"
-               horizontalOffset: 0
-               verticalOffset: 5
-               radius: 15
-               samples: 12
-           }
+            layer.enabled: true
+            layer.effect: DropShadow {
+                color: "lightgrey"
+                horizontalOffset: 0
+                verticalOffset: 5
+                radius: 15
+                samples: 12
+            }
         }
     }
 

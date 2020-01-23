@@ -3,11 +3,32 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import "../Components"
 import "../Singletons"
+import CountriesCitiesModel 1.0
 
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Get started")
-    onNextButtonClicked: navigateToItem("qrc:/Pages/MainPage.qml")
+    onNextButtonClicked: {
+        createUser()
+        navigateToItem("qrc:/Pages/MainPage.qml")
+    }
+
+    property var userData
+
+    function createUser()
+    {
+        console.log("create user with email : ", userData.email, ", password : ", userData.password)
+        console.log("country residence : ", countryComboBox.currentText, ", city residence : ", cityComboBox.currentText)
+    }
+
+    CountriesCitiesModel {
+        id: countriesModel
+        Component.onCompleted: getCountries()
+    }
+
+    CountriesCitiesModel {
+        id: citiesModel
+    }
 
     ColumnLayout {
         spacing: 35
@@ -44,10 +65,13 @@ BasePage {
                 id: countryComboBox
                 Layout.preferredHeight: 30
                 currentIndex: -1
+                model: countriesModel
+
                 onActivated: {
                     currentIndex = index
+                    cityComboBox.enabled = true
+                    citiesModel.getCities(textAt(currentIndex))
                 }
-
             }
         }
 
@@ -66,7 +90,10 @@ BasePage {
             LocationComboBox {
                 id: cityComboBox
                 Layout.preferredHeight: 30
+
+                enabled: false
                 currentIndex: -1
+                model: citiesModel
                 onActivated: {
                     currentIndex = index
                 }

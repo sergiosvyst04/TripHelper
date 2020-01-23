@@ -6,8 +6,8 @@ import "../Components"
 
 BasePage {
     nextButtonVisible: true
-    nextButtonEnabled: email.validated && password.validated && confirmPassword.validated && fullName.text.length > 3
-    onNextButtonClicked: navigateToItem("qrc:/Pages/CreateAccountNextPage.qml")
+    nextButtonEnabled: emailField.validated && passwordField.validated && confirmPassword.validated && fullName.text.length > 3
+    onNextButtonClicked: navigateToItem("qrc:/Pages/CreateAccountNextPage.qml", { userData : {email : emailField.text, password : passwordField.text} })
 
     ColumnLayout {
         spacing: 61
@@ -36,7 +36,7 @@ BasePage {
             }
 
             LabeledTextEdit {
-                id: email
+                id: emailField
                 Layout.fillWidth: true
                 label: qsTr("Email")
                 validator: Utils.validateEmail
@@ -46,7 +46,7 @@ BasePage {
             }
 
             LabeledTextEdit {
-                id: password
+                id: passwordField
                 Layout.fillWidth: true
                 label: qsTr("Password")
                 validator: Utils.validatePassword
@@ -67,7 +67,7 @@ BasePage {
                 validated: false
 
                 onTextChanged: {
-                    if(password.text === confirmPassword.text) {
+                    if(passwordField.text === confirmPassword.text) {
                         validated = true
                     }
                     else{
@@ -76,8 +76,6 @@ BasePage {
                 }
             }
         }
-
-
     }
 
 }

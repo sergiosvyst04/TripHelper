@@ -20,6 +20,7 @@
 #include "core/Controllers/CompletedTripController.hpp"
 #include "core/Controllers/WaitingTripController.hpp"
 #include "core/Services/PackService.hpp"
+#include <core/Models/CountriesCitiesModel.hpp>
 
 
 int main(int argc, char *argv[])
@@ -36,6 +37,7 @@ int main(int argc, char *argv[])
     ApplicationController appController(tripsManager);
 
 
+
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
     qmlRegisterType<WaitingTripController>("WaitingTripController", 1, 0, "WaitingTripController");
@@ -50,6 +52,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<PhotosModel>("PhotosModel", 1, 0, "PhotosModel");
     qmlRegisterType<TripDayController>("TripDayController", 1, 0, "TripDayController");
     qmlRegisterType<EndTripService>("EndTripService", 1, 0, "EndTripService");
+    qmlRegisterType<CountriesCitiesModel>("CountriesCitiesModel", 1, 0, "CountriesCitiesModel");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {
@@ -64,8 +67,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("locationController", &locationController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     
-    
-    
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

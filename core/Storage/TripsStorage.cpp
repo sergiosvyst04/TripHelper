@@ -28,12 +28,13 @@ void TripsStorage::loadTrips()
 
 void TripsStorage::retrieveCompletedTrips()
 {
-    QJsonDocument jsonDocument = readJsonData(":/db/assets/UsersData.json");
+    QJsonDocument jsonDocument = readJsonData(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+    
     QJsonObject jsonObject = jsonDocument.object();
-
+    
     QJsonValue completed = jsonObject.value(QString("completed"));
     QJsonArray jsonTripsVector = completed.toArray();
-
+    
     for(int i = 0; i < jsonTripsVector.size(); i++)
     {
         QJsonValue compTrip = jsonTripsVector.at(i);
@@ -46,11 +47,11 @@ void TripsStorage::retrieveCompletedTrips()
 
 TripData* TripsStorage::retrieveActivetrip()
 {
-    QJsonDocument jsDoc = readJsonData(":/db/assets/UsersData.json");
+    QJsonDocument jsDoc = readJsonData(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     QJsonObject jsObject = jsDoc.object();
-
+    
     QJsonValue active = jsObject.value(QString("active"));
-
+    
     TripData *activeTrip = parseTrip(active);
     qDebug() << activeTrip->name;
     return activeTrip;
@@ -60,13 +61,13 @@ TripData* TripsStorage::retrieveActivetrip()
 
 TripData* TripsStorage::retrieveWaitingTrip()
 {
-    QJsonDocument jsonDoc = readJsonData(":/db/assets/UsersData.json");
-
+    QJsonDocument jsonDoc = readJsonData(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+    
     QJsonObject jsObject = jsonDoc.object();
     QJsonValue waiting = jsObject.value(QString("waiting"));
-
+    
     TripData *waitingTrip = parseTrip(waiting);
-
+    
     return waitingTrip;
 }
 
@@ -77,7 +78,7 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
     QFile file(path);
     file.open(QFile::ReadOnly | QIODevice::Text);
     QString jsonData = file.readAll();
-
+    
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData.toUtf8());
     return jsonDoc;
 }
@@ -86,18 +87,18 @@ QJsonDocument TripsStorage::readJsonData(const QString &path)
 
 void TripsStorage::writeJsonFile(const QString &path, QJsonDocument &jsonDoc)
 {
-
     QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     if(!file.open(QFile::WriteOnly | QFile::Text))
     {
         qDebug() << "not opened";
         return;
     }
-    qDebug() << "witing enabled";
+    
+    
     file.write(jsonDoc.toJson());
     file.close();
     loadTrips();
-
+    
 }
 
 
@@ -106,21 +107,21 @@ void TripsStorage::writeJsonFile(const QString &path, QJsonDocument &jsonDoc)
 TripData* TripsStorage::parseTrip(QJsonValue &activeTrip)
 {
     TripData *parsedActiveTrip = new TripData();
-
+    
     QString tripName = activeTrip["name"].toString();
     QDateTime depatureDate = QDateTime::fromString(activeTrip["depatureDate"].toString(), "d/M/yyyy");
     QVector<QVariant> jsonBackpack = activeTrip["backpack"].toArray().toVariantList().toVector();
     QList<BackPackItem> backpack = parseBackPack(jsonBackpack);
-
+    
     QJsonArray daysArray = activeTrip["tripDays"].toArray();
-
+    
     QList<TripDay> tripDays = parseTripDays(daysArray);
-
+    
     parsedActiveTrip->name = tripName;
     parsedActiveTrip->backPackList = backpack;
     parsedActiveTrip->days = tripDays;
     parsedActiveTrip->depatureDate = depatureDate;
-
+    
     return parsedActiveTrip;
 }
 
@@ -129,29 +130,29 @@ TripData* TripsStorage::parseTrip(QJsonValue &activeTrip)
 QList<TripDay> TripsStorage::parseTripDays(QJsonArray &tripDaysJsonArray)
 {
     QList<TripDay> tripDays;
-
+    
     for(int i = 0; i < tripDaysJsonArray.size(); i++)
     {
         TripDay tripDay;
-
+        
         QVector<QVariant> photosOfDay = tripDaysJsonArray.at(i)["photos"].toArray().toVariantList().toVector();
         tripDay.photos = parsePhotos(photosOfDay);
-
+        
         QVector<QVariant> citiesOfDay = tripDaysJsonArray.at(i)["cities"].toArray().toVariantList().toVector();
         tripDay.cities = parseTripDayData(citiesOfDay, tripDay.cities);
-
+        
         QVector<QVariant> countriessOfDay = tripDaysJsonArray.at(i)["countries"].toArray().toVariantList().toVector();
         tripDay.countries = parseTripDayData(countriessOfDay, tripDay.countries);
-
+        
         QVector<QVariant> notesOfDay = tripDaysJsonArray.at(i)["notes"].toArray().toVariantList().toVector();
         tripDay.notes = parseTripDayData(notesOfDay, tripDay.notes);
-
+        
         QVector<QVariant> ideasOfDay = tripDaysJsonArray.at(i)["ideas"].toArray().toVariantList().toVector();
         tripDay.ideas = parseTripDayData(ideasOfDay, tripDay.ideas);
-
+        
         tripDays.push_back(tripDay);
     }
-
+    
     return tripDays;
 }
 
@@ -163,17 +164,17 @@ QList<BackPackItem> TripsStorage::parseBackPack(QVector<QVariant> &jsonBackpackI
     for(int i = 0; i < jsonBackpackItems.size(); i++)
     {
         QJsonObject jsonBackPackItem = jsonBackpackItems.at(i).toJsonObject();
-
+        
         bool itemIsPacked = jsonBackPackItem.value("isPacked").toBool();
         QString itemName = jsonBackPackItem.value("name").toString();
-
+        
         BackPackItem newItem {
             itemIsPacked,
                     itemName
         };
         backpackItemslist.push_back(newItem);
     }
-
+    
     return backpackItemslist;
 }
 
@@ -183,7 +184,7 @@ QVector<QString> TripsStorage::parseTripDayData(QVector<QVariant> &jsonVector, Q
 {
     for(int i = 0; i < jsonVector.size(); i++)
         tripDayVector.push_back(jsonVector.at(i).toString());
-
+    
     return tripDayVector;
 }
 
@@ -197,10 +198,10 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
         QJsonObject jsonPhotoItem = photosOfDay[j].toJsonObject();
         QStringList locaction = jsonPhotoItem.value(QString("location")).toString().split("/");
         QGeoAddress address;
-
+        
         address.setCountry(locaction.at(0));
         address.setCity(locaction.at(1));
-
+        
         QString source = jsonPhotoItem.value(QString("source")).toString();
         QDateTime date = QDateTime::fromString(jsonPhotoItem.value(QString("date")).toString(), "d/M/yyyy");
         Photo parsedPhoto {
@@ -208,10 +209,10 @@ QVector<Photo> TripsStorage::parsePhotos(QVector<QVariant> &photosOfDay)
                     date,
                     address
         };
-
+        
         parsedPhotos.push_back(parsedPhoto);
     }
-
+    
     return parsedPhotos;
 }
 
@@ -245,12 +246,12 @@ void TripsStorage::updateTrips()
     QJsonObject activeTrip = parseTripToJson(_activeTrip);
     QJsonObject waitingTrip = parseTripToJson(_waitingTrip);
     QJsonArray completedTripss = parseCompletedTripsToJson(_completedTrips);
-
+    
     rootObject.insert("active", activeTrip);
     rootObject.insert("completed", completedTripss);
     rootObject.insert("waiting", waitingTrip);
     jsonDocument.setObject(rootObject);
-
+    
     writeJsonFile(":/db/assets/UsersData.json", jsonDocument);
 }
 
@@ -277,12 +278,12 @@ QJsonObject TripsStorage::parseTripToJson(TripData *parsedTrip)
     QJsonValue jsonTripDepatureDate = QJsonValue(parsedTrip->depatureDate.toString("d/M/yyyy"));
     QJsonArray jsonTripDays = parseTripdaysToJson(parsedTrip->days);
     QJsonValue jsonTripBackPackList = parseBackpackListToJson(parsedTrip->backPackList);
-
+    
     jsonTrip.insert("backpack", jsonTripBackPackList);
     jsonTrip.insert("depatureDate", jsonTripDepatureDate);
     jsonTrip.insert("name", jsonTripName);
     jsonTrip.insert("tripDays", jsonTripDays);
-
+    
     return jsonTrip;
 }
 
@@ -296,7 +297,7 @@ QJsonArray TripsStorage::parseTripdaysToJson(QList<TripDay> &days)
         QJsonObject obj = parseOneDayDataToJson(days[i]);
         tripDays.push_back(obj);
     }
-
+    
     return tripDays;
 }
 
@@ -305,13 +306,13 @@ QJsonArray TripsStorage::parseTripdaysToJson(QList<TripDay> &days)
 QJsonObject TripsStorage::parseOneDayDataToJson(TripDay &tripDay)
 {
     QJsonObject jsonTripDay;
-
+    
     jsonTripDay.insert("cities", parseDayDataToJson(tripDay.cities));
     jsonTripDay.insert("countries", parseDayDataToJson(tripDay.countries));
     jsonTripDay.insert("notes", parseDayDataToJson(tripDay.notes));
     jsonTripDay.insert("ideas", parseDayDataToJson(tripDay.ideas));
     jsonTripDay.insert("photos", parseDayPhotosToJson(tripDay.photos));
-
+    
     return jsonTripDay;
 }
 
@@ -356,7 +357,7 @@ QJsonArray TripsStorage::parseBackpackListToJson(QList<BackPackItem> &backpackLi
         backpackItem.insert("name", backpackList.at(i).name);
         backpack.push_back(backpackItem);
     }
-
+    
     return backpack;
 }
 
