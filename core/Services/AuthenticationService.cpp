@@ -7,99 +7,23 @@
 #include "QJsonArray"
 #include <QList>
 
-AuthenticationService::AuthenticationService(QObject *parent) : QObject(parent)
+AuthenticationService::AuthenticationService(DataBaseStorage &db ,QObject *parent)
+    : QObject(parent),
+      _dbStorage(db)
 {
-    readUsers();
+
 }
 
-void AuthenticationService::createUser(const QString &email, const QString &password)
+void AuthenticationService::saveUser(const QString &email, const QString& password)
 {
-    QByteArray userId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
-    
-    _users.insert(QString(userId), UserInfo {
-                      "",
-                      "",
-                      ""
-                  });
-    
-    updateUsers();
+    _dbStorage.saveUser(email, password);
 }
 
-void AuthenticationService::readUsers()
-{
-    QFile file("/home/sergio/Desktop/TripFiles/UsersDB.json");
-    file.open(QFile::ReadOnly | QIODevice::Text);
-    QString users = file.readAll();
-    
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(users.toUtf8());
-    
-    QJsonArray jsonArray = jsonDoc.array();
-    QMap<QString, UserInfo> usersMap = parseUsersJsonArray(jsonArray);
-    
-    _users = usersMap;
-}
-
-QMap<QString, UserInfo> AuthenticationService::parseUsersJsonArray(const QJsonArray& usersArray)
-{
-    QMap<QString, UserInfo> usersMap;
-    for(auto &&user : usersArray)
-    {
-        QJsonObject currentUser = user.toObject();
-        UserInfo userInfo;
-        
-        QVariantMap map = currentUser.toVariantMap();
-        QVariantMap currentUserInfo = map.begin().value().toMap();
-        QString userId = map.begin().key();
-        
-        userInfo.name = currentUserInfo.value("name").toString();
-        userInfo.cityResidence = currentUserInfo.value("cityResidence").toString();
-        userInfo.countryResidence = currentUserInfo.value("countryResidence").toString();
-        
-        usersMap.insert(userId, userInfo);
-    }
-    
-    return usersMap;
-}
-
-void AuthenticationService::updateUsers()
-{
-    QJsonDocument jsonDocument;
-    QJsonArray  usersJsonArray;
-    
-    for(auto p = _users.begin(); p != _users.end(); ++p)
-    {
-        QVariantMap userInfo;
-        QString userId = p.key();
-        userInfo.insert("name", p.value().name);
-        userInfo.insert("cityResidence", p.value().cityResidence);
-        userInfo.insert("countryResidence", p.value().countryResidence);
-        
-        QMap<QString, QVariant> user;
-        user.insert(userId, userInfo);
-        usersJsonArray.push_back(QJsonValue::fromVariant(user));
-    }
-    
-    jsonDocument.setArray(usersJsonArray);
-    writeUsers(jsonDocument);
-}
-
-void AuthenticationService::writeUsers(QJsonDocument& jsonDocument)
-{
-    QFile file("/home/sergio/Desktop/TripFiles/UsersDB.json");
-    file.open(QFile::WriteOnly | QIODevice::Text);
-    if(!file.isOpen())
-    {
-        qDebug() << "NOT OPENED";
-    }
-    
-    file.write(jsonDocument.toJson());
-    file.close();
-}
 
 void AuthenticationService::checkIfUserExists(const QString &email, const QString& password)
 {
     QByteArray userId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
-    if(_users.contains(userId))
+    if(_dbStorage.getUsersDb()->find(userId) != _dbStorage.getUsersDb()->end())
         emit userExists(true);
     else 
         emit userExists(false);

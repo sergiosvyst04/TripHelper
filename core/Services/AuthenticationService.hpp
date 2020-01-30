@@ -4,29 +4,24 @@
 #include <QObject>
 #include <QMap>
 #include <core/Storage/UserInfo.hpp>
+#include <core/Storage/DataBaseStorage.hpp>
 
 class AuthenticationService : public QObject
 {
     Q_OBJECT
 public:
-    explicit AuthenticationService(QObject *parent = nullptr);
+    explicit AuthenticationService(DataBaseStorage &db ,QObject *parent = nullptr);
 
 signals:
     void userExists(bool exists);
+    void userSaved();
 
 public slots:
-    void createUser(const QString &email, const QString& password);
-    void readUsers();
-    void updateUsers();
+    void saveUser(const QString &email, const QString& password);
     void checkIfUserExists(const QString &email, const QString& password);
 
-    void writeUsers(QJsonDocument &jsonDocument);
-
-    QMap<QString, UserInfo> parseUsersJsonArray(const QJsonArray& usersArray);
-
-
 private:
-    QMap<QString, UserInfo> _users;
+    DataBaseStorage &_dbStorage;
 };
 
 #endif // AUTHENTICATIONSERVICE_HPP

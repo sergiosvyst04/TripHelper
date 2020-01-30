@@ -96,7 +96,7 @@ BasePage {
 
     Loader {
         id: loader
-        active: true
+        active: false
 
         sourceComponent: Component {
             id: userExistsPopup

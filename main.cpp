@@ -22,6 +22,7 @@
 #include "core/Services/PackService.hpp"
 #include <core/Models/CountriesCitiesModel.hpp>
 #include "core/Services/AuthenticationService.hpp"
+#include <core/Storage/DataBaseStorage.hpp>
 
 
 int main(int argc, char *argv[])
@@ -32,11 +33,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    DataBaseStorage dataBaseStorage;
     LocationController locationController;
     GoalsModel goalsModel;
     TripsManager tripsManager;
     ApplicationController appController(tripsManager);
-    AuthenticationService authService;
+    AuthenticationService authService(dataBaseStorage);
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
