@@ -21,6 +21,7 @@
 #include "core/Controllers/WaitingTripController.hpp"
 #include "core/Services/PackService.hpp"
 #include <core/Models/CountriesCitiesModel.hpp>
+#include "core/Services/AuthenticationService.hpp"
 
 
 int main(int argc, char *argv[])
@@ -35,8 +36,7 @@ int main(int argc, char *argv[])
     GoalsModel goalsModel;
     TripsManager tripsManager;
     ApplicationController appController(tripsManager);
-
-
+    AuthenticationService authService;
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("locationController", &locationController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
+    engine.rootContext()->setContextProperty("authService", &authService);
     
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

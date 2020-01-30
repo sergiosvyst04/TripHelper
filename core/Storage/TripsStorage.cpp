@@ -97,8 +97,7 @@ void TripsStorage::writeJsonFile(const QString &path, QJsonDocument &jsonDoc)
     
     file.write(jsonDoc.toJson());
     file.close();
-    loadTrips();
-    
+    loadTrips();    
 }
 
 

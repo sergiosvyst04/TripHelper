@@ -29,6 +29,7 @@ SOURCES += \
         core/Models/GoalsModel.cpp \
     core/Models/PhotosModel.cpp \
     core/Models/TripDaysModel.cpp \
+    core/Services/AuthenticationService.cpp \
     core/Services/EndTripService.cpp \
     core/Services/GalleryService.cpp \
     core/Services/PackService.cpp \
@@ -71,6 +72,7 @@ HEADERS += \
     core/Models/GoalsModel.hpp \
     core/Models/PhotosModel.hpp \
     core/Models/TripDaysModel.hpp \
+    core/Services/AuthenticationService.hpp \
     core/Services/EndTripService.hpp \
     core/Services/GalleryService.hpp \
     core/Services/PackService.hpp \
@@ -81,6 +83,7 @@ HEADERS += \
     core/Storage/TripData.hpp \
     core/Storage/TripDay.hpp \
     core/Storage/TripsStorage.hpp \
+    core/Storage/UserInfo.hpp \
     modules/SortFilterProxyModel/filters/alloffilter.h \
     modules/SortFilterProxyModel/filters/anyoffilter.h \
     modules/SortFilterProxyModel/filters/expressionfilter.h \

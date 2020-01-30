@@ -7,7 +7,23 @@ import "../Components"
 BasePage {
     nextButtonVisible: true
     nextButtonEnabled: emailField.validated && passwordField.validated && confirmPassword.validated && fullName.text.length > 3
-    onNextButtonClicked: navigateToItem("qrc:/Pages/CreateAccountNextPage.qml", { userData : {email : emailField.text, password : passwordField.text} })
+    onNextButtonClicked: {
+        authService.checkIfUserExists(emailField.text, passwordField.text)
+    }
+    
+    
+    Connections {
+        target: authService
+        onUserExists: {
+            if(exists)
+            {
+                loader.active = true
+            } else {
+                navigateToItem("qrc:/Pages/CreateAccountNextPage.qml", { userData : {email : emailField.text, password : passwordField.text} })
+            }
+        }
+    }
+
 
     ColumnLayout {
         spacing: 61
@@ -72,6 +88,95 @@ BasePage {
                     }
                     else{
                         validated = false
+                    }
+                }
+            }
+        }
+    }
+
+    Loader {
+        id: loader
+        active: true
+
+        sourceComponent: Component {
+            id: userExistsPopup
+
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 210
+                implicitWidth: 232
+
+                padding: 0
+
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.45; color: Colors.white }
+                    }
+                }
+
+                onAboutToHide: loader.active = false
+
+                ColumnLayout {
+                    spacing: 20
+                    anchors {
+                        fill: parent
+                        topMargin: 15
+                        leftMargin: 24
+                        rightMargin: 24
+                        bottomMargin: 24
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: parent.width
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        text: qsTr("Such user already exists.\n Try to login with another data")
+                        color: Colors.grey
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                    }
+
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 36
+                        Layout.preferredWidth: 86
+                        color: Colors.primaryColor
+                        layer.enabled: false
+                        text: qsTr("Go to login")
+                        fontColor: Colors.white
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                        onClicked: {
+                            loader.active = false
+                            navigateToItem("qrc:/Pages/CreateAccountNextPage.qml")
+                        }
+                    }
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 36
+                        Layout.preferredWidth: 86
+                        color: Colors.primaryColor
+                        layer.enabled: false
+                        text: qsTr("Try again")
+                        fontColor: Colors.white
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                        onClicked:{
+                            loader.active = false
+                            passwordField.text = ""
+                            emailField.text = ""
+                            confirmPassword.text = ""
+                        }
                     }
                 }
             }

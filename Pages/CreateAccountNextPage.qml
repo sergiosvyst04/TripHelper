@@ -15,11 +15,7 @@ BasePage {
 
     property var userData
 
-    function createUser()
-    {
-        console.log("create user with email : ", userData.email, ", password : ", userData.password)
-        console.log("country residence : ", countryComboBox.currentText, ", city residence : ", cityComboBox.currentText)
-    }
+    
 
     CountriesCitiesModel {
         id: countriesModel
