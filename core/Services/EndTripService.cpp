@@ -10,11 +10,11 @@ EndTripService::EndTripService(QObject *parent) : QObject(parent)
 
 void EndTripService::intialize(ApplicationController *applicationController)
 {
-    _completedTrips = applicationController->getTripsManager().completedTrips();
-    _activeTrip = applicationController->getTripsManager().activeTrip();
-    _tripsStorage = applicationController->getTripsManager().getStorage();
+    _completedTrips = applicationController->getTripsManager().getCompletedTrips();
+    _activeTrip = applicationController->getTripsManager().getActiveTrip();
+    _tripsManager = &applicationController->getTripsManager();
 
-    connect(this, &EndTripService::tripEnded, _tripsStorage, &TripsStorage::updateTrips);
+    connect(this, &EndTripService::tripEnded, _tripsManager, &TripsManager::updateTrips);
 }
 
 //==============================================================================

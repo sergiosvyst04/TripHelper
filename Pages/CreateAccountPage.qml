@@ -6,7 +6,7 @@ import "../Components"
 
 BasePage {
     nextButtonVisible: true
-    nextButtonEnabled: emailField.validated && passwordField.validated && confirmPassword.validated && fullName.text.length > 3
+    nextButtonEnabled: emailField.validated && passwordField.validated && confirmPassword.validated && fullNameField.text.length > 3
     onNextButtonClicked: {
         authService.checkIfUserExists(emailField.text, passwordField.text)
     }
@@ -19,7 +19,7 @@ BasePage {
             {
                 loader.active = true
             } else {
-                navigateToItem("qrc:/Pages/CreateAccountNextPage.qml", { userData : {email : emailField.text, password : passwordField.text} })
+                navigateToItem("qrc:/Pages/CreateAccountNextPage.qml", { userData : {fullName : fullNameField.text ,email : emailField.text, password : passwordField.text} })
             }
         }
     }
@@ -44,11 +44,11 @@ BasePage {
         ColumnLayout {
             Layout.fillWidth: true
             LabeledTextEdit {
-                id: fullName
+                id: fullNameField
                 Layout.fillWidth: true
                 label: qsTr("Full name")
                 warningText: qsTr("Use at least 3 characters")
-                validated: fullName.text.length > 2
+                validated: fullNameField.text.length > 2
             }
 
             LabeledTextEdit {
@@ -158,7 +158,7 @@ BasePage {
                         font: Fonts.openSansBold(13, Font.MixedCase)
                         onClicked: {
                             loader.active = false
-                            navigateToItem("qrc:/Pages/CreateAccountNextPage.qml")
+                            navigateToItem("qrc:/Pages/LogInPage.qml")
                         }
                     }
 

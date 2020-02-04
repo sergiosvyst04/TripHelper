@@ -5,6 +5,7 @@
 #include <core/Storage/Trip.hpp>
 #include "core/Controllers/ApplicationController.hpp"
 #include "core/Controllers/LocationController.hpp"
+#include "Managers/TripsManager.hpp"
 
 class ActiveTripController : public QObject
 {
@@ -35,7 +36,7 @@ public slots:
 private:
     TripData *_activeTrip;
     LocationController *_locationController;
-    TripsStorage *_tripsStorage;
+    TripsManager *_tripsManager;
 
 };
 

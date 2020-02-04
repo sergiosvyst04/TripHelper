@@ -23,6 +23,7 @@
 #include <core/Models/CountriesCitiesModel.hpp>
 #include "core/Services/AuthenticationService.hpp"
 #include <core/Storage/DataBaseStorage.hpp>
+#include <core/Controllers/UserAccountController.hpp>
 
 
 int main(int argc, char *argv[])
@@ -36,9 +37,11 @@ int main(int argc, char *argv[])
     DataBaseStorage dataBaseStorage;
     LocationController locationController;
     GoalsModel goalsModel;
-    TripsManager tripsManager;
+    TripsManager tripsManager(dataBaseStorage);
+//    TripsStorage tripsStorage(dataBaseStorage);
     ApplicationController appController(tripsManager);
     AuthenticationService authService(dataBaseStorage);
+    UserAccountController userAccountController(dataBaseStorage);
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
@@ -69,6 +72,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("locationController", &locationController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("authService", &authService);
+    engine.rootContext()->setContextProperty("userController", &userAccountController);
     
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

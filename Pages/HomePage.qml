@@ -8,75 +8,87 @@ import "../Components"
 //    footer: Item{height: 80}
 //    header: Item{}
 
-    ColumnLayout {
-        property alias startTripBtnEnabled: startTripBtn.enabled
-        spacing: 15
-        anchors {
-            fill: parent
-            leftMargin: 40
-            rightMargin: 40
-        }
+ColumnLayout {
+    property alias startTripBtnEnabled: startTripBtn.enabled
+    spacing: 15
+    anchors {
+        fill: parent
+        leftMargin: 40
+        rightMargin: 40
+    }
 
-        Image {
-            Layout.alignment: Qt.AlignHCenter
-            source: "qrc:/images/assets/emblem.png"
-            sourceSize: Qt.size(200, 165)
-        }
+    Image {
+        Layout.alignment: Qt.AlignHCenter
+        source: "qrc:/images/assets/emblem.png"
+        sourceSize: Qt.size(200, 165)
+    }
 
-        Flickable {
-            id: flickable
+    Flickable {
+        id: flickable
 
-            boundsBehavior: Flickable.StopAtBounds
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            clip: true
-            contentHeight: column.height
-            contentWidth: column.width
-            bottomMargin: 10
+        boundsBehavior: Flickable.StopAtBounds
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        clip: true
+        contentHeight: column.height
+        contentWidth: column.width
+        bottomMargin: 10
 
-            ColumnLayout {
-                id: column
-                spacing: 15
-                width: flickable.width
+        ColumnLayout {
+            id: column
+            spacing: 15
+            width: flickable.width
 
-                HomeActionButton {
-                    id: startTripBtn
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.minimumWidth: column.width - 10
-                    Layout.minimumHeight: 105
-                    image: "qrc:/images/assets/white icons/startbtn.png"
-                    actionText: qsTr("Start trip")
-                    onEnabledChanged: console.log("start enabled changed to :", enabled)
-                    onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
-                }
+            HomeActionButton {
+                id: startTripBtn
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: column.width - 10
+                Layout.minimumHeight: 105
+                image: "qrc:/images/assets/white icons/startbtn.png"
+                actionText: qsTr("Start trip")
+                onEnabledChanged: console.log("start enabled changed to :", enabled)
+                onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
+            }
 
-                HomeActionButton {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.minimumWidth: column.width - 10
-                    Layout.minimumHeight: 105
-                    image: "qrc:/images/assets/white icons/goals.png"
-                    actionText: qsTr("Add goal")
-                    onClicked: navigateToItem("qrc:/Pages/AddGoalPage.qml")
-                }
+            HomeActionButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: column.width - 10
+                Layout.minimumHeight: 105
+                image: "qrc:/images/assets/white icons/goals.png"
+                actionText: qsTr("Add goal")
+                onClicked: navigateToItem("qrc:/Pages/AddGoalPage.qml")
+            }
 
-                HomeActionButton {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.minimumWidth: column.width - 10
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: 105
-                    image: "qrc:/images/assets/white icons/organizat help.png"
-                    actionText: qsTr("Organization<br>help")
-                    onClicked: navigateToItem("qrc:/Pages/OrganizationHelpPage.qml")
-                }
+            HomeActionButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: column.width - 10
+                Layout.fillWidth: true
+                Layout.minimumHeight: 105
+                image: "qrc:/images/assets/white icons/organizat help.png"
+                actionText: qsTr("Organization<br>help")
+                onClicked: navigateToItem("qrc:/Pages/OrganizationHelpPage.qml")
+            }
 
-                HomeActionButton {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.minimumWidth: column.width - 10
-                    Layout.minimumHeight: 105
-                    image: "qrc:/images/assets/white icons/settings.png"
-                    actionText: qsTr("Settings")
+            HomeActionButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: column.width - 10
+                Layout.minimumHeight: 105
+                image: "qrc:/images/assets/white icons/settings.png"
+                actionText: qsTr("Settings")
+            }
+
+            HomeActionButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: column.width - 10
+                Layout.minimumHeight: 105
+                image: "qrc:/images/assets/white icons/settings.png"
+                actionText: qsTr("Sign Out")
+                onClicked: {
+                    authService.signOut()
+                    replaceView("qrc:/Pages/StartedPage.qml")
                 }
             }
         }
     }
+}
 //}

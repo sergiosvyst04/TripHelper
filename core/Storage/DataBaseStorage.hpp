@@ -5,6 +5,7 @@
 #include <map>
 #include <core/Storage/UserInfo.hpp>
 #include <QJsonDocument>
+#include <core/Storage/TripData.hpp>
 
 class DataBaseStorage : public QObject
 {
@@ -12,19 +13,25 @@ class DataBaseStorage : public QObject
 public:
     explicit DataBaseStorage(QObject *parent = nullptr);
     void readUsers();
+    void readUsersData();
     void updateUsers();
     void writeUsers(QJsonDocument &jsonDocument);
+    
     void saveUser(const QString &email, const QString& password);
+    void saveUserInfo(UserInfo &userInfo);
 
     std::map<QString, UserInfo>* getUsersDb() const;
     std::map<QString, UserInfo> parseUsersJsonArray(QJsonArray &jsonArray);
+    std::map<QString, std::map<QString, QVariant>> parseUsersDataJsonArray(QJsonArray &jsonArray);
 
+    QList<QVariant> getCompletedTrips(const QString &uid);
 signals:
 
 public slots:
 
 private:
     std::map<QString, UserInfo> *_usersDB;
+    std::map<QString, std::map<QString, QVariant>> *_usersDataDB;
 };
 
 #endif // DATABASESTORAGE_HPP

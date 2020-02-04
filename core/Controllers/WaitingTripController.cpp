@@ -12,7 +12,7 @@ WaitingTripController::WaitingTripController(QObject *parent) : QObject(parent)
 
 void WaitingTripController::intialize(ApplicationController *applicationController)
 {
-    _waitingTrip = applicationController->getTripsManager().waitingTrip();
+    _waitingTrip = applicationController->getTripsManager().getWaitingTrip();
 
 }
 

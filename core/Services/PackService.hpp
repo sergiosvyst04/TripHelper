@@ -34,7 +34,7 @@ public slots:
 private:
     BackPackModel *_backpackModel;
     TripData *_waitingTrip;
-    TripsStorage *_tripsStorage;
+    TripsManager *_tripsManager;
 };
 
 #endif // PACKSERVICE_HPP

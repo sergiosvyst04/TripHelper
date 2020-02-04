@@ -10,7 +10,7 @@ GalleryService::GalleryService(QObject *parent) : QObject(parent)
 
 void GalleryService::intialize(ApplicationController *applicationController)
 {
-    _viewedTrip = applicationController->getTripsManager().activeTrip();
+    _viewedTrip = applicationController->getTripsManager().getActiveTrip();
     QVector<Photo> tripPhotos = getAllPhotos();
     _photosModel->getPhotos(tripPhotos);
 }

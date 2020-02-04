@@ -13,8 +13,7 @@ BasePage {
         anchors.fill: parent
         currentIndex: 2
         onCurrentIndexChanged: {
-            if(currentIndex == 1)
-                home.startTripBtnEnabled = tripController.hasUnCompletedTrip()
+
         }
 
         Item {

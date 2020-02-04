@@ -12,10 +12,9 @@ ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 
 void ActiveTripController::intialize(ApplicationController *applicationController, LocationController *locationController)
 {
-    _activeTrip = applicationController->getTripsManager().activeTrip();
+    _activeTrip = applicationController->getTripsManager().getActiveTrip();
     _locationController = locationController;
-    _tripsStorage = applicationController->getTripsManager().getStorage();
-//    qDebug() << "ActiveTripController was intialized with trip : " << _activeTrip->name;
+    _tripsManager = &applicationController->getTripsManager();
 }
 
 //==============================================================================
@@ -24,7 +23,7 @@ void ActiveTripController::addNote(const QString &newNote)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.notes.push_back(newNote);
-    _tripsStorage->updateTrips();
+    _tripsManager->updateTrips();
 }
 
 //==============================================================================
@@ -33,7 +32,7 @@ void ActiveTripController::addNewIdea(const QString &newIdea)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.ideas.push_back(newIdea);
-    _tripsStorage->updateTrips();
+    _tripsManager->updateTrips();
 }
 
 //==============================================================================
@@ -64,7 +63,7 @@ void ActiveTripController::addNewPhoto(const QString &path)
     };
 
     currentTripDay.photos.push_back(newPhoto);
-    _tripsStorage->updateTrips();
+    _tripsManager->updateTrips();
 }
 
 //==============================================================================

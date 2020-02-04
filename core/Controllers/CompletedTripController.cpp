@@ -11,7 +11,7 @@ CompletedTripController::CompletedTripController(QObject *parent) : QObject(pare
 
 void CompletedTripController::intialize(int index, ApplicationController *applicationController)
 {
-     TripData fetchedTrip = applicationController->getTripsManager().completedTrips()->at(index);
+     TripData fetchedTrip = applicationController->getTripsManager().getCompletedTrips()->at(index);
     _completedTrip = new TripData(fetchedTrip);
 }
 

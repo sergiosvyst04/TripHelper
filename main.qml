@@ -17,34 +17,39 @@ ApplicationWindow {
     StackView {
         id: rootStackView
         anchors.fill: parent
-        initialItem: Qt.resolvedUrl("qrc:/Pages/CreateAccountPage.qml")
+        initialItem: {
+            if(authService.isSignedIn())
+                Qt.resolvedUrl("qrc:/Pages/MainPage.qml")
+            else
+                Qt.resolvedUrl("qrc:/Pages/StartedPage.qml")
+        }
         Keys.onBackPressed: {
 
         }
     }
 
-//    Connections {
-//        target: locationController
-//        onCountryChanged : {
-//            navigateToItem("qrc:/Pages/CountryInformationPage.qml")
-//        }
-//    }
+    //    Connections {
+    //        target: locationController
+    //        onCountryChanged : {
+    //            navigateToItem("qrc:/Pages/CountryInformationPage.qml")
+    //        }
+    //    }
 
 
-//    Connections {
-//        target: tripController
-////        onCurrentTripStateChanged: {
-////            loader.sourceComponent = addIdeaPopup
-////            loader.active = true
-////        }
+    //    Connections {
+    //        target: tripController
+    ////        onCurrentTripStateChanged: {
+    ////            loader.sourceComponent = addIdeaPopup
+    ////            loader.active = true
+    ////        }
 
-//        onForgotToPack: {
-//            console.log("forgot to pack items")
-//            loader.sourceComponent = warningPopup
-//            loader.active = true
-//            player.play()
-//        }
-//    }
+    //        onForgotToPack: {
+    //            console.log("forgot to pack items")
+    //            loader.sourceComponent = warningPopup
+    //            loader.active = true
+    //            player.play()
+    //        }
+    //    }
 
 
     function navigateBack() {

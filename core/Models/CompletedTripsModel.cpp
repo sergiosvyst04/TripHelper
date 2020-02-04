@@ -62,7 +62,7 @@ QHash<int, QByteArray> CompletedTripsModel::roleNames() const
 void CompletedTripsModel::getCompletedTrips(ApplicationController *applicationController)
 {
     beginResetModel();
-    _completedTrips = *applicationController->getTripsManager().completedTrips();
+    _completedTrips = *applicationController->getTripsManager().getCompletedTrips();
     endResetModel();
 }
 

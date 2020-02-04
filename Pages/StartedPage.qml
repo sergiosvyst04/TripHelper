@@ -54,6 +54,7 @@ BasePage {
             color: Colors.primaryColor
             text: qsTr("Log in")
             fontColor: Colors.white
+            onClicked: navigateToItem("qrc:/Pages/LogInPage.qml")
         }
 
     }

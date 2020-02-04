@@ -9,13 +9,19 @@ BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Get started")
     onNextButtonClicked: {
-        createUser()
-        navigateToItem("qrc:/Pages/MainPage.qml")
+        authService.saveUser(userData.email, userData.password)
     }
 
     property var userData
 
-    
+    Connections {
+        target: authService
+        onUserSaved: {
+            userController.saveUserInfo(userData.fullName, cityComboBox.currentText, countryComboBox.currentText)
+            navigateToItem("qrc:/Pages/MainPage.qml")
+        }
+    }
+
 
     CountriesCitiesModel {
         id: countriesModel

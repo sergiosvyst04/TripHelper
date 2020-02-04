@@ -5,6 +5,7 @@
 #include "core/Models/CompletedTripsModel.hpp"
 #include "core/Storage/TripData.hpp"
 #include "core/Controllers/ApplicationController.hpp"
+#include "Managers/TripsManager.hpp"
 
 class EndTripService : public QObject
 {
@@ -31,7 +32,8 @@ public slots:
 private:
     QList<TripData> *_completedTrips;
     TripData *_activeTrip;
-    TripsStorage *_tripsStorage;
+
+    TripsManager *_tripsManager;
 };
 
 #endif // ENDTRIPSERVICE_HPP
