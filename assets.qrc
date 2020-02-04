@@ -47,7 +47,6 @@
         <file>assets/icons/place.png</file>
         <file>assets/icons/location3.png</file>
         <file>assets/icons/location.png</file>
-        <file>assets/icons/Flags/Argentina.png</file>
         <file>assets/icons/Flags/Brazil.png</file>
         <file>assets/icons/Flags/England.jpg</file>
         <file>assets/icons/Flags/Nepal.png</file>
@@ -64,6 +63,45 @@
         <file>assets/icons/Flags/Sri Lanka.png</file>
         <file>assets/icons/Flags/Ukraine.png</file>
         <file>assets/icons/Flags/Czech.png</file>
+        <file>assets/icons/Flags/Albania.png</file>
+        <file>assets/icons/Flags/Andorra.png</file>
+        <file>assets/icons/Flags/Argentina.png</file>
+        <file>assets/icons/Flags/Austria.png</file>
+        <file>assets/icons/Flags/Belarus.png</file>
+        <file>assets/icons/Flags/Belgium.png</file>
+        <file>assets/icons/Flags/Bosnia and Herzegovina.png</file>
+        <file>assets/icons/Flags/Bulgaria.png</file>
+        <file>assets/icons/Flags/Croatia.png</file>
+        <file>assets/icons/Flags/Cyprus.png</file>
+        <file>assets/icons/Flags/Denmark.png</file>
+        <file>assets/icons/Flags/Estonia.png</file>
+        <file>assets/icons/Flags/Finland.png</file>
+        <file>assets/icons/Flags/France.png</file>
+        <file>assets/icons/Flags/Georgia.png</file>
+        <file>assets/icons/Flags/Greece.png</file>
+        <file>assets/icons/Flags/Iceland.png</file>
+        <file>assets/icons/Flags/Ireland.png</file>
+        <file>assets/icons/Flags/Italy.png</file>
+        <file>assets/icons/Flags/Kosovo.png</file>
+        <file>assets/icons/Flags/Latvia.png</file>
+        <file>assets/icons/Flags/Liechtenstein.png</file>
+        <file>assets/icons/Flags/Lithuania.png</file>
+        <file>assets/icons/Flags/Luxembourg.png</file>
+        <file>assets/icons/Flags/Macedonia.png</file>
+        <file>assets/icons/Flags/Malta.png</file>
+        <file>assets/icons/Flags/Moldova.png</file>
+        <file>assets/icons/Flags/Monaco.png</file>
+        <file>assets/icons/Flags/Montenegro.png</file>
+        <file>assets/icons/Flags/Netherlands.png</file>
+        <file>assets/icons/Flags/Portugal.png</file>
+        <file>assets/icons/Flags/Romania.png</file>
+        <file>assets/icons/Flags/Russia.png</file>
+        <file>assets/icons/Flags/San Marino.png</file>
+        <file>assets/icons/Flags/Serbia.png</file>
+        <file>assets/icons/Flags/Slovakia.png</file>
+        <file>assets/icons/Flags/Slovenia.png</file>
+        <file>assets/icons/Flags/Turkey.png</file>
+        <file>assets/icons/Flags/Vatican.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/db">
