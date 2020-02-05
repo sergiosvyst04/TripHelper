@@ -13,9 +13,12 @@ class DataBaseStorage : public QObject
 public:
     explicit DataBaseStorage(QObject *parent = nullptr);
     void readUsers();
-    void readUsersData();
     void updateUsers();
-    void writeUsers(QJsonDocument &jsonDocument);
+
+    void readUsersData();
+    void updateUsersData();
+
+    void writeDataToJsonFile(QJsonDocument &jsonDocument, const QString &path);
     
     void saveUser(const QString &email, const QString& password);
     void saveUserInfo(UserInfo &userInfo);
