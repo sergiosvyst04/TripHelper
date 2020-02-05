@@ -20,8 +20,10 @@ DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
 
     userId = settings.value("userId").toString();
 
-    qDebug() << "SIZE  IN CONSTRUCTOR = " << _usersDataDB->size();
+    updateUsersData();
 }
+
+//==============================================================================
 
 void DataBaseStorage::readUsers()
 {
@@ -38,6 +40,8 @@ void DataBaseStorage::readUsers()
         _usersDB->insert(std::pair<QString, UserInfo>(p->first, p->second));
 }
 
+//==============================================================================
+
 void DataBaseStorage::readUsersData()
 {
     QFile file("/home/sergio/Desktop/TripFiles/UsersDataDB.json");
@@ -52,6 +56,8 @@ void DataBaseStorage::readUsersData()
     for(auto p = usersDataMap.begin(); p != usersDataMap.end(); ++p)
         _usersDataDB->insert(std::pair<QString, std::map<QString, QVariant>>(p->first, p->second));
 }
+
+//==============================================================================
 
 std::map<QString, UserInfo> DataBaseStorage::parseUsersJsonArray(QJsonArray &usersArray)
 {
@@ -75,6 +81,8 @@ std::map<QString, UserInfo> DataBaseStorage::parseUsersJsonArray(QJsonArray &use
     return usersMap;
 }
 
+//==============================================================================
+
 std::map<QString, std::map<QString, QVariant>> DataBaseStorage::parseUsersDataJsonArray(QJsonArray &usersDataArray)
 {
     std::map<QString, std::map<QString, QVariant>> usersDataMapToReturn;
@@ -91,6 +99,8 @@ std::map<QString, std::map<QString, QVariant>> DataBaseStorage::parseUsersDataJs
 
     return usersDataMapToReturn;
 }
+
+//==============================================================================
 
 void DataBaseStorage::updateUsers()
 {
@@ -111,12 +121,42 @@ void DataBaseStorage::updateUsers()
     }
 
     jsonDocument.setArray(usersJsonArray);
-    writeUsers(jsonDocument);
+    writeDataToJsonFile(jsonDocument, "/home/sergio/Desktop/TripFiles/UsersDB.json");
+
 }
 
-void DataBaseStorage::writeUsers(QJsonDocument &jsonDocument)
+//==============================================================================
+
+void DataBaseStorage::updateUsersData()
 {
-    QFile file("/home/sergio/Desktop/TripFiles/UsersDB.json");
+    QJsonDocument jsonDocument;
+    QJsonArray usersDataJsonArray;
+
+    for(auto p = _usersDataDB->begin(); p != _usersDataDB->end(); ++p)
+    {
+        QVariantMap currentDataTypeData;
+        QVariantMap usersDataMap;
+        QString dataType = p->first;
+        auto usersData = p->second;
+
+        for(auto p = usersData.begin(); p != usersData.end(); ++p)
+        {
+            QString uid = p->first;
+            QVariant data = p->second;
+            usersDataMap.insert(uid, data);
+        }
+        currentDataTypeData.insert(dataType, QVariant::fromValue(usersDataMap));
+        usersDataJsonArray.push_back(QJsonValue::fromVariant(currentDataTypeData));
+    }
+    jsonDocument.setArray(usersDataJsonArray);
+    writeDataToJsonFile(jsonDocument, "/home/sergio/Desktop/TripFiles/UsersDataDB.json");
+}
+
+//==============================================================================
+
+void DataBaseStorage::writeDataToJsonFile(QJsonDocument &jsonDocument, const QString &path)
+{
+    QFile file(path);
     file.open(QFile::WriteOnly | QIODevice::Text);
     if(!file.isOpen())
     {
@@ -126,6 +166,8 @@ void DataBaseStorage::writeUsers(QJsonDocument &jsonDocument)
     file.write(jsonDocument.toJson());
     file.close();
 }
+
+//==============================================================================
 
 void DataBaseStorage::saveUser(const QString &email, const QString &password)
 {
@@ -141,6 +183,8 @@ void DataBaseStorage::saveUser(const QString &email, const QString &password)
     updateUsers();
 }
 
+//==============================================================================
+
 void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
 {
     _usersDB->at(userId) = userInfo;
@@ -148,12 +192,16 @@ void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
     updateUsers();
 }
 
+//==============================================================================
+
 std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 {
     return _usersDB;
 }
 
+//==============================================================================
+
 QList<QVariant> DataBaseStorage::getCompletedTrips(const QString &uid)
 {
-    return  _usersDataDB->at("completedTrips").at(userId).toList();
+    return  _usersDataDB->at("completedTrips").at(uid).toList();
 }
