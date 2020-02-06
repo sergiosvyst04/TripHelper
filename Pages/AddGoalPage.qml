@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.12
 import QtQml 2.13
 import "../Singletons"
 import "../Components"
+import CountriesCitiesModel 1.0
 
 BasePage {
     nextButtonVisible: true
@@ -13,12 +14,21 @@ BasePage {
     nextButtonEnabled: cityComboBox.currentIndex > -1 && countryComboBox.currentIndex > -1 && dateField.fieldText != ""
 
     onNextButtonClicked: {
-        goalsModel.addGoal(countryComboBox.model[countryComboBox.currentIndex], cityComboBox.model[cityComboBox.currentIndex],
-                           dateField.depatureDate)
+        goalsController.addGoal(countryComboBox.textAt(countryComboBox.currentIndex), cityComboBox.textAt(cityComboBox.currentIndex), dateField.depatureDate)
+    }
+
+
+    CountriesCitiesModel {
+        id: countriesModel
+        Component.onCompleted: getCountries()
+    }
+
+    CountriesCitiesModel {
+        id: citiesModel
     }
 
     Connections {
-        target: goalsModel
+        target: goalsController
         onGoalAdded : {
             loader.active = true
         }
@@ -64,8 +74,13 @@ BasePage {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 30
                 currentIndex: -1
+
+                model: countriesModel
+
                 onActivated: {
                     currentIndex = index
+                    cityComboBox.enabled = true
+                    citiesModel.getCities(textAt(currentIndex))
                 }
 
             }
@@ -87,6 +102,10 @@ BasePage {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 30
                 currentIndex: -1
+                enabled: false
+
+                model: citiesModel
+
                 onActivated: {
                     currentIndex = index
                 }

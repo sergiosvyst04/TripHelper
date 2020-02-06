@@ -11,4 +11,6 @@ struct Goal{
     QDateTime depatureDate;
 };
 
+Q_DECLARE_METATYPE(Goal);
+
 #endif // GOAL_HPP

@@ -8,6 +8,7 @@ import com.plm.utils 1.0
 
 
 Rectangle {
+    id: root
     property alias countryAndCity: cityCountryText.text
     property date depatureDate
     color: Colors.primaryColor
@@ -17,6 +18,7 @@ Rectangle {
         Timer {
             interval: 500; running: true; repeat: true
             onTriggered:{
+
                 repeater.itemAt(0).timeLeft = Utils.calculateRemainigTime(depatureDate)[0];
                 repeater.itemAt(1).timeLeft = Utils.calculateRemainigTime(depatureDate)[1];
                 repeater.itemAt(2).timeLeft = Utils.calculateRemainigTime(depatureDate)[2];
@@ -24,7 +26,6 @@ Rectangle {
             }
         }
     }
-
 
     ColumnLayout {
         anchors {
@@ -36,10 +37,13 @@ Rectangle {
 
         DescriptionText {
             id: cityCountryText
-            Layout.alignment: Qt.AlignLeft
+            horizontalAlignment: Text.AlignLeft
+            Layout.preferredWidth: parent.width
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font: Fonts.openSansBold(16, Font.MixedCase)
             color: Colors.white
         }
+
 
         RowLayout {
             spacing: 20

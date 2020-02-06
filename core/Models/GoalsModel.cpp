@@ -5,6 +5,7 @@
 GoalsModel::GoalsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+
 }
 
 //==============================================================================
@@ -50,23 +51,27 @@ QHash<int, QByteArray> GoalsModel::roleNames() const
 
 //==============================================================================
 
-void GoalsModel::addGoal(const QString &country, const QString &city, QDateTime depatureDate)
+void GoalsModel::readGoals()
 {
-    depatureDate.setTime(QTime(0,0));
-    Goal newGoal {
-        country.toStdString(),
-                city.toStdString(),
-                depatureDate
-    };
+    QList<QVariant> goals = _dbStorage->getGoals();
 
-    beginInsertRows(QModelIndex(), rowCount(), rowCount());
-    _goals.push_back(newGoal);
-    endInsertRows();
-
-    emit goalAdded();
+    for(auto &goal : goals)
+    {
+        QVariantMap goalMap = goal.toMap();
+        Goal currentGoal;
+        currentGoal.city = goalMap.value("cityDestination").toString().toStdString();
+        currentGoal.country = goalMap.value("countryDestination").toString().toStdString();
+        currentGoal.depatureDate = QDateTime::fromString(goalMap.value("depatureDate").toString(), "d/M/yyyy");
+        _goals.push_back(currentGoal);
+    }
 }
 
 //==============================================================================
 
+void GoalsModel::intialize(ApplicationController *applicationController)
+{
+    _dbStorage = &applicationController->getDatabase();
+    readGoals();
+}
 
 

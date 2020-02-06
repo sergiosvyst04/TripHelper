@@ -19,8 +19,6 @@ DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
     readUsersData();
 
     userId = settings.value("userId").toString();
-
-    updateUsersData();
 }
 
 //==============================================================================
@@ -94,6 +92,7 @@ std::map<QString, std::map<QString, QVariant>> DataBaseStorage::parseUsersDataJs
 
         QString key = userDataMap.begin().key();
         std::map<QString, QVariant> usersWithData = userDataMap.begin().value().toMap().toStdMap();
+
         usersDataMapToReturn.insert(std::pair<QString, std::map<QString, QVariant>>(key, usersWithData));
     }
 
@@ -204,4 +203,31 @@ std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 QList<QVariant> DataBaseStorage::getCompletedTrips(const QString &uid)
 {
     return  _usersDataDB->at("completedTrips").at(uid).toList();
+}
+
+//==============================================================================
+
+void DataBaseStorage::addGoal(Goal &goal)
+{
+    QVariantMap goalToPush;
+    goalToPush.insert("countryDestination", QString::fromStdString(goal.country));
+    goalToPush.insert("cityDestination", QString::fromStdString(goal.city));
+    goalToPush.insert("depatureDate", goal.depatureDate.toString("d/M/yyyy"));
+
+    if(_usersDataDB->at("goals").find(userId) == _usersDataDB->at("goals").end())
+    {
+        _usersDataDB->at("goals").insert(std::pair<QString, QVariant> (userId, QList<QVariant>({goalToPush})));
+    } else {
+        QVariantList userGoals = _usersDataDB->at("goals").at(userId).toList();
+        userGoals.append(goalToPush);
+        _usersDataDB->at("goals").at(userId) = userGoals;
+    }
+    emit goalAddedToDb();
+}
+
+//==============================================================================
+
+QList<QVariant> DataBaseStorage::getGoals()
+{
+    return _usersDataDB->at("goals").at(userId).toList();
 }

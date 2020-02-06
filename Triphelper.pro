@@ -19,6 +19,7 @@ SOURCES += \
     core/Controllers/ActiveTripController.cpp \
     core/Controllers/ApplicationController.cpp \
     core/Controllers/CompletedTripController.cpp \
+    core/Controllers/GoalsController.cpp \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
     core/Controllers/UserAccountController.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     core/Controllers/ActiveTripController.hpp \
     core/Controllers/ApplicationController.hpp \
     core/Controllers/CompletedTripController.hpp \
+    core/Controllers/GoalsController.hpp \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Controllers/UserAccountController.hpp \

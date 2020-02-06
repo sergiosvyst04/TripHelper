@@ -1,8 +1,9 @@
 #include "ApplicationController.hpp"
 
 
-ApplicationController::ApplicationController(TripsManager &tripsManager ,QObject *parent)
+ApplicationController::ApplicationController(DataBaseStorage &dbStorage ,TripsManager &tripsManager ,QObject *parent)
     : QObject(parent),
+      _dbStorage(dbStorage),
       _tripsManager(tripsManager)
 {
 
@@ -17,3 +18,7 @@ TripsManager& ApplicationController::getTripsManager()
 
 //==============================================================================
 
+DataBaseStorage& ApplicationController::getDatabase()
+{
+    return _dbStorage;
+}

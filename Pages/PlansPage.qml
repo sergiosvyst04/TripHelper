@@ -3,9 +3,18 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import "../Singletons"
 import "../Components"
+import GoalsModel 1.0
 
 BasePage {
     footer: Item{}
+
+    GoalsModel {
+        id: goalsModel
+        Component.onCompleted: {
+            intialize(appController)
+            listView.model = goalsModel
+        }
+    }
 
     ColumnLayout {
         anchors {
@@ -13,6 +22,7 @@ BasePage {
             rightMargin: 26
             leftMargin: 26
         }
+
 
         PrimaryLabel {
             Layout.alignment: Qt.AlignHCenter
@@ -32,14 +42,13 @@ BasePage {
             Layout.fillHeight: true
             clip: true
             spacing: 20
-            model: goalsModel
+
 
             delegate:  PlanItem {
                 width: parent.width
                 height: 100
                 countryAndCity: qsTr("%1, %2").arg(model.country).arg(model.city)
                 depatureDate: model.depatureDate
-//                timeLeft: goalsModel.calculateTimeLeft()
             }
         }
     }

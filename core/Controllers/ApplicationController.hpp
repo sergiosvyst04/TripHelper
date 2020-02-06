@@ -8,14 +8,16 @@ class ApplicationController : public QObject
 {
     Q_OBJECT
 public:
-    explicit ApplicationController(TripsManager &tripsManager, QObject *parent = nullptr);
+    explicit ApplicationController(DataBaseStorage &dbStorage ,TripsManager &tripsManager, QObject *parent = nullptr);
     TripsManager& getTripsManager();
+    DataBaseStorage& getDatabase();
 
 signals:
 
 public slots:
     
 private:
+   DataBaseStorage &_dbStorage;
    TripsManager &_tripsManager;
 };
 

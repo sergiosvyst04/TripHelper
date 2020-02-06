@@ -4,6 +4,8 @@
 #include <QAbstractListModel>
 #include <QVector>
 #include "core/Storage/Goal.hpp"
+#include <core/Storage/DataBaseStorage.hpp>
+#include <core/Controllers/ApplicationController.hpp>
 
 class GoalsModel : public QAbstractListModel
 {
@@ -25,11 +27,14 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 public slots:
-    void addGoal(const QString &country, const QString &city, QDateTime depatureDate);
+    void intialize(ApplicationController *applicationController);
+    void readGoals();
+
 
 signals:
-    void goalAdded();
+
 private:
+    DataBaseStorage *_dbStorage;
     QVector<Goal> _goals;
 };
 

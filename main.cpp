@@ -24,6 +24,7 @@
 #include "core/Services/AuthenticationService.hpp"
 #include <core/Storage/DataBaseStorage.hpp>
 #include <core/Controllers/UserAccountController.hpp>
+#include <core/Controllers/GoalsController.hpp>
 
 
 int main(int argc, char *argv[])
@@ -36,12 +37,13 @@ int main(int argc, char *argv[])
 
     DataBaseStorage dataBaseStorage;
     LocationController locationController;
-    GoalsModel goalsModel;
     TripsManager tripsManager(dataBaseStorage);
 //    TripsStorage tripsStorage(dataBaseStorage);
-    ApplicationController appController(tripsManager);
+    ApplicationController appController(dataBaseStorage ,tripsManager);
     AuthenticationService authService(dataBaseStorage);
     UserAccountController userAccountController(dataBaseStorage);
+    GoalsController goalsController(dataBaseStorage);
+
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
@@ -58,6 +60,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<TripDayController>("TripDayController", 1, 0, "TripDayController");
     qmlRegisterType<EndTripService>("EndTripService", 1, 0, "EndTripService");
     qmlRegisterType<CountriesCitiesModel>("CountriesCitiesModel", 1, 0, "CountriesCitiesModel");
+    qmlRegisterType<GoalsModel>("GoalsModel", 1, 0, "GoalsModel");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {
@@ -65,8 +68,8 @@ int main(int argc, char *argv[])
         return utils;
     });
 
+    engine.rootContext()->setContextProperty("goalsController", &goalsController);
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
-    engine.rootContext()->setContextProperty("goalsModel", &goalsModel);
     engine.rootContext()->setContextProperty("appController", &appController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("locationController", &locationController);
