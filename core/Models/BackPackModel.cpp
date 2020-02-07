@@ -81,7 +81,7 @@ bool BackPackModel::checkIfBackPackIsFullyPacked()
 
 //==============================================================================
 
-void BackPackModel::setItemsList(const QList<BackPackItem> &itemsList)
+void BackPackModel::setItemsList(const QVector<BackPackItem> &itemsList)
 {
     beginResetModel();
     _itemsList = itemsList;

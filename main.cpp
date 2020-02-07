@@ -6,7 +6,6 @@
 #include "QMLUtils.hpp"
 #include "core/Controllers/TripController.hpp"
 #include "core/Models/BackpackFilterModel.hpp"
-#include "core/Storage/TripsStorage.hpp"
 #include "core/Controllers/ApplicationController.hpp"
 #include "Managers/TripsManager.hpp"
 #include "core/Controllers/ActiveTripController.hpp"
@@ -25,6 +24,7 @@
 #include <core/Storage/DataBaseStorage.hpp>
 #include <core/Controllers/UserAccountController.hpp>
 #include <core/Controllers/GoalsController.hpp>
+#include <core/Controllers/VisitedLocationsController.hpp>
 
 
 int main(int argc, char *argv[])
@@ -38,11 +38,11 @@ int main(int argc, char *argv[])
     DataBaseStorage dataBaseStorage;
     LocationController locationController;
     TripsManager tripsManager(dataBaseStorage);
-//    TripsStorage tripsStorage(dataBaseStorage);
     ApplicationController appController(dataBaseStorage ,tripsManager);
     AuthenticationService authService(dataBaseStorage);
     UserAccountController userAccountController(dataBaseStorage);
     GoalsController goalsController(dataBaseStorage);
+    VisitedLocationsController visitedLocationsController(dataBaseStorage);
 
 
     static auto *utils = new QMLUtils;
@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("authService", &authService);
     engine.rootContext()->setContextProperty("userController", &userAccountController);
+    engine.rootContext()->setContextProperty("visitedLocationsController", &visitedLocationsController);
     
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

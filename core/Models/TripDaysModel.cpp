@@ -53,7 +53,7 @@ QVariant TripDaysModel::data(const QModelIndex &index, int role) const
 
 //==============================================================================
 
-void TripDaysModel::getDays(QList<TripDay> tripDays)
+void TripDaysModel::getDays(QVector<TripDay> tripDays)
 {
     beginResetModel();
     _days = tripDays;

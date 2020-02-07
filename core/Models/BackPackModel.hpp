@@ -22,13 +22,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    void setItemsList(const QList<BackPackItem>& itemsList);
+    void setItemsList(const QVector<BackPackItem>& itemsList);
 
 public slots:
     bool checkIfBackPackIsFullyPacked();
 
 private:
-    QList<BackPackItem> _itemsList;
+    QVector<BackPackItem> _itemsList;
 };
 
 #endif // BACKPACKMODEL_HPP

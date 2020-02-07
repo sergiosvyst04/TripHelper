@@ -53,7 +53,7 @@ QHash<int, QByteArray> GoalsModel::roleNames() const
 
 void GoalsModel::readGoals()
 {
-    QList<QVariant> goals = _dbStorage->getGoals();
+    QVector<QVariant> goals = _dbStorage->getGoals();
 
     for(auto &goal : goals)
     {

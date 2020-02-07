@@ -8,7 +8,7 @@
 class TripsManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QList<TripData>* completedTrips READ getCompletedTrips CONSTANT)
+    Q_PROPERTY(QVector<TripData>* completedTrips READ getCompletedTrips CONSTANT)
 public:
     explicit TripsManager(DataBaseStorage& dbStorage , QObject *parent = nullptr);
     TripData*        retrieveWaitingTrip();
@@ -17,19 +17,19 @@ public:
 
     TripData*            getActiveTrip();
     TripData*            getWaitingTrip();
-    QList<TripData>*     getCompletedTrips();
+    QVector<TripData>*     getCompletedTrips();
 
     TripData*           parseTrip(QJsonValue &value);
-    QVector<QString>    parseTripDayData(const QList<QVariant> &jsonVector, QVector<QString> &tripDayVector);
-    QVector<Photo>      parsePhotos(const QList<QVariant> &photosOfDay);
-    QList<BackPackItem> parseBackPack(const QList<QVariant> &jsonBackpackItems);
-    QList<TripDay>      parseTripDays(const QList<QVariant> &tripDaysJsonArray);
+    QVector<QString>    parseTripDayData(const QVector<QVariant> &jsonVector, QVector<QString> &tripDayVector);
+    QVector<Photo>      parsePhotos(const QVector<QVariant> &photosOfDay);
+    QVector<BackPackItem> parseBackPack(const QVector<QVariant> &jsonBackpackItems);
+    QVector<TripDay>      parseTripDays(const QVector<QVariant> &tripDaysJsonArray);
 
     QJsonArray          parseDayDataToJson(QVector<QString> &vector);
     QJsonArray          parseDayPhotosToJson(QVector<Photo> &photos);
-    QJsonArray          parseTripdaysToJson(QList<TripDay> &days);
-    QJsonArray          parseBackpackListToJson(QList<BackPackItem> &backpackList);
-    QJsonArray          parseCompletedTripsToJson(QList<TripData>* compTrips);
+    QJsonArray          parseTripdaysToJson(QVector<TripDay> &days);
+    QJsonArray          parseBackpackListToJson(QVector<BackPackItem> &backpackList);
+    QJsonArray          parseCompletedTripsToJson(QVector<TripData>* compTrips);
     QJsonObject         parseTripToJson(TripData *trip);
     QJsonObject         parseOneDayDataToJson(TripDay &tripDay);
 
@@ -45,7 +45,7 @@ public slots:
 
 private:
     DataBaseStorage &_dbStorage;
-    QList<TripData> *_completedTrips;
+    QVector<TripData> *_completedTrips;
     TripData *_activeTrip;
     TripData *_waitingTrip;
 };

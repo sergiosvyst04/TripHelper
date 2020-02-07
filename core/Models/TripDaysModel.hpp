@@ -24,10 +24,10 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash <int, QByteArray> roleNames() const override;
-    Q_INVOKABLE void getDays(QList <TripDay> tripDays);
+    Q_INVOKABLE void getDays(QVector <TripDay> tripDays);
 
 private:
-    QList<TripDay> _days;
+    QVector<TripDay> _days;
 };
 
 #endif // TRIPDAYSMODEL_HPP

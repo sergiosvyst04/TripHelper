@@ -13,10 +13,10 @@
 class Trip : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QList<TripDay> days READ getDays)
+    Q_PROPERTY(QVector<TripDay> days READ getDays)
     Q_PROPERTY(QString name READ getName CONSTANT)
     Q_PROPERTY(QDateTime depatureDate READ getDepatureDate CONSTANT)
-    Q_PROPERTY(QList<QString> allCountries READ getAllCountries CONSTANT)
+    Q_PROPERTY(QVector<QString> allCountries READ getAllCountries CONSTANT)
     enum State {
         InWaiting = 0,
         Active,
@@ -30,19 +30,19 @@ public:
     QString getName() const;
     QDateTime getDepatureDate() const;
     int getState() const;
-    QList<TripDay> getDays() const;
+    QVector<TripDay> getDays() const;
     TripDay& getCurrentTripDay();
-    QList<BackPackItem>& getBackPack();
+    QVector<BackPackItem>& getBackPack();
 
-    QList<QString> getAllCountries() const;
-    QList<QString> getAllCities() const;
-    QList<Photo> getAllPhotos() const;
-    QList<QString> getAllIdeas() const;
+    QVector<QString> getAllCountries() const;
+    QVector<QString> getAllCities() const;
+    QVector<Photo> getAllPhotos() const;
+    QVector<QString> getAllIdeas() const;
 
     void setDepatureDate(QDateTime depatureDate);
     void setName(const QString &name);
-    void setDays(QList<TripDay> days);
-    void setBackPackList(QList<BackPackItem> &itemslist);
+    void setDays(QVector<TripDay> days);
+    void setBackPackList(QVector<BackPackItem> &itemslist);
 
 
 signals:
@@ -57,8 +57,8 @@ private:
     QDateTime _depatureDate;
     //    QDateTime _arrivalDate;
     int _state = State::InWaiting;
-    QList <TripDay> _days;
-    QList<BackPackItem> _backPack;
+    QVector <TripDay> _days;
+    QVector<BackPackItem> _backPack;
 };
 
 //Q_DECLARE_METATYPE(Trip);

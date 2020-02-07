@@ -30,7 +30,7 @@ signals:
 public slots:
 
 private:
-    QList<TripData> *_completedTrips;
+    QVector<TripData> *_completedTrips;
     TripData *_activeTrip;
 
     TripsManager *_tripsManager;

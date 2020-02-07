@@ -12,7 +12,7 @@ void PackService::intialize(ApplicationController *applicationController)
     _backpackModel = new BackPackModel();
     _waitingTrip = applicationController->getTripsManager().getWaitingTrip();
     _tripsManager = &applicationController->getTripsManager();
-    QList<BackPackItem> itemsList = applicationController->getTripsManager().getWaitingTrip()->backPackList;
+    QVector<BackPackItem> itemsList = applicationController->getTripsManager().getWaitingTrip()->backPackList;
     _backpackModel->setItemsList(itemsList);
 
     connect(this, &PackService::backpackChanged, _tripsManager, &TripsManager::updateTrips);

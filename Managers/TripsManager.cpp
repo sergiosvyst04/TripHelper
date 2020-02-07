@@ -14,7 +14,7 @@ TripsManager::TripsManager(DataBaseStorage& dbStorage, QObject *parent)
     : _dbStorage(dbStorage),
       QObject(parent)
 {
-    _completedTrips = new QList<TripData>();
+    _completedTrips = new QVector<TripData>();
     loadTrips();
 }
 
@@ -33,16 +33,16 @@ void TripsManager::loadTrips()
 void TripsManager::retrieveCompletedTrips()
 {
     QSettings idGenerator;
-    QList<QVariant> completedTripsList = _dbStorage.getCompletedTrips(idGenerator.value("userId").toString());
+    QVector<QVariant> completedTripsList = _dbStorage.getCompletedTrips(idGenerator.value("userId").toString());
 
     for(auto compTrip : completedTripsList)
     {
         QVariantMap tripMap = compTrip.toMap();
         TripData trip;
         trip.name = tripMap.value("name").toString();
-        trip.backPackList = parseBackPack(tripMap.value("backpack").toList());
+        trip.backPackList = parseBackPack(tripMap.value("backpack").toList().toVector());
         trip.depatureDate = QDateTime::fromString(tripMap.value("depatureDate").toString(), "d/M/yyyy");
-        trip.days = parseTripDays(tripMap.value("tripDays").toList());
+        trip.days = parseTripDays(tripMap.value("tripDays").toList().toVector());
         _completedTrips->push_back(trip);
     }
 }
@@ -113,11 +113,11 @@ TripData* TripsManager::parseTrip(QJsonValue &activeTrip)
     //    QString tripName = activeTrip["name"].toString();
     //    QDateTime depatureDate = QDateTime::fromString(activeTrip["depatureDate"].toString(), "d/M/yyyy");
     //    QVector<QVariant> jsonBackpack = activeTrip["backpack"].toArray().toVariantList().toVector();
-    //    QList<BackPackItem> backpack = parseBackPack(jsonBackpack);
+    //    QVector<BackPackItem> backpack = parseBackPack(jsonBackpack);
 
     //    QJsonArray daysArray = activeTrip["tripDays"].toArray();
 
-    //    QList<TripDay> tripDays = parseTripDays(daysArray);
+    //    QVector<TripDay> tripDays = parseTripDays(daysArray);
 
     //    parsedActiveTrip->name = tripName;
     //    parsedActiveTrip->backPackList = backpack;
@@ -129,20 +129,20 @@ TripData* TripsManager::parseTrip(QJsonValue &activeTrip)
 
 //==============================================================================
 
-QList<TripDay> TripsManager::parseTripDays(const QList<QVariant> &tripDays)
+QVector<TripDay> TripsManager::parseTripDays(const QVector<QVariant> &tripDays)
 {
-    QList<TripDay> tripDaysList;
+    QVector<TripDay> tripDaysList;
 
     for(auto &currentTripDay : tripDays)
     {
         TripDay tripDay;
         QVariantMap currentDayMap = currentTripDay.toMap();
 
-        tripDay.photos = parsePhotos(currentDayMap.value("photos").toList());
-        tripDay.cities = parseTripDayData(currentDayMap.value("cities").toList(), tripDay.cities);
-        tripDay.countries = parseTripDayData(currentDayMap.value("countries").toList(), tripDay.countries);
-        tripDay.notes = parseTripDayData(currentDayMap.value("notes").toList(), tripDay.notes);
-        tripDay.ideas = parseTripDayData(currentDayMap.value("ideas").toList(), tripDay.ideas);
+        tripDay.photos = parsePhotos(currentDayMap.value("photos").toList().toVector());
+        tripDay.cities = parseTripDayData(currentDayMap.value("cities").toList().toVector(), tripDay.cities);
+        tripDay.countries = parseTripDayData(currentDayMap.value("countries").toList().toVector(), tripDay.countries);
+        tripDay.notes = parseTripDayData(currentDayMap.value("notes").toList().toVector(), tripDay.notes);
+        tripDay.ideas = parseTripDayData(currentDayMap.value("ideas").toList().toVector(), tripDay.ideas);
 
         tripDaysList.push_back(tripDay);
     }
@@ -152,9 +152,9 @@ QList<TripDay> TripsManager::parseTripDays(const QList<QVariant> &tripDays)
 
 //==============================================================================
 
-QList<BackPackItem> TripsManager::parseBackPack(const QList<QVariant> &jsonBackpackItems)
+QVector<BackPackItem> TripsManager::parseBackPack(const QVector<QVariant> &jsonBackpackItems)
 {
-    QList<BackPackItem> backpackItemslist;
+    QVector<BackPackItem> backpackItemslist;
     for(int i = 0; i < jsonBackpackItems.size(); i++)
     {
         QJsonObject jsonBackPackItem = jsonBackpackItems.at(i).toJsonObject();
@@ -174,7 +174,7 @@ QList<BackPackItem> TripsManager::parseBackPack(const QList<QVariant> &jsonBackp
 
 //==============================================================================
 
-QVector<QString> TripsManager::parseTripDayData(const QList<QVariant> &jsonVector, QVector<QString> &tripDayVector)
+QVector<QString> TripsManager::parseTripDayData(const QVector<QVariant> &jsonVector, QVector<QString> &tripDayVector)
 {
     for(int i = 0; i < jsonVector.size(); i++)
         tripDayVector.push_back(jsonVector.at(i).toString());
@@ -184,7 +184,7 @@ QVector<QString> TripsManager::parseTripDayData(const QList<QVariant> &jsonVecto
 
 //==============================================================================
 
-QVector<Photo> TripsManager::parsePhotos(const QList<QVariant> &photosOfDay)
+QVector<Photo> TripsManager::parsePhotos(const QVector<QVariant> &photosOfDay)
 {
     QVector<Photo> parsedPhotos;
     for(int j = 0; j < photosOfDay.size(); j++)
@@ -226,7 +226,7 @@ TripData* TripsManager::getWaitingTrip()
 
 //==============================================================================
 
-QList<TripData>* TripsManager::getCompletedTrips()
+QVector<TripData>* TripsManager::getCompletedTrips()
 {
     return _completedTrips;
 }
@@ -251,7 +251,7 @@ void TripsManager::updateTrips()
 
 //==============================================================================
 
-QJsonArray TripsManager::parseCompletedTripsToJson(QList<TripData> *compTrips)
+QJsonArray TripsManager::parseCompletedTripsToJson(QVector<TripData> *compTrips)
 {
     QJsonArray completedTrips;
     for(int i = 0; i < compTrips->size(); i++)
@@ -283,7 +283,7 @@ QJsonObject TripsManager::parseTripToJson(TripData *parsedTrip)
 
 //==============================================================================
 
-QJsonArray TripsManager::parseTripdaysToJson(QList<TripDay> &days)
+QJsonArray TripsManager::parseTripdaysToJson(QVector<TripDay> &days)
 {
     QJsonArray tripDays = QJsonValue::fromVariant(QVariant::fromValue(days)).toArray();
     for(int i = 0; i < days.size(); i++)
@@ -341,7 +341,7 @@ QJsonArray TripsManager::parseDayPhotosToJson(QVector<Photo> &photos)
 
 //==============================================================================
 
-QJsonArray TripsManager::parseBackpackListToJson(QList<BackPackItem> &backpackList)
+QJsonArray TripsManager::parseBackpackListToJson(QVector<BackPackItem> &backpackList)
 {
     QJsonArray backpack;
     for(int i = 0; i < backpackList.size(); i++)

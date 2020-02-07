@@ -102,6 +102,7 @@
         <file>assets/icons/Flags/Slovenia.png</file>
         <file>assets/icons/Flags/Turkey.png</file>
         <file>assets/icons/Flags/Vatican.png</file>
+        <file>assets/icons/Flags/China.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/db">

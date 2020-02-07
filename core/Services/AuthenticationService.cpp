@@ -5,7 +5,7 @@
 #include "QJsonDocument"
 #include "QJsonObject"
 #include "QJsonArray"
-#include <QList>
+#include <QVector>
 #include <QSettings>
 
 QSettings settings;

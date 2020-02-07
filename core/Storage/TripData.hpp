@@ -9,8 +9,8 @@
 struct TripData {
     QString name;
     QDateTime depatureDate;
-    QList<TripDay> days;
-    QList<BackPackItem> backPackList;
+    QVector<TripDay> days;
+    QVector<BackPackItem> backPackList;
 
     void removePhotoByPath(QString path) {
         for(int i = 0; i < days.size(); i++)

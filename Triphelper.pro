@@ -23,6 +23,7 @@ SOURCES += \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
     core/Controllers/UserAccountController.cpp \
+    core/Controllers/VisitedLocationsController.cpp \
     core/Controllers/WaitingTripController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
@@ -37,7 +38,6 @@ SOURCES += \
     core/Services/PackService.cpp \
     core/Storage/DataBaseStorage.cpp \
     core/Storage/Trip.cpp \
-    core/Storage/TripsStorage.cpp \
         main.cpp \
 
 
@@ -69,6 +69,7 @@ HEADERS += \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Controllers/UserAccountController.hpp \
+    core/Controllers/VisitedLocationsController.hpp \
     core/Controllers/WaitingTripController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \
@@ -88,7 +89,6 @@ HEADERS += \
     core/Storage/Trip.hpp \
     core/Storage/TripData.hpp \
     core/Storage/TripDay.hpp \
-    core/Storage/TripsStorage.hpp \
     core/Storage/UserInfo.hpp \
     modules/SortFilterProxyModel/filters/alloffilter.h \
     modules/SortFilterProxyModel/filters/anyoffilter.h \

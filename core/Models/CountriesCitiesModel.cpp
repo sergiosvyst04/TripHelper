@@ -84,3 +84,11 @@ void CountriesCitiesModel::getCities(QString country)
     std::sort(_locations.begin(), _locations.end());
     endResetModel();
 }
+
+void CountriesCitiesModel::getVisitedLocations(QVector<QString> visitedLocations)
+{
+    beginResetModel();
+    _locations = visitedLocations;
+    endResetModel();
+}
+

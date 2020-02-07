@@ -5,12 +5,24 @@ import QtGraphicalEffects 1.0
 import QtQuick.Controls.Material 2.0
 import "../Components"
 import "../Singletons"
+import CountriesCitiesModel 1.0
 
 BasePage {
     backButtonVisible: true
     footer: Item{}
 
     property var tabCurrentIndex
+
+    CountriesCitiesModel {
+        id: locationsModel
+    }
+
+    Component.onCompleted: {
+        if(tabCurrentIndex === 0)
+            locationsModel.getVisitedLocations(visitedLocationsController.getCountries())
+        else
+            locationsModel.getVisitedLocations(visitedLocationsController.getCities())
+    }
 
     ColumnLayout {
         spacing: 20
@@ -36,6 +48,11 @@ BasePage {
             currentIndex: swipeView.currentIndex
 
             onCurrentIndexChanged: {
+                if(currentIndex === 0)
+                    locationsModel.getVisitedLocations(visitedLocationsController.getCountries())
+
+                else
+                    locationsModel.getVisitedLocations(visitedLocationsController.getCities())
                 swipeView.currentIndex = tabBar.currentIndex
             }
 
@@ -72,7 +89,6 @@ BasePage {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-//            currentIndex: tabBar.currentIndex
             currentIndex:  tabCurrentIndex
 
             ListView {
@@ -80,16 +96,15 @@ BasePage {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 spacing: 22
-                model: 12
+                model: locationsModel
                 clip: true
 
 
                 delegate: VisitedCountryItem {
-
                     width: parent.width
                     height: 40
-                    country: qsTr("Chile")
-                    flag: "qrc:/images/assets/icons/Flags/%1.png".arg(country)
+                    country: model.location
+                    flag: swipeView.currentIndex === 0 ? "qrc:/images/assets/icons/Flags/%1.png".arg(country) : ""
                 }
             }
 
@@ -98,7 +113,7 @@ BasePage {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 spacing: 22
-                model: 24
+                model: locationsModel
                 clip: true
 
                 delegate: RowLayout {
@@ -106,7 +121,7 @@ BasePage {
                     DescriptionText {
                         Layout.leftMargin: 45
                         font: Fonts.openSans(15, Font.MixedCase)
-                        text: "Allesund"
+                        text: model.location
                     }
 
                     Item {

@@ -128,14 +128,14 @@ int Trip::getState() const
 
 //==============================================================================
 
-QList<TripDay> Trip::getDays() const
+QVector<TripDay> Trip::getDays() const
 {
     return _days;
 }
 
 //==============================================================================
 
-QList<BackPackItem>& Trip::getBackPack()
+QVector<BackPackItem>& Trip::getBackPack()
 {
 
     return _backPack;
@@ -143,9 +143,9 @@ QList<BackPackItem>& Trip::getBackPack()
 
 //==============================================================================
 
-QList<QString> Trip::getAllCountries() const
+QVector<QString> Trip::getAllCountries() const
 {
-    QList<QString> countriesList;
+    QVector<QString> countriesList;
     for(int i = 0; i < _days.size(); i++)
     {
         for(unsigned int j = 0; j < _days.at(i).countries.size(); j++)
@@ -160,9 +160,9 @@ QList<QString> Trip::getAllCountries() const
 
 //==============================================================================
 
-QList<QString> Trip::getAllCities() const
+QVector<QString> Trip::getAllCities() const
 {
-    QList<QString> citiesList;
+    QVector<QString> citiesList;
 
     for(int i = 0; i < _days.size(); i++)
     {
@@ -178,9 +178,9 @@ QList<QString> Trip::getAllCities() const
 
 //==============================================================================
 
-QList<Photo> Trip::getAllPhotos() const
+QVector<Photo> Trip::getAllPhotos() const
 {
-    QList<Photo> photosList;
+    QVector<Photo> photosList;
     for(int i = 0; i < _days.size(); i++)
     {
         for(unsigned int j = 0; j < _days.at(i).photos.size(); j++)
@@ -195,9 +195,9 @@ QList<Photo> Trip::getAllPhotos() const
 
 //==============================================================================
 
-QList<QString> Trip::getAllIdeas() const
+QVector<QString> Trip::getAllIdeas() const
 {
-    QList<QString> ideasList;
+    QVector<QString> ideasList;
     for(int i = 0; i < _days.size(); i++)
     {
         for(unsigned int j = 0; j < _days.at(i).ideas.size(); j++)
@@ -225,14 +225,14 @@ void Trip::setName(const QString &name)
 
 //==============================================================================
 
-void Trip::setDays(QList<TripDay> days)
+void Trip::setDays(QVector<TripDay> days)
 {
     _days = days;
 }
 
 //==============================================================================
 
-void Trip::setBackPackList(QList<BackPackItem> &itemslist)
+void Trip::setBackPackList(QVector<BackPackItem> &itemslist)
 {
     _backPack = itemslist;
 }

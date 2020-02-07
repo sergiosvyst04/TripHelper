@@ -31,7 +31,7 @@ public slots:
     void addTrip(const TripData &completedTrip);
 
 private:
-    QList<TripData> _completedTrips;
+    QVector<TripData> _completedTrips;
 };
 
 #endif // COMPLETEDTRIPSMODEL_HPP

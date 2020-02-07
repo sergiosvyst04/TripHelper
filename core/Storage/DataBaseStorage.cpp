@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QCryptographicHash>
 #include <QSettings>
+#include <core/Controllers/VisitedLocationsController.hpp>
 
 extern QSettings settings;
 extern QString userId = "";
@@ -200,9 +201,9 @@ std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 
 //==============================================================================
 
-QList<QVariant> DataBaseStorage::getCompletedTrips(const QString &uid)
+QVector<QVariant> DataBaseStorage::getCompletedTrips(const QString &uid)
 {
-    return  _usersDataDB->at("completedTrips").at(uid).toList();
+    return  _usersDataDB->at("completedTrips").at(uid).toList().toVector();
 }
 
 //==============================================================================
@@ -216,7 +217,7 @@ void DataBaseStorage::addGoal(Goal &goal)
 
     if(_usersDataDB->at("goals").find(userId) == _usersDataDB->at("goals").end())
     {
-        _usersDataDB->at("goals").insert(std::pair<QString, QVariant> (userId, QList<QVariant>({goalToPush})));
+        _usersDataDB->at("goals").insert(std::pair<QString, QVariant> (userId, QVariant::fromValue(QVector<QVariant>({goalToPush}))));
     } else {
         QVariantList userGoals = _usersDataDB->at("goals").at(userId).toList();
         userGoals.append(goalToPush);
@@ -227,7 +228,22 @@ void DataBaseStorage::addGoal(Goal &goal)
 
 //==============================================================================
 
-QList<QVariant> DataBaseStorage::getGoals()
+QVector<QVariant> DataBaseStorage::getGoals()
 {
-    return _usersDataDB->at("goals").at(userId).toList();
+    return _usersDataDB->at("goals").at(userId).toList().toVector();
+}
+
+//==============================================================================
+
+QVector<QString> DataBaseStorage::getLocations(const QString &locationsType)
+{
+    QVariantList locationsList = _usersDataDB->at(locationsType).at(userId).toList();
+    QVector<QString> locationStringList;
+
+    for(auto &location : locationsList)
+    {
+        locationStringList.append(location.toString());
+    }
+
+    return locationStringList;
 }

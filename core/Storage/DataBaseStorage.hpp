@@ -8,10 +8,13 @@
 #include <core/Storage/TripData.hpp>
 #include <core/Storage/Goal.hpp>
 
+class VisitedLocationsController;
+
 class DataBaseStorage : public QObject
 {
     Q_OBJECT
 public:
+
     explicit DataBaseStorage(QObject *parent = nullptr);
     void readUsers();
     void updateUsers();
@@ -30,8 +33,10 @@ public:
     std::map<QString, UserInfo> parseUsersJsonArray(QJsonArray &jsonArray);
     std::map<QString, std::map<QString, QVariant>> parseUsersDataJsonArray(QJsonArray &jsonArray);
 
-    QList<QVariant> getCompletedTrips(const QString &uid);
-    QList<QVariant> getGoals();
+    QVector<QVariant> getCompletedTrips(const QString &uid);
+    QVector<QVariant> getGoals();
+    QVector<QString> getLocations(const QString &locationsType);
+
 signals:
     void goalAddedToDb();
 
