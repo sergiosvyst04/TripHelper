@@ -25,6 +25,7 @@
 #include <core/Controllers/UserAccountController.hpp>
 #include <core/Controllers/GoalsController.hpp>
 #include <core/Controllers/VisitedLocationsController.hpp>
+#include <core/Storage/PhotosStorage.hpp>
 
 
 int main(int argc, char *argv[])
@@ -43,6 +44,7 @@ int main(int argc, char *argv[])
     UserAccountController userAccountController(dataBaseStorage);
     GoalsController goalsController(dataBaseStorage);
     VisitedLocationsController visitedLocationsController(dataBaseStorage);
+    PhotosStorage photosStorage(dataBaseStorage);
 
 
     static auto *utils = new QMLUtils;
@@ -77,6 +79,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("authService", &authService);
     engine.rootContext()->setContextProperty("userController", &userAccountController);
     engine.rootContext()->setContextProperty("visitedLocationsController", &visitedLocationsController);
+    engine.rootContext()->setContextProperty("photosStorage", &photosStorage);
     
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

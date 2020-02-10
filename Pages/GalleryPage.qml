@@ -14,6 +14,7 @@ BasePage {
     property bool editState: false
     property bool deleteMultiplePhotos: false
     property int amountOfSelectedImages: 0
+    property string location: ""
 
     function deleteSelectedPhotos() {
         var count = galleryService.photosModel.rowCount();
@@ -31,7 +32,11 @@ BasePage {
     GalleryService {
         id: galleryService
 
-        Component.onCompleted: intialize(appController)
+        Component.onCompleted: {
+            intialize(photosStorage)
+            if(location !== "")
+                galleryService.getPhotos(location)
+        }
     }
 
     ListModel {
@@ -177,8 +182,6 @@ BasePage {
                 cellHeight: cellWidth
 
                 model: galleryService.photosModel
-
-                onCountChanged: console.log(count)
 
                 delegate: Item {
                     property string photoSource: gridDelegate.source1

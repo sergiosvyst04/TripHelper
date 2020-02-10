@@ -37,6 +37,7 @@ SOURCES += \
     core/Services/GalleryService.cpp \
     core/Services/PackService.cpp \
     core/Storage/DataBaseStorage.cpp \
+    core/Storage/PhotosStorage.cpp \
     core/Storage/Trip.cpp \
         main.cpp \
 
@@ -86,6 +87,7 @@ HEADERS += \
     core/Storage/DataBaseStorage.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
+    core/Storage/PhotosStorage.hpp \
     core/Storage/Trip.hpp \
     core/Storage/TripData.hpp \
     core/Storage/TripDay.hpp \

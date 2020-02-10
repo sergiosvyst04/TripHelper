@@ -36,6 +36,7 @@ public:
     QVector<QVariant> getCompletedTrips(const QString &uid);
     QVector<QVariant> getGoals();
     QVector<QString> getLocations(const QString &locationsType);
+    QVector<Photo> getAllPhotos();
 
 signals:
     void goalAddedToDb();

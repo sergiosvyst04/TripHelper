@@ -119,6 +119,7 @@ BasePage {
                 delegate: RowLayout {
                     width: parent.width
                     DescriptionText {
+                        id: city
                         Layout.leftMargin: 45
                         font: Fonts.openSans(15, Font.MixedCase)
                         text: model.location
@@ -138,6 +139,7 @@ BasePage {
                         fontColor: Colors.white
                         text: qsTr("See photos")
                         layer.enabled: false
+                        onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml", {location : city.text})
                     }
                 }
             }

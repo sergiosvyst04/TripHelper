@@ -247,3 +247,42 @@ QVector<QString> DataBaseStorage::getLocations(const QString &locationsType)
 
     return locationStringList;
 }
+
+//==============================================================================
+
+QVector<Photo> DataBaseStorage::getAllPhotos()
+{
+    QVector<Photo> photos;
+    QVariantList completedTrips = _usersDataDB->at("completedTrips").at(userId).toList();
+
+    for(auto &completedTrip : completedTrips)
+    {
+        QVariantMap currentTrip = completedTrip.toMap();
+        QVariantList currentTripDays = currentTrip.value("tripDays").toList();
+        for(auto &day : currentTripDays)
+        {
+            QVariantMap currentDayMap = day.toMap();
+            QVariantList photosOfDay = currentDayMap.value("photos").toList();
+            for(auto &photo : photosOfDay)
+            {
+                QVariantMap photoMap = photo.toMap();
+                Photo photoItem;
+
+                QGeoAddress address;
+                QString source = photoMap.value("source").toString();
+                QDateTime timeStamp = QDateTime::fromString(photoMap.value("date").toString(), "d/M/yyyy");
+                QStringList addressString = photoMap.value("location").toString().split("/");
+                address.setCountry(addressString.at(0));
+                address.setCity(addressString.at(1));
+
+                Photo retrievedPhoto;
+                retrievedPhoto.source = source;
+                retrievedPhoto.timestamp = timeStamp;
+                retrievedPhoto.location = address;
+
+                photos.push_back(retrievedPhoto);
+            }
+        }
+    }
+      return photos;
+}

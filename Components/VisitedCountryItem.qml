@@ -35,5 +35,6 @@ RowLayout {
         fontColor: Colors.white
         text: qsTr("See photos")
         layer.enabled: false
+        onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml", {location : country})
     }
 }
