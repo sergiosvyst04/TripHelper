@@ -64,5 +64,6 @@
         <file>Components/TripDayViewer.qml</file>
         <file>Pages/CheckListPage.qml</file>
         <file>Components/CheckListItem.qml</file>
+        <file>Pages/AddVisitedLocationsPage.qml</file>
     </qresource>
 </RCC>

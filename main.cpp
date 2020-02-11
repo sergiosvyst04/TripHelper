@@ -26,6 +26,7 @@
 #include <core/Controllers/GoalsController.hpp>
 #include <core/Controllers/VisitedLocationsController.hpp>
 #include <core/Storage/PhotosStorage.hpp>
+#include <QSettings>
 
 
 int main(int argc, char *argv[])
@@ -36,16 +37,17 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+
     DataBaseStorage dataBaseStorage;
-    LocationController locationController;
-    TripsManager tripsManager(dataBaseStorage);
-    ApplicationController appController(dataBaseStorage ,tripsManager);
     AuthenticationService authService(dataBaseStorage);
+    LocationController locationController;
+
+    TripsManager tripsManager(dataBaseStorage, authService);
+    ApplicationController appController(dataBaseStorage ,tripsManager);
     UserAccountController userAccountController(dataBaseStorage);
     GoalsController goalsController(dataBaseStorage);
-    VisitedLocationsController visitedLocationsController(dataBaseStorage);
-    PhotosStorage photosStorage(dataBaseStorage);
-
+    VisitedLocationsController visitedLocationsController(dataBaseStorage, authService);
+    PhotosStorage photosStorage(dataBaseStorage, authService);
 
     static auto *utils = new QMLUtils;
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");

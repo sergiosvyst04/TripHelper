@@ -10,12 +10,17 @@
 #include <QSettings>
 
 
-TripsManager::TripsManager(DataBaseStorage& dbStorage, QObject *parent)
+TripsManager::TripsManager(DataBaseStorage& dbStorage, AuthenticationService &authService, QObject *parent)
     : _dbStorage(dbStorage),
+      _authService(authService),
       QObject(parent)
 {
     _completedTrips = new QVector<TripData>();
-    loadTrips();
+
+    if(_authService.isSignedIn())
+        loadTrips();
+
+    connect(&_authService, &AuthenticationService::signedIn, this, &TripsManager::loadTrips);
 }
 
 //==============================================================================
@@ -31,9 +36,8 @@ void TripsManager::loadTrips()
 //==============================================================================
 
 void TripsManager::retrieveCompletedTrips()
-{
-    QSettings idGenerator;
-    QVector<QVariant> completedTripsList = _dbStorage.getCompletedTrips(idGenerator.value("userId").toString());
+{   
+    QVector<QVariant> completedTripsList = _dbStorage.getCompletedTrips();
 
     for(auto compTrip : completedTripsList)
     {

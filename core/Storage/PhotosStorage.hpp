@@ -5,19 +5,22 @@
 #include <QVector>
 #include "Photo.hpp"
 #include "DataBaseStorage.hpp"
+#include "core/Services/AuthenticationService.hpp"
 
 class PhotosStorage : public QObject
 {
     Q_OBJECT
 public:
-    explicit PhotosStorage(DataBaseStorage &databaseStorage ,QObject *parent = nullptr);
+    explicit PhotosStorage(DataBaseStorage &databaseStorage, AuthenticationService &authService ,QObject *parent = nullptr);
 
 signals:
 
 public slots:
     QVector<Photo> getPhotosByLocation(const QString &location);
+    void readPhotos();
 
 private:
+    AuthenticationService &_authService;
     DataBaseStorage &_dbStorage;
     QVector<Photo> _allPhotos;
 };

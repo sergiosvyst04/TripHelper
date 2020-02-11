@@ -4,13 +4,14 @@
 #include <QObject>
 #include "core/Storage/TripData.hpp"
 #include <core/Storage/DataBaseStorage.hpp>
+#include <core/Services/AuthenticationService.hpp>
 
 class TripsManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVector<TripData>* completedTrips READ getCompletedTrips CONSTANT)
 public:
-    explicit TripsManager(DataBaseStorage& dbStorage , QObject *parent = nullptr);
+    explicit TripsManager(DataBaseStorage& dbStorage, AuthenticationService &authService, QObject *parent = nullptr);
     TripData*        retrieveWaitingTrip();
     TripData*        retrieveActivetrip();
     void             retrieveCompletedTrips();
@@ -45,6 +46,7 @@ public slots:
 
 private:
     DataBaseStorage &_dbStorage;
+    AuthenticationService &_authService;
     QVector<TripData> *_completedTrips;
     TripData *_activeTrip;
     TripData *_waitingTrip;

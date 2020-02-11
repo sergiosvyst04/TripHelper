@@ -33,13 +33,17 @@ public:
     std::map<QString, UserInfo> parseUsersJsonArray(QJsonArray &jsonArray);
     std::map<QString, std::map<QString, QVariant>> parseUsersDataJsonArray(QJsonArray &jsonArray);
 
-    QVector<QVariant> getCompletedTrips(const QString &uid);
+    QVector<QVariant> getCompletedTrips();
     QVector<QVariant> getGoals();
     QVector<QString> getLocations(const QString &locationsType);
     QVector<Photo> getAllPhotos();
 
+    void addCity(const QString &city);
+    void addCountry(const QString &country);
+
 signals:
-    void goalAddedToDb();
+    void usersDataChanged();
+    void usersChanged();
 
 public slots:
 

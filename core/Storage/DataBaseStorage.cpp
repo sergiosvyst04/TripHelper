@@ -16,8 +16,12 @@ DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
 {
     _usersDB = new std::map<QString, UserInfo>;
     _usersDataDB = new std::map<QString, std::map<QString, QVariant>>;
+
     readUsers();
     readUsersData();
+
+    connect(this, &DataBaseStorage::usersChanged, this, &DataBaseStorage::updateUsers);
+    connect(this, &DataBaseStorage::usersDataChanged, this, &DataBaseStorage::updateUsersData);
 
     userId = settings.value("userId").toString();
 }
@@ -180,7 +184,7 @@ void DataBaseStorage::saveUser(const QString &email, const QString &password)
                                                       "",
                                                       ""
                                                   }));
-    updateUsers();
+    emit usersChanged();
 }
 
 //==============================================================================
@@ -189,7 +193,13 @@ void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
 {
     _usersDB->at(userId) = userInfo;
 
-    updateUsers();
+    _usersDataDB->at("completedTrips").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("visitedCities").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("visitedCountries").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("goals").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
+
+    emit usersChanged();
+    emit usersDataChanged();
 }
 
 //==============================================================================
@@ -201,9 +211,9 @@ std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 
 //==============================================================================
 
-QVector<QVariant> DataBaseStorage::getCompletedTrips(const QString &uid)
+QVector<QVariant> DataBaseStorage::getCompletedTrips()
 {
-    return  _usersDataDB->at("completedTrips").at(uid).toList().toVector();
+    return  _usersDataDB->at("completedTrips").at(userId).toList().toVector();
 }
 
 //==============================================================================
@@ -215,15 +225,11 @@ void DataBaseStorage::addGoal(Goal &goal)
     goalToPush.insert("cityDestination", QString::fromStdString(goal.city));
     goalToPush.insert("depatureDate", goal.depatureDate.toString("d/M/yyyy"));
 
-    if(_usersDataDB->at("goals").find(userId) == _usersDataDB->at("goals").end())
-    {
-        _usersDataDB->at("goals").insert(std::pair<QString, QVariant> (userId, QVariant::fromValue(QVector<QVariant>({goalToPush}))));
-    } else {
-        QVariantList userGoals = _usersDataDB->at("goals").at(userId).toList();
-        userGoals.append(goalToPush);
-        _usersDataDB->at("goals").at(userId) = userGoals;
-    }
-    emit goalAddedToDb();
+    QVariantList userGoals = _usersDataDB->at("goals").at(userId).toList();
+    userGoals.append(goalToPush);
+    _usersDataDB->at("goals").at(userId) = userGoals;
+
+    emit usersDataChanged();
 }
 
 //==============================================================================
@@ -284,5 +290,30 @@ QVector<Photo> DataBaseStorage::getAllPhotos()
             }
         }
     }
-      return photos;
+
+    return photos;
 }
+
+//==============================================================================
+
+void DataBaseStorage::addCity(const QString &city)
+{
+    QVariantList usersCities =  _usersDataDB->at("visitedCities").at(userId).toList();
+    usersCities.push_back(city);
+    _usersDataDB->at("visitedCities").at(userId) = usersCities;
+
+    emit usersDataChanged();
+}
+
+//==============================================================================
+
+void DataBaseStorage::addCountry(const QString &country)
+{
+    qDebug() << "add country : " << country;
+    QVariantList usersCountries = _usersDataDB->at("visitedCountries").at(userId).toList();
+    usersCountries.push_back(country);
+    _usersDataDB->at("visitedCountries").at(userId) = usersCountries;
+
+    emit usersDataChanged();
+}
+

@@ -38,7 +38,7 @@ ColumnLayout {
                     id: numberOfVisitedCountries
                     Layout.alignment: Qt.AlignHCenter
                     font: Fonts.openSansBold(18)
-                    text: "16"
+                    text: visitedLocationsController.amountOfVisitedCountries
                 }
 
                 DescriptionText {
@@ -59,7 +59,7 @@ ColumnLayout {
                     id: numberOFVisitedCities
                     Layout.alignment: Qt.AlignHCenter
                     font: Fonts.openSansBold(18)
-                    text: "55"
+                    text: visitedLocationsController.amountOfVisitedCities
                 }
 
                 DescriptionText {
