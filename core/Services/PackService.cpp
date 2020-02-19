@@ -2,7 +2,7 @@
 
 PackService::PackService(QObject *parent) : QObject(parent)
 {
-    connect(this, &PackService::backpackChanged, this, &PackService::updateModel);
+
 }
 
 //==============================================================================
@@ -10,12 +10,13 @@ PackService::PackService(QObject *parent) : QObject(parent)
 void PackService::intialize(ApplicationController *applicationController)
 {
     _backpackModel = new BackPackModel();
-    _waitingTrip = applicationController->getTripsManager().getWaitingTrip();
+    _waitingTrip = applicationController->getTripsManager().getUnCompletedTrip();
     _tripsManager = &applicationController->getTripsManager();
-    QVector<BackPackItem> itemsList = applicationController->getTripsManager().getWaitingTrip()->backPackList;
+    QVector<BackPackItem> itemsList = applicationController->getTripsManager().getUnCompletedTrip()->backPackList;
     _backpackModel->setItemsList(itemsList);
 
-    connect(this, &PackService::backpackChanged, _tripsManager, &TripsManager::updateTrips);
+    connect(this, &PackService::backpackChanged, this, &PackService::updateModel);
+    connect(this, &PackService::backpackChanged, _tripsManager, &TripsManager::updateUncompletedTrip);
 }
 
 //==============================================================================

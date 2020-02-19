@@ -5,6 +5,7 @@
 #include "core/Storage/TripData.hpp"
 #include <core/Storage/DataBaseStorage.hpp>
 #include <core/Services/AuthenticationService.hpp>
+#include <core/Storage/Trip.hpp>
 
 class TripsManager : public QObject
 {
@@ -12,44 +13,37 @@ class TripsManager : public QObject
     Q_PROPERTY(QVector<TripData>* completedTrips READ getCompletedTrips CONSTANT)
 public:
     explicit TripsManager(DataBaseStorage& dbStorage, AuthenticationService &authService, QObject *parent = nullptr);
-    TripData*        retrieveWaitingTrip();
-    TripData*        retrieveActivetrip();
-    void             retrieveCompletedTrips();
+    void                  retrieveUncompletedTrip();
+    void                  retrieveCompletedTrips();
 
-    TripData*            getActiveTrip();
-    TripData*            getWaitingTrip();
-    QVector<TripData>*     getCompletedTrips();
+    TripData*             getUnCompletedTrip();
+    QVector<TripData>*    getCompletedTrips();
 
-    TripData*           parseTrip(QJsonValue &value);
-    QVector<QString>    parseTripDayData(const QVector<QVariant> &jsonVector, QVector<QString> &tripDayVector);
-    QVector<Photo>      parsePhotos(const QVector<QVariant> &photosOfDay);
+    TripData*             parseTrip(QJsonValue &value);
+    QVector<QString>      parseTripDayData(const QVector<QVariant> &jsonVector, QVector<QString> &tripDayVector);
+    QVector<Photo>        parsePhotos(const QVector<QVariant> &photosOfDay);
     QVector<BackPackItem> parseBackPack(const QVector<QVariant> &jsonBackpackItems);
     QVector<TripDay>      parseTripDays(const QVector<QVariant> &tripDaysJsonArray);
 
-    QJsonArray          parseDayDataToJson(QVector<QString> &vector);
-    QJsonArray          parseDayPhotosToJson(QVector<Photo> &photos);
-    QJsonArray          parseTripdaysToJson(QVector<TripDay> &days);
-    QJsonArray          parseBackpackListToJson(QVector<BackPackItem> &backpackList);
-    QJsonArray          parseCompletedTripsToJson(QVector<TripData>* compTrips);
-    QJsonObject         parseTripToJson(TripData *trip);
-    QJsonObject         parseOneDayDataToJson(TripDay &tripDay);
+    QVariantMap           parseTripToVariantMap(TripData *trip);
+    QVariantList          parseBackpackToVariantList(QVector<BackPackItem> backpackList);
+    QVariantList          parseTripDaysToVariantList(QVector<TripDay> days);
+    QVariantList          parseDayPhotosToVariantList(QVector<Photo> photos);
+    QVariantList          parseDayDataToVariantList(QVector<QString> dayData);
 
-    QJsonDocument       readJsonData(const QString &path);
-    void                writeJsonFile(const QString &path, QJsonDocument &jsonDoc);
-
-    void updateTrips();
-    void loadTrips();
-
+    void                  updateUncompletedTrip();
+    void                  loadTrips();
 signals:
 
 public slots:
+    bool checkIfActiveTripExists();
+    bool checkIfWaitingTripExists();
 
 private:
     DataBaseStorage &_dbStorage;
     AuthenticationService &_authService;
     QVector<TripData> *_completedTrips;
-    TripData *_activeTrip;
-    TripData *_waitingTrip;
+    TripData *_uncompletedTrip;
 };
 
 #endif // TRIPSMANAGER_HPP

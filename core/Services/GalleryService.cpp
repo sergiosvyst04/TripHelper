@@ -8,28 +8,26 @@ GalleryService::GalleryService(QObject *parent) : QObject(parent)
 
 //==============================================================================
 
-void GalleryService::intialize(PhotosStorage *photosStorage)
+void GalleryService::intialize(PhotosStorage *photosStorage, TripsManager *tripsManager)
 {
     _photosStorage = photosStorage;
-//    _viewedTrip = applicationController->getTripsManager().getActiveTrip();
-//    QVector<Photo> tripPhotos = getAllPhotos();
-//    _photosModel->getPhotos(tripPhotos);
+    _viewedTrip = tripsManager->getUnCompletedTrip();
 }
 
 //==============================================================================
 
-QVector<Photo> GalleryService::getAllPhotos()
+void GalleryService::setAllPhotosForModel()
 {
-//    QVector<Photo> allPhotosList;
-//    for(int i = 0; i < _viewedTrip->days.size(); i++)
-//    {
-//        for(int j = 0; j < _viewedTrip->days.at(i).photos.size(); j++)
-//        {
-//            Photo photo =  _viewedTrip->days.at(i).photos.at(j);
-//            allPhotosList.push_back(photo);
-//        }
-//    }
-//    return allPhotosList;
+    QVector<Photo> allPhotosList;
+    for(int i = 0; i < _viewedTrip->days.size(); i++)
+    {
+        for(int j = 0; j < _viewedTrip->days.at(i).photos.size(); j++)
+        {
+            Photo photo =  _viewedTrip->days.at(i).photos.at(j);
+            allPhotosList.push_back(photo);
+        }
+    }
+    _photosModel->getPhotos(allPhotosList);
 }
 
 //==============================================================================
@@ -43,8 +41,8 @@ PhotosModel* GalleryService::getModelWithPhotos()
 
 void GalleryService::removePhoto(int index, QString path)
 {
-//    _photosModel->removePhoto(index);
-//    _viewedTrip->removePhotoByPath(path);
+    _photosModel->removePhoto(index);
+    _viewedTrip->removePhotoByPath(path);
     emit photosModelChanged();
 }
 
@@ -52,6 +50,9 @@ void GalleryService::removePhoto(int index, QString path)
 
 void GalleryService::getPhotos(QString location)
 {
+    qDebug() << "location : " << location;
     _photosModel->getPhotos(_photosStorage->getPhotosByLocation(location));
 }
+
+//==============================================================================
 

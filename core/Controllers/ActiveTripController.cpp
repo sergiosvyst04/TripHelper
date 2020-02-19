@@ -3,7 +3,6 @@
 
 ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 {
-//    _activeTrip = new TripData();
     _locationController = new LocationController();
 }
 
@@ -12,9 +11,11 @@ ActiveTripController::ActiveTripController(QObject *parent) : QObject(parent)
 
 void ActiveTripController::intialize(ApplicationController *applicationController, LocationController *locationController)
 {
-    _activeTrip = applicationController->getTripsManager().getActiveTrip();
+    _activeTrip = applicationController->getTripsManager().getUnCompletedTrip();
     _locationController = locationController;
     _tripsManager = &applicationController->getTripsManager();
+
+    connect(this, &ActiveTripController::activeTripDataChanged, _tripsManager, &TripsManager::updateUncompletedTrip);
 }
 
 //==============================================================================
@@ -23,7 +24,8 @@ void ActiveTripController::addNote(const QString &newNote)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.notes.push_back(newNote);
-    _tripsManager->updateTrips();
+
+    emit activeTripDataChanged();
 }
 
 //==============================================================================
@@ -32,20 +34,22 @@ void ActiveTripController::addNewIdea(const QString &newIdea)
 {
     TripDay &currentTripDay = _activeTrip->days.last();
     currentTripDay.ideas.push_back(newIdea);
-    _tripsManager->updateTrips();
+
+    emit activeTripDataChanged();
 }
 
 //==============================================================================
 
 void ActiveTripController::makeCheckIn()
 {
-    qDebug() << "check-in is done";
     TripDay &currentTripDay = _activeTrip->days.last();
     QString city = _locationController->getCurrentLocation().city();
     QString country = _locationController->getCurrentLocation().country();
     currentTripDay.cities.push_back(city);
     currentTripDay.countries.push_back(country);
+
     // checkIfSuchCityISVisited
+    emit activeTripDataChanged();
 }
 
 //==============================================================================
@@ -63,7 +67,7 @@ void ActiveTripController::addNewPhoto(const QString &path)
     };
 
     currentTripDay.photos.push_back(newPhoto);
-    _tripsManager->updateTrips();
+    emit activeTripDataChanged();
 }
 
 //==============================================================================

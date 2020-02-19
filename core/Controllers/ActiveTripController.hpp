@@ -20,6 +20,7 @@ public:
 signals:
     void tripChanged();
     void currentCityChanged();
+    void activeTripDataChanged();
 
 public slots:
     void addNote(const QString &newNote);
@@ -37,7 +38,6 @@ private:
     TripData *_activeTrip;
     LocationController *_locationController;
     TripsManager *_tripsManager;
-
 };
 
 #endif // ACTIVETRIPCONTROLLER_HPP

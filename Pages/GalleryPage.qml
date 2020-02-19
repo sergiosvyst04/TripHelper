@@ -33,9 +33,14 @@ BasePage {
         id: galleryService
 
         Component.onCompleted: {
-            intialize(photosStorage)
+            intialize(photosStorage, tripsManager)
             if(location !== "")
                 galleryService.getPhotos(location)
+            else {
+                galleryService.setAllPhotosForModel()
+            }
+
+
         }
     }
 

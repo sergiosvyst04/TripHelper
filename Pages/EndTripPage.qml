@@ -9,7 +9,6 @@ import "../Components"
 
 BasePage {
     id: basePage
-
     nextButtonVisible: true
     nextButtonText: qsTr("Thanks")
     onNextButtonClicked: {
@@ -119,7 +118,7 @@ BasePage {
                     width: city.width
                     DescriptionText {
                         id: city
-                        font: Fonts.openSans(14, Font.MixedCase)
+                        font: index === citiesListView.currentIndex ? Fonts.openSansBold(17, Font.MixedCase) : Fonts.openSans(14)
                         text: model.name
                     }
 

@@ -16,6 +16,7 @@ public:
 
 signals:
      void backpackChanged();
+
 public slots:
     BackPackModel* getBackpackModel();
 

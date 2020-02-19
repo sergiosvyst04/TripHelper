@@ -22,14 +22,17 @@ ListView {
             id: countryItem
             spacing: 1
             Image {
+                id: flagImage
                 Layout.alignment: Qt.AlignHCenter
                 source: model.flag
-                sourceSize: Qt.size(30, 22)
+                sourceSize: index === currentIndex ? Qt.size(42, 30) : Qt.size(30, 22)
             }
 
             DescriptionText {
                 id: countryName
                 Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: index === currentIndex ? 5 : 0
+                font: index === currentIndex ? Fonts.openSansBold(13) : Fonts.openSans(13)
                 text: model.country
             }
         }

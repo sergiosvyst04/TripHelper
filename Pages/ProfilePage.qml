@@ -32,6 +32,10 @@ ColumnLayout {
             Layout.minimumWidth: 138
             Layout.minimumHeight: 168
             color: Colors.primaryColor
+            enabled: tripsManager.checkIfWaitingTripExists()
+
+            opacity: enabled ? 1 : 0.6
+
             background : Rectangle {
                 radius: 28
                 gradient: Gradient {
@@ -48,7 +52,9 @@ ColumnLayout {
             color: Colors.greenButtonColor
             image: "qrc:/images/assets/white icons/active.png"
             buttonText: qsTr("Active trip")
-            onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")
+            enabled: tripsManager.checkIfActiveTripExists()
+
+            opacity: enabled ? 1 : 0.6
             background : Rectangle {
                 radius: 28
                 gradient: Gradient {
@@ -56,6 +62,8 @@ ColumnLayout {
                     GradientStop {position: 1.0; color: "#7EFF1A" }
                 }
             }
+
+            onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")            
         }
 
         ProfileButton {

@@ -28,12 +28,14 @@ public:
     void saveUserInfo(UserInfo &userInfo);
 
     void addGoal(Goal &goal);
+    void updateUncompletedTrip(QVariantMap &uncompletedTrip);
 
     std::map<QString, UserInfo>* getUsersDb() const;
     std::map<QString, UserInfo> parseUsersJsonArray(QJsonArray &jsonArray);
     std::map<QString, std::map<QString, QVariant>> parseUsersDataJsonArray(QJsonArray &jsonArray);
 
     QVector<QVariant> getCompletedTrips();
+    QVariant getUncompletedTrip();
     QVector<QVariant> getGoals();
     QVector<QString> getLocations(const QString &locationsType);
     QVector<Photo> getAllPhotos();

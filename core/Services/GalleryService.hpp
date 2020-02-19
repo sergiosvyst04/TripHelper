@@ -14,9 +14,8 @@ class GalleryService : public QObject
 public:
     explicit GalleryService(QObject *parent = nullptr);
 
-    Q_INVOKABLE void intialize(PhotosStorage *photosStorage);
+    Q_INVOKABLE void intialize(PhotosStorage *photosStorage, TripsManager *tripsManager);
     Q_INVOKABLE void removePhoto(int index, QString path);
-    QVector<Photo> getAllPhotos();
     PhotosModel* getModelWithPhotos();
 
 signals:
@@ -24,10 +23,12 @@ signals:
 
 public slots:
     void getPhotos(QString location);
+    void setAllPhotosForModel();
 
 private:
     PhotosModel *_photosModel;
     PhotosStorage *_photosStorage;
+    TripData *_viewedTrip;
 };
 
 #endif // GALLERYSERVICE_HPP

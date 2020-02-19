@@ -17,6 +17,7 @@ class Trip : public QObject
     Q_PROPERTY(QString name READ getName CONSTANT)
     Q_PROPERTY(QDateTime depatureDate READ getDepatureDate CONSTANT)
     Q_PROPERTY(QVector<QString> allCountries READ getAllCountries CONSTANT)
+
     enum State {
         InWaiting = 0,
         Active,
