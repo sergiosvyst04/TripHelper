@@ -45,7 +45,8 @@ ColumnLayout {
     Rectangle {
         id: answerText
         Layout.fillWidth: true
-        Layout.preferredHeight: col.height
+        Layout.preferredHeight: col.height + 20
+
         visible: btn.checked ? true : false
         radius: 32
 
@@ -80,7 +81,7 @@ ColumnLayout {
 
                     Loader {
                         id: loader
-                        sourceComponent: addBtn
+                        sourceComponent: packer.checkIfItemExists(thing.text) ? removebtn : addBtn
 
                         Component {
                             id: addBtn
