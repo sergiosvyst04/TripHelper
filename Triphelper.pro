@@ -23,6 +23,7 @@ SOURCES += \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
     core/Controllers/UserAccountController.cpp \
+    core/Controllers/UserIdController.cpp \
     core/Controllers/VisitedLocationsController.cpp \
     core/Controllers/WaitingTripController.cpp \
         core/Models/BackPackModel.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Controllers/UserAccountController.hpp \
+    core/Controllers/UserIdController.hpp \
     core/Controllers/VisitedLocationsController.hpp \
     core/Controllers/WaitingTripController.hpp \
     core/Models/BackPackModel.hpp \

@@ -1,6 +1,7 @@
 #include "UserAccountController.hpp"
 #include "QSettings"
 #include "QDebug"
+#include "UserIdController.hpp"
 
 extern QSettings settings;
 
@@ -8,7 +9,7 @@ UserAccountController::UserAccountController(DataBaseStorage &dbStorage ,QObject
     : QObject(parent),
       _dbStorage(dbStorage)
 {
-    if(settings.value("userId") != "")
+    if(UserIdController::Instance().userId() != "")
         getUserInfo();
 }
 
@@ -38,8 +39,7 @@ QString UserAccountController::countryResidence() const
 
 void UserAccountController::getUserInfo()
 {
-    QString userId = settings.value("userId").toString();
-    _userInfo = _dbStorage.getUsersDb()->at(userId);
+    _userInfo = _dbStorage.getUsersDb()->at(UserIdController::Instance().userId());
 }
 
 void UserAccountController::setName(const QString &newName)

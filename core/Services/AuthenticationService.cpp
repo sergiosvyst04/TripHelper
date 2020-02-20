@@ -7,8 +7,8 @@
 #include "QJsonArray"
 #include <QVector>
 #include <QSettings>
+#include <core/Controllers/UserIdController.hpp>
 
-QSettings settings;
 
 AuthenticationService::AuthenticationService(DataBaseStorage &db ,QObject *parent)
     : QObject(parent),
@@ -36,25 +36,26 @@ void AuthenticationService::checkIfUserExists(const QString &email, const QStrin
 
 bool AuthenticationService::isSignedIn()
 {
-    return settings.value("userId") != "";
+    return UserIdController::Instance().userId() != "";
 }
 
 void AuthenticationService::signOut()
 {
-    settings.setValue("userId", "");
+    QString id = "";
+    UserIdController::Instance().setUserId(id);
 }
 
 void AuthenticationService::signIn(const QString &email, const QString &password)
 {
    QString userId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
 
-    settings.setValue("userId", userId);
+    UserIdController::Instance().setUserId(userId);
     emit signedIn();
 }
 
 QString AuthenticationService::userId() const
 {
-    return settings.value("userId").toString();
+    return UserIdController::Instance().userId();
 }
 
 
