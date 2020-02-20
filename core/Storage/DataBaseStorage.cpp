@@ -8,9 +8,9 @@
 #include <QCryptographicHash>
 #include <QSettings>
 #include <core/Controllers/VisitedLocationsController.hpp>
+#include <core/Controllers/UserIdController.hpp>
 
-extern QSettings settings;
-extern QString userId = "";
+
 
 DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
 {
@@ -23,7 +23,7 @@ DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
     connect(this, &DataBaseStorage::usersChanged, this, &DataBaseStorage::updateUsers);
     connect(this, &DataBaseStorage::usersDataChanged, this, &DataBaseStorage::updateUsersData);
 
-    userId = settings.value("userId").toString();
+
 }
 
 //==============================================================================
@@ -177,10 +177,10 @@ void DataBaseStorage::writeDataToJsonFile(QJsonDocument &jsonDocument, const QSt
 void DataBaseStorage::saveUser(const QString &email, const QString &password)
 {
     QByteArray usersId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
-    userId = usersId;
-    settings.setValue("userId", userId);
+    QString id = usersId;
+    UserIdController::Instance().setUserId(id);
 
-    _usersDB->insert(std::pair<QString, UserInfo>(userId, UserInfo{
+    _usersDB->insert(std::pair<QString, UserInfo>(UserIdController::Instance().userId(), UserInfo{
                                                       "",
                                                       "",
                                                       ""
@@ -192,12 +192,12 @@ void DataBaseStorage::saveUser(const QString &email, const QString &password)
 
 void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
 {
-    _usersDB->at(userId) = userInfo;
+    _usersDB->at(UserIdController::Instance().userId()) = userInfo;
 
-    _usersDataDB->at("completedTrips").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
-    _usersDataDB->at("visitedCities").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
-    _usersDataDB->at("visitedCountries").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
-    _usersDataDB->at("goals").insert(std::pair<QString, QVariant>(userId, QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("completedTrips").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("visitedCities").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("visitedCountries").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("goals").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
 
     emit usersChanged();
     emit usersDataChanged();
@@ -214,15 +214,14 @@ std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 
 QVector<QVariant> DataBaseStorage::getCompletedTrips()
 {
-    qDebug() << "userId = " << userId;
-    return  _usersDataDB->at("completedTrips").at(settings.value("userId").toString()).toList().toVector();
+    return  _usersDataDB->at("completedTrips").at(UserIdController::Instance().userId()).toList().toVector();
 }
 
 //==============================================================================
 
 QVariant DataBaseStorage::getUncompletedTrip()
 {
-    return _usersDataDB->at("uncompletedTrip").at(settings.value("userId").toString());
+    return _usersDataDB->at("uncompletedTrip").at(UserIdController::Instance().userId());
 }
 
 //==============================================================================
@@ -234,9 +233,9 @@ void DataBaseStorage::addGoal(Goal &goal)
     goalToPush.insert("cityDestination", QString::fromStdString(goal.city));
     goalToPush.insert("depatureDate", goal.depatureDate.toString("d/M/yyyy"));
 
-    QVariantList userGoals = _usersDataDB->at("goals").at(userId).toList();
+    QVariantList userGoals = _usersDataDB->at("goals").at(UserIdController::Instance().userId()).toList();
     userGoals.append(goalToPush);
-    _usersDataDB->at("goals").at(userId) = userGoals;
+    _usersDataDB->at("goals").at(UserIdController::Instance().userId()) = userGoals;
 
     emit usersDataChanged();
 }
@@ -245,7 +244,7 @@ void DataBaseStorage::addGoal(Goal &goal)
 
 void DataBaseStorage::updateUncompletedTrip(QVariantMap &trip)
 {
-    _usersDataDB->at("uncompletedTrip").at(userId) = trip;
+    _usersDataDB->at("uncompletedTrip").at(UserIdController::Instance().userId()) = trip;
 
     emit usersDataChanged();
 }
@@ -254,14 +253,14 @@ void DataBaseStorage::updateUncompletedTrip(QVariantMap &trip)
 
 QVector<QVariant> DataBaseStorage::getGoals()
 {
-    return _usersDataDB->at("goals").at(userId).toList().toVector();
+    return _usersDataDB->at("goals").at(UserIdController::Instance().userId()).toList().toVector();
 }
 
 //==============================================================================
 
 QVector<QString> DataBaseStorage::getLocations(const QString &locationsType)
 {
-    QVariantList locationsList = _usersDataDB->at(locationsType).at(userId).toList();
+    QVariantList locationsList = _usersDataDB->at(locationsType).at(UserIdController::Instance().userId()).toList();
     QVector<QString> locationStringList;
 
     for(auto &location : locationsList)
@@ -277,7 +276,7 @@ QVector<QString> DataBaseStorage::getLocations(const QString &locationsType)
 QVector<Photo> DataBaseStorage::getAllPhotos()
 {
     QVector<Photo> photos;
-    QVariantList completedTrips = _usersDataDB->at("completedTrips").at(userId).toList();
+    QVariantList completedTrips = _usersDataDB->at("completedTrips").at(UserIdController::Instance().userId()).toList();
 
     for(auto &completedTrip : completedTrips)
     {
@@ -316,9 +315,9 @@ QVector<Photo> DataBaseStorage::getAllPhotos()
 
 void DataBaseStorage::addCity(const QString &city)
 {
-    QVariantList usersCities =  _usersDataDB->at("visitedCities").at(userId).toList();
+    QVariantList usersCities =  _usersDataDB->at("visitedCities").at(UserIdController::Instance().userId()).toList();
     usersCities.push_back(city);
-    _usersDataDB->at("visitedCities").at(userId) = usersCities;
+    _usersDataDB->at("visitedCities").at(UserIdController::Instance().userId()) = usersCities;
 
     emit usersDataChanged();
 }
@@ -327,9 +326,9 @@ void DataBaseStorage::addCity(const QString &city)
 
 void DataBaseStorage::addCountry(const QString &country)
 {
-    QVariantList usersCountries = _usersDataDB->at("visitedCountries").at(userId).toList();
+    QVariantList usersCountries = _usersDataDB->at("visitedCountries").at(UserIdController::Instance().userId()).toList();
     usersCountries.push_back(country);
-    _usersDataDB->at("visitedCountries").at(userId) = usersCountries;
+    _usersDataDB->at("visitedCountries").at(UserIdController::Instance().userId()) = usersCountries;
 
     emit usersDataChanged();
 }
