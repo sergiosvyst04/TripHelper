@@ -33,7 +33,6 @@ ColumnLayout {
             Layout.minimumHeight: 168
             color: Colors.primaryColor
             enabled: tripsManager.checkIfWaitingTripExists()
-
             opacity: enabled ? 1 : 0.6
 
             background : Rectangle {
@@ -63,7 +62,7 @@ ColumnLayout {
                 }
             }
 
-            onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")            
+            onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")
         }
 
         ProfileButton {

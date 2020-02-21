@@ -198,6 +198,7 @@ void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
     _usersDataDB->at("visitedCities").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
     _usersDataDB->at("visitedCountries").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
     _usersDataDB->at("goals").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("uncompletedTrip").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant()));
 
     emit usersChanged();
     emit usersDataChanged();

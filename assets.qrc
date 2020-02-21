@@ -223,6 +223,7 @@
         <file>assets/icons/Flags/Zimbabwe.png</file>
         <file>assets/icons/Flags/Afghanistan.png</file>
         <file>assets/icons/Flags/Senegal.png</file>
+        <file>assets/icons/loading.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/db">

@@ -19,7 +19,6 @@ BasePage {
         onUserExists: {
             if(exists)
             {
-                console.log("exists")
                 authService.signIn(email.text, password.text)
             }
         }
@@ -30,7 +29,8 @@ BasePage {
 
         onSignedIn: {
             userController.getUserInfo()
-            replaceView("qrc:/Pages/MainPage.qml")
+            loadingImage.visible = true
+            loadingEffect.running = true
         }
 
     }
@@ -94,6 +94,28 @@ BasePage {
                     navigateToItem("qrc:/Pages/ResetPasswordPage.qml")
                 }
             }
+        }
+    }
+
+    Image {
+        id: loadingImage
+        anchors.centerIn: parent
+        visible: false
+        sourceSize: Qt.size(80, 80)
+        source: "qrc:/images/assets/icons/loading.png"
+    }
+
+    NumberAnimation {
+        id: loadingEffect
+        target: loadingImage
+        property: "rotation"
+        from: 0
+        to: 99
+        duration: 500
+        running: false
+        onStopped: {
+            navigateToFirst()
+            replaceView("qrc:/Pages/MainPage.qml")
         }
     }
 

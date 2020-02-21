@@ -62,8 +62,6 @@ void TripsManager::retrieveUncompletedTrip()
     _uncompletedTrip->backPackList = parseBackPack(uncompletedTripMap.value("backpack").toList().toVector());
     _uncompletedTrip->depatureDate = QDateTime::fromString(uncompletedTripMap.value("depatureDate").toString(), "d/M/yyyy");
     _uncompletedTrip->days = parseTripDays(uncompletedTripMap.value("tripDays").toList().toVector());
-
-    qDebug() << _uncompletedTrip->name;
 }
 
 //==============================================================================
@@ -168,14 +166,20 @@ QVector<TripData>* TripsManager::getCompletedTrips()
 
 bool TripsManager::checkIfActiveTripExists()
 {
-    return _uncompletedTrip->depatureDate < QDateTime::currentDateTime();
+    if(_uncompletedTrip->name == "")
+        return false;
+    else
+        return _uncompletedTrip->depatureDate < QDateTime::currentDateTime();
 }
 
 //==============================================================================
 
 bool TripsManager::checkIfWaitingTripExists()
 {
-    return _uncompletedTrip->depatureDate > QDateTime::currentDateTime();
+    if(_uncompletedTrip->name == "")
+        return false;
+    else
+        return _uncompletedTrip->depatureDate > QDateTime::currentDateTime();
 }
 
 //==============================================================================

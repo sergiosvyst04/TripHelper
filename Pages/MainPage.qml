@@ -99,5 +99,6 @@ BasePage {
         count: swipeView.count
         currentIndex: swipeView.currentIndex
     }
+
 }
 
