@@ -17,8 +17,8 @@ ColumnLayout {
         leftMargin: 14
     }
 
-
     ProfileAvatarAndDataItem {
+        id: profileAvataerAndData
         Layout.fillWidth: true
         Layout.minimumHeight: 135
     }
@@ -96,10 +96,6 @@ ColumnLayout {
             }
             onClicked: navigateToItem("qrc:/Pages/PlansPage.qml")
         }
-    }
-
-    Item {
-        Layout.fillHeight: true
     }
 }
 //}

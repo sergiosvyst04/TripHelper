@@ -23,8 +23,6 @@ QVector<Photo> PhotosStorage::getPhotosByLocation(const QString &location)
         if(checkIfFromNeededCity(photo))
             photosFromCurrentCity.push_back(photo);
 
-    qDebug() << "amount of photos from " << location << " : " << photosFromCurrentCity.size();
-
     return photosFromCurrentCity;
 }
 

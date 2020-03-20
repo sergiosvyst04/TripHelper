@@ -12,6 +12,8 @@ BasePage {
     backButtonVisible: true
     footer: Item{}
 
+    property string newCountry: ""
+
     TripDaysModel {
         id: tripDaysModel
 
@@ -20,38 +22,15 @@ BasePage {
         }
     }
 
-    //    StackLayout {
-    //        anchors.fill: parent
-    //        currentIndex: tripController.hasActiveTrip() ? 1 : 0
+    Connections {
+        target: visitedLocationsController
+        onNewCountryAdded: {
+            newCountry = country
+            loader.sourceComponent = newCountryPopup
+            loader.active = true
+        }
+    }
 
-    //    ColoredButton {
-    //        height: 80
-    //        width: 60
-    //        color: Colors.checkboxColor
-    //        anchors {
-    //            horizontalCenter: parent.left
-    //            verticalCenter: parent.verticalCenter
-    //        }
-
-    //        Image {
-    //            anchors {
-    //                right: parent.right
-    //                rightMargin: 3
-    //                verticalCenter: parent.verticalCenter
-    //            }
-
-    //            source: "qrc:/images/assets/icons/front.png"
-    //            sourceSize: Qt.size(25, 25)
-    //            rotation: 90
-    //            opacity: 0.6
-    //        }
-    //        onClicked: swipeView.currentIndex = 0
-    //    }
-
-    //        DescriptionText {
-    //            id: noActiveTrips
-    //            text: qsTr("There are no active trips...")
-    //        }
 
     ColumnLayout {
         id: activeTrip
@@ -94,6 +73,23 @@ BasePage {
             Layout.leftMargin: 73
             spacing: 11
 
+//            RowLayout {                           // TEXT FIELDS FOR CHECKIN TESTING
+//                id: row
+//                Layout.fillWidth: true
+
+//                TextField {
+//                    id: countryField
+//                    Layout.preferredHeight: 40
+//                    Layout.preferredWidth: 120
+//                }
+
+//                TextField {
+//                    id: cityField
+//                    Layout.preferredHeight: 40
+//                    Layout.preferredWidth: 120
+//                }
+//            }
+
             ActiveTripActionItem {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 50
@@ -128,8 +124,9 @@ BasePage {
                 fontColor: Colors.grey
                 onClicked: {
                     activeTripController.makeCheckIn()
-                    loader.sourceComponent = checkInPopup
-                    loader.active = true
+                    visitedLocationsController.addLocation(countryField.text, cityField.text)
+                    //                    loader.sourceComponent = checkInPopup
+                    //                    loader.active = true
                 }
                 layer.enabled: false
 
@@ -353,8 +350,87 @@ BasePage {
                 }
             }
         }
+
+        Component {
+            id: newCountryPopup
+
+            Popup {
+                anchors.centerIn: parent
+
+                implicitHeight: 280
+                implicitWidth: 232
+
+                padding: 0
+
+                parent: Overlay.overlay
+                modal: true
+                visible: true
+                onAboutToHide: loader.active = false
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: Colors.primaryColor }
+                        GradientStop {position: 0.4; color: Colors.white }
+                    }
+                }
+
+                ColumnLayout {
+                    spacing: 20
+                    anchors {
+                        fill: parent
+                        topMargin: 15
+                        leftMargin: 24
+                        rightMargin: 24
+                        bottomMargin: 14
+                    }
+
+                    Image {
+                        id: addedCountryFlag
+                        Layout.alignment: Qt.AlignHCenter
+                        sourceSize: Qt.size(60, 60)
+                        source: "qrc:/images/assets/icons/Flags/%1.png".arg(newCountry)
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: parent.width
+                        font: Fonts.openSansBold(15)
+                        text: newCountry
+                    }
+
+                    DescriptionText {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: parent.width
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        textFormat: Text.RichText
+                        text: qsTr("Congratulations
+it's new country for you!
+<br>
+Amount of visited countries increased to <br> <b>%1</b>").arg(visitedLocationsController.amountOfVisitedCountries)
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
+                    ColoredButton {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredHeight: 36
+                        Layout.preferredWidth: 86
+                        color: Colors.primaryColor
+                        layer.enabled: false
+                        text: qsTr("Ok")
+                        fontColor: Colors.white
+                        font: Fonts.openSansBold(13, Font.MixedCase)
+                        onClicked: {
+                            loader.sourceComponent = checkInPopup
+                        }
+                    }
+                }
+
+            }
+        }
     }
-    //    }
 }
 
 

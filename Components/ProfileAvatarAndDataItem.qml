@@ -5,6 +5,8 @@ import "../Singletons"
 import "../Components"
 
 ColumnLayout {
+    property alias amountOfVisitedCities: numberOFVisitedCities
+    property alias amountOfVisitedCountries: numberOfVisitedCountries
 
     RowLayout {
         DescriptionText {

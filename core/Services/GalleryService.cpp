@@ -8,10 +8,15 @@ GalleryService::GalleryService(QObject *parent) : QObject(parent)
 
 //==============================================================================
 
-void GalleryService::intialize(PhotosStorage *photosStorage, TripsManager *tripsManager)
+void GalleryService::intialize(PhotosModel *photosModel, PhotosStorage *photosStorage, TripsManager *tripsManager)
 {
+    if(photosModel != nullptr) {
+        _photosModel = photosModel;
+        emit photosModelChanged();
+    }
     _photosStorage = photosStorage;
     _viewedTrip = tripsManager->getUnCompletedTrip();
+    connect(this, &GalleryService::photoRemoved, tripsManager, &TripsManager::updateUncompletedTrip);
 }
 
 //==============================================================================
@@ -44,13 +49,13 @@ void GalleryService::removePhoto(int index, QString path)
     _photosModel->removePhoto(index);
     _viewedTrip->removePhotoByPath(path);
     emit photosModelChanged();
+    emit photoRemoved();
 }
 
 //==============================================================================
 
 void GalleryService::getPhotos(QString location)
 {
-    qDebug() << "location : " << location;
     _photosModel->getPhotos(_photosStorage->getPhotosByLocation(location));
 }
 

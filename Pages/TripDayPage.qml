@@ -48,6 +48,8 @@ BasePage {
         }
     }
 
+    //===========================================================================================================================
+
     ColumnLayout {
         spacing: 30
         anchors {
@@ -65,19 +67,13 @@ BasePage {
             model: photosModel
             pathItemCount: 9
 
-
-            delegate: Item {
-                height: PathView.isCurrentItem ? 100 : 75
-                width: PathView.isCurrentItem ? 125 : 85
+            delegate: PhotoPathDelegate {
+                height: PathView.isCurrentItem ? 120 : 75
+                width: PathView.isCurrentItem ? 135 : 85
                 opacity: PathView.isCurrentItem ? 1.0 : 0.5
                 z: PathView.isCurrentItem ? 1 : 0
-                //                scale: PathView.iconScale
-                Image {
-                    anchors.fill: parent
-                    source:  model.source
-                    fillMode: Image.PreserveAspectCrop
-                }
             }
+
 
             path: Path {
                 id:flowViewPath
@@ -107,6 +103,18 @@ BasePage {
             }
         }
 
+        ColoredButton {
+            Layout.alignment: Qt.AlignRight
+            Layout.topMargin: -20
+            Layout.preferredHeight: 40
+            Layout.preferredWidth: 100
+            layer.enabled: false
+            color: "transparent"
+            fontColor: Colors.primaryColor
+            font: Fonts.openSansBold(15, Font.MixedCase)
+            text: qsTr("Go to gallery")
+            onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml", {photosModel : photosModel})
+        }
 
         RowLayout {
             Image {

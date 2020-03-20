@@ -19,6 +19,7 @@ SOURCES += \
     core/Controllers/ActiveTripController.cpp \
     core/Controllers/ApplicationController.cpp \
     core/Controllers/CompletedTripController.cpp \
+    core/Controllers/CountryInformationGenerator.cpp \
     core/Controllers/GoalsController.cpp \
     core/Controllers/LocationController.cpp \
     core/Controllers/TripDayController.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     core/Controllers/ActiveTripController.hpp \
     core/Controllers/ApplicationController.hpp \
     core/Controllers/CompletedTripController.hpp \
+    core/Controllers/CountryInformationGenerator.hpp \
     core/Controllers/GoalsController.hpp \
     core/Controllers/LocationController.hpp \
     core/Controllers/TripDayController.hpp \
@@ -86,6 +88,7 @@ HEADERS += \
     core/Services/GalleryService.hpp \
     core/Services/PackService.hpp \
     core/Storage/BackPackItem.hpp \
+    core/Storage/CountryInformation.hpp \
     core/Storage/DataBaseStorage.hpp \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \

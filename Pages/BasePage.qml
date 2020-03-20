@@ -46,7 +46,7 @@ Page {
     }
 
     footer: Item {
-        height: 100
+        height: nextButtonVisible ? 100 : 0
         ColoredButton {
             id: nextButton
             width: 240

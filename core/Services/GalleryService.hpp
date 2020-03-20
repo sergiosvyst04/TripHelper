@@ -14,12 +14,13 @@ class GalleryService : public QObject
 public:
     explicit GalleryService(QObject *parent = nullptr);
 
-    Q_INVOKABLE void intialize(PhotosStorage *photosStorage, TripsManager *tripsManager);
+    Q_INVOKABLE void intialize(PhotosModel *photosModel, PhotosStorage *photosStorage, TripsManager *tripsManager);
     Q_INVOKABLE void removePhoto(int index, QString path);
     PhotosModel* getModelWithPhotos();
 
 signals:
     void photosModelChanged();
+    void photoRemoved();
 
 public slots:
     void getPhotos(QString location);

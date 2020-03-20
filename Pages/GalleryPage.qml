@@ -15,6 +15,15 @@ BasePage {
     property bool deleteMultiplePhotos: false
     property int amountOfSelectedImages: 0
     property string location: ""
+    property PhotosModel photosModel
+
+    Component.onCompleted: {
+        galleryService.intialize(photosModel, photosStorage, tripsManager)
+
+        if(location !== "") {
+            galleryService.getPhotos(location)
+        }
+    }
 
     function deleteSelectedPhotos() {
         var count = galleryService.photosModel.rowCount();
@@ -29,23 +38,12 @@ BasePage {
         }
     }
 
-    GalleryService {
-        id: galleryService
-
-        Component.onCompleted: {
-            intialize(photosStorage, tripsManager)
-            if(location !== "")
-                galleryService.getPhotos(location)
-            else {
-                galleryService.setAllPhotosForModel()
-            }
-
-
-        }
-    }
-
     ListModel {
         id: menuModel
+    }
+
+    GalleryService {
+        id: galleryService
     }
 
 

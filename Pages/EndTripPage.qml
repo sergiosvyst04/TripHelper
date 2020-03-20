@@ -155,17 +155,11 @@ BasePage {
                 pathItemCount: 9
 
 
-                delegate: Item {
+                delegate: PhotoPathDelegate {
                     height: PathView.isCurrentItem ? 100 : 75
                     width: PathView.isCurrentItem ? 125 : 85
                     opacity: PathView.isCurrentItem ? 1.0 : 0.5
                     z: PathView.isCurrentItem ? 1 : 0
-                    //                scale: PathView.iconScale
-                    Image {
-                        anchors.fill: parent
-                        source: model.source
-                        fillMode: Image.PreserveAspectCrop
-                    }
                 }
 
                 path: Path {
@@ -207,7 +201,7 @@ BasePage {
             fontColor: Colors.primaryColor
             font: Fonts.openSansBold(15, Font.MixedCase)
             text: qsTr("Go to gallery")
-            onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml")
+            onClicked: navigateToItem("qrc:/Pages/GalleryPage.qml", {photosModel : photosModel})
         }
 
     }

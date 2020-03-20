@@ -19,6 +19,8 @@ public:
     Q_INVOKABLE void getPhotos(QVector<Photo> photos);
     Q_INVOKABLE  void removePhoto(int index);
 
+    Q_INVOKABLE int siz() {return _photos.size();}
+
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
