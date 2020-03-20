@@ -65,5 +65,7 @@
         <file>Pages/CheckListPage.qml</file>
         <file>Components/CheckListItem.qml</file>
         <file>Pages/AddVisitedLocationsPage.qml</file>
+        <file>Components/ScrollableText.qml</file>
+        <file>Components/PhotoPathDelegate.qml</file>
     </qresource>
 </RCC>

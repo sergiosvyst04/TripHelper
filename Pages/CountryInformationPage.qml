@@ -5,15 +5,18 @@ import QtGraphicalEffects 1.0
 import QtQuick.Controls.Material 2.0
 import "../Components"
 import "../Singletons"
+import CountryInfoGenerator 1.0
 
 BasePage {
     id: root
     backButtonVisible: true
+    nextButtonVisible: false
     property var information : /*JSON.parse(CountriesModel.countries)*/
 
-    ListModel {
-        id: countryInformationModel
+                               CountryInfoGenerator {
+        id: infoGenerator
 
+        Component.onCompleted: fetchNeededCountryInfo(neededCountry.text)
     }
 
     ColumnLayout {
@@ -58,6 +61,24 @@ BasePage {
             }
         }
 
+        RowLayout {
+            TextField {
+                id: neededCountry
+                Layout.topMargin: -45
+                Layout.preferredWidth: 100
+                Layout.preferredHeight: 40
+                text: "sweden"
+            }
+
+            Button {
+                height: 30
+                width: 60
+                text: "fetch"
+                onClicked: infoGenerator.fetchNeededCountryInfo(neededCountry.text.toLowerCase())
+            }
+
+        }
+
         TabBar {
             id: tabBar
             Layout.fillWidth: true
@@ -74,6 +95,7 @@ BasePage {
                     opacity: 0.6
                 }
             }
+
 
             CountryTabButton {
                 text: qsTr("General\n Information")
@@ -98,16 +120,38 @@ BasePage {
         }
 
         SwipeView {
+            id: swipeView
+            Layout.topMargin: -40
+            Layout.bottomMargin: 10
             Layout.fillHeight: true
             Layout.fillWidth: true
 
+            currentIndex: tabBar.currentIndex
+            onCurrentIndexChanged: tabBar.currentIndex = currentIndex
 
-            Repeater {
-                id: countryInformationRepeater
+            ScrollableText {
+                contentWidth: root.width
+                informationText: infoGenerator.generalInformation
+            }
 
-                DescriptionText {
-                    font: Fonts.openSans(14, Font.MixedCase)
-                }
+            ScrollableText {
+                contentWidth: root.width
+                informationText: infoGenerator.interestingFacts
+            }
+
+            ScrollableText {
+                contentWidth: root.width
+                informationText: infoGenerator.inventions
+            }
+
+            ScrollableText {
+                contentWidth: root.width
+                informationText: infoGenerator.kitchen
+            }
+
+            ScrollableText {
+                contentWidth: root.width
+                informationText: infoGenerator.souvenirs
             }
 
         }
