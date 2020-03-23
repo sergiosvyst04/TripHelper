@@ -28,7 +28,7 @@
 #include <core/Storage/PhotosStorage.hpp>
 #include <QSettings>
 #include <core/Controllers/CountryInformationGenerator.hpp>
-
+#include <core/Models/TravelAgentsModel.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
     PhotosStorage photosStorage(dataBaseStorage, authService);
 
     static auto *utils = new QMLUtils;
+    qmlRegisterType<TravelAgentsModel>("TravelAgentsModel", 1, 0, "TravelAgentsModel");
     qmlRegisterType<CountryInformationGenerator>("CountryInfoGenerator", 1, 0, "CountryInfoGenerator");
     qmlRegisterType<PackService>("PackService", 1, 0, "PackService");
     qmlRegisterType<WaitingTripController>("WaitingTripController", 1, 0, "WaitingTripController");

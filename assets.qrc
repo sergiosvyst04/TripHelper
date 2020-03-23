@@ -229,5 +229,6 @@
     <qresource prefix="/db">
         <file>assets/UsersData.json</file>
         <file>assets/CountryInformation.json</file>
+        <file>assets/TravelAgentsDB.json</file>
     </qresource>
 </RCC>

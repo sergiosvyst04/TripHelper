@@ -92,3 +92,10 @@ void CountriesCitiesModel::getVisitedLocations(QVector<QString> visitedLocations
     endResetModel();
 }
 
+void CountriesCitiesModel::setCitiesWithTravelAgents(QVector<QString> citiesWithAgents)
+{
+    beginResetModel();
+    _locations = citiesWithAgents;
+    endResetModel();
+}
+

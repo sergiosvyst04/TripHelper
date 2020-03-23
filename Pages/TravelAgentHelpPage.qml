@@ -3,27 +3,27 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 import "../Components"
 import "../Singletons"
+import CountriesCitiesModel 1.0
+import TravelAgentsModel 1.0
 
 BasePage {
 
-
-    ListModel {
+    TravelAgentsModel {
         id: travelAgentsModel
-
-        ListElement {name : "Loyal touristic"; address: "st.Saharova, 42"; phoneNumber : "+390634578863"}
-        ListElement {name : "Coral Travel"; address: "st.Doroshenka, 52"; phoneNumber : "+390634578863"}
-        ListElement {name : "TUI"; address: "st.Porichkova, 15"; phoneNumber : "+390634578863"}
-        ListElement {name : "Akkord tour"; address: "st.Novy Svit, 101"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anex Tour"; address: "st.Volodymyra Velykoho, 42"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anro touristic"; address: "st.Danyla Halytskoho, 122"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anro touristic"; address: "st.Danyla Halytskoho, 122"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anro touristic"; address: "st.Danyla Halytskoho, 122"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anro touristic"; address: "st.Danyla Halytskoho, 122"; phoneNumber : "+390634578863"}
-        ListElement {name : "Anro touristic"; address: "st.Danyla Halytskoho, 122"; phoneNumber : "+390634578863"}
 
     }
 
-    ColumnLayout {
+    CountriesCitiesModel {
+        id: citiesModel
+
+        Component.onCompleted: setCitiesWithTravelAgents(travelAgentsModel.citiesWithAgents)
+    }
+
+
+//===============================================================================================================
+
+
+   ColumnLayout {
         spacing: 28
         anchors {
             fill: parent
@@ -41,6 +41,18 @@ BasePage {
             Layout.alignment: Qt.AlignHCenter
             font: Fonts.openSansBold(16, Font.MixedCase)
             text: qsTr("at one click distance")
+        }
+
+        LocationComboBox {
+            id: cityComboBox
+            Layout.preferredHeight: 30
+
+            currentIndex: -1
+            model: citiesModel
+            onActivated: {
+                currentIndex = index
+                travelAgentsModel.getTravelAgentsOfNeededCity(textAt(currentIndex))
+            }
         }
 
         ListView {

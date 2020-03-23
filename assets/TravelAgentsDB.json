@@ -1,0 +1,992 @@
+{
+    "lviv" : [
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "kyiv" : [
+        {
+            "name" : "Kyiv Loyal touristic",
+            "address" : "Kyiv, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Coral Travel",
+            "address" : "st.Kyiv, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv TUI",
+            "address" : "Kyiv, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Akkord tur",
+            "address" : "Kyiv, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Anex Tour",
+            "address" : "Kyiv, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Touristic",
+            "address" : "Kyiv, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Kyiv Loyal touristic",
+            "address" : "Kyiv, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "ternopil" : [
+        {
+            "name" : "Ternopil Loyal touristic",
+            "address" : "Ternopil, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil Coral Travel",
+            "address" : "Ternopil, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil TUI",
+            "address" : "Ternopil, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil Akkord tur",
+            "address" : "Ternopil, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "Ternopil, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil Touristic",
+            "address" : "Ternopil, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil Anro touristic",
+            "address" : "Ternopil, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Ternopil Loyal touristic",
+            "address" : "Ternopil st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+
+    "lutsk" : [
+        {
+            "name" : "Lutsk Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "uzhhorod" : [
+        {
+            "name" : "Uzhhorod Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "rivne" : [
+        {
+            "name" : "Rivne Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "ivano-frankivs'k" : [
+        {
+            "name" : " Ivano-Frankivsk Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "chernivtsi" : [
+        {
+            "name" : "Chernivtsi Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "khmelnytskyi" : [
+        {
+            "name" : "Khmelnytskyi Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "vinnytsya" : [
+        {
+            "name" : "Vinnytsia Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "zhytomyr" : [
+        {
+            "name" : "Zhytomyr Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "cherkasy" : [
+        {
+            "name" : "Cherkasy Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "kirovohrad" : [
+        {
+            "name" : "Kirovohrad Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "dnipro" : [
+        {
+            "name" : "Dnipro Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "zaporizhzhya" : [
+        {
+            "name" : "Zaporizhzhia Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "odesa" : [
+        {
+            "name" : "Odesa Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "mykolayiv" : [
+        {
+            "name" : "Mykolaiv Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+
+    "kherson" : [
+        {
+            "name" : "Herson Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "chernihiv" : [
+        {
+            "name" : "Chernihiv Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "sumy" : [
+        {
+            "name" : "Sumy Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "kharkiv" : [
+        {
+            "name" : "Kharkiv Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "luhans'k" : [
+        {
+            "name" : "Luhansk Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ],
+
+    "donets'k" : [
+        {
+            "name" : "Luhansk Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Coral Travel",
+            "address" : "st.Doroshenka, 52",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "TUI",
+            "address" : "st.Porichkova, 15",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Akkord tur",
+            "address" : "st.Novyy Svit, 101",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anex Tour",
+            "address" : "st.Volodymyra Velykoho, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Touristic",
+            "address" : "st.Poliova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Anro touristic",
+            "address" : "st.Arova, 42",
+            "phoneNumber" : "+390634578863"
+        },
+        {
+            "name" : "Loyal touristic",
+            "address" : "st.Saharova, 42",
+            "phoneNumber" : "+390634578863"
+        }
+    ]
+}

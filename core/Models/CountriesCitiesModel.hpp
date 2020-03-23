@@ -22,6 +22,8 @@ public:
     Q_INVOKABLE  void getCountries();
     Q_INVOKABLE void getCities(QString country);
 
+    Q_INVOKABLE void setCitiesWithTravelAgents(QVector<QString> citiesWithAgents);
+
 
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

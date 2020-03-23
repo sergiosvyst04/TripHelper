@@ -33,6 +33,7 @@ SOURCES += \
     core/Models/CountriesCitiesModel.cpp \
         core/Models/GoalsModel.cpp \
     core/Models/PhotosModel.cpp \
+    core/Models/TravelAgentsModel.cpp \
     core/Models/TripDaysModel.cpp \
     core/Services/AuthenticationService.cpp \
     core/Services/EndTripService.cpp \
@@ -82,6 +83,7 @@ HEADERS += \
     core/Models/CountriesCitiesModel.hpp \
     core/Models/GoalsModel.hpp \
     core/Models/PhotosModel.hpp \
+    core/Models/TravelAgentsModel.hpp \
     core/Models/TripDaysModel.hpp \
     core/Services/AuthenticationService.hpp \
     core/Services/EndTripService.hpp \
@@ -93,6 +95,7 @@ HEADERS += \
     core/Storage/Goal.hpp \
     core/Storage/Photo.hpp \
     core/Storage/PhotosStorage.hpp \
+    core/Storage/TravelAgentInfo.hpp \
     core/Storage/Trip.hpp \
     core/Storage/TripData.hpp \
     core/Storage/TripDay.hpp \
