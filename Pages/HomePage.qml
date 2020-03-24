@@ -44,9 +44,11 @@ ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.minimumWidth: column.width - 10
                 Layout.minimumHeight: 105
+                opacity: enabled ? 1.0 : 0.3
+
+                enabled: !tripsManager.waitingTripExists && !tripsManager.activeTripExists
                 image: "qrc:/images/assets/white icons/startbtn.png"
                 actionText: qsTr("Start trip")
-                onEnabledChanged: console.log("start enabled changed to :", enabled)
                 onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
             }
 

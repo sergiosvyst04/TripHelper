@@ -32,7 +32,7 @@ ColumnLayout {
             Layout.minimumWidth: 138
             Layout.minimumHeight: 168
             color: Colors.primaryColor
-            enabled: tripsManager.checkIfWaitingTripExists()
+            enabled: tripsManager.waitingTripExists
             opacity: enabled ? 1 : 0.6
 
             background : Rectangle {
@@ -51,7 +51,7 @@ ColumnLayout {
             color: Colors.greenButtonColor
             image: "qrc:/images/assets/white icons/active.png"
             buttonText: qsTr("Active trip")
-            enabled: tripsManager.checkIfActiveTripExists()
+            enabled: tripsManager.activeTripExists
 
             opacity: enabled ? 1 : 0.6
             background : Rectangle {

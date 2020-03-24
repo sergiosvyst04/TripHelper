@@ -21,6 +21,7 @@ TripsManager::TripsManager(DataBaseStorage& dbStorage, AuthenticationService &au
         loadTrips();
 
     connect(&_authService, &AuthenticationService::signedIn, this, &TripsManager::loadTrips);
+    connect(&_dbStorage, &DataBaseStorage::uncompletedTripUpdated, this, &TripsManager::loadTrips);
 }
 
 //==============================================================================
@@ -32,6 +33,7 @@ void TripsManager::loadTrips()
 
     _uncompletedTrip = new TripData();
     retrieveUncompletedTrip();
+    emit uncompletedTripChanged();
 }
 
 //==============================================================================

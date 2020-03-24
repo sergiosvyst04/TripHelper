@@ -22,6 +22,7 @@ SOURCES += \
     core/Controllers/CountryInformationGenerator.cpp \
     core/Controllers/GoalsController.cpp \
     core/Controllers/LocationController.cpp \
+    core/Controllers/StartTripController.cpp \
     core/Controllers/TripDayController.cpp \
     core/Controllers/UserAccountController.cpp \
     core/Controllers/UserIdController.cpp \
@@ -72,6 +73,7 @@ HEADERS += \
     core/Controllers/CountryInformationGenerator.hpp \
     core/Controllers/GoalsController.hpp \
     core/Controllers/LocationController.hpp \
+    core/Controllers/StartTripController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Controllers/UserAccountController.hpp \
     core/Controllers/UserIdController.hpp \

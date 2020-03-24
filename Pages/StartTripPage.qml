@@ -3,16 +3,27 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import "../Singletons"
 import "../Components"
+import StartTripController 1.0
 
 BasePage {
     nextButtonVisible: true
     nextButtonText: qsTr("Start")
     backButtonVisible: true
-    onNextButtonClicked: {
-        loader.active = true
-    }
+    onNextButtonClicked: startTripController.startTrip(tripName.text, dateField.depatureDate)
 
     nextButtonEnabled: tripName.text != "" && dateField.fieldText != ""
+
+
+    StartTripController {
+        id: startTripController
+
+        Component.onCompleted: intialize(appController)
+    }
+
+    Connections {
+        target: startTripController
+        onTripStarted: loader.active = true
+    }
 
     ColumnLayout {
         anchors {

@@ -343,3 +343,18 @@ void DataBaseStorage::addCountry(const QString &country)
     emit usersDataChanged();
 }
 
+//==============================================================================
+
+void DataBaseStorage::startNewTrip(TripData &tripData)
+{
+    QVariantMap tripToBeStarted;
+    tripToBeStarted.insert("backpack", QVariant::fromValue(QVector<QVariant>()));
+    tripToBeStarted.insert("tripDays",  QVariant::fromValue(QVector<QVariant>()));
+    tripToBeStarted.insert("name", tripData.name);
+    tripToBeStarted.insert("depatureDate", tripData.depatureDate.toString("d/M/yyyy"));
+
+    _usersDataDB->at("uncompletedTrip").at(UserIdController::Instance().userId()) = tripToBeStarted;
+    emit usersDataChanged();
+    emit uncompletedTripUpdated();
+}
+

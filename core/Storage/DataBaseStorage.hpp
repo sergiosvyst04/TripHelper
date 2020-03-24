@@ -31,6 +31,8 @@ public:
     void addGoal(Goal &goal);
     void updateUncompletedTrip(QVariantMap &uncompletedTrip);
 
+    void startNewTrip(TripData &tripData);
+
     std::map<QString, UserInfo>* getUsersDb() const;
     std::map<QString, UserInfo> parseUsersJsonArray(QJsonArray &jsonArray);
     std::map<QString, std::map<QString, QVariant>> parseUsersDataJsonArray(QJsonArray &jsonArray);
@@ -46,6 +48,7 @@ public:
 signals:
     void usersDataChanged();
     void usersChanged();
+    void uncompletedTripUpdated();
 
 public slots:
 

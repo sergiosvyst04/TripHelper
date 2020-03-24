@@ -11,6 +11,8 @@ class TripsManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVector<TripData>* completedTrips READ getCompletedTrips CONSTANT)
+    Q_PROPERTY(bool waitingTripExists READ checkIfWaitingTripExists NOTIFY uncompletedTripChanged)
+    Q_PROPERTY(bool activeTripExists READ checkIfActiveTripExists NOTIFY uncompletedTripChanged)
 public:
     explicit TripsManager(DataBaseStorage& dbStorage, AuthenticationService &authService, QObject *parent = nullptr);
     void                  retrieveUncompletedTrip();
@@ -34,6 +36,7 @@ public:
     void                  updateUncompletedTrip();
     void                  loadTrips();
 signals:
+    void uncompletedTripChanged();
 
 public slots:
     bool checkIfActiveTripExists();
