@@ -28,7 +28,7 @@ BasePage {
         target: authService
 
         onSignedIn: {
-            userController.getUserInfo()
+            userAccountController.getUserInfo()
             loadingImage.visible = true
             loadingEffect.running = true
         }

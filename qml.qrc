@@ -67,5 +67,6 @@
         <file>Pages/AddVisitedLocationsPage.qml</file>
         <file>Components/ScrollableText.qml</file>
         <file>Components/PhotoPathDelegate.qml</file>
+        <file>Pages/SettingsPage.qml</file>
     </qresource>
 </RCC>

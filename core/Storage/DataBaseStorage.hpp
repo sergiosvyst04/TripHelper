@@ -26,6 +26,7 @@ public:
     
     void saveUser(const QString &email, const QString& password);
     void saveUserInfo(UserInfo &userInfo);
+    void updateUserInfo(UserInfo &userInfo);
 
     void addGoal(Goal &goal);
     void updateUncompletedTrip(QVariantMap &uncompletedTrip);
@@ -42,7 +43,6 @@ public:
 
     void addCity(const QString &city);
     void addCountry(const QString &country);
-
 signals:
     void usersDataChanged();
     void usersChanged();

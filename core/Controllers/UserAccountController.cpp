@@ -11,6 +11,10 @@ UserAccountController::UserAccountController(DataBaseStorage &dbStorage ,QObject
 {
     if(UserIdController::Instance().userId() != "")
         getUserInfo();
+
+   connect(this, &UserAccountController::userInfoChanged, this, &UserAccountController::updateUserInfo);
+
+
 }
 
 void UserAccountController::saveUserInfo(const QString &fullName, const QString &cityResidence, const QString &countryResidence)
@@ -45,17 +49,23 @@ void UserAccountController::getUserInfo()
 void UserAccountController::setName(const QString &newName)
 {
     _userInfo.name = newName;
-    emit nameChanged();
+    emit userInfoChanged();
 }
 
 void UserAccountController::setCity(const QString &newCity)
 {
     _userInfo.cityResidence = newCity;
-    emit cityChanged();
+    emit userInfoChanged();
 }
 
 void UserAccountController::setCountry(const QString &newCountry)
 {
     _userInfo.countryResidence = newCountry;
-    emit countryChanged();
+    emit userInfoChanged();
+}
+
+void UserAccountController::updateUserInfo()
+{
+    _dbStorage.updateUserInfo(_userInfo);
+    emit userInfoUpdated();
 }

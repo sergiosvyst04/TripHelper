@@ -17,7 +17,7 @@ BasePage {
     Connections {
         target: authService
         onUserSaved: {
-            userController.saveUserInfo(userData.fullName, cityComboBox.currentText, countryComboBox.currentText)
+            userAccountController.saveUserInfo(userData.fullName, cityComboBox.currentText, countryComboBox.currentText)
             navigateToItem("qrc:/Pages/AddVisitedLocationsPage.qml")
         }
     }

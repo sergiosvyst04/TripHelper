@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("locationController", &locationController);
     engine.rootContext()->setContextProperty("tripsManager", &tripsManager);
     engine.rootContext()->setContextProperty("authService", &authService);
-    engine.rootContext()->setContextProperty("userController", &userAccountController);
+    engine.rootContext()->setContextProperty("userAccountController", &userAccountController);
     engine.rootContext()->setContextProperty("visitedLocationsController", &visitedLocationsController);
     engine.rootContext()->setContextProperty("photosStorage", &photosStorage);
     

@@ -10,7 +10,7 @@ ColumnLayout {
 
     RowLayout {
         DescriptionText {
-            text: userController.name
+            text: userAccountController.name
             font: Fonts.openSansBold(24, Font.MixedCase)
         }
 
@@ -84,7 +84,7 @@ ColumnLayout {
         }
 
         DescriptionText {
-            text: qsTr("Current location : <b>%1</b>").arg(userController.city)
+            text: qsTr("Current location : <b>%1</b>").arg(userAccountController.city)
         }
     }
 

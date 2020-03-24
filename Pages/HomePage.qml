@@ -75,6 +75,7 @@ ColumnLayout {
                 Layout.minimumHeight: 105
                 image: "qrc:/images/assets/white icons/settings.png"
                 actionText: qsTr("Settings")
+                onClicked: navigateToItem("qrc:/Pages/SettingsPage.qml")
             }
 
             HomeActionButton {

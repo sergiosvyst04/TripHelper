@@ -206,6 +206,15 @@ void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
 
 //==============================================================================
 
+void DataBaseStorage::updateUserInfo(UserInfo &userInfo)
+{
+    _usersDB->at(UserIdController::Instance().userId()) = userInfo;
+    emit usersChanged();
+}
+
+
+//==============================================================================
+
 std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 {
     return _usersDB;

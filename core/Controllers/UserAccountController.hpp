@@ -8,9 +8,9 @@
 class UserAccountController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
-    Q_PROPERTY(QString city READ cityResidence WRITE setCity NOTIFY cityChanged)
-    Q_PROPERTY(QString country READ countryResidence WRITE setCountry NOTIFY countryChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY userInfoChanged)
+    Q_PROPERTY(QString city READ cityResidence WRITE setCity NOTIFY userInfoChanged)
+    Q_PROPERTY(QString country READ countryResidence WRITE setCountry NOTIFY userInfoChanged)
 public:
     explicit UserAccountController(DataBaseStorage &dbStorage, QObject *parent = nullptr);
 
@@ -19,13 +19,13 @@ public:
     void setCity(const QString &newCity);
     
 signals:
-    void nameChanged();
-    void cityChanged();
-    void countryChanged();
+    void userInfoChanged();
+    void userInfoUpdated();
 
 public slots:
     void saveUserInfo(const QString &fullName, const QString &cityResidence, const QString &countryResidence);
 
+    void updateUserInfo();
     void getUserInfo();
 
     QString name() const;
