@@ -52,6 +52,7 @@ void DataBaseStorage::readUsersData()
     QString usersData = file.readAll();
 
     QJsonDocument jsonDoc = QJsonDocument::fromJson(usersData.toUtf8());
+    qDebug() << "ISARRAY :" << jsonDoc.isArray();
     QJsonArray jsonArray = jsonDoc.array();
 
     std::map<QString, std::map<QString, QVariant>> usersDataMap = parseUsersDataJsonArray(jsonArray);
@@ -195,8 +196,7 @@ void DataBaseStorage::saveUserInfo(UserInfo &userInfo)
     _usersDB->at(UserIdController::Instance().userId()) = userInfo;
 
     _usersDataDB->at("completedTrips").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
-    _usersDataDB->at("visitedCities").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
-    _usersDataDB->at("visitedCountries").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
+    _usersDataDB->at("visitedLocations").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
     _usersDataDB->at("goals").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant::fromValue(QVector<QVariant>())));
     _usersDataDB->at("uncompletedTrip").insert(std::pair<QString, QVariant>(UserIdController::Instance().userId(), QVariant()));
 
@@ -224,6 +224,7 @@ std::map<QString, UserInfo>* DataBaseStorage::getUsersDb() const
 
 QVector<QVariant> DataBaseStorage::getCompletedTrips()
 {
+    qDebug() << "GET : " << UserIdController::Instance().userId();
     return  _usersDataDB->at("completedTrips").at(UserIdController::Instance().userId()).toList().toVector();
 }
 
@@ -252,6 +253,22 @@ void DataBaseStorage::addGoal(Goal &goal)
 
 //==============================================================================
 
+
+void DataBaseStorage::addLocation(const Location &location)
+{
+    QVariantMap locationToPush;
+    locationToPush.insert("country", location.country);
+    locationToPush.insert("city", location.city);
+
+    QVariantList userLocations = _usersDataDB->at("visitedLocations").at(UserIdController::Instance().userId()).toList();
+    userLocations.append(locationToPush);
+
+    _usersDataDB->at("visitedLocations").at(UserIdController::Instance().userId()) = userLocations;
+    emit usersDataChanged();
+}
+
+//==============================================================================
+
 void DataBaseStorage::updateUncompletedTrip(QVariantMap &trip)
 {
     _usersDataDB->at("uncompletedTrip").at(UserIdController::Instance().userId()) = trip;
@@ -268,17 +285,22 @@ QVector<QVariant> DataBaseStorage::getGoals()
 
 //==============================================================================
 
-QVector<QString> DataBaseStorage::getLocations(const QString &locationsType)
+QVector<Location> DataBaseStorage::getVisitedLocations()
 {
-    QVariantList locationsList = _usersDataDB->at(locationsType).at(UserIdController::Instance().userId()).toList();
-    QVector<QString> locationStringList;
+    QVariantList locationsList = _usersDataDB->at("visitedLocations").at(UserIdController::Instance().userId()).toList();
+    QVector<Location> visitedLocations;
 
     for(auto &location : locationsList)
     {
-        locationStringList.append(location.toString());
+        QVariantMap locationVariantMap = location.toMap();
+        Location currentLocation;
+        currentLocation.country = locationVariantMap.value("country").toString();
+        currentLocation.city = locationVariantMap.value("city").toString();
+
+        visitedLocations.push_back(currentLocation);
     }
 
-    return locationStringList;
+    return visitedLocations;
 }
 
 //==============================================================================

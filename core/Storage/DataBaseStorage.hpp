@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <core/Storage/TripData.hpp>
 #include <core/Storage/Goal.hpp>
+#include <core/Storage/Location.hpp>
 
 class VisitedLocationsController;
 
@@ -40,11 +41,12 @@ public:
     QVector<QVariant> getCompletedTrips();
     QVariant getUncompletedTrip();
     QVector<QVariant> getGoals();
-    QVector<QString> getLocations(const QString &locationsType);
+    QVector<Location> getVisitedLocations();
     QVector<Photo> getAllPhotos();
 
     void addCity(const QString &city);
     void addCountry(const QString &country);
+    void addLocation(const Location &location);
 signals:
     void usersDataChanged();
     void usersChanged();

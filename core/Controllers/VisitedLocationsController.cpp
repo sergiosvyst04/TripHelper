@@ -10,37 +10,45 @@ VisitedLocationsController::VisitedLocationsController(DataBaseStorage &dbStorag
 
     connect(&_authService, &AuthenticationService::signedIn, this, &VisitedLocationsController::readLocations);
 
+    connect(this, &VisitedLocationsController::newLocationAdded, &_dbStorage, &DataBaseStorage::addLocation);
 
-    connect(this, &VisitedLocationsController::newCityAdded, &_dbStorage, &DataBaseStorage::addCity);
-    connect(this, &VisitedLocationsController::newCountryAdded, &_dbStorage, &DataBaseStorage::addCountry);
+
 }
 
 //==============================================================================
 
 QVector<QString> VisitedLocationsController::getCities()
 {
-    return _visitedCities;
+    QVector<QString> cities;
+    for(auto location : _visitedLocations)
+        cities.push_back(location.city);
+    return cities;
 }
 
 //==============================================================================
 
 QVector<QString> VisitedLocationsController::getCountries()
 {
-    return _visitedCountries;
+    QVector<QString> countries;
+    for(auto location : _visitedLocations)
+        if(!countries.contains(location.country))
+            countries.push_back(location.country);
+    return countries;
 }
 
 //==============================================================================
 
 void VisitedLocationsController::addLocation(QString country, QString city)
 {
-    if(!_visitedCountries.contains(country)) {
-        _visitedCountries.push_back(country);
-        emit newCountryAdded(country);
-    }
 
-    if(!_visitedCities.contains(city)) {
-        _visitedCities.push_back(city);
-        emit newCityAdded(city);
+    Location newLocation;
+    newLocation.country = country;
+    newLocation.city = city;
+
+    if(!_visitedLocations.contains(newLocation))
+    {
+        _visitedLocations.push_back(newLocation);
+        emit newLocationAdded(newLocation);
     }
 
     emit locationAdded();
@@ -50,22 +58,30 @@ void VisitedLocationsController::addLocation(QString country, QString city)
 
 int VisitedLocationsController::getAmountOfVisitedCities() const
 {
-    return _visitedCities.size();
+    QVector<QString> cities;
+    for(auto &location : _visitedLocations)
+        cities.push_back(location.city);
+    return cities.size();
 }
 
 //==============================================================================
 
 int VisitedLocationsController::getAmountOfVisitedCountries() const
 {
-    return _visitedCountries.size();
+    QVector<QString> countries;
+    for(auto &location : _visitedLocations)
+    {
+        if(!countries.contains(location.country))
+            countries.push_back(location.country);
+    }
+    return countries.size();
 }
 
 //==============================================================================
 
 void VisitedLocationsController::readLocations()
 {
-    _visitedCities = _dbStorage.getLocations("visitedCities");
-    _visitedCountries = _dbStorage.getLocations("visitedCountries");
+    _visitedLocations = _dbStorage.getVisitedLocations();
 }
 
 

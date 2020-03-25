@@ -95,6 +95,7 @@ HEADERS += \
     core/Storage/CountryInformation.hpp \
     core/Storage/DataBaseStorage.hpp \
     core/Storage/Goal.hpp \
+    core/Storage/Location.hpp \
     core/Storage/Photo.hpp \
     core/Storage/PhotosStorage.hpp \
     core/Storage/TravelAgentInfo.hpp \

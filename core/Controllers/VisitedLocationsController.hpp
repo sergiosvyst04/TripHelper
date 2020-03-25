@@ -4,6 +4,7 @@
 #include <QObject>
 #include <core/Storage/DataBaseStorage.hpp>
 #include <core/Services/AuthenticationService.hpp>
+#include <core/Storage/Location.hpp>
 
 
 class VisitedLocationsController : public QObject
@@ -18,6 +19,7 @@ public:
 
 signals:
     void locationAdded();
+    void newLocationAdded(const Location &location);
     void newCountryAdded(const QString &country);
     void newCityAdded(const QString &city);
 
@@ -33,8 +35,9 @@ public slots:
 private:
     AuthenticationService &_authService;
     DataBaseStorage &_dbStorage;
-    QVector<QString> _visitedCities;
-    QVector<QString> _visitedCountries;
+//    QVector<QString> _visitedCities;
+//    QVector<QString> _visitedCountries;
+    QVector<Location> _visitedLocations;
 };
 
 #endif // VISITEDLOCATIONSCONTROLLER_HPP
