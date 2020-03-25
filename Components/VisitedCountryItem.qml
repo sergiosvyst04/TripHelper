@@ -7,7 +7,6 @@ import "../Components"
 RowLayout {
     property alias flag: flagImage.source
     property alias country: countryText.text
-
     spacing: 30
 
     Image {
@@ -18,14 +17,14 @@ RowLayout {
 
     DescriptionText {
         id: countryText
+        Layout.fillWidth: true
+        horizontalAlignment: Text.AlignLeft
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         font: Fonts.openSansBold(15, Font.MixedCase)
     }
 
-    Item {
-        Layout.fillWidth: true
-    }
-
     ColoredButton {
+        id: seePhotosBtn
         Layout.rightMargin: 25
         Layout.preferredWidth: 85
         Layout.preferredHeight: 35
