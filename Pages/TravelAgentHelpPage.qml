@@ -10,12 +10,10 @@ BasePage {
 
     TravelAgentsModel {
         id: travelAgentsModel
-
     }
 
     CountriesCitiesModel {
         id: citiesModel
-
         Component.onCompleted: setCitiesWithTravelAgents(travelAgentsModel.citiesWithAgents)
     }
 

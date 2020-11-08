@@ -39,7 +39,6 @@ BasePage {
 
     PhotosModel {
         id: photosModel
-
         Component.onCompleted: getPhotos(dayController.photos)
     }
     

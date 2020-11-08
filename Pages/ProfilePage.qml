@@ -4,9 +4,6 @@ import QtQuick.Layouts 1.12
 import "../Singletons"
 import "../Components"
 
-//BasePage {
-//    footer: Item{}
-//    header: Item {}
 
 ColumnLayout {
     spacing: 34
@@ -16,6 +13,8 @@ ColumnLayout {
         rightMargin: 14
         leftMargin: 14
     }
+
+    readonly property var gradientsList: [{begin:"#53A7D7", end: "#51F5FF"}, {begin:"#60FFE2", end: "#7EFF1A"}, {begin:"#FC0101", end: "#752424"}, {begin:"#EA6317", end: "#FFC000"}]
 
     ProfileAvatarAndDataItem {
         id: profileAvataerAndData
@@ -28,74 +27,33 @@ ColumnLayout {
         columns: 2
         columnSpacing: 24
         rowSpacing: 22
-        ProfileButton {
-            Layout.minimumWidth: 138
-            Layout.minimumHeight: 168
-            color: Colors.primaryColor
-            enabled: tripsManager.waitingTripExists
-            opacity: enabled ? 1 : 0.6
 
-            background : Rectangle {
-                radius: 28
-                gradient: Gradient {
-                    GradientStop {position: 0.0; color: "#53A7D7" }
-                    GradientStop {position: 1.0; color: "#51F5FF" }
-                }
-            }
-            onClicked: navigateToItem("qrc:/Pages/InWaitingTripPage.qml")
-        }
-
-        ProfileButton {
-            Layout.minimumWidth: 138
-            Layout.minimumHeight: 168
-            color: Colors.greenButtonColor
-            image: "qrc:/images/assets/white icons/active.png"
-            buttonText: qsTr("Active trip")
-            enabled: tripsManager.activeTripExists
-
-            opacity: enabled ? 1 : 0.6
-            background : Rectangle {
-                radius: 28
-                gradient: Gradient {
-                    GradientStop {position: 0.0; color: "#60FFE2" }
-                    GradientStop {position: 1.0; color: "#7EFF1A" }
-                }
+        Repeater {
+            model: ListModel {
+                ListElement {buttonText: qsTr("Waiting Trip"); destination: "qrc:/Pages/InWaitingTripPage.qml"; image: ""; enabled: function (){ return tripsManager.waitingTripExists}}
+                ListElement {buttonText: qsTr("Active Trip"); destination: "qrc:/Pages/ActiveTripPage.qml"; image: "qrc:/images/assets/white icons/active.png"; enabled: function() {return  tripsManager.activeTripExists} }
+                ListElement {buttonText: qsTr("Completed Trips"); destination: "qrc:/Pages/CompletedTripsPage.qml"; image: "qrc:/images/assets/white icons/completed.png"; enabled: function() { return  true}}
+                ListElement {buttonText: qsTr("My goals"); destination: "qrc:/Pages/PlansPage.qml"; image: "qrc:/images/assets/white icons/goal.png"; enabled: function() { return  true}}
             }
 
-            onClicked: navigateToItem("qrc:/Pages/ActiveTripPage.qml")
-        }
+            ProfileButton {
+                Layout.preferredHeight: 165
+                Layout.preferredWidth:  135
 
-        ProfileButton {
-            Layout.minimumWidth: 138
-            Layout.minimumHeight: 168
-            color: Colors.redButtonColor
-            image: "qrc:/images/assets/white icons/completed.png"
-            buttonText: qsTr("Completed trips")
-            onClicked: navigateToItem("qrc:/Pages/CompletedTripsPage.qml")
-            background : Rectangle {
-                radius: 28
-                gradient: Gradient {
-                    GradientStop {position: 0.0; color: Colors.redButtonColor }
-                    GradientStop {position: 1.0; color: "#752424" }
-                }
-            }
-        }
+                enabled: model.enabled()
+                opacity: enabled ? 1 : 0.6
+                buttonText: model.buttonText
+                image: model.image
 
-        ProfileButton {
-            Layout.minimumWidth: 138
-            Layout.minimumHeight: 168
-            color: Colors.yellowButtonColor
-            image: "qrc:/images/assets/white icons/goal.png"
-            buttonText: qsTr("My goals")
-            background : Rectangle {
-                radius: 28
-                gradient: Gradient {
-                    GradientStop {position: 0.0; color: "#EA6317"}
-                    GradientStop {position: 1.0; color: "#FFC000" }
+                background: Rectangle {
+                    radius: 28
+                    gradient: Gradient {
+                        GradientStop {position: 0.0; color: gradientsList[index].begin }
+                        GradientStop {position: 1.0; color: gradientsList[index].end }
+                    }
                 }
+                onClicked: navigateToItem(model.destination)
             }
-            onClicked: navigateToItem("qrc:/Pages/PlansPage.qml")
         }
     }
 }
-//}

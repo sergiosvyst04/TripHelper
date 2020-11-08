@@ -104,7 +104,6 @@ BasePage {
         width: 50
         text: "Get Country Info"
         onClicked: {
-            console.log("click")
             navigateToItem("qrc:/Pages/CountryInformationPage.qml")
         }
     }

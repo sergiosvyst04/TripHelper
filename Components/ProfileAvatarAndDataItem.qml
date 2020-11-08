@@ -87,7 +87,6 @@ ColumnLayout {
             text: qsTr("Current location : <b>%1</b>").arg(userAccountController.city)
         }
     }
-
 }
 
 

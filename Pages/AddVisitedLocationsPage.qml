@@ -19,7 +19,6 @@ BasePage {
 
     Connections {
         target: visitedLocationsController
-
         onLocationAdded: loader.active = true
     }
 
@@ -161,7 +160,6 @@ BasePage {
                         textFormat: Text.PlainText
                         text: qsTr("%1, %2 was succesfully added\n to your locations").arg(cityField.text).arg(countryComboBox.textAt(countryComboBox.currentIndex))
                     }
-
 
                     ColoredButton {
                         Layout.alignment: Qt.AlignHCenter
