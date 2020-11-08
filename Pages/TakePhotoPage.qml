@@ -87,12 +87,9 @@ BasePage {
         }
     }
 
-    Loader {
-        id: loader2
-        active: false
-
-        sourceComponent:  Popup {
-            id: popup
+    Component {
+        id: photoPopup
+        Popup {
             visible: true
             modal: true
             implicitWidth: 325
@@ -276,7 +273,6 @@ BasePage {
                     }
                 }
             }
-
         }
     }
 }

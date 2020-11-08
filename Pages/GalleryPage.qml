@@ -19,7 +19,6 @@ BasePage {
 
     Component.onCompleted: {
         galleryService.intialize(photosModel, photosStorage, tripsManager)
-
         if(location !== "") {
             galleryService.getPhotos(location)
         }
@@ -152,7 +151,7 @@ BasePage {
                                         {
 
                                             deleteMultiplePhotos = true
-                                            loader.active = true
+                                            loadToMainLoader(deletePhotoPopup)
                                         }
                                     }
                                     background: Rectangle {
@@ -279,94 +278,66 @@ BasePage {
                     layer.enabled: false
                     onClicked: {
                         deleteMultiplePhotos = false
-                        loader.active = true
+                        loadToMainLoader(deletePhotoPopup)
                     }
                 }
             }
         }
     }
 
-    Loader {
-        id: loader
-        active: false
+    Component {
+        id: deletePhotoPopup
+        GeneralPopup {
+            popupColor: Colors.white
+            title.text: deleteMultiplePhotos ? qsTr("Do you want to delete\n photo (%1)?").arg(amountOfSelectedImages)
+                                             : qsTr("Do you want to delete\n photo?")
+            title.font: Fonts.openSans(16)
 
-        sourceComponent: Popup {
-            implicitWidth: 250
-            implicitHeight: 120
-            parent: Overlay.overlay
-            modal: true
-            visible: true
-            anchors.centerIn: parent
+            width: 250
+            height: 120
 
-            onAboutToHide: loader.active = false
 
-            background: Rectangle {
-                radius: 10
-            }
-
-            ColumnLayout {
-                spacing: 15
-                anchors {
-                    fill: parent
-                    topMargin: 10
-                    bottomMargin: 10
-                    leftMargin: 15
-                    rightMargin: 15
-                }
-
-                DescriptionText {
-                    Layout.alignment: Qt.AlignHCenter
-                    font: Fonts.openSans(16, Font.Mixed)
-                    textFormat: Text.PlainText
-                    text: deleteMultiplePhotos ? qsTr("Do you want to delete\n photo (%1)?").arg(amountOfSelectedImages)
-                                               : qsTr("Do you want to delete\n photo?")
-                }
-
-                RowLayout {
-                    Layout.alignment: Qt.AlignHCenter
-                    spacing: 50
-
-                    ColoredButton {
-                        Layout.preferredHeight: 30
-                        Layout.preferredWidth: 40
-                        font: Fonts.openSansBold(16, Font.MixedCase)
-                        fontColor: Colors.descriptionTextColor
-                        text: qsTr("Yes")
-                        layer.enabled: false
-                        onClicked: {
-                            if(deleteMultiplePhotos)
-                            {
-                                deleteSelectedPhotos()
-                                loader.active = false
-                                editState = false
-                                amountOfSelectedImages = 0
-                            }
-                            else {
-                                galleryService.removePhoto(swipeView.currentIndex, swipeView.currentItem.source1)
-                                loader.active = false
-                            }
-                        }
-                    }
-
-                    ColoredButton {
-                        Layout.preferredHeight: 30
-                        Layout.preferredWidth: 40
-                        font: Fonts.openSansBold(16, Font.MixedCase)
-                        fontColor: Colors.redButtonColor
-                        opacity: 0.8
-                        text: qsTr("Cancel")
-                        layer.enabled: false
-                        onClicked: {
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+                spacing: 50
+                ColoredButton {
+                    Layout.preferredHeight: 30
+                    Layout.preferredWidth: 40
+                    font: Fonts.openSansBold(16, Font.MixedCase)
+                    fontColor: Colors.descriptionTextColor
+                    text: qsTr("Yes")
+                    layer.enabled: false
+                    onClicked: {
+                        if(deleteMultiplePhotos)
+                        {
+                            deleteSelectedPhotos()
+                            unloadFromMainLoader()
                             editState = false
-                            loader.active = false
+                            amountOfSelectedImages = 0
+                        }
+                        else {
+                            galleryService.removePhoto(swipeView.currentIndex, swipeView.currentItem.source1)
+                            unloadFromMainLoader()
                         }
                     }
+                }
 
+                ColoredButton {
+                    Layout.preferredHeight: 30
+                    Layout.preferredWidth: 40
+                    font: Fonts.openSansBold(16, Font.MixedCase)
+                    fontColor: Colors.redButtonColor
+                    opacity: 0.8
+                    text: qsTr("Cancel")
+                    layer.enabled: false
+                    onClicked: {
+                        editState = false
+                        unloadFromMainLoader()
+                    }
                 }
             }
         }
     }
-
 }
 
 

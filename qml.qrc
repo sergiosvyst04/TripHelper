@@ -68,5 +68,6 @@
         <file>Components/ScrollableText.qml</file>
         <file>Components/PhotoPathDelegate.qml</file>
         <file>Pages/SettingsPage.qml</file>
+        <file>Components/GeneralPopup.qml</file>
     </qresource>
 </RCC>

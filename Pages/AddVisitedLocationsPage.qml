@@ -19,7 +19,7 @@ BasePage {
 
     Connections {
         target: visitedLocationsController
-        onLocationAdded: loader.active = true
+        onLocationAdded: loadToMainLoader(newCountryPopup)
     }
 
     ColumnLayout {
@@ -107,80 +107,45 @@ BasePage {
         }
     }
 
-    Loader {
-        id: loader
-        active: false
 
-        sourceComponent: popup
+    Component {
+        id: newCountryPopup
+        GeneralPopup {
+            popupColor: Colors.primaryColor
+            height: 250
+            width: 232
+            title.visible: false
 
-        Component {
-            id: popup
+            Image {
+                id: addedCountryFlag
+                Layout.alignment: Qt.AlignHCenter
+                sourceSize: Qt.size(60, 60)
+                source: "qrc:/images/assets/icons/Flags/%1.png".arg(countryComboBox.textAt(countryComboBox.currentIndex))
+            }
 
-            Popup {
-                anchors.centerIn: parent
+            DescriptionText {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: parent.width
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.PlainText
+                text: qsTr("%1, %2 was succesfully added\n to your locations").arg(cityField.text).arg(countryComboBox.textAt(countryComboBox.currentIndex))
+            }
 
-                implicitHeight: 250
-                implicitWidth: 232
-
-                padding: 0
-
-                parent: Overlay.overlay
-                modal: true
-                visible: true
-                onAboutToHide: loader.active = false
-                background: Rectangle {
-                    radius: 28
-                    gradient: Gradient {
-                        GradientStop {position: 0.0; color: Colors.primaryColor }
-                        GradientStop {position: 0.4; color: Colors.white }
-                    }
+            ColoredButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredHeight: 36
+                Layout.preferredWidth: 86
+                color: Colors.primaryColor
+                layer.enabled: false
+                text: qsTr("Ok")
+                fontColor: Colors.white
+                font: Fonts.openSansBold(13, Font.MixedCase)
+                onClicked: {
+                    unloadFromMainLoader()
+                    cityField.text = ""
                 }
-
-                ColumnLayout {
-                    spacing: 20
-                    anchors {
-                        fill: parent
-                        topMargin: 15
-                        leftMargin: 24
-                        rightMargin: 24
-                        bottomMargin: 14
-                    }
-
-                    Image {
-                        id: addedCountryFlag
-                        Layout.alignment: Qt.AlignHCenter
-                        sourceSize: Qt.size(60, 60)
-                        source: "qrc:/images/assets/icons/Flags/%1.png".arg(countryComboBox.textAt(countryComboBox.currentIndex))
-                    }
-
-                    DescriptionText {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredWidth: parent.width
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        textFormat: Text.PlainText
-                        text: qsTr("%1, %2 was succesfully added\n to your locations").arg(cityField.text).arg(countryComboBox.textAt(countryComboBox.currentIndex))
-                    }
-
-                    ColoredButton {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredHeight: 36
-                        Layout.preferredWidth: 86
-                        color: Colors.primaryColor
-                        layer.enabled: false
-                        text: qsTr("Ok")
-                        fontColor: Colors.white
-                        font: Fonts.openSansBold(13, Font.MixedCase)
-                        onClicked: {
-                            loader.active = false
-                            cityField.text = ""
-                        }
-                    }
-                }
-
             }
         }
     }
-
-
 
 }

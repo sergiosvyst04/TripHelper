@@ -10,7 +10,7 @@ BasePage {
     nextButtonText: qsTr("Get")
     nextButtonEnabled: buttonsGroup.checkState !== Qt.Unchecked
     nextButton.onClicked:{
-        loader.active = true
+        loadToMainLoader(ticketsPopup)
         fillModel(buttonsGroup.buttons, ticketsModel)
     }
     function fillModel(buttons, model) {
@@ -85,119 +85,82 @@ BasePage {
             id: ticketsModel
         }
 
-        Loader {
-            id: loader
-            active: false
-
-            sourceComponent:  Popup {
-                visible: true
-                modal: true
-                implicitWidth: 250
-                implicitHeight: 270
+        Component {
+            id: ticketsPopup
+            GeneralPopup {
+                title.text: qsTr("We found several options\n for you")
+                title.font: Fonts.openSansBold(14, Font.MixedCase)
+                width: 250
+                height: 270
                 bottomPadding: 150
-                parent: Overlay.overlay
-                anchors.centerIn: parent
 
-                background: Rectangle {
+                ListView {
+                    id: listView
                     anchors.fill: parent
-                    radius: 28
-                    gradient: Gradient {
-                        GradientStop {position: 0.0; color: Colors.primaryColor }
-                        GradientStop {position: 0.3; color: Colors.white  }
-                    }
+                    model: ticketsModel
+                    spacing: 10
+
+                    delegate: ColoredButton {
+                        id: btn
+                        width: parent.width
+                        checkable: true
+                        checked: false
+                        layer.enabled: false
+                        height: 42
+
+                        onClicked: navigateToItem(model.destination)
 
 
-                        DescriptionText {
-                            anchors {
-                                top: parent.top
-                                topMargin: 20
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                            font: Fonts.openSansBold(14, Font.MixedCase)
-                            textFormat: Text.PlainText
-                            text: qsTr("We found several options\n for you")
-                        }
-
-                }
-
-                contentItem: Item {
-                    anchors.topMargin: 90
-                    anchors.top: parent.top
-                    width: 180
-                    height: 80
-
-                    ListView {
-                        id: listView
-                        anchors.fill: parent
-                        model: ticketsModel
-                        spacing: 10
-
-                        delegate: ColoredButton {
-                            id: btn
-                            width: parent.width
-                            checkable: true
-                            checked: false
-                            layer.enabled: false
-                            height: 42
-
-                            onClicked: navigateToItem(model.destination)
-
-
-                            background: Rectangle {
-                                anchors.fill: parent
-                                radius: 4
-                                color: btn.checked ? Colors.checkedDelegateColor : Colors.white
-                                opacity: btn.checked ? 0.3 : 1
-                                Rectangle {
-                                    anchors {
-                                        topMargin: 5
-                                        top:  parent.bottom
-                                    }
-                                    width: parent.width
-                                    height: 1
-                                    color: Colors.lightgrey
-                                    visible: index === listView.count - 1 ? false : true
-                                }
-                            }
-
-                            RowLayout {
+                        background: Rectangle {
+                            anchors.fill: parent
+                            radius: 4
+                            color: btn.checked ? Colors.checkedDelegateColor : Colors.white
+                            opacity: btn.checked ? 0.3 : 1
+                            Rectangle {
                                 anchors {
-                                    fill: parent
-                                    leftMargin: 10
-                                    rightMargin: 10
-                                    topMargin: 10
-                                    bottomMargin: 10
+                                    topMargin: 5
+                                    top:  parent.bottom
                                 }
+                                width: parent.width
+                                height: 1
+                                color: Colors.lightgrey
+                                visible: index === listView.count - 1 ? false : true
+                            }
+                        }
 
-                                DescriptionText {
-                                    font: Fonts.openSans(14)
-                                    text: model.text
-                                }
+                        RowLayout {
+                            anchors {
+                                fill: parent
+                                leftMargin: 10
+                                rightMargin: 10
+                                topMargin: 10
+                                bottomMargin: 10
+                            }
 
-                                Item {
-                                    Layout.fillWidth: true
-                                }
+                            DescriptionText {
+                                font: Fonts.openSans(14)
+                                text: model.text
+                            }
 
-                                Item {
-                                    Layout.fillHeight: true
-                                    Layout.preferredWidth: 39
+                            Item {
+                                Layout.fillWidth: true
+                            }
 
-                                    Image {
-                                        anchors.centerIn: parent
-                                        visible: btn.checked ? true : false
-                                        source: "qrc:/images/assets/icons/checkmark-blue.svg"
-                                        sourceSize: Qt.size(40, 40)
-                                    }
+                            Item {
+                                Layout.fillHeight: true
+                                Layout.preferredWidth: 39
+
+                                Image {
+                                    anchors.centerIn: parent
+                                    visible: btn.checked ? true : false
+                                    source: "qrc:/images/assets/icons/checkmark-blue.svg"
+                                    sourceSize: Qt.size(40, 40)
                                 }
                             }
                         }
                     }
-
                 }
             }
         }
-
-
     }
-
 }

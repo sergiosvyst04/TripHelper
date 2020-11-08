@@ -86,6 +86,14 @@ ApplicationWindow {
         }
     }
 
+    function loadToMainLoader(popup) {
+        mainLoader.sourceComponent = popup
+        mainLoader.active = true
+    }
+
+    function unloadFromMainLoader() {
+        mainLoader.active = false
+    }
 
     Audio {
         id: player
@@ -93,70 +101,43 @@ ApplicationWindow {
     }
 
     Loader {
-        id: loader
+        id: mainLoader
         active: false
+    }
 
-        Component {
-            id: warningPopup
-            Popup {
-                anchors.centerIn: parent
+    Component {
+        id: warningPopup
 
-                implicitHeight: 230
-                implicitWidth: 230
+        GeneralPopup {
+            height: 230
+            width: 230
+            title.text: qsTr("We notice that you\n forgot to pack some\n items")
+            title.font: Fonts.openSans(16, Font.MixedCase)
+            title.color: Colors.white
+            popupColor: "#BA0202"
 
-                padding: 0
-                parent: Overlay.overlay
-                modal: true
-                visible: true
-                background:  Rectangle {
-                    radius: 28
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: "#BA0202"}
-                        GradientStop { position: 1.0; color: Colors.white}
-                    }
-                }
-                onAboutToHide: loader.active = false
+            Item {
+                Layout.fillHeight: true
+            }
 
-                ColumnLayout {
-                    anchors {
-                        fill: parent
-                        topMargin: 20
-                        bottomMargin: 35
-                        leftMargin: 35
-                        rightMargin: 35
-                    }
-
-                    DescriptionText {
-                        Layout.alignment: Qt.AlignHCenter
-                        textFormat: Text.PlainText
-                        text: qsTr("We notice that you\n forgot to pack some\n items")
-                        font: Fonts.openSansBold(16, Font.MixedCase)
-                        color: Colors.white
-                    }
-
-                    Item {
-                        Layout.fillHeight: true
-                    }
-
-                    ColoredButton {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredHeight: 36
-                        Layout.preferredWidth: 100
-                        color: Colors.redButtonColor
-                        layer.enabled: false
-                        text: qsTr("Pack")
-                        fontColor: Colors.white
-                        font: Fonts.openSansBold(13, Font.MixedCase)
-                        onClicked: {
-                            loader.active = false
-                            navigateToItem("qrc:/Pages/MakeListPage.qml")
-                            player.stop()
-                        }
-                    }
+            ColoredButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredHeight: 36
+                Layout.preferredWidth: 100
+                color: Colors.redButtonColor
+                layer.enabled: false
+                text: qsTr("Pack")
+                fontColor: Colors.white
+                font: Fonts.openSansBold(13, Font.MixedCase)
+                onClicked: {
+                    unloadFromMainLoader()
+                    navigateToItem("qrc:/Pages/MakeListPage.qml")
+                    player.stop()
                 }
             }
         }
     }
+
 }
 
 

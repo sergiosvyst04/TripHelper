@@ -109,7 +109,7 @@ trip")
                         width : toDoList.width
                         group: qsTr("Before leaving the home")
                         things: ["Check point 'Necessarily from' 'What to pack' section", "Switch off light and all devices", "Turn off water supply", "Discard garbage and perishable products",
-                            "Water plants", "Close balcony and windows"]
+                            "WaMakeListter plants", "Close balcony and windows"]
                     }
 
                     CheckListItem {
@@ -181,10 +181,7 @@ trip")
 
                 }
             }
-
         }
-
     }
-
 }
 

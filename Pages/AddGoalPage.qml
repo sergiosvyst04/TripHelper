@@ -30,7 +30,7 @@ BasePage {
     Connections {
         target: goalsController
         onGoalAdded : {
-            loader.active = true
+            loadToMainLoader(popup)
         }
     }
 
@@ -128,71 +128,36 @@ BasePage {
         }
     }
 
-    Loader {
-        id: loader
-        active: false
+    Component {
+        id: popup
 
-        sourceComponent: popup
+        GeneralPopup {
+            title.text: "Goal was succesfully added\n to your goals"
+            title.color: Colors.descriptionTextColor
+            title.font: Fonts.openSans(13, Font.MixedCase)
+            popupColor: Colors.primaryColor
+            height: 150
+            width: 232
 
-        Component {
-            id: popup
-
-            Popup {
-                anchors.centerIn: parent
-
-                implicitHeight: 150
-                implicitWidth: 232
-
-                padding: 0
-
-                parent: Overlay.overlay
-                modal: true
-                visible: true
-                onAboutToHide: loader.active = false
-                background: Rectangle {
-                    radius: 28
-                    gradient: Gradient {
-                        GradientStop {position: 0.0; color: Colors.primaryColor }
-                        GradientStop {position: 0.4; color: Colors.white }
-                    }
-                }
-
-                ColumnLayout {
-                    spacing: 20
-                    anchors {
-                        fill: parent
-                        topMargin: 15
-                        leftMargin: 24
-                        rightMargin: 24
-                        bottomMargin: 14
-                    }
-
-                    DescriptionText {
-                        Layout.alignment: Qt.AlignHCenter
-                        textFormat: Text.PlainText
-                        text: qsTr("Goal was succesfully added\n to your goals")
-                    }
-
-
-                    ColoredButton {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredHeight: 36
-                        Layout.preferredWidth: 86
-                        color: Colors.primaryColor
-                        layer.enabled: false
-                        text: qsTr("Add")
-                        fontColor: Colors.white
-                        font: Fonts.openSansBold(13, Font.MixedCase)
-                        onClicked: {
-                            loader.active = false
-                            navigateToItem("qrc:/Pages/MainPage.qml")
-                        }
-                    }
-
-                }
-
+            Item{
+                Layout.fillHeight: true
             }
-        }
 
+            ColoredButton {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredHeight: 36
+                Layout.preferredWidth: 86
+                color: Colors.primaryColor
+                layer.enabled: false
+                text: qsTr("Add")
+                fontColor: Colors.white
+                font: Fonts.openSansBold(13, Font.MixedCase)
+                onClicked: {
+                    unloadFromMainLoader()
+                    navigateToItem("qrc:/Pages/MainPage.qml")
+                }
+            }
+
+        }
     }
 }

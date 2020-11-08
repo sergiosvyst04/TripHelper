@@ -81,12 +81,11 @@ BasePage {
                 font: Fonts.openSansBold(17, Font.MixedCase)
                 color: "transparent"
                 text: qsTr("Add")
-                onClicked:{
+                onClicked: {
                     if(addItemField.text !== "") {
                         if(packer.checkIfItemExists(addItemField.text))
                         {
-                            warning = true
-                            loader.active = true
+                            loadToMainLoader(warningPopup)
                             addItemField.text = ""
                         }
                         else {
@@ -132,139 +131,75 @@ BasePage {
             sourceSize: Qt.size(75, 85)
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    warning = false
-                    loader.active = true
-                }
+                onClicked: loadToMainLoader(backPackPopup)
             }
         }
     }
 
+    Component {
+        id: warningPopup
+        GeneralPopup {
+            popupColor: Colors.white
+            title.text: qsTr("Such item has been\n already in your backpack")
+            title.font: Fonts.openSans(16, Font.MixedCase)
+            width: 250
+            height: 150
 
-    Loader {
-        id: loader
-        active: false
-
-        sourceComponent: warning ? warningPopup : backPackPopup
-
-        Component {
-            id: warningPopup
-            Popup {
-                id: pop
-
-                visible: true
-                anchors.centerIn: parent
-                parent: Overlay.overlay
-                implicitWidth: 250
-                implicitHeight: 120
-                modal: true
-
-                onAboutToHide: loader.active = false
-                background: Rectangle {
-                    radius: 28
-                }
-
-                ColumnLayout {
-                    spacing: 10
-                    anchors {
-                        fill: parent
-                        rightMargin: 10
-                        leftMargin: 10
-                        bottomMargin: 25
-                    }
-
-                    DescriptionText {
-                        Layout.alignment: Qt.AlignHCenter
-                        textFormat: Text.PlainText
-                        text: qsTr("Such item has been\n already in your backpack")
-                        font: Fonts.openSans(16, Font.MixedCase)
-                    }
-
-
-
-                    ColoredButton {
-                        Layout.alignment: Qt.AlignHCenter
-                        color: "transparent"
-                        font: Fonts.openSansBold(22, Font.Mixed)
-                        fontColor: Colors.primaryColor
-                        text: qsTr("Ok")
-                        layer.enabled: false
-                        onClicked: loader.active = false
-                    }
-
-
-                }
-
+            Item {
+                Layout.fillHeight: true
             }
 
-        }
-
-        Component {
-            id: backPackPopup
-
-            Popup {
-                visible: true
-                anchors.centerIn: parent
-                parent: Overlay.overlay
-                implicitWidth: 285
-                implicitHeight: 480
-                modal: true
-
-                onAboutToHide: loader.active = true
-
-                background: Rectangle {
-                    radius: 28
-                }
-
-                ColumnLayout {
-                    spacing: 20
-                    anchors {
-                        fill: parent
-                        topMargin: 15
-                        bottomMargin: 20
-                    }
-
-                    DescriptionText {
-                        Layout.alignment: Qt.AlignHCenter
-                        text: qsTr("Your backpack")
-                        font: Fonts.openSans(18, Font.MixedCase)
-                    }
-
-                    ListView {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        Layout.rightMargin: 25
-
-                        model: packer.backpack
-
-                        clip: true
-                        spacing: 8
-                        delegate: BackPackItem {
-                            visible: model.isPacked
-                            color: Colors.secondaryColor
-                            height: model.isPacked ? 33 : -8
-                            width: parent.width
-                            name: model.name
-                            applyButton.visible: false
-                            rejectButton.visible: false
-                        }
-                    }
-
-                    ColoredButton {
-                        Layout.alignment: Qt.AlignHCenter
-                        color: "transparent"
-                        font: Fonts.openSansBold(22, Font.Mixed)
-                        fontColor: Colors.primaryColor
-                        text: qsTr("Ok")
-                        layer.enabled: false
-                        onClicked: loader.active = false
-                    }
-                }
-
+            ColoredButton {
+                Layout.alignment: Qt.AlignHCenter
+                color: "transparent"
+                font: Fonts.openSansBold(22, Font.Mixed)
+                fontColor: Colors.primaryColor
+                text: qsTr("Ok")
+                layer.enabled: false
+                onClicked: unloadFromMainLoader()
             }
         }
 
+    }
 
+    Component {
+        id: backPackPopup
 
+        GeneralPopup {
+            title.text: qsTr("Your backpack")
+            title.font: Fonts.openSans(18, Font.MixedCase)
+            popupColor: Colors.primaryColor
+            width: 285
+            height: 480
+
+            ListView {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.rightMargin: 25
+                model: packer.backpack
+
+                clip: true
+                spacing: 8
+                delegate: BackPackItem {
+                    visible: model.isPacked
+                    color: Colors.secondaryColor
+                    height: model.isPacked ? 33 : -8
+                    width: parent.width
+                    name: model.name
+                    applyButton.visible: false
+                    rejectButton.visible: false
+                }
+            }
+
+            ColoredButton {
+                Layout.alignment: Qt.AlignHCenter
+                color: "transparent"
+                font: Fonts.openSansBold(22, Font.Mixed)
+                fontColor: Colors.primaryColor
+                text: qsTr("Ok")
+                layer.enabled: false
+                onClicked: unloadFromMainLoader()
+            }
+        }
     }
 }
