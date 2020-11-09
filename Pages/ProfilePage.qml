@@ -30,7 +30,7 @@ ColumnLayout {
 
         Repeater {
             model: ListModel {
-                ListElement {buttonText: qsTr("Waiting Trip"); destination: "qrc:/Pages/InWaitingTripPage.qml"; image: ""; enabled: function (){ return true /*tripsManager.waitingTripExists*/}}
+                ListElement {buttonText: qsTr("Waiting Trip"); destination: "qrc:/Pages/InWaitingTripPage.qml"; image: ""; enabled: function (){ return tripsManager.waitingTripExists}}
                 ListElement {buttonText: qsTr("Active Trip"); destination: "qrc:/Pages/ActiveTripPage.qml"; image: "qrc:/images/assets/white icons/active.png"; enabled: function() {return  tripsManager.activeTripExists} }
                 ListElement {buttonText: qsTr("Completed Trips"); destination: "qrc:/Pages/CompletedTripsPage.qml"; image: "qrc:/images/assets/white icons/completed.png"; enabled: function() { return  true}}
                 ListElement {buttonText: qsTr("My goals"); destination: "qrc:/Pages/PlansPage.qml"; image: "qrc:/images/assets/white icons/goal.png"; enabled: function() { return  true}}

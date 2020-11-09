@@ -4,12 +4,8 @@ import QtQuick.Layouts 1.12
 import "../Singletons"
 import "../Components"
 
-//BasePage {
-//    footer: Item{height: 80}
-//    header: Item{}
 
 ColumnLayout {
-    property alias startTripBtnEnabled: startTripBtn.enabled
     spacing: 15
     anchors {
         fill: parent
@@ -39,59 +35,28 @@ ColumnLayout {
             spacing: 15
             width: flickable.width
 
-            HomeActionButton {
-                id: startTripBtn
-                Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: column.width - 10
-                Layout.minimumHeight: 105
-                opacity: enabled ? 1.0 : 0.3
+            Repeater {
+                model: ListModel {
+                    ListElement { actionText: "Start trip"; image: "qrc:/images/assets/white icons/startbtn.png"; navigationMethod: function(){navigateToItem("qrc:/Pages/StartTripPage.qml")}}
+                    ListElement { actionText: "Add goal"; image: "qrc:/images/assets/white icons/goals.png"; navigationMethod: function(){navigateToItem("qrc:/Pages/AddGoalPage.qml")} }
+                    ListElement { actionText: "Organization help"; image: "qrc:/images/assets/white icons/organizat help.png"; navigationMethod: function(){navigateToItem("qrc:/Pages/OrganizationHelpPage.qml")}}
+                    ListElement { actionText: "Settings"; image: "qrc:/images/assets/white icons/settings.png"; navigationMethod: function(){navigateToItem("qrc:/Pages/SettingsPage.qml")}}
+                    ListElement { actionText: "Sign Out"; image: "qrc:/images/assets/white icons/settings.png"; navigationMethod: function(){authService.signOut(), replaceView("qrc:/Pages/StartedPage.qml")}  }
+                }
 
-                enabled: !tripsManager.waitingTripExists && !tripsManager.activeTripExists
-                image: "qrc:/images/assets/white icons/startbtn.png"
-                actionText: qsTr("Start trip")
-                onClicked: navigateToItem("qrc:/Pages/StartTripPage.qml")
-            }
+                HomeActionButton {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.minimumWidth: column.width - 10
+                    Layout.minimumHeight: 105
+                    opacity: enabled ? 1.0 : 0.3
 
-            HomeActionButton {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: column.width - 10
-                Layout.minimumHeight: 105
-                image: "qrc:/images/assets/white icons/goals.png"
-                actionText: qsTr("Add goal")
-                onClicked: navigateToItem("qrc:/Pages/AddGoalPage.qml")
-            }
+                    enabled: index === 0 ? !tripsManager.waitingTripExists && !tripsManager.activeTripExists : true
 
-            HomeActionButton {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: column.width - 10
-                Layout.fillWidth: true
-                Layout.minimumHeight: 105
-                image: "qrc:/images/assets/white icons/organizat help.png"
-                actionText: qsTr("Organization<br>help")
-                onClicked: navigateToItem("qrc:/Pages/OrganizationHelpPage.qml")
-            }
-
-            HomeActionButton {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: column.width - 10
-                Layout.minimumHeight: 105
-                image: "qrc:/images/assets/white icons/settings.png"
-                actionText: qsTr("Settings")
-                onClicked: navigateToItem("qrc:/Pages/SettingsPage.qml")
-            }
-
-            HomeActionButton {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: column.width - 10
-                Layout.minimumHeight: 105
-                image: "qrc:/images/assets/white icons/settings.png"
-                actionText: qsTr("Sign Out")
-                onClicked: {
-                    authService.signOut()
-                    replaceView("qrc:/Pages/StartedPage.qml")
+                    image: model.image
+                    actionText: model.actionText
+                    onClicked: navigationMethod()
                 }
             }
         }
     }
 }
-//}

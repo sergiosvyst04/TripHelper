@@ -33,6 +33,8 @@ ColoredButton {
 
         DescriptionText {
             id: action
+            Layout.fillWidth: true
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font: Fonts.openSansBold(22, Font.MixedCase)
             color: Colors.white
         }
