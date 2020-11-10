@@ -31,7 +31,7 @@ BasePage {
 
         Image {
             Layout.alignment: Qt.AlignHCenter
-            sourceSize: Qt.size(180, 160)
+            sourceSize: Qt.size(180 * ScreenProperties.scaleRatioWidth, 160 * ScreenProperties.scaleRatioHeight)
             source: "qrc:/images/assets/icons/Humans-11-11-512.png"
             opacity: 0.4
         }
@@ -46,7 +46,7 @@ BasePage {
 
             delegate:  PlanItem {
                 width: parent.width
-                height: 100
+                height: 100 * ScreenProperties.scaleRatioHeight
                 countryAndCity: qsTr("%1, %2").arg(model.country).arg(model.city)
                 depatureDate: model.depatureDate
             }

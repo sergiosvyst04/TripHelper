@@ -19,7 +19,7 @@ ColumnLayout {
     ProfileAvatarAndDataItem {
         id: profileAvataerAndData
         Layout.fillWidth: true
-        Layout.minimumHeight: 135
+        Layout.minimumHeight: 135 * ScreenProperties.scaleRatioHeight
     }
 
     GridLayout {
@@ -37,8 +37,8 @@ ColumnLayout {
             }
 
             ProfileButton {
-                Layout.preferredHeight: 165
-                Layout.preferredWidth:  135
+                Layout.preferredHeight: 165 * ScreenProperties.scaleRatioHeight
+                Layout.preferredWidth:  135 * ScreenProperties.scaleRatioWidth
 
                 enabled: model.enabled()
                 opacity: enabled ? 1 : 0.6

@@ -1,3 +1,4 @@
 singleton Colors 1.0 Colors.qml
 singleton Fonts 1.0 Fonts.qml
 singleton Utils 1.0 Utils.qml
+singleton ScreenProperties 1.0 ScreenProperties.qml

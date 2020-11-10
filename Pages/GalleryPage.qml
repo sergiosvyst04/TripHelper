@@ -180,7 +180,7 @@ BasePage {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                cellWidth: width / 4
+                cellWidth: (width / 4) * ScreenProperties.scaleRatioHeight
                 cellHeight: cellWidth
 
                 model: galleryService.photosModel

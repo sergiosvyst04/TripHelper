@@ -65,7 +65,7 @@ BasePage {
 
             LocationComboBox {
                 id: countryComboBox
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
                 currentIndex: -1
                 model: countriesModel
 
@@ -91,7 +91,7 @@ BasePage {
 
             LocationComboBox {
                 id: cityComboBox
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
 
                 enabled: false
                 currentIndex: -1

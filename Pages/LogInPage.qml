@@ -46,7 +46,7 @@ BasePage {
         Image {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/emblem.png"
-            sourceSize: Qt.size(250, 200)
+            sourceSize: Qt.size(250 * ScreenProperties.scaleRatioWidth, 200 * ScreenProperties.scaleRatioHeight)
         }
 
         LabeledTextEdit {
@@ -101,7 +101,7 @@ BasePage {
         id: loadingImage
         anchors.centerIn: parent
         visible: false
-        sourceSize: Qt.size(80, 80)
+        sourceSize: Qt.size(80 * ScreenProperties.scaleRatioWidth, 80 * ScreenProperties.scaleRatioHeight)
         source: "qrc:/images/assets/icons/loading.png"
     }
 

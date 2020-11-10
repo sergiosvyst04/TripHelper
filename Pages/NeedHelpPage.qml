@@ -40,7 +40,7 @@ BasePage {
         Image {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/reserve.png"
-            sourceSize: Qt.size(160, 145)
+            sourceSize: Qt.size(160 * ScreenProperties.scaleRatioWidth, 145 * ScreenProperties.scaleRatioWidth)
             opacity: 0.3
         }
 

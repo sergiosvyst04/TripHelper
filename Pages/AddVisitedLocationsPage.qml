@@ -33,7 +33,7 @@ BasePage {
         Image {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/globe.png"
-            sourceSize: Qt.size(120, 120)
+            sourceSize: Qt.size(120 * ScreenProperties.scaleRatioWidth, 120 * ScreenProperties.scaleRatioHeight)
             opacity: 0.4
         }
 
@@ -90,7 +90,7 @@ BasePage {
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredHeight: 30
+            Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
             Layout.preferredWidth: 100
             text: qsTr("Add")
             font: Fonts.openSans(13)

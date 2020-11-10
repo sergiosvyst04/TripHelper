@@ -35,7 +35,7 @@ BasePage {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/fly.png"
             opacity: 0.5
-            sourceSize: Qt.size(160, 133)
+            sourceSize: Qt.size(160* ScreenProperties.scaleRatioWidth, 133 * ScreenProperties.scaleRatioHeight)
         }
 
         ButtonGroup {

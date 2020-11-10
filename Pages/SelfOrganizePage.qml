@@ -43,7 +43,7 @@ BasePage {
                 LocationComboBox {
                     id: countryComboBox
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 30
+                    Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
                     currentIndex: -1
                     onActivated: {
                         currentIndex = index
@@ -63,7 +63,7 @@ BasePage {
                 LocationComboBox {
                     id: cityComboBox
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 30
+                    Layout.preferredHeight: 30  * ScreenProperties.scaleRatioHeight
                     currentIndex: -1
                     onActivated: currentIndex = index
                 }
@@ -72,7 +72,7 @@ BasePage {
             PopupActivationButton {
                 id: dateField
                 Layout.fillWidth: true
-                Layout.preferredHeight: 35
+                Layout.preferredHeight: 35 * ScreenProperties.scaleRatioHeight
                 labelText: qsTr("Depature date")
                 popupContentItem: TripCalendar {
                     minimumDate: new Date()
@@ -86,7 +86,7 @@ BasePage {
             LabeledTextEdit {
                 id: amountOfPersonsField
                 Layout.fillWidth: true
-                Layout.preferredHeight: 35
+                Layout.preferredHeight: 35 * ScreenProperties.scaleRatioHeight
                 label: qsTr("Amount of persons")
                 validator: Utils.validateIntegersOnly
                 warningText: qsTr("Input integers only")

@@ -41,7 +41,7 @@ BasePage {
                 Layout.alignment: Qt.AlignHCenter
                 opacity: 0.5
                 source: "qrc:/images/assets/icons/list.png"
-                sourceSize: Qt.size(140, 140)
+                sourceSize: Qt.size(140 * ScreenProperties.scaleRatioWidth, 140 * ScreenProperties.scaleRatioHeight)
             }
 
             Item {
@@ -49,8 +49,8 @@ BasePage {
             }
 
             ColoredButton {
-                Layout.preferredHeight: image.height / 2
-                Layout.preferredWidth: image.width
+                Layout.preferredHeight: (image.height / 2) * ScreenProperties.scaleRatioHeight
+                Layout.preferredWidth: (image.width) * ScreenProperties.scaleRatioWidth
                 color: Colors.primaryColor
                 text: qsTr("Go to checklist")
                 layer.enabled: false
@@ -128,7 +128,7 @@ BasePage {
             Layout.alignment: Qt.AlignRight
             opacity: 0.6
             source: "qrc:/images/assets/icons/backpack.png"
-            sourceSize: Qt.size(75, 85)
+            sourceSize: Qt.size(75 * ScreenProperties.scaleRatioWidth , 85 * ScreenProperties.scaleRatioWidth)
             MouseArea {
                 anchors.fill: parent
                 onClicked: loadToMainLoader(backPackPopup)
