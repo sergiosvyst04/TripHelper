@@ -54,7 +54,8 @@ TextField {
         height: 20
 
         Image {
-            visible: extraTextStack.currentIndex === 2
+            visible: false
+//            visible: control.text.length > 0 && control.validated && !focused
             source: "qrc:/images/assets/icons/519791-101_Warning-512.png"
             sourceSize: Qt.size(26, 23)
             anchors.centerIn: parent

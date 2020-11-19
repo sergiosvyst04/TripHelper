@@ -43,6 +43,7 @@ BasePage {
 
         ColumnLayout {
             Layout.fillWidth: true
+
             LabeledTextEdit {
                 id: fullNameField
                 Layout.fillWidth: true
@@ -58,7 +59,6 @@ BasePage {
                 validator: Utils.validateEmail
                 approveText: qsTr("Looks great!")
                 warningText: qsTr("please enter a valid email (e.g johndoe@gmail.com)")
-                stackIndex: 0
             }
 
             LabeledTextEdit {
@@ -69,7 +69,6 @@ BasePage {
                 usePasswordMask: true
                 approveText: qsTr("Very good!")
                 warningText: qsTr("Use at least 8 characters")
-                stackIndex:  0
             }
 
             LabeledTextEdit {
@@ -79,7 +78,6 @@ BasePage {
                 label: qsTr("Confirm Password")
                 approveText: qsTr("Excellent!")
                 warningText: qsTr("Confirmation does not match")
-                stackIndex: 0
                 validated: false
 
                 onTextChanged: {

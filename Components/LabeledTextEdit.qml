@@ -13,14 +13,12 @@ Column {
     property bool usePasswordMask: false
     
     property alias textField: textField
-    property alias stackIndex: extraTextStack.currentIndex
-    property alias approveText: approvetext.text
-    property alias warningText: warningText.text
+    property string approveText
+    property string warningText
 
     property alias validator: textField.validator
     property alias validated: textField.validated
     property alias readOnly: textField.readOnly
-
 
     DescriptionText {
         id: label
@@ -39,94 +37,105 @@ Column {
             isPassword: usePasswordMask
 
             onHasNotValidated: {
-                extraTextStack.currentIndex = 2
-                warningAnim.running = true
+                additionalTextLabel.state = "rejected"
             }
 
             onValidatedChanged: {
                 if(validated === true) {
-                    extraTextStack.currentIndex = 1
+                    additionalTextLabel.state = "approved"
                 }
                 else {
-                    extraTextStack.currentIndex = 0
+                    additionalTextLabel.state = ""
                 }
             }
 
         }
 
-        StackLayout {
-            id: extraTextStack
-            height: 15
+        Label {
+            id: additionalTextLabel
+            property bool approved
+            height: 18
             width: parent.width
-            currentIndex: 0
+            font: Fonts.openSans(11, Font.MixedCase)
+            text: approved ? approveText : warningText
+            color: state === "" ? "transparent" : approved ? Colors.approveTextColor : Colors.warningTextColor
 
-            Item {
-
-            }
-
-            Item {
-                Label {
-                    id: approvetext
-                    anchors.centerIn: parent
-                    color: Colors.approveTextColor
-                    width: parent.width
-                    font: Fonts.openSansBold(11, Font.Mixed)
-                    opacity: 0.2
-
-                    NumberAnimation on opacity {
-                        to: 1.0
-                        duration: 300
-                        running: validated
+            states: [
+                State {
+                    name: "rejected"
+                    PropertyChanges {
+                        target: additionalTextLabel
+                        approved: false
                     }
 
-                    NumberAnimation on width {
-                        from: parent.width - 10
-                        to: parent.width
-                        duration: 150
-                        running: validated
+                },
+                State {
+                    name: "approved"
+                    PropertyChanges {
+                        target: additionalTextLabel
+                        approved: true
                     }
                 }
-            }
+            ]
 
-            Item {
-                Label {
-                    id: warningText
-                    anchors.centerIn: parent
-                    color: Colors.warningTextColor
-                    width: parent.width
-                    font: Fonts.openSans(11, Font.MixedCase)
+//            transitions: [
+//                Transition {
+//                    to: "approved"
+//                    reversible: true
+//                    onRunningChanged: console.log("transition running changed to : ", running)
 
-                    SequentialAnimation {
-                        id: warningAnim
+//                    ParallelAnimation {
+//                        id: approveAnimation
+//                        onRunningChanged: console.log("parallel animation running changed to : ", running)
+//                        NumberAnimation {
+//                            property: "opacity"
+//                            to: 0
+//                            duration: 1000
+//                        }
 
-                        NumberAnimation {
-                            target: warningText
-                            property: "width"
-                            from: warningText.width
-                            to: warningText.width + 10
-                            duration: 100
-                        }
+//                        OpacityAnimator {
+//                               from: 0;
+//                               to: 1;
+//                               duration: 1000
+//                           }
 
-                        NumberAnimation {
-                            target: warningText
-                            property: "width"
-                            from: warningText.width + 10
-                            to: warningText.width - 10
-                            duration: 100
-                        }
+//                        NumberAnimation {
+//                            property: "width"
+//                            from: width - 10
+//                            to: width
+//                            duration: 150
+//                        }
+//                    }
+//                },
+//                Transition {
+//                    reversible: true
+//                    to: "rejected"
+//                    SequentialAnimation {
+//                        id: warningAnim
 
-                        NumberAnimation {
-                            target: warningText
-                            property: "width"
-                            from: warningText.width - 10
-                            to: warningText.width
-                            duration: 100
-                        }
-                    }
+//                        NumberAnimation {
+//                            property: "width"
+//                            from: width
+//                            to: width + 10
+//                            duration: 100
+//                        }
 
-                }
-            }
+//                        NumberAnimation {
+//                            property: "width"
+//                            from: width + 10
+//                            to: width - 10
+//                            duration: 100
+//                        }
 
+//                        NumberAnimation {
+//                            property: "width"
+//                            from: width - 10
+//                            to: width
+//                            duration: 100
+//                        }
+//                    }
+//                }
+//            ]
         }
     }
 }
