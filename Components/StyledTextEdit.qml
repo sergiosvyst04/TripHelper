@@ -54,10 +54,15 @@ TextField {
         height: 20
 
         Image {
-            visible: extraTextStack.currentIndex === 2
-            source: "qrc:/images/assets/icons/519791-101_Warning-512.png"
-            sourceSize: Qt.size(26, 23)
+            visible: isPassword
+            source: echoMode === TextField.Normal ? "qrc:/images/assets/icons/eye-open-grey.png" : "qrc:/images/assets/icons/eye-closed-grey.png"
+            sourceSize: Qt.size(28, 28)
             anchors.centerIn: parent
+            MouseArea {
+                anchors.fill: parent
+                onClicked:  echoMode = echoMode == TextInput.Normal ? TextInput.Password : TextInput.Normal
+            }
+
         }
     }
 

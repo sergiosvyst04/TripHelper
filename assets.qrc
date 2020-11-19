@@ -224,6 +224,8 @@
         <file>assets/icons/Flags/Afghanistan.png</file>
         <file>assets/icons/Flags/Senegal.png</file>
         <file>assets/icons/loading.png</file>
+        <file>assets/icons/eye-closed-grey.png</file>
+        <file>assets/icons/eye-open-grey.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/db">
