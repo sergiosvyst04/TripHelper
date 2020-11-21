@@ -55,8 +55,9 @@ TextField {
 
         Image {
             visible: isPassword
+            opacity: 0.8
             source: echoMode === TextField.Normal ? "qrc:/images/assets/icons/eye-open-grey.png" : "qrc:/images/assets/icons/eye-closed-grey.png"
-            sourceSize: Qt.size(28, 28)
+            sourceSize: Qt.size(25, 25)
             anchors.centerIn: parent
             MouseArea {
                 anchors.fill: parent
