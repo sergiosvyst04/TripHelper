@@ -34,7 +34,7 @@ QHash<int, QByteArray> CountriesCitiesModel::roleNames() const
 QMap<QString, QVector<QString>> CountriesCitiesModel::getData()
 {
     QMap<QString, QVector<QString>> citiesMap;
-    QFile file("/home/sergio/Desktop/TripFiles/Countries_Cities");
+    QFile file(":/db/assets/CountriesCitiesDB");
 
     QTextStream txtstream(&file);
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
