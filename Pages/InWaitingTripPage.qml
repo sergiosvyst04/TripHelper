@@ -53,25 +53,32 @@ BasePage {
             spacing: 15
             Repeater {
                 id: repeater
-                model: ["Dayss", "Hours", "Minutes", "Seconds"]
+                model: ["Days", "Hours", "Minutes", "Seconds"]
 
                 delegate: ColumnLayout {
                     property alias timeLeft: left.text
                     DescriptionText {
                         id: left
                         Layout.alignment: Qt.AlignHCenter
-                        font: Fonts.openSans(18, Font.MixedCase)
+                        font: Fonts.openSans(16, Font.MixedCase)
                     }
 
                     DescriptionText {
-                        font: Fonts.openSans(18, Font.MixedCase)
+                        font: Fonts.openSansBold(18, Font.MixedCase)
                         text: modelData
                     }
                 }
             }
         }
 
-
+        Image {
+            Layout.preferredHeight: 170
+            Layout.preferredWidth: 170
+            Layout.alignment: Qt.AlignHCenter
+            opacity: 0.6
+            source: "qrc:/images/assets/icons/waiting-vacation.png"
+            sourceSize: Qt.size(170, 170)
+        }
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter

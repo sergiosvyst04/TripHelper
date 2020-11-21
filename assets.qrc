@@ -226,11 +226,13 @@
         <file>assets/icons/loading.png</file>
         <file>assets/icons/eye-closed-grey.png</file>
         <file>assets/icons/eye-open-grey.png</file>
+        <file>assets/icons/waiting-vacation.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/db">
         <file>assets/UsersData.json</file>
         <file>assets/CountryInformation.json</file>
         <file>assets/TravelAgentsDB.json</file>
+        <file>assets/CountriesCitiesDB</file>
     </qresource>
 </RCC>
