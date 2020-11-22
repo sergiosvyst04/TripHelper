@@ -35,7 +35,7 @@ Column {
         StyledTextEdit {
             id: textField
             width: parent.width
-            height: 30
+            height: 30 * ScreenProperties.scaleRatioHeight
             isPassword: usePasswordMask
 
             onHasNotValidated: {

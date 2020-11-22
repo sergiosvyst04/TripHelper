@@ -82,8 +82,8 @@ BasePage {
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 250
-            Layout.preferredHeight: 90
+            Layout.preferredWidth: 250 * ScreenProperties.scaleRatioWidth
+            Layout.preferredHeight: 90 * ScreenProperties.scaleRatioHeight
             text: qsTr("Pack Bag")
             color: Colors.primaryColor
             font: Fonts.openSansBold(18)
@@ -95,7 +95,5 @@ BasePage {
             Layout.fillHeight: true
         }
 
-
     }
-
 }

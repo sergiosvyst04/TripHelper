@@ -49,8 +49,8 @@ Page {
         height: nextButtonVisible ? 100 : 0
         ColoredButton {
             id: nextButton
-            width: 240
-            height: 46
+            width: 240 * ScreenProperties.scaleRatioWidth
+            height: 46 * ScreenProperties.scaleRatioHeight
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             visible: nextButtonVisible

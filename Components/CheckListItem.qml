@@ -13,7 +13,7 @@ ColumnLayout {
     ColoredButton {
         id: btn
         Layout.fillWidth: true
-        implicitHeight: 55
+        implicitHeight: 55 * ScreenProperties.scaleRatioHeight
         checkable: true
         layer.enabled: false
 
@@ -45,7 +45,7 @@ ColumnLayout {
     Rectangle {
         id: answerText
         Layout.fillWidth: true
-        Layout.preferredHeight: col.height + 20
+        Layout.preferredHeight: (col.height + 20) * ScreenProperties.scaleRatioHeight
 
         visible: btn.checked ? true : false
         radius: 32
@@ -87,7 +87,7 @@ ColumnLayout {
                             id: addBtn
                             ColoredButton {
                                 id: btn
-                                implicitHeight: 30
+                                implicitHeight: 30 * ScreenProperties.scaleRatioHeight
                                 checkable: true
                                 color: Colors.addToListButtonColor
                                 layer.enabled: false
@@ -117,7 +117,7 @@ ColumnLayout {
                         Component {
                             id: removebtn
                             ColoredButton {
-                                implicitHeight: 30
+                                implicitHeight: 30 * ScreenProperties.scaleRatioHeight
                                 checkable: true
                                 color: Colors.redButtonColor
                                 layer.enabled: false
@@ -142,7 +142,7 @@ ColumnLayout {
                 RowLayout {
                     spacing: 10
                     Image {
-                        sourceSize: Qt.size(20, 20)
+                        sourceSize: Qt.size(20 * ScreenProperties.scaleRatioWidth, 20 * ScreenProperties.scaleRatioHeight)
                         source: "qrc:/images/assets/icons/apply.png"
                     }
 

@@ -41,7 +41,7 @@ BasePage {
 
             delegate:  TripItem {
                 width: parent.width
-                height: 165
+                height: 165 * ScreenProperties.scaleRatioHeight
 
                 tripName: model.name
                 dates: qsTr("%1 - %2").arg(Qt.formatDate(model.depatureDate ,"d/M/yyyy")).arg(Qt.formatDate(new Date() ,"d/M/yyyy"))

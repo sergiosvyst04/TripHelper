@@ -16,7 +16,7 @@ ColumnLayout {
     Image {
         Layout.alignment: Qt.AlignHCenter
         source: "qrc:/images/assets/emblem.png"
-        sourceSize: Qt.size(200, 165)
+        sourceSize: Qt.size(200 * ScreenProperties.scaleRatioWidth, 165 * ScreenProperties.scaleRatioHeight)
     }
 
     Flickable {
@@ -47,7 +47,7 @@ ColumnLayout {
                 HomeActionButton {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.minimumWidth: column.width - 10
-                    Layout.minimumHeight: 105
+                    Layout.minimumHeight: 105 * ScreenProperties.scaleRatioHeight
                     opacity: enabled ? 1.0 : 0.3
 
                     enabled: index === 0 ? !tripsManager.waitingTripExists && !tripsManager.activeTripExists : true

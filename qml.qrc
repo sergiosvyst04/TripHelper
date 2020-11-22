@@ -69,5 +69,6 @@
         <file>Components/PhotoPathDelegate.qml</file>
         <file>Pages/SettingsPage.qml</file>
         <file>Components/GeneralPopup.qml</file>
+        <file>Singletons/ScreenProperties.qml</file>
     </qresource>
 </RCC>

@@ -13,7 +13,7 @@ RowLayout {
 
     Image {
         source: "qrc:/images/assets/icons/travelagent.png"
-        sourceSize: Qt.size(40, 40)
+        sourceSize: Qt.size(40 * ScreenProperties.scaleRatioWidth, 40 * ScreenProperties.scaleRatioHeight)
         opacity: 0.7
     }
 
@@ -46,7 +46,7 @@ RowLayout {
 
     Image {
         source: "qrc:/images/assets/icons/call.png"
-        sourceSize: Qt.size(30, 30)
+        sourceSize: Qt.size(30 * ScreenProperties.scaleRatioHeight, 30 * ScreenProperties.scaleRatioHeight)
         MouseArea {
             anchors.fill: parent
             onClicked: console.log("call")

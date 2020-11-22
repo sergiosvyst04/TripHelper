@@ -102,7 +102,7 @@ BasePage {
 
                 delegate: VisitedCountryItem {
                     width: parent.width
-                    height: 40
+                    height: 40 * ScreenProperties.scaleRatioHeight
                     country: model.location
                     flag: swipeView.currentIndex === 0 ? "qrc:/images/assets/icons/Flags/%1.png".arg(country) : ""
                 }

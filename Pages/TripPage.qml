@@ -103,7 +103,7 @@ BasePage {
             Layout.topMargin: 10
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
-            Layout.preferredHeight: 50
+            Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
             model: countriesModel
         }
 
@@ -121,8 +121,8 @@ BasePage {
 
             delegate: DayDelegate {
                 gradColor: ListView.isCurrentItem ? "#9bc200" : "#DEFF5C"
-                width: 95
-                height: 115
+                width: 95 * ScreenProperties.scaleRatioWidth
+                height: 115 * ScreenProperties.scaleRatioHeight
                 dayNumber: qsTr("Day %1").arg(index + 1)
                 date: Qt.formatDate(new Date(), "d MMM \n yyyy")
                 countOfPhotos: model.photos

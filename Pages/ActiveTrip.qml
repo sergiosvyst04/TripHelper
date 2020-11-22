@@ -33,7 +33,7 @@ BasePage {
 
     ColumnLayout {
         id: activeTrip
-        spacing: 40
+        spacing: 40 * ScreenProperties.scaleRatioHeight
 
         anchors {
             fill: parent
@@ -48,13 +48,13 @@ BasePage {
             id: daysListView
             Layout.fillWidth: true
             Layout.leftMargin: 13
-            Layout.preferredHeight: 130
+            Layout.preferredHeight: 130 * ScreenProperties.scaleRatioHeight
 
             model: tripDaysModel
             spacing: 12
             orientation: ListView.Horizontal
             delegate: DayDelegate {
-                width: 95
+                width: 95 * ScreenProperties.scaleRatioWidth
                 height: parent.height
                 dayNumber: qsTr("Day %1").arg(index + 1)
                 date: Qt.formatDate(new Date(), "d MMM \n yyyy")
@@ -91,7 +91,7 @@ BasePage {
 
             ActiveTripActionItem {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 50
+                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
                 image: "qrc:/images/assets/white icons/note.png"
                 actionText: qsTr("Add note")
                 onClicked: navigateToItem("qrc:/Pages/AddNotePage.qml", {activeTrip: activeTripController})
@@ -99,7 +99,7 @@ BasePage {
 
             ActiveTripActionItem {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 50
+                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
                 image: "qrc:/images/assets/white icons/idea.png"
                 actionText: qsTr("Add new idea")
                 onClicked: loadToMainLoader(addIdeaPopup)
@@ -107,14 +107,14 @@ BasePage {
 
             ActiveTripActionItem {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 50
+                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
                 image: "qrc:/images/assets/white icons/place.png"
                 actionText: qsTr("Add favourite place")
             }
 
             ColoredButton {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 50
+                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
                 text: qsTr("Check-In")
                 font: Fonts.openSansBold(13, Font.MixedCase)
                 fontColor: Colors.grey
@@ -137,7 +137,7 @@ BasePage {
             ColoredButton {
                 Layout.fillWidth: true
                 Layout.topMargin: 20
-                Layout.preferredHeight: 50
+                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
                 text: qsTr("End of trip")
                 fontColor: Colors.white
                 font: Fonts.openSansBold(13, Font.MixedCase)

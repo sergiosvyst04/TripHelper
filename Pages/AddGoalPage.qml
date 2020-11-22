@@ -52,7 +52,7 @@ BasePage {
         Image {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/Humans-11-11-512.png"
-            sourceSize: Qt.size(160, 145)
+            sourceSize: Qt.size(160 * ScreenProperties.scaleRatioWidth, 145 * ScreenProperties.scaleRatioHeight)
             opacity: 0.4
         }
 
@@ -61,7 +61,6 @@ BasePage {
             spacing: 9
 
             DescriptionText {
-
                 Layout.preferredHeight: 16
                 font: Fonts.openSans(12, Font.MixedCase)
                 text: qsTr("Country destination")
@@ -72,7 +71,7 @@ BasePage {
             LocationComboBox {
                 id: countryComboBox
                 Layout.fillWidth: true
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
                 currentIndex: -1
 
                 model: countriesModel
@@ -90,7 +89,7 @@ BasePage {
             spacing: 9
 
             DescriptionText {
-                Layout.preferredHeight: 16
+                Layout.preferredHeight: 16 * ScreenProperties.scaleRatioHeight
                 font: Fonts.openSans(12, Font.MixedCase)
                 text: qsTr("City destination")
                 horizontalAlignment: Text.AlignLeft
@@ -100,7 +99,7 @@ BasePage {
             LocationComboBox {
                 id: cityComboBox
                 Layout.fillWidth: true
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
                 currentIndex: -1
                 enabled: false
 

@@ -25,7 +25,7 @@ BasePage {
             id: tabBar
             Layout.fillWidth: true
 
-            contentHeight: 50
+            contentHeight: 50 * ScreenProperties.scaleRatioHeight
             currentIndex: swipeView.currentIndex
 
             onCurrentIndexChanged: {
@@ -72,7 +72,7 @@ trip")
 
         Image {
             Layout.alignment: Qt.AlignHCenter
-            sourceSize: Qt.size(100, 100)
+            sourceSize: Qt.size(100 * ScreenProperties.scaleRatioWidth, 100 * ScreenProperties.scaleRatioHeight)
             opacity: 0.3
             source: "qrc:/images/assets/icons/idea5.png"
         }

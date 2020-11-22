@@ -37,7 +37,7 @@ BasePage {
         Image {
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/start.png"
-            sourceSize: Qt.size(175, 165)
+            sourceSize: Qt.size(175 * ScreenProperties.scaleRatioWidth, 165 * ScreenProperties.scaleRatioHeight)
             opacity: 0.4
         }
 

@@ -17,7 +17,7 @@ RowLayout {
 
     Image {
         source: "qrc:/images/assets/white icons/flash.png"
-        sourceSize: Qt.size(32, 32)
+        sourceSize: Qt.size(32 * ScreenProperties.scaleRatioWidth, 32 * ScreenProperties.scaleRatioHeight)
 
         MouseArea {
           anchors.fill: parent
@@ -29,8 +29,8 @@ RowLayout {
 
     Item {
 
-        Layout.preferredHeight: 60
-        Layout.preferredWidth: 60
+        Layout.preferredHeight: 60 * ScreenProperties.scaleRatioHeight
+        Layout.preferredWidth: 60 * ScreenProperties.scaleRatioWidth
         Loader {
             id: loader
             anchors.fill: parent
@@ -41,8 +41,8 @@ RowLayout {
 
                 ColoredButton {
                     Layout.alignment: Qt.AlignVCenter
-                    Layout.preferredHeight: 60
-                    Layout.preferredWidth: 60
+                    Layout.preferredHeight: 60 * ScreenProperties.scaleRatioHeight
+                    Layout.preferredWidth: 60 * ScreenProperties.scaleRatioWidth
 
                     onClicked: {
                         anim.running = true
@@ -77,7 +77,7 @@ RowLayout {
                         Rectangle {
                             id: whiteRect
                             anchors.centerIn: parent
-                            width: 45
+                            width: 45 * ScreenProperties.scaleRatioWidth
                             height: width
                             radius: 22.5
                             color: Colors.white
@@ -93,8 +93,8 @@ RowLayout {
                 ColoredButton {
 
                     Layout.alignment: Qt.AlignVCenter
-                    Layout.preferredHeight: 60
-                    Layout.preferredWidth: 60
+                    Layout.preferredHeight: 60 * ScreenProperties.scaleRatioHeight
+                    Layout.preferredWidth: 60 * ScreenProperties.scaleRatioWidth
 
                     NumberAnimation {
                         id: anim2

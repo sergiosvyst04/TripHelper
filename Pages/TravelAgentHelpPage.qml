@@ -43,7 +43,7 @@ BasePage {
 
         LocationComboBox {
             id: cityComboBox
-            Layout.preferredHeight: 30
+            Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
 
             currentIndex: -1
             model: citiesModel

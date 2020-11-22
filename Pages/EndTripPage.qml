@@ -72,7 +72,7 @@ BasePage {
         Image{
             Layout.alignment: Qt.AlignHCenter
             source: "qrc:/images/assets/icons/pyro.png"
-            sourceSize: Qt.size(195, 125)
+            sourceSize: Qt.size(195 * ScreenProperties.scaleRatioWidth, 125 * ScreenProperties.scaleRatioHeight)
         }
 
         ColumnLayout {
@@ -105,7 +105,7 @@ BasePage {
             ListView {
                 id: citiesListView
                 Layout.fillWidth: true
-                Layout.preferredHeight: 40
+                Layout.preferredHeight: 40 * ScreenProperties.scaleRatioHeight
                 highlightRangeMode: ListView.StrictlyEnforceRange
                 preferredHighlightBegin: width / 2 - 20
                 preferredHighlightEnd: width / 2 + 20
@@ -194,8 +194,8 @@ BasePage {
         ColoredButton {
             Layout.alignment: Qt.AlignRight
             Layout.topMargin: -20
-            Layout.preferredHeight: 40
-            Layout.preferredWidth: 100
+            Layout.preferredHeight: 40 * ScreenProperties.scaleRatioHeight
+            Layout.preferredWidth: 100 * ScreenProperties.scaleRatioWidth
             layer.enabled: false
             color: "transparent"
             fontColor: Colors.primaryColor

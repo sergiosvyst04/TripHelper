@@ -49,7 +49,7 @@ BasePage {
 
             Image {
                 source: "qrc:/images/assets/icons/Flags/Chile.png"
-                sourceSize: Qt.size(140, 120)
+                sourceSize: Qt.size(140 * ScreenProperties.scaleRatioWidth, 120 * ScreenProperties.scaleRatioHeight)
                 layer.enabled: true
                 layer.effect: DropShadow {
                     color: "lightgrey"

@@ -37,8 +37,8 @@ BasePage {
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 240
-            Layout.preferredHeight: 44
+            Layout.preferredWidth: 240 * ScreenProperties.scaleRatioWidth
+            Layout.preferredHeight: 44 * ScreenProperties.scaleRatioHeight
             color: Colors.white
             text: qsTr("Sign up")
             fontColor: Colors.primaryColor
@@ -49,8 +49,8 @@ BasePage {
 
         ColoredButton {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 240
-            Layout.preferredHeight: 44
+            Layout.preferredWidth: 240 * ScreenProperties.scaleRatioWidth
+            Layout.preferredHeight: 44 * ScreenProperties.scaleRatioHeight
             color: Colors.primaryColor
             text: qsTr("Log in")
             fontColor: Colors.white

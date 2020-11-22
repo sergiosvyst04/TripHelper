@@ -51,8 +51,8 @@ BasePage {
 
             TextArea {
                 id: textArea
-                width: 280
-                height: 195
+                width: 280 * ScreenProperties.scaleRatioWidth
+                height: 195 * ScreenProperties.scaleRatioHeight
                 clip: true
                 color: Colors.grey
 
@@ -87,8 +87,6 @@ BasePage {
             Layout.fillHeight: true
         }
     }
-
-    Component.onCompleted: loadToMainLoader(addNotePopup)
 
     Component {
         id: addNotePopup
