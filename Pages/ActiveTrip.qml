@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.5
+import QtQuick 2.13
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.10
 import "../Singletons"
@@ -64,7 +64,6 @@ BasePage {
             }
         }
 
-
         ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -72,44 +71,20 @@ BasePage {
             Layout.leftMargin: 73
             spacing: 11
 
-            //            RowLayout {                           // TEXT FIELDS FOR CHECKIN TESTING
-            //                id: row
-            //                Layout.fillWidth: true
+            Repeater {
+                model: ListModel {
+                    ListElement {actionText: qsTr("Add note"); actionImage: "qrc:/images/assets/white icons/note.png"; action: function(){navigateToItem("qrc:/Pages/AddNotePage.qml", {activeTrip: activeTripController})}}
+                    ListElement {actionText: qsTr("Add new idea"); actionImage: "qrc:/images/assets/white icons/idea.png"; action: function(){loadToMainLoader(addIdeaPopup)}}
+                    ListElement {actionText: qsTr("Add favourite place"); actionImage: "qrc:/images/assets/white icons/place.png"; action: function(){console.log("add favourite place")}}
+                }
 
-            //                TextField {
-            //                    id: countryField
-            //                    Layout.preferredHeight: 40
-            //                    Layout.preferredWidth: 120
-            //                }
-
-            //                TextField {
-            //                    id: cityField
-            //                    Layout.preferredHeight: 40
-            //                    Layout.preferredWidth: 120
-            //                }
-            //            }
-
-            ActiveTripActionItem {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
-                image: "qrc:/images/assets/white icons/note.png"
-                actionText: qsTr("Add note")
-                onClicked: navigateToItem("qrc:/Pages/AddNotePage.qml", {activeTrip: activeTripController})
-            }
-
-            ActiveTripActionItem {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
-                image: "qrc:/images/assets/white icons/idea.png"
-                actionText: qsTr("Add new idea")
-                onClicked: loadToMainLoader(addIdeaPopup)
-            }
-
-            ActiveTripActionItem {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
-                image: "qrc:/images/assets/white icons/place.png"
-                actionText: qsTr("Add favourite place")
+                ActiveTripActionItem {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 50 * ScreenProperties.scaleRatioHeight
+                    actionText: model.actionText
+                    image: model.actionImage
+                    onClicked: model.action()
+                }
             }
 
             ColoredButton {
@@ -120,7 +95,7 @@ BasePage {
                 fontColor: Colors.grey
                 onClicked: {
                     activeTripController.makeCheckIn()
-                    //                    visitedLocationsController.addLocation(countryField.text, cityField.text)
+                    //                    visitedLocationsController.addLocation(countryField.text, cityField.text)  // TODO: make 2 test text fields to test if feature
                     loadToMainLoader(checkInPopup)
                 }
                 layer.enabled: false
@@ -324,8 +299,6 @@ Amount of visited countries increased to <br> <b>%1</b>").arg(visitedLocationsCo
                     loader.sourceComponent = checkInPopup
                 }
             }
-
-
         }
     }
 

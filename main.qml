@@ -19,7 +19,7 @@ ApplicationWindow {
         anchors.fill: parent
         initialItem: {
             if(authService.isSignedIn())
-                Qt.resolvedUrl("qrc:/Pages/MakeListPage.qml")
+                Qt.resolvedUrl("qrc:/Pages/MainPage.qml")
             else
                 Qt.resolvedUrl("qrc:/Pages/StartedPage.qml")
         }
