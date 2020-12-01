@@ -1,6 +1,6 @@
 QT += quick
 QT += positioning
-CONFIG += c++11
+CONFIG += c++14
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -30,6 +30,8 @@ SOURCES += \
     core/Controllers/WaitingTripController.cpp \
         core/Models/BackPackModel.cpp \
     core/Models/BackpackFilterModel.cpp \
+    core/Models/CheckListFilterModel.cpp \
+    core/Models/CheckListModel.cpp \
     core/Models/CompletedTripsModel.cpp \
     core/Models/CountriesCitiesModel.cpp \
         core/Models/GoalsModel.cpp \
@@ -81,6 +83,8 @@ HEADERS += \
     core/Controllers/WaitingTripController.hpp \
     core/Models/BackPackModel.hpp \
     core/Models/BackpackFilterModel.hpp \
+    core/Models/CheckListFilterModel.h \
+    core/Models/CheckListModel.h \
     core/Models/CompletedTripsModel.hpp \
     core/Models/CountriesCitiesModel.hpp \
     core/Models/GoalsModel.hpp \
@@ -90,6 +94,7 @@ HEADERS += \
     core/Services/AuthenticationService.hpp \
     core/Services/EndTripService.hpp \
     core/Services/GalleryService.hpp \
+    core/Services/JsonHelperMethods.h \
     core/Services/PackService.hpp \
     core/Storage/BackPackItem.hpp \
     core/Storage/CountryInformation.hpp \

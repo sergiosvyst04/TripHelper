@@ -30,6 +30,8 @@
 #include <core/Controllers/CountryInformationGenerator.hpp>
 #include <core/Models/TravelAgentsModel.hpp>
 #include <core/Controllers/StartTripController.hpp>
+#include <core/Models/CheckListFilterModel.h>
+#include <core/Models/CheckListModel.h>
 
 int main(int argc, char *argv[])
 {
@@ -52,6 +54,7 @@ int main(int argc, char *argv[])
     PhotosStorage photosStorage(dataBaseStorage, authService);
 
     static auto *utils = new QMLUtils;
+    qmlRegisterType<CheckListFilterModel>("CheckListFilterModel", 1, 0, "CheckListFilterModel");
     qmlRegisterType<StartTripController>("StartTripController", 1, 0, "StartTripController");
     qmlRegisterType<TravelAgentsModel>("TravelAgentsModel", 1, 0, "TravelAgentsModel");
     qmlRegisterType<CountryInformationGenerator>("CountryInfoGenerator", 1, 0, "CountryInfoGenerator");
@@ -70,6 +73,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<EndTripService>("EndTripService", 1, 0, "EndTripService");
     qmlRegisterType<CountriesCitiesModel>("CountriesCitiesModel", 1, 0, "CountriesCitiesModel");
     qmlRegisterType<GoalsModel>("GoalsModel", 1, 0, "GoalsModel");
+    qmlRegisterType<CheckListModel>("CheckListModel", 1, 0, "CheckListModel");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
                                        [](QQmlEngine *engine, QJSEngine *) -> QObject* {

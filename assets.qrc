@@ -234,5 +234,6 @@
         <file>assets/CountryInformation.json</file>
         <file>assets/TravelAgentsDB.json</file>
         <file>assets/CountriesCitiesDB</file>
+        <file>assets/CheckListModel.json</file>
     </qresource>
 </RCC>

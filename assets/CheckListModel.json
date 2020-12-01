@@ -1,0 +1,54 @@
+[
+{
+    "isPack" : false,
+    "group" : "1 day before departure",
+    "things" : ["Print checklist","Print tickets and bookings","Buy and print insurance", "Take cash and exchange currency", "Inform your bank about trip",
+    "Check in for a journey", "Make a copy of passport", "Buy books", "Download movies and games", "Download maps and guides", "Charge gedgets",
+    "Plan hour of leaving of home", "Buy a ticket on airexpress" ]
+},
+{
+   "isPack" : false,
+   "group" : "Before leaving home",
+   "things" : ["Check point 'Necessarily from' 'What to pack' section", "Switch off light and all devices", "Turn off water supply", "Discard garbage and perishable products",
+   "WaMakeListter plants", "Close balcony and windows"]
+},
+{
+    "isPack" : false,
+    "group" : "Before departure",
+    "things": ["Buy water", "Drink soothing/nausea remedy", "Send message to family", "Switch on airplane mode"]
+},
+{
+    "isPack" : true,
+    "group" : "Necessarily",
+    "things" : ["Passport", "Tickets", "Hotels booking", "Insurance", "Money", "Credit card", "Phone", "Charge", "Powerbank",
+        "Earphones", "First Aid Kit", "Drive licence"]
+},
+{
+   "isPack" : true,
+   "group" : "Clothes and shoes",
+   "things" : ["Socks", "Briefs", "T-shirts", "Dresses/Skirts", "Jeans/Pants", "Warm sweatshirt", "Pyjamas", "Sneakers", "Changeable shoes",
+   "Shoes to go out", "Flip flops", "Swimsuit", "Swim trunks", "Cap", "Bech towel", "Beach bag", "Shorts", "Thermal underweear", "Warm socks", "Hat/scarf/gloves"]
+},
+{
+   "isPack" : true,
+   "group" : "Hygiene and products",
+   "things" : ["Toothbrush and paste", "Shampoo and shower gel", "Cleanser", "Comb", "Cotton swabs and disks", "Tweezers", "Deodorant", "Parfumes", "Lenses and liquid",
+   "Sun protect cream", "Flip flops", "Swimsuit", "Swim trunks", "Cap", "Bech towel", "Beach bag", "Shorts", "Thermal underweear", "Warm socks", "Hat/scarf/gloves"]
+},
+{
+   "isPack" : true,
+   "group" : "Usefull in trip",
+   "things" : ["Umbrella", "Notebook and pen", "CorkScrew", "Sun protect glasses", "Hair dryer"]
+},
+{
+   "isPack" : true,
+   "group" : "Usefull in plane",
+   "things" : ["Chewing gum/Candys", "Inflatable pillow", "Napkins", "Moiturizing cream", "Antiseptic for hands", "Book",
+   "Nausea remedy", "Hygiene pomade"]
+},
+{
+   "isPack" : true,
+   "group" : "Favourite gadgets",
+   "things" : ["Camera and memory card", "Charge", "E-book", "Watch", "Tablet", "Adapter"]
+}
+]

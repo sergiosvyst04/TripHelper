@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.0
 import QtQml.Models 2.13
 import PackService 1.0
+import CheckListModel 1.0
+import CheckListFilterModel 1.0
 import "../Singletons"
 import "../Components"
 
@@ -14,10 +16,18 @@ BasePage {
 
     property PackService packer
 
+    CheckListModel {
+        id: checkListModel
+    }
+
+    CheckListFilterModel {
+        id: checkListFilterModel
+        sourceModel: checkListModel
+        searchPattern: tabBar.currentIndex === 1
+    }
+
     ColumnLayout {
-        anchors{
-            fill: parent
-        }
+        anchors.fill: parent
 
         spacing: 20
 
@@ -77,109 +87,21 @@ trip")
             source: "qrc:/images/assets/icons/idea5.png"
         }
 
-        SwipeView {
-            id: swipeView
+        ListView {
+            id: toDoList
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.leftMargin: 35
-            Layout.rightMargin: 35
-            currentIndex: tabBar.currentIndex
-            clip: true
+            Layout.rightMargin: 25
+            Layout.leftMargin: 25
+            spacing: 15
 
+            model: checkListFilterModel
 
-            ListView {
-                id: toDoList
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                spacing: 15
-
-                model: toDoModel
-
-                ObjectModel {
-                    id: toDoModel
-                    CheckListItem {
-                        width : toDoList.width
-                        group: qsTr("1 day before departure")
-                        things: ["Print checklist", "Print tickets and bookings", "Buy and print insurance", "Take cash and exchange currency", "Inform your bank about trip",
-                            "Check in for a journey", "Make a copy of passport", "Buy books", "Download movies and games", "Download maps and guides", "Charge gedgets",
-                            "Plan hour of leaving of home", "Buy a ticket on airexpress"]
-                    }
-
-                    CheckListItem {
-                        width : toDoList.width
-                        group: qsTr("Before leaving the home")
-                        things: ["Check point 'Necessarily from' 'What to pack' section", "Switch off light and all devices", "Turn off water supply", "Discard garbage and perishable products",
-                            "WaMakeListter plants", "Close balcony and windows"]
-                    }
-
-                    CheckListItem {
-                        width : toDoList.width
-                        group: qsTr("Before departure")
-                        things: ["Buy water", "Drink soothing/nausea remedy", "Send message to family", "Switch on airplane mode"]
-                    }
-
-                }
-
-            }
-
-            ListView {
-                id: toPackList
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                spacing: 15
-
-                model: toPackModel
-
-                ObjectModel {
-                    id: toPackModel
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Necessarily")
-                        things: ["Passport", "Tickets", "Hotels booking", "Insurance", "Money", "Credit card", "Phone", "Charge", "Powerbank",
-                            "Earphones", "First Aid Kit", "Drive licence"]
-                    }
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Clothes and shoes")
-                        things: ["Socks", "Briefs", "T-shirts", "Dresses/Skirts", "Jeans/Pants", "Warm sweatshirt", "Pyjamas", "Sneakers", "Changeable shoes",
-                            "Shoes to go out", "Flip flops", "Swimsuit", "Swim trunks", "Cap", "Bech towel", "Beach bag", "Shorts", "Thermal underweear", "Warm socks", "Hat/scarf/gloves"]
-                    }
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Hygiene products")
-                        things: ["Toothbrush and paste", "Shampoo and shower gel", "Cleanser", "Comb", "Cotton swabs and disks", "Tweezers", "Deodorant", "Parfumes", "Lenses and liquid",
-                            "Sun protect cream", "Flip flops", "Swimsuit", "Swim trunks", "Cap", "Bech towel", "Beach bag", "Shorts", "Thermal underweear", "Warm socks", "Hat/scarf/gloves"]
-                    }
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Userfull in trip")
-                        things: ["Umbrella", "Notebook and pen", "CorkScrew", "Sun protect glasses", "Hair dryer"]
-                    }
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Userfull in plane")
-                        things: ["Chewing gum/Candys", "Inflatable pillow", "Napkins", "Moiturizing cream", "Antiseptic for hands", "Book",
-                            "Nausea remedy", "Hygiene pomade"]
-                    }
-
-                    CheckListItem {
-                        isPackItem: true
-                        width: toPackList.width
-                        group: qsTr("Favourite gadgets")
-                        things: ["Camera and memory card", "Charge", "E-book", "Watch", "Tablet", "Adapter"]
-                    }
-
-                }
+            delegate: CheckListItem {
+                width : toDoList.width
+                group: model.group
+                things: model.things
+                isPackItem: model.isPacked
             }
         }
     }
