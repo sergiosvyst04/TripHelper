@@ -22,9 +22,22 @@ bool BackpackFilterModel::filterAcceptsRow(int source_row, const QModelIndex &so
         return false;
 
     auto isPacked = originalModel->data(originalModelIndex, BackPackModel::IsPackedRole).toBool();
-    return !isPacked;
+    return _isPacked == isPacked;
 }
 
 //==============================================================================
 
+void BackpackFilterModel::setFilterProperty(bool isPacked) {
+    if(_isPacked != isPacked) {
+        _isPacked = isPacked;
+        filterPropertyChanged();
+        invalidate();
+    }
+}
+
+//==============================================================================
+
+bool BackpackFilterModel::getFilterProperty() {
+    return _isPacked;
+}
 

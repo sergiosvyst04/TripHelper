@@ -6,7 +6,7 @@ import "../Singletons"
 import "../Components"
 
 Rectangle {
-    id: rect
+    id: root
     property alias name: itemName.text
     property alias applyButton: apply
     property alias rejectButton: reject
@@ -25,7 +25,7 @@ Rectangle {
 
     NumberAnimation {
         id: packAnim
-        target: rect
+        target: root
         properties: "opacity"
         from: 1
         to: 0
@@ -39,9 +39,9 @@ Rectangle {
 
     NumberAnimation {
         id: deleteAnim
-        target: rect
+        target: root
         properties: "x"
-        from: parent.x
+        from: root.x
         to: -400
         duration: 200
         running: false
@@ -54,9 +54,9 @@ Rectangle {
 
     NumberAnimation on width {
         id: anim
-        target: rect
+        target: root
         from: 0
-        to: parent.width
+        to: root.width
         duration: 700
         running: false
     }

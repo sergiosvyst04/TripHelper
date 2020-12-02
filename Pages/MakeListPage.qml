@@ -23,6 +23,7 @@ BasePage {
 
     BackpackFilterModel {
         id: backpackFilterModel
+        packedVisible: false
     }
 
     ColumnLayout {
@@ -101,6 +102,7 @@ BasePage {
         }
 
         ListView {
+            id: unPackedItemsList
             Layout.topMargin: -30
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -110,7 +112,7 @@ BasePage {
             spacing: 15
 
             delegate: BackPackItem {
-                width: parent.width
+                width: unPackedItemsList.width
                 height: 40
                 color: Colors.secondaryColor
                 name: model.name
@@ -171,20 +173,21 @@ BasePage {
             popupColor: Colors.primaryColor
             width: 285
             height: 480
+            onOpenedChanged: backpackFilterModel.packedVisible = opened
 
             ListView {
+                id: packedItemsList
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.rightMargin: 25
-                model: packer.backpack
+                model: backpackFilterModel
 
                 clip: true
                 spacing: 8
                 delegate: BackPackItem {
-                    visible: model.isPacked
                     color: Colors.secondaryColor
-                    height: model.isPacked ? 33 : -8
-                    width: parent.width
+                    height: 33
+                    width: packedItemsList.width
                     name: model.name
                     applyButton.visible: false
                     rejectButton.visible: false
@@ -198,7 +201,10 @@ BasePage {
                 fontColor: Colors.primaryColor
                 text: qsTr("Ok")
                 layer.enabled: false
-                onClicked: unloadFromMainLoader()
+                onClicked: {
+                    backpackFilterModel.packedVisible = false
+                    unloadFromMainLoader()
+                }
             }
         }
     }

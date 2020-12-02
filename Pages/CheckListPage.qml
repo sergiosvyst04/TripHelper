@@ -36,11 +36,6 @@ BasePage {
             Layout.fillWidth: true
 
             contentHeight: 50 * ScreenProperties.scaleRatioHeight
-            currentIndex: swipeView.currentIndex
-
-            onCurrentIndexChanged: {
-                swipeView.currentIndex = tabBar.currentIndex
-            }
 
             background: Rectangle {
                 anchors.fill: parent

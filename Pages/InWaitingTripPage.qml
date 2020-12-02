@@ -4,7 +4,6 @@ import QtQuick.Controls 2.5
 import "../Singletons"
 import "../Components"
 import Trip 1.0
-import BackPackModel 1.0
 import WaitingTripController 1.0
 import com.plm.utils 1.0
 
