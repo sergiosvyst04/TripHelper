@@ -3,6 +3,9 @@
 
 #include <QAbstractListModel>
 #include "core/Storage/BackPackItem.hpp"
+#include <QPointer>
+//#include <core/Services/PackService.hpp>
+class PackService;
 
 class BackPackModel : public QAbstractListModel
 {
@@ -22,12 +25,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    void setItemsList(const QVector<BackPackItem>& itemsList);
-
 public slots:
     bool checkIfBackPackIsFullyPacked();
+    void setItemsList();
+    void intialize(PackService *packService);
 
 private:
+    QPointer<PackService> _packService;
     QVector<BackPackItem> _itemsList;
 };
 

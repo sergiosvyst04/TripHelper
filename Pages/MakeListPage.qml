@@ -17,12 +17,17 @@ BasePage {
 
         Component.onCompleted:{
             intialize(appController)
-            backpackFilterModel.sourceModel = packer.backpack
+            backPackModel.intialize(packer)
         }
+    }
+
+    BackPackModel {
+        id: backPackModel
     }
 
     BackpackFilterModel {
         id: backpackFilterModel
+        sourceModel: backPackModel
         packedVisible: false
     }
 

@@ -1,5 +1,6 @@
 #include "BackPackModel.hpp"
 #include <QDebug>
+#include <core/Services/PackService.hpp>
 
 BackPackModel::BackPackModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -81,11 +82,21 @@ bool BackPackModel::checkIfBackPackIsFullyPacked()
 
 //==============================================================================
 
-void BackPackModel::setItemsList(const QVector<BackPackItem> &itemsList)
+void BackPackModel::setItemsList()
 {
     beginResetModel();
-    _itemsList = itemsList;
-//    for(int i = 0; itemsList.size(); i++)
-//        _itemsList.push_back(itemsList.at(i));
+    _itemsList = _packService->getBackPackItems();
     endResetModel();
 }
+
+//==============================================================================
+
+void BackPackModel::intialize(PackService *packService) {
+    qDebug() << "INTIALIZE : " << packService->getBackPackItems().size();
+    if(!_packService.isNull())
+        _packService.clear();
+    _packService = packService;
+    setItemsList();
+    connect(packService, &PackService::backpackChanged, this, &BackPackModel::setItemsList);
+}
+
