@@ -18,16 +18,17 @@ BasePage {
     }
 
 
-//===============================================================================================================
+    //===============================================================================================================
 
 
-   ColumnLayout {
+    ColumnLayout {
         spacing: 28
         anchors {
             fill: parent
             leftMargin: 40
             rightMargin: 45
             topMargin: 5
+            bottomMargin: 8
         }
 
         PrimaryLabel {
@@ -41,27 +42,38 @@ BasePage {
             text: qsTr("at one click distance")
         }
 
-        LocationComboBox {
-            id: cityComboBox
-            Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
+        ColumnLayout {
+            Layout.fillWidth: true
 
-            currentIndex: -1
-            model: citiesModel
-            onActivated: {
-                currentIndex = index
-                travelAgentsModel.getTravelAgentsOfNeededCity(textAt(currentIndex))
+            DescriptionText {
+                Layout.alignment: Qt.AlignLeft
+                font: Fonts.openSans(12, Font.MixedCase)
+                text: qsTr("Choose needed city")
             }
+
+            LocationComboBox {
+                id: cityComboBox
+                Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
+
+                currentIndex: -1
+                model: citiesModel
+                onActivated: {
+                    currentIndex = index
+                    travelAgentsModel.getTravelAgentsOfNeededCity(textAt(currentIndex))
+                }
+            }
+
         }
 
         ListView {
+            id: travelAgentsListView
             clip: true
-            Layout.topMargin: 25
             Layout.fillHeight: true
             Layout.fillWidth: true
             model: travelAgentsModel
             spacing: 15
             delegate: TravelAgentItem {
-                width: parent.width
+                width: travelAgentsListView.width
                 name: model.name
                 address: model.address
             }
