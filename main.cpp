@@ -32,6 +32,8 @@
 #include <core/Controllers/StartTripController.hpp>
 #include <core/Models/CheckListFilterModel.h>
 #include <core/Models/CheckListModel.h>
+#include <core/Platform/Platform.h>
+#include <core/Controllers/PlatformController.h>
 
 int main(int argc, char *argv[])
 {
@@ -41,11 +43,15 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-
     DataBaseStorage dataBaseStorage;
     AuthenticationService authService(dataBaseStorage);
     LocationController locationController;
 
+    qDebug() << "Launching on platform : " << Platform::Instance().platformName();
+
+    Platform::Instance();
+
+    PlatformController platformController(Platform::Instance());
     TripsManager tripsManager(dataBaseStorage, authService);
     ApplicationController appController(dataBaseStorage ,tripsManager);
     UserAccountController userAccountController(dataBaseStorage);

@@ -22,6 +22,7 @@ SOURCES += \
     core/Controllers/CountryInformationGenerator.cpp \
     core/Controllers/GoalsController.cpp \
     core/Controllers/LocationController.cpp \
+    core/Controllers/PlatformController.cpp \
     core/Controllers/StartTripController.cpp \
     core/Controllers/TripDayController.cpp \
     core/Controllers/UserAccountController.cpp \
@@ -38,6 +39,10 @@ SOURCES += \
     core/Models/PhotosModel.cpp \
     core/Models/TravelAgentsModel.cpp \
     core/Models/TripDaysModel.cpp \
+    core/Platform/AndroidPlatform.cpp \
+    core/Platform/DesktopPlatform.cpp \
+    core/Platform/IosPlatform.cpp \
+    core/Platform/Platform.cpp \
     core/Services/AuthenticationService.cpp \
     core/Services/EndTripService.cpp \
     core/Services/GalleryService.cpp \
@@ -63,7 +68,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Data/UsersInfo.json
+    Data/UsersInfo.json \
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml \
+    android/src/Main.java
     modules/SortFilterProxyModel/SortFilterProxyModel.pri
 
 HEADERS += \
@@ -75,6 +88,7 @@ HEADERS += \
     core/Controllers/CountryInformationGenerator.hpp \
     core/Controllers/GoalsController.hpp \
     core/Controllers/LocationController.hpp \
+    core/Controllers/PlatformController.h \
     core/Controllers/StartTripController.hpp \
     core/Controllers/TripDayController.hpp \
     core/Controllers/UserAccountController.hpp \
@@ -91,6 +105,10 @@ HEADERS += \
     core/Models/PhotosModel.hpp \
     core/Models/TravelAgentsModel.hpp \
     core/Models/TripDaysModel.hpp \
+    core/Platform/AndroidPlatform.h \
+    core/Platform/DesktopPlatform.h \
+    core/Platform/IosPlatform.h \
+    core/Platform/Platform.h \
     core/Services/AuthenticationService.hpp \
     core/Services/EndTripService.hpp \
     core/Services/GalleryService.hpp \
@@ -134,3 +152,8 @@ HEADERS += \
     modules/SortFilterProxyModel/sorters/sorter.h \
     modules/SortFilterProxyModel/sorters/sortercontainer.h \
     modules/SortFilterProxyModel/sorters/stringsorter.h
+
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
