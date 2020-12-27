@@ -1,6 +1,7 @@
 import QtQuick 2.10
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
+import CountriesCitiesModel 1.0
 import "../Components"
 import "../Singletons"
 
@@ -13,6 +14,15 @@ BasePage {
 
     nextButtonEnabled: countryComboBox.currentIndex > -1 && cityComboBox.currentIndex > -1
                        && dateField.fieldText != "" && amountOfPersonsField.validated
+
+    CountriesCitiesModel {
+        id: countriesModel
+        Component.onCompleted: getCountries()
+    }
+
+    CountriesCitiesModel {
+        id: citiesModel
+    }
 
     ColumnLayout {
         spacing: 70
@@ -45,8 +55,10 @@ BasePage {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 30 * ScreenProperties.scaleRatioHeight
                     currentIndex: -1
+                    model: countriesModel
                     onActivated: {
                         currentIndex = index
+                        citiesModel.getCities(countryComboBox.textAt(countryComboBox.currentIndex))
                     }
                 }
             }
@@ -65,6 +77,7 @@ BasePage {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 30  * ScreenProperties.scaleRatioHeight
                     currentIndex: -1
+                    model: citiesModel
                     onActivated: currentIndex = index
                 }
             }
