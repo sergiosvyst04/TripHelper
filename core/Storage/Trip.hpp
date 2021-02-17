@@ -7,8 +7,8 @@
 #include <QDateTime>
 #include "TripDay.hpp"
 #include <QGeoLocation>
-#include "core/Models/BackPackModel.hpp"
-#include "core/Storage/TripData.hpp"
+#include "Models/BackPackModel.hpp"
+#include "Storage/TripData.hpp"
 
 class Trip : public QObject
 {

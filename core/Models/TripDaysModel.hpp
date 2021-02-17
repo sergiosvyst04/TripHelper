@@ -2,7 +2,7 @@
 #define TRIPDAYSMODEL_HPP
 
 #include <QAbstractListModel>
-#include "core/Storage/TripDay.hpp"
+#include "Storage/TripDay.hpp"
 
 class TripDaysModel : public QAbstractListModel
 {

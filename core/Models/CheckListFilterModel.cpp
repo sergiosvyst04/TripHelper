@@ -1,6 +1,6 @@
 #include "CheckListFilterModel.h"
 #include "QDebug"
-#include "core/Models/CheckListModel.h"
+#include "Models/CheckListModel.h"
 
 CheckListFilterModel::CheckListFilterModel(QObject *parent)
     : QSortFilterProxyModel(parent)

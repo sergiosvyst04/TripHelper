@@ -2,9 +2,9 @@
 #define BACKPACKMODEL_HPP
 
 #include <QAbstractListModel>
-#include "core/Storage/BackPackItem.hpp"
+#include "Storage/BackPackItem.hpp"
 #include <QPointer>
-//#include <core/Services/PackService.hpp>
+//#include <Services/PackService.hpp>
 class PackService;
 
 class BackPackModel : public QAbstractListModel

@@ -2,8 +2,8 @@
 #define USERACCOUNTCONTROLLER_HPP
 
 #include <QObject>
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Storage/UserInfo.hpp>
+#include <Storage/DataBaseStorage.hpp>
+#include <Storage/UserInfo.hpp>
 
 class UserAccountController : public QObject
 {

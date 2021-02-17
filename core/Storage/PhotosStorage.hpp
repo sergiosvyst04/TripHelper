@@ -5,7 +5,7 @@
 #include <QVector>
 #include "Photo.hpp"
 #include "DataBaseStorage.hpp"
-#include "core/Services/AuthenticationService.hpp"
+#include "Services/AuthenticationService.hpp"
 
 class PhotosStorage : public QObject
 {

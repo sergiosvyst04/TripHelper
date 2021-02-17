@@ -2,7 +2,7 @@
 #define COUNTRYINFORMATIONGENERATOR_HPP
 
 #include <QObject>
-#include <core/Storage/CountryInformation.hpp>
+#include <Storage/CountryInformation.hpp>
 #include "QJsonDocument"
 #include "QJsonArray"
 #include "QJsonObject"

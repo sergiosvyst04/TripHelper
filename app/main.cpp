@@ -1,39 +1,40 @@
+#include <Controllers/ActiveTripController.hpp>
+#include <Controllers/ApplicationController.hpp>
+#include <Controllers/CompletedTripController.hpp>
+#include <Controllers/CountryInformationGenerator.hpp>
+#include <Controllers/GoalsController.hpp>
+#include <Controllers/LocationController.hpp>
+#include <Controllers/StartTripController.hpp>
+#include <Controllers/TripController.hpp>
+#include <Controllers/TripDayController.hpp>
+#include <Controllers/UserAccountController.hpp>
+#include <Controllers/VisitedLocationsController.hpp>
+#include <Controllers/WaitingTripController.hpp>
+#include <Managers/TripsManager.hpp>
+#include <Models/BackpackFilterModel.hpp>
+#include <Models/CheckListFilterModel.h>
+#include <Models/CheckListModel.h>
+#include <Models/CompletedTripsModel.hpp>
+#include <Models/CountriesCitiesModel.hpp>
+#include <Models/GoalsModel.hpp>
+#include <Models/PhotosModel.hpp>
+#include <Models/TravelAgentsModel.hpp>
+#include <Models/TripDaysModel.hpp>
+#include <Services/AuthenticationService.hpp>
+#include <Services/EndTripService.hpp>
+#include <Services/GalleryService.hpp>
+#include <Services/PackService.hpp>
+#include <Storage/DataBaseStorage.hpp>
+#include <Storage/PhotosStorage.hpp>
+#include <Storage/Trip.hpp>
+#include <src/QMLUtils.hpp>
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "core/Models/GoalsModel.hpp"
-#include "core/Storage/Trip.hpp"
-#include "QMLUtils.hpp"
-#include "core/Controllers/TripController.hpp"
-#include "core/Models/BackpackFilterModel.hpp"
-#include "core/Controllers/ApplicationController.hpp"
-#include "Managers/TripsManager.hpp"
-#include "core/Controllers/ActiveTripController.hpp"
-#include "core/Models/TripDaysModel.hpp"
-#include "core/Controllers/LocationController.hpp"
-#include "core/Models/PhotosModel.hpp"
-#include "core/Controllers/TripDayController.hpp"
-#include "core/Services/EndTripService.hpp"
-#include "core/Services/GalleryService.hpp"
-#include "core/Models/CompletedTripsModel.hpp"
-#include "core/Controllers/CompletedTripController.hpp"
-#include "core/Controllers/WaitingTripController.hpp"
-#include "core/Services/PackService.hpp"
-#include <core/Models/CountriesCitiesModel.hpp>
-#include "core/Services/AuthenticationService.hpp"
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Controllers/UserAccountController.hpp>
-#include <core/Controllers/GoalsController.hpp>
-#include <core/Controllers/VisitedLocationsController.hpp>
-#include <core/Storage/PhotosStorage.hpp>
 #include <QSettings>
-#include <core/Controllers/CountryInformationGenerator.hpp>
-#include <core/Models/TravelAgentsModel.hpp>
-#include <core/Controllers/StartTripController.hpp>
-#include <core/Models/CheckListFilterModel.h>
-#include <core/Models/CheckListModel.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
@@ -41,19 +42,18 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-
     DataBaseStorage dataBaseStorage;
     AuthenticationService authService(dataBaseStorage);
     LocationController locationController;
 
     TripsManager tripsManager(dataBaseStorage, authService);
-    ApplicationController appController(dataBaseStorage ,tripsManager);
+    ApplicationController appController(dataBaseStorage, tripsManager);
     UserAccountController userAccountController(dataBaseStorage);
     GoalsController goalsController(dataBaseStorage);
     VisitedLocationsController visitedLocationsController(dataBaseStorage, authService);
     PhotosStorage photosStorage(dataBaseStorage, authService);
 
-    static auto *utils = new QMLUtils;
+    static auto* utils = new QMLUtils;
     qmlRegisterType<CheckListFilterModel>("CheckListFilterModel", 1, 0, "CheckListFilterModel");
     qmlRegisterType<StartTripController>("StartTripController", 1, 0, "StartTripController");
     qmlRegisterType<TravelAgentsModel>("TravelAgentsModel", 1, 0, "TravelAgentsModel");
@@ -76,10 +76,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<CheckListModel>("CheckListModel", 1, 0, "CheckListModel");
 
     qmlRegisterSingletonType<QMLUtils>("com.plm.utils", 1, 0, "Utils",
-                                       [](QQmlEngine *engine, QJSEngine *) -> QObject* {
-        engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
-        return utils;
-    });
+        [](QQmlEngine* engine, QJSEngine*) -> QObject* {
+            engine->setObjectOwnership(utils, QQmlEngine::CppOwnership);
+            return utils;
+        });
 
     engine.rootContext()->setContextProperty("goalsController", &goalsController);
     engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
@@ -91,18 +91,15 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("userAccountController", &userAccountController);
     engine.rootContext()->setContextProperty("visitedLocationsController", &visitedLocationsController);
     engine.rootContext()->setContextProperty("photosStorage", &photosStorage);
-    
-
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    //    engine.load(url);
-
+        &app, [url](QObject* obj, const QUrl& objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
+    engine.load(url);
 
     return app.exec();
 }

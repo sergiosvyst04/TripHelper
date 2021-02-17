@@ -2,8 +2,8 @@
 #define STARTTRIPCONTROLLER_HPP
 
 #include <QObject>
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Controllers/ApplicationController.hpp>
+#include <Storage/DataBaseStorage.hpp>
+#include <Controllers/ApplicationController.hpp>
 
 class StartTripController : public QObject
 {

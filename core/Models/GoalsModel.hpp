@@ -3,9 +3,9 @@
 
 #include <QAbstractListModel>
 #include <QVector>
-#include "core/Storage/Goal.hpp"
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Controllers/ApplicationController.hpp>
+#include "Storage/Goal.hpp"
+#include <Storage/DataBaseStorage.hpp>
+#include <Controllers/ApplicationController.hpp>
 
 class GoalsModel : public QAbstractListModel
 {

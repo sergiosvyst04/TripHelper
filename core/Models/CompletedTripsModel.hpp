@@ -2,10 +2,10 @@
 #define COMPLETEDTRIPSMODEL_HPP
 
 #include <QAbstractListModel>
-#include "core/Storage/Trip.hpp"
-#include "core/Storage/TripData.hpp"
-#include "core/Models/BackPackModel.hpp"
-#include "core/Controllers/ApplicationController.hpp"
+#include "Storage/Trip.hpp"
+#include "Storage/TripData.hpp"
+#include "Models/BackPackModel.hpp"
+#include "Controllers/ApplicationController.hpp"
 
 class CompletedTripsModel : public QAbstractListModel
 {

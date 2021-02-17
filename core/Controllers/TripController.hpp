@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QPointer>
 #include <memory>
-#include "core/Storage/Trip.hpp"
+#include <Storage/Trip.hpp>
 
 class TripController : public QObject
 {

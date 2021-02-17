@@ -2,9 +2,9 @@
 #define VISITEDLOCATIONSCONTROLLER_HPP
 
 #include <QObject>
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Services/AuthenticationService.hpp>
-#include <core/Storage/Location.hpp>
+#include <Storage/DataBaseStorage.hpp>
+#include <Services/AuthenticationService.hpp>
+#include <Storage/Location.hpp>
 
 
 class VisitedLocationsController : public QObject

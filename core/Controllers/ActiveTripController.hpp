@@ -2,9 +2,9 @@
 #define ACTIVETRIPCONTROLLER_HPP
 
 #include <QObject>
-#include <core/Storage/Trip.hpp>
-#include "core/Controllers/ApplicationController.hpp"
-#include "core/Controllers/LocationController.hpp"
+#include <Storage/Trip.hpp>
+#include "Controllers/ApplicationController.hpp"
+#include "Controllers/LocationController.hpp"
 #include "Managers/TripsManager.hpp"
 
 class ActiveTripController : public QObject

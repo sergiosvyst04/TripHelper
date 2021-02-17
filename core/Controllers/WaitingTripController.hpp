@@ -2,9 +2,9 @@
 #define WAITINGTRIPCONTROLLER_HPP
 
 #include <QObject>
-#include "core/Storage/TripData.hpp"
-#include "core/Models/BackPackModel.hpp"
-#include "core/Controllers/ApplicationController.hpp"
+#include "Storage/TripData.hpp"
+#include "Models/BackPackModel.hpp"
+#include "Controllers/ApplicationController.hpp"
 
 class Trip;
 

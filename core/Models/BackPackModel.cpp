@@ -1,6 +1,6 @@
 #include "BackPackModel.hpp"
 #include <QDebug>
-#include <core/Services/PackService.hpp>
+#include <Services/PackService.hpp>
 
 BackPackModel::BackPackModel(QObject *parent)
     : QAbstractListModel(parent)

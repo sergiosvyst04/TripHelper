@@ -2,10 +2,10 @@
 #define TRIPSMANAGER_HPP
 
 #include <QObject>
-#include "core/Storage/TripData.hpp"
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Services/AuthenticationService.hpp>
-#include <core/Storage/Trip.hpp>
+#include "Storage/TripData.hpp"
+#include <Storage/DataBaseStorage.hpp>
+#include <Services/AuthenticationService.hpp>
+#include <Storage/Trip.hpp>
 
 class TripsManager : public QObject
 {

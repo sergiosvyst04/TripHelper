@@ -3,7 +3,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonValue>
-#include <core/Services/JsonHelperMethods.h>
+#include <Services/JsonHelperMethods.h>
 #include <QJsonObject>
 
 CheckListModel::CheckListModel(QObject *parent)

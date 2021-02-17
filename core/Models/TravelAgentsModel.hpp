@@ -2,7 +2,7 @@
 #define TRAVELAGENTSMODEL_HPP
 
 #include <QAbstractListModel>
-#include <core/Storage/TravelAgentInfo.hpp>
+#include <Storage/TravelAgentInfo.hpp>
 
 class TravelAgentsModel : public QAbstractListModel
 {

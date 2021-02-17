@@ -3,8 +3,25 @@
 
 #include <QObject>
 #include <QMap>
-#include <core/Storage/UserInfo.hpp>
-#include <core/Storage/DataBaseStorage.hpp>
+#include <Storage/UserInfo.hpp>
+#include <Storage/DataBaseStorage.hpp>
+
+namespace firebase {
+template<class T>
+class Future;
+class App;
+
+namespace auth {
+class Auth;
+class User;
+class AuthStateListener;
+}
+
+namespace database {
+class Database;
+class DatabaseReference;
+}
+}
 
 class AuthenticationService : public QObject
 {
@@ -29,6 +46,8 @@ public slots:
 
 private:
     DataBaseStorage &_dbStorage;
+
+    firebase::auth::Auth *_authService = nullptr;
 };
 
 #endif // AUTHENTICATIONSERVICE_HPP

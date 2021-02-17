@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "546653600518",
+    "project_id": "perfecttripapp-a4704",
+    "storage_bucket": "perfecttripapp-a4704.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546653600518:android:66a72ca9d0cbc5ec13bc87",
+        "android_client_info": {
+          "package_name": "com.perfecttrip.android.perfecttripapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546653600518-a1jlr1q30htjh7slb3ef5a80no452bua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1XZbPiWxm_4Aa1IGhjrSOy99y9mNf-J4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546653600518-a1jlr1q30htjh7slb3ef5a80no452bua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

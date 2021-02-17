@@ -3,11 +3,11 @@
 
 #include <QObject>
 #include <map>
-#include <core/Storage/UserInfo.hpp>
+#include <Storage/UserInfo.hpp>
 #include <QJsonDocument>
-#include <core/Storage/TripData.hpp>
-#include <core/Storage/Goal.hpp>
-#include <core/Storage/Location.hpp>
+#include <Storage/TripData.hpp>
+#include <Storage/Goal.hpp>
+#include <Storage/Location.hpp>
 
 class VisitedLocationsController;
 

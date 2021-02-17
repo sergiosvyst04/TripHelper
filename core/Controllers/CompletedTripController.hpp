@@ -2,7 +2,7 @@
 #define COMPLETEDTRIPCONTROLLER_HPP
 
 #include <QObject>
-#include "core/Controllers/ApplicationController.hpp"
+#include "Controllers/ApplicationController.hpp"
 
 class Trip;
 

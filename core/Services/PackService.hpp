@@ -2,7 +2,7 @@
 #define PACKSERVICE_HPP
 
 #include <QObject>
-#include "core/Controllers/ApplicationController.hpp"
+#include "Controllers/ApplicationController.hpp"
 
 class PackService : public QObject
 {

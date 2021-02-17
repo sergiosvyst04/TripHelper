@@ -1,6 +1,6 @@
 #include "CompletedTripController.hpp"
 #include "QDebug"
-#include "core/Storage/Trip.hpp"
+#include "Storage/Trip.hpp"
 
 CompletedTripController::CompletedTripController(QObject *parent) : QObject(parent)
 {

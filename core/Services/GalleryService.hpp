@@ -2,10 +2,10 @@
 #define GALLERYSERVICE_HPP
 
 #include <QObject>
-#include "core/Controllers/ApplicationController.hpp"
-#include "core/Models/PhotosModel.hpp"
-#include "core/Storage/TripData.hpp"
-#include <core/Storage/PhotosStorage.hpp>
+#include "Controllers/ApplicationController.hpp"
+#include "Models/PhotosModel.hpp"
+#include "Storage/TripData.hpp"
+#include <Storage/PhotosStorage.hpp>
 
 class GalleryService : public QObject
 {

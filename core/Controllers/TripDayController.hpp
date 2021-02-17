@@ -2,8 +2,8 @@
 #define TRIPDAYCONTROLLER_HPP
 
 #include <QObject>
-#include "core/Storage/TripData.hpp"
-#include "core/Controllers/ActiveTripController.hpp"
+#include "Storage/TripData.hpp"
+#include "Controllers/ActiveTripController.hpp"
 
 class TripDayController : public QObject
 {

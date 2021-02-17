@@ -2,7 +2,7 @@
 #define PHOTOSMODEL_HPP
 
 #include <QAbstractListModel>
-#include <core/Storage/Photo.hpp>
+#include <Storage/Photo.hpp>
 
 class PhotosModel : public QAbstractListModel
 {

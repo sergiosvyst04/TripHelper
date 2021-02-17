@@ -3,7 +3,7 @@
 #include "QString"
 #include "QDateTime"
 #include "TripDay.hpp"
-#include "core/Models/BackPackModel.hpp"
+#include "Models/BackPackModel.hpp"
 
 
 struct TripData {

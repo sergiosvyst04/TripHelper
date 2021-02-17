@@ -2,8 +2,8 @@
 #define GOALSCONTROLLER_HPP
 
 #include <QObject>
-#include <core/Storage/DataBaseStorage.hpp>
-#include <core/Storage/Goal.hpp>
+#include <Storage/DataBaseStorage.hpp>
+#include <Storage/Goal.hpp>
 
 class GoalsController : public QObject
 {

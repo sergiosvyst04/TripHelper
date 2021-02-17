@@ -7,15 +7,17 @@
 #include <QDebug>
 #include <QCryptographicHash>
 #include <QSettings>
-#include <core/Controllers/VisitedLocationsController.hpp>
-#include <core/Controllers/UserIdController.hpp>
+#include <Controllers/VisitedLocationsController.hpp>
+#include <Controllers/UserIdController.hpp>
+#include <src/qtfirebaseauth.h>
 
 
 
 DataBaseStorage::DataBaseStorage(QObject *parent) : QObject(parent)
 {
     _usersDB = new std::map<QString, UserInfo>;
-    _usersDataDB = new std::map<QString, std::map<QString, QVariant>>;
+    _usersDataDB = new std::map<QString, std::map<QString, QVariant>>;    
+
 
     readUsers();
     readUsersData();

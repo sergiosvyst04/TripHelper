@@ -1,7 +1,7 @@
 #include "WaitingTripController.hpp"
 #include "QDebug"
 
-#include "core/Storage/Trip.hpp"
+#include "Storage/Trip.hpp"
 
 WaitingTripController::WaitingTripController(QObject *parent) : QObject(parent)
 {

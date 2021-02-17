@@ -2,9 +2,9 @@
 #define ENDTRIPSERVICE_HPP
 
 #include <QObject>
-#include "core/Models/CompletedTripsModel.hpp"
-#include "core/Storage/TripData.hpp"
-#include "core/Controllers/ApplicationController.hpp"
+#include "Models/CompletedTripsModel.hpp"
+#include "Storage/TripData.hpp"
+#include "Controllers/ApplicationController.hpp"
 #include "Managers/TripsManager.hpp"
 
 class EndTripService : public QObject

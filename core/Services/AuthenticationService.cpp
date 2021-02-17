@@ -7,7 +7,9 @@
 #include "QJsonArray"
 #include <QVector>
 #include <QSettings>
-#include <core/Controllers/UserIdController.hpp>
+#include <Controllers/UserIdController.hpp>
+
+using namespace firebase;
 
 
 AuthenticationService::AuthenticationService(DataBaseStorage &db ,QObject *parent)
@@ -57,5 +59,3 @@ QString AuthenticationService::userId() const
 {
     return UserIdController::Instance().userId();
 }
-
-
