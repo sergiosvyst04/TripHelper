@@ -46,8 +46,10 @@ SOURCES += \
     Models/PhotosModel.cpp \
     Models/TravelAgentsModel.cpp \
     Models/TripDaysModel.cpp \
+    Services/AuthenticationProvider.cpp \
     Services/AuthenticationService.cpp \
     Services/EndTripService.cpp \
+    Services/FirebaseAuthentication.cpp \
     Services/GalleryService.cpp \
     Services/PackService.cpp \
     Storage/DataBaseStorage.cpp \
@@ -83,8 +85,10 @@ HEADERS += \
     Models/PhotosModel.hpp \
     Models/TravelAgentsModel.hpp \
     Models/TripDaysModel.hpp \
+    Services/AuthenticationProvider.h \
     Services/AuthenticationService.hpp \
     Services/EndTripService.hpp \
+    Services/FirebaseAuthentication.h \
     Services/GalleryService.hpp \
     Services/JsonHelperMethods.h \
     Services/PackService.hpp \

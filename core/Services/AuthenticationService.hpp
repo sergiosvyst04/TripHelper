@@ -5,49 +5,29 @@
 #include <QMap>
 #include <Storage/UserInfo.hpp>
 #include <Storage/DataBaseStorage.hpp>
+#include <Services/AuthenticationProvider.h>
 
-namespace firebase {
-template<class T>
-class Future;
-class App;
-
-namespace auth {
-class Auth;
-class User;
-class AuthStateListener;
-}
-
-namespace database {
-class Database;
-class DatabaseReference;
-}
-}
-
-class AuthenticationService : public QObject
+class AuthenticationService : public AuthenticationProvider
 {
     Q_OBJECT
 public:
     explicit AuthenticationService(DataBaseStorage &db ,QObject *parent = nullptr);
 
-    QString userId() const;
+    QString userId() const override;
 
 signals:
-    void userExists(bool exists);
-    void userSaved();
-    void signedIn();
+
 
 public slots:
-    void saveUser(const QString &email, const QString& password);
-    void checkIfUserExists(const QString &email, const QString& password);
+    void saveUser(const QString &email, const QString& password) override;
+    void checkIfUserExists(const QString &email) override;
 
-    void signIn(const QString &email, const QString &password);
-    void signOut();
-    bool isSignedIn();
+    void signIn(const QString &email, const QString &password) override;
+    void signOut() override;
+    bool isSignedIn() override;
 
 private:
     DataBaseStorage &_dbStorage;
-
-    firebase::auth::Auth *_authService = nullptr;
 };
 
 #endif // AUTHENTICATIONSERVICE_HPP

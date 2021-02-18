@@ -9,11 +9,10 @@
 #include <QSettings>
 #include <Controllers/UserIdController.hpp>
 
-using namespace firebase;
 
 
 AuthenticationService::AuthenticationService(DataBaseStorage &db ,QObject *parent)
-    : QObject(parent),
+    : AuthenticationProvider(db ,parent),
       _dbStorage(db)
 {
 
@@ -27,13 +26,13 @@ void AuthenticationService::saveUser(const QString &email, const QString& passwo
 }
 
 
-void AuthenticationService::checkIfUserExists(const QString &email, const QString& password)
+void AuthenticationService::checkIfUserExists(const QString &email)
 {
-    QByteArray userId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
-    if(_dbStorage.getUsersDb()->find(userId) != _dbStorage.getUsersDb()->end())
-        emit userExists(true);
-    else 
-        emit userExists(false);
+//    QByteArray userId = QCryptographicHash::hash(email.toUtf8() + password.toUtf8(), QCryptographicHash::Sha256).toHex();
+//    if(_dbStorage.getUsersDb()->find(userId) != _dbStorage.getUsersDb()->end())
+//        emit userExists(true);
+//    else
+//        emit userExists(false);
 }
 
 bool AuthenticationService::isSignedIn()
